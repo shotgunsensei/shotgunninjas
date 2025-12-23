@@ -14,7 +14,153 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string | null
+          id: string
+          is_workshop_member: boolean | null
+          updated_at: string
+          user_id: string
+          workshop_subscription_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name?: string | null
+          id?: string
+          is_workshop_member?: boolean | null
+          updated_at?: string
+          user_id: string
+          workshop_subscription_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string | null
+          id?: string
+          is_workshop_member?: boolean | null
+          updated_at?: string
+          user_id?: string
+          workshop_subscription_id?: string | null
+        }
+        Relationships: []
+      }
+      service_orders: {
+        Row: {
+          agreed_to_terms: boolean
+          created_at: string
+          description: string
+          duration_minutes: number
+          email: string
+          full_name: string
+          id: string
+          service_type: string
+          status: string | null
+          stripe_payment_intent_id: string | null
+          total_price_cents: number
+          updated_at: string
+        }
+        Insert: {
+          agreed_to_terms?: boolean
+          created_at?: string
+          description: string
+          duration_minutes: number
+          email: string
+          full_name: string
+          id?: string
+          service_type: string
+          status?: string | null
+          stripe_payment_intent_id?: string | null
+          total_price_cents: number
+          updated_at?: string
+        }
+        Update: {
+          agreed_to_terms?: boolean
+          created_at?: string
+          description?: string
+          duration_minutes?: number
+          email?: string
+          full_name?: string
+          id?: string
+          service_type?: string
+          status?: string | null
+          stripe_payment_intent_id?: string | null
+          total_price_cents?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      workshop_content: {
+        Row: {
+          category: string
+          content_order: number | null
+          created_at: string
+          description: string | null
+          id: string
+          is_published: boolean | null
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+          video_url: string | null
+        }
+        Insert: {
+          category: string
+          content_order?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_published?: boolean | null
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string
+          video_url?: string | null
+        }
+        Update: {
+          category?: string
+          content_order?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_published?: boolean | null
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+          video_url?: string | null
+        }
+        Relationships: []
+      }
+      workshop_subscriptions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          status: string | null
+          stripe_customer_id: string | null
+          stripe_subscription_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          status?: string | null
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          status?: string | null
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
