@@ -1,6 +1,8 @@
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut, User } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -12,6 +14,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signOut, loading } = useAuth();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-strong">
@@ -32,9 +35,37 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <Button variant="hero" size="sm">
-              Get Started
-            </Button>
+            <Link
+              to="/workshop"
+              className="text-primary hover:text-primary/80 transition-colors duration-300 font-medium text-sm tracking-wide"
+            >
+              Workshop
+            </Link>
+            {!loading && (
+              user ? (
+                <div className="flex items-center gap-4">
+                  <span className="text-muted-foreground text-sm flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    {user.email?.split('@')[0]}
+                  </span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={signOut}
+                    className="gap-2"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Sign Out
+                  </Button>
+                </div>
+              ) : (
+                <Link to="/auth">
+                  <Button variant="hero" size="sm">
+                    Sign In
+                  </Button>
+                </Link>
+              )
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -61,9 +92,37 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button variant="hero" className="mt-4">
-                Get Started
-              </Button>
+              <Link
+                to="/workshop"
+                className="text-primary hover:text-primary/80 transition-colors duration-300 font-medium py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                Workshop
+              </Link>
+              {!loading && (
+                user ? (
+                  <div className="flex flex-col gap-2 pt-4 border-t border-border">
+                    <span className="text-muted-foreground text-sm flex items-center gap-2">
+                      <User className="h-4 w-4" />
+                      {user.email?.split('@')[0]}
+                    </span>
+                    <Button
+                      variant="outline"
+                      onClick={() => { signOut(); setIsOpen(false); }}
+                      className="gap-2"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      Sign Out
+                    </Button>
+                  </div>
+                ) : (
+                  <Link to="/auth" onClick={() => setIsOpen(false)}>
+                    <Button variant="hero" className="mt-4 w-full">
+                      Sign In
+                    </Button>
+                  </Link>
+                )
+              )}
             </div>
           </div>
         )}
