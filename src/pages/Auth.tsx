@@ -6,6 +6,18 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
+import { z } from 'zod';
+
+const loginSchema = z.object({
+  email: z.string().trim().email("Invalid email format").max(255, "Email too long"),
+  password: z.string().min(1, "Password is required").max(72, "Password too long"),
+});
+
+const signupSchema = z.object({
+  email: z.string().trim().email("Invalid email format").max(255, "Email too long"),
+  password: z.string().min(8, "Password must be at least 8 characters").max(72, "Password too long"),
+  fullName: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name too long"),
+});
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -27,13 +39,17 @@ const Auth = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !password) {
-      toast.error('Please fill in all required fields');
-      return;
-    }
+    // Validate inputs with Zod
+    const schema = isLogin ? loginSchema : signupSchema;
+    const validationResult = schema.safeParse({
+      email,
+      password,
+      ...(isLogin ? {} : { fullName }),
+    });
 
-    if (!isLogin && !fullName) {
-      toast.error('Please enter your full name');
+    if (!validationResult.success) {
+      const firstError = validationResult.error.errors[0];
+      toast.error(firstError.message);
       return;
     }
 
