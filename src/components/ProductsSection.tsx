@@ -1,27 +1,31 @@
 import { Gamepad2, Car, Cpu, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const products = [
   {
     icon: Gamepad2,
-    title: "Retro Arcade",
-    description: "Custom-built arcade machines with classic and modern games. Full DIY kits available.",
-    price: "$200 - $2,000",
+    title: "Indoor Gadgets",
+    description: "Custom arcade cabinets, gaming setups, and entertainment systems. From portable OmniCade units to full-size stand-up cabinets.",
+    price: "$200 - $650",
     color: "from-cyan-500 to-blue-500",
+    link: "/indoor-gadgets",
   },
   {
     icon: Car,
-    title: "FPV RC Vehicles",
-    description: "High-performance first-person view remote control vehicles with live video streaming.",
+    title: "Outdoor Gadgets",
+    description: "FPV RC vehicles, ride-on EVs, and outdoor tech for adventure seekers of all ages.",
     price: "Starting at $300",
     color: "from-pink-500 to-rose-500",
+    link: "/outdoor-gadgets",
   },
   {
     icon: Cpu,
-    title: "Ride-On EVs",
-    description: "Custom electric ride-on vehicles for kids and adults. Fully customizable builds.",
-    price: "Starting at $500",
+    title: "Business Automation",
+    description: "Custom automation solutions to streamline operations and boost productivity for your business.",
+    price: "Custom Pricing",
     color: "from-emerald-500 to-teal-500",
+    link: "/business-automation",
   },
 ];
 
@@ -66,10 +70,12 @@ const ProductsSection = () => {
                 <span className="text-primary font-display font-semibold">
                   {product.price}
                 </span>
-                <Button variant="ghost" size="sm" className="group/btn">
-                  Learn More
-                  <ArrowRight className="ml-1 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
+                <Link to={product.link}>
+                  <Button variant="ghost" size="sm" className="group/btn">
+                    Learn More
+                    <ArrowRight className="ml-1 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}
