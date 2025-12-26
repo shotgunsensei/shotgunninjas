@@ -1,26 +1,25 @@
-import { Target, Lightbulb, Users } from "lucide-react";
-
-const stats = [
-  { value: "10+", label: "Years Experience" },
-  { value: "500+", label: "Projects Completed" },
-  { value: "100%", label: "Client Satisfaction" },
-];
+import { Shield, Wrench, Eye, Brain } from "lucide-react";
 
 const values = [
   {
-    icon: Target,
-    title: "Precision",
-    description: "Every project is executed with meticulous attention to detail.",
+    icon: Shield,
+    title: "Control",
+    description: "Products that give you ownership, not dependence on third-party services.",
   },
   {
-    icon: Lightbulb,
-    title: "Innovation",
-    description: "We push boundaries and embrace cutting-edge technology.",
+    icon: Wrench,
+    title: "Reliability",
+    description: "Built to work locally, integrate cleanly, and last for years.",
   },
   {
-    icon: Users,
-    title: "Collaboration",
-    description: "We work closely with clients to bring their vision to life.",
+    icon: Eye,
+    title: "Privacy",
+    description: "No data harvesting, no forced subscriptions, no cloud nonsense.",
+  },
+  {
+    icon: Brain,
+    title: "Practical Intelligence",
+    description: "Smart tech that solves real problems — not gimmicks or disposable solutions.",
   },
 ];
 
@@ -37,61 +36,47 @@ const AboutSection = () => {
               About Us
             </p>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-              <span className="text-foreground">Where </span>
-              <span className="text-gradient">Creativity</span>
-              <span className="text-foreground"> Meets</span>
-              <br />
-              <span className="text-gradient-accent">Technology</span>
+              <span className="text-foreground">Built by people who </span>
+              <span className="text-gradient">understand how things fail.</span>
             </h2>
             
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
               Shotgun Ninjas Productions is a creative technology studio dedicated to 
-              building innovative products and delivering exceptional services. From 
-              custom electronic gadgets to professional audio and video production, 
-              we bring passion and expertise to every project.
+              building intelligent gadgets, creative productions, and automation systems 
+              for people who want real control — not locked-down tech or shallow tutorials.
             </p>
             
             <p className="text-muted-foreground leading-relaxed mb-10">
-              Whether you're looking for a complete solution or prefer the DIY approach 
-              with our step-by-step instructions, we're here to help you unleash the 
-              power of creativity.
+              We design products that work locally, integrate cleanly, and respect your 
+              ownership of your data and systems. Whether you're looking for a complete 
+              solution or prefer the DIY approach with our Clan build guides, we're here 
+              to help you build smarter.
             </p>
 
-            {/* Stats */}
-            <div className="flex flex-wrap gap-8">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="font-display text-3xl md:text-4xl font-bold text-gradient mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-muted-foreground text-sm">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+            {/* Quote */}
+            <div className="glass rounded-xl p-6 border-l-4 border-primary">
+              <p className="text-foreground italic text-lg">
+                "Built by people who understand how things fail."
+              </p>
             </div>
           </div>
 
           {/* Values */}
-          <div className="space-y-6">
-            {values.map((value, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {values.map((value) => (
               <div
                 key={value.title}
                 className="glass rounded-2xl p-6 hover:border-primary/50 transition-all duration-300"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-primary p-3 shrink-0">
-                    <value.icon className="w-full h-full text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-foreground mb-1">
-                      {value.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {value.description}
-                    </p>
-                  </div>
+                <div className="w-12 h-12 rounded-xl bg-gradient-primary p-3 mb-4">
+                  <value.icon className="w-full h-full text-primary-foreground" />
                 </div>
+                <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                  {value.title}
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  {value.description}
+                </p>
               </div>
             ))}
           </div>

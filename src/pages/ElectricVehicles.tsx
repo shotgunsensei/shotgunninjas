@@ -1,4 +1,4 @@
-import { ArrowLeft, Sun, Radio, Battery, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Plug, Activity, Volume2, Gauge } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -6,62 +6,63 @@ import Footer from "@/components/Footer";
 
 const products = [
   {
-    name: "Solar Gate & Door Controller",
-    icon: Sun,
-    hero: "Control gates, sheds, and doors — anywhere the sun reaches.",
-    description: "Designed for rural properties, farms, and remote buildings, this solar-powered controller lets you open, close, and monitor gates or doors from your phone — even off-grid. Built rugged. Built simple. Built to work.",
+    name: "EV Accessory Power Module",
+    icon: Plug,
+    hero: "Clean power for everything you add to your EV.",
+    description: "Safely power accessories without hacking factory wiring. This module intelligently manages auxiliary loads, preventing battery drain and electrical faults. Ideal for e-bikes, electric motorcycles, UTVs, and DIY EV builds.",
+    price: "$149–$249",
+    features: [
+      "Smart electronic load protection",
+      "Multiple accessory outputs",
+      "Vehicle-safe design",
+      "App-controlled switching",
+      "Clean install — no splicing required",
+    ],
+  },
+  {
+    name: "EV Telemetry Box",
+    icon: Activity,
+    hero: "Understand your battery before it fails you.",
+    description: "This compact telemetry unit monitors EV battery health, temperature, usage patterns, and degradation trends — giving you real insight instead of guesswork. Designed for long-term ownership and peace of mind.",
+    price: "$249–$399",
+    features: [
+      "Battery health analytics",
+      "Usage pattern tracking",
+      "Predictive alerts",
+      "Local data ownership",
+      "Works across multiple EV platforms",
+    ],
+  },
+  {
+    name: "EV Sound & Alert Module",
+    icon: Volume2,
+    hero: "Safety sounds — with personality.",
+    description: "Add configurable low-speed alert sounds for pedestrians or off-road environments. Choose practical, compliant tones — or custom profiles for private land.",
+    price: "$99–$179",
+    features: [
+      "Low-speed safety alerts",
+      "Configurable sound profiles",
+      "Weatherproof design",
+      "Easy installation",
+    ],
+  },
+  {
+    name: "Smart EV Charger Load Balancer",
+    icon: Gauge,
+    hero: "Charge faster — without tripping breakers.",
+    description: "This system dynamically manages EV charging based on total household load. No rewiring. No service upgrades. Just smarter power usage. A must-have for EV owners with limited electrical capacity.",
     price: "$299–$499",
     features: [
-      "Solar powered + battery backed",
-      "App, keypad, and manual control",
-      "Weather-resistant enclosure",
-      "Ideal for farms, coops, sheds, and barns",
-    ],
-  },
-  {
-    name: "Perimeter Sensor Node",
-    icon: Radio,
-    hero: "Detect movement without cameras.",
-    description: "These small, rugged nodes detect vibration, motion, and disturbance — without using cameras or microphones. Perfect for large properties, woods, driveways, or areas where cameras aren't practical or welcome.",
-    price: "$89–$149/node",
-    features: [
-      "No cameras, no audio",
-      "Long-range wireless alerts",
-      "Stealth, low-profile design",
-      "Battery or solar options",
-      "Expandable node system",
-    ],
-  },
-  {
-    name: "Tool-Battery Power Station",
-    icon: Battery,
-    hero: "Turn your tool batteries into a power grid.",
-    description: "This portable power station works with popular tool batteries you already own. Power lights, devices, tools, or emergency equipment — with optional solar charging. Perfect for job sites, camping, emergencies, or garages.",
-    price: "$199–$349",
-    features: [
-      "Uses common power tool batteries",
-      "USB-C, USB-A, and AC outputs",
-      "Solar input support",
-      "Smart load protection",
-      "No proprietary batteries",
-    ],
-  },
-  {
-    name: "Smart Alert Siren",
-    icon: AlertTriangle,
-    hero: "Silent warnings when you want them. Loud when you need them.",
-    description: "A high-output alert system that integrates with sensors, doors, or manual triggers. Use it as a deterrent, warning, or emergency alarm — configurable per event.",
-    price: "$79–$129",
-    features: [
-      "Extremely loud output when triggered",
-      "Remote activation",
-      "Indoor or outdoor mounting",
-      "Works with other Shotgun Ninja sensors",
+      "Prevents overloads automatically",
+      "Works with existing chargers",
+      "Real-time load monitoring",
+      "Installer-friendly design",
+      "Saves costly electrical upgrades",
     ],
   },
 ];
 
-const OutdoorGadgets = () => {
+const ElectricVehicles = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -77,13 +78,13 @@ const OutdoorGadgets = () => {
           
           <div className="text-center mb-16">
             <p className="text-primary font-display text-sm tracking-[0.3em] mb-4 uppercase">
-              Outdoor Gadgets
+              Electric Vehicles
             </p>
             <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">Rugged tech for rural and remote.</span>
+              <span className="text-gradient">Smart accessories for your EV.</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Weather-resistant, solar-powered, privacy-first outdoor devices designed for properties where cameras aren't practical or welcome.
+              Intelligent modules for e-bikes, electric motorcycles, UTVs, and DIY EV builds. Real data, real protection, real control.
             </p>
           </div>
 
@@ -93,7 +94,7 @@ const OutdoorGadgets = () => {
                 key={product.name}
                 className="glass rounded-2xl p-8 hover:border-primary/50 transition-all duration-500 flex flex-col"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-green-500 p-3 mb-6">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 p-3 mb-6">
                   <product.icon className="w-full h-full text-foreground" />
                 </div>
                 
@@ -135,4 +136,4 @@ const OutdoorGadgets = () => {
   );
 };
 
-export default OutdoorGadgets;
+export default ElectricVehicles;
