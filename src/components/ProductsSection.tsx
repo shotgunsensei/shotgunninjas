@@ -1,31 +1,31 @@
-import { Gamepad2, Car, Cpu, ArrowRight } from "lucide-react";
+import { Home, TreePine, Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const products = [
   {
-    icon: Gamepad2,
+    icon: Home,
     title: "Indoor Gadgets",
-    description: "Custom arcade cabinets, gaming setups, and entertainment systems. From portable OmniCade units to full-size stand-up cabinets.",
-    price: "$200 - $650",
+    description: "Smart Power Strip, Network Guardian, Environment Sentinel, Noise Monitor — privacy-first devices for your home and lab.",
+    price: "$99 - $299",
     color: "from-cyan-500 to-blue-500",
     link: "/indoor-gadgets",
   },
   {
-    icon: Car,
+    icon: TreePine,
     title: "Outdoor Gadgets",
-    description: "FPV RC vehicles, ride-on EVs, and outdoor tech for adventure seekers of all ages.",
-    price: "Starting at $300",
-    color: "from-pink-500 to-rose-500",
+    description: "Solar Gate Controller, Perimeter Sensors, Tool Battery Power Station, Smart Siren — rugged tech for rural and remote applications.",
+    price: "$79 - $499",
+    color: "from-emerald-500 to-green-500",
     link: "/outdoor-gadgets",
   },
   {
-    icon: Cpu,
-    title: "Business Automation",
-    description: "Custom automation solutions to streamline operations and boost productivity for your business.",
-    price: "Custom Pricing",
-    color: "from-emerald-500 to-teal-500",
-    link: "/business-automation",
+    icon: Zap,
+    title: "Electric Vehicles",
+    description: "EV Power Module, Telemetry Box, Sound Module, Load Balancer — smart accessories for e-bikes, UTVs, and DIY EV builds.",
+    price: "$99 - $499",
+    color: "from-amber-500 to-orange-500",
+    link: "/electric-vehicles",
   },
 ];
 
@@ -40,10 +40,10 @@ const ProductsSection = () => {
             What We Build
           </p>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-            <span className="text-gradient">Featured Products</span>
+            <span className="text-gradient">Products designed to give you control — not dependence.</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Discover the thrill of DIY with step-by-step instructions or purchase completed products ready to use.
+            All Shotgun Ninja products are designed to work locally, integrate cleanly, and respect your ownership of your data and systems.
           </p>
         </div>
 
@@ -72,19 +72,13 @@ const ProductsSection = () => {
                 </span>
                 <Link to={product.link}>
                   <Button variant="ghost" size="sm" className="group/btn">
-                    Learn More
+                    View Products
                     <ArrowRight className="ml-1 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg">
-            View All Products
-          </Button>
         </div>
       </div>
     </section>

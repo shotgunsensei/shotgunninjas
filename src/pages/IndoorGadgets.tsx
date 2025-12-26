@@ -1,4 +1,4 @@
-import { ArrowLeft, Monitor, Gamepad2 } from "lucide-react";
+import { ArrowLeft, Plug, Shield, Thermometer, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -6,22 +6,60 @@ import Footer from "@/components/Footer";
 
 const products = [
   {
-    name: "OmniCade Mobile",
-    description: "2 player joystick mobile setup with HDMI out, 3.5mm audio out, and VGA out. Perfect for gaming on the go or connecting to any display.",
-    price: "$200",
-    features: ["2 Player Joystick Setup", "HDMI Output", "3.5mm Audio Out", "VGA Output", "Portable Design"],
+    name: "Smart Power Strip",
+    icon: Plug,
+    hero: "Control every outlet. Kill wasted power. No cloud nonsense.",
+    description: "The Shotgun Ninja Smart Power Strip gives you precise control over every plugged-in device — individually. Turn outlets on or off remotely, monitor power usage in real time, and create profiles for work, gaming, sleep, or travel.",
+    price: "$119–$149",
+    features: [
+      "Individually controllable outlets",
+      "Real-time power monitoring",
+      "Local network control (cloud optional)",
+      "Surge protection + intelligent load handling",
+      "Ideal for offices, studios, and home labs",
+    ],
   },
   {
-    name: "OmniCade Tabletop",
-    description: "2 player joystick 36\" tabletop cabinet with 22\" monitor. Classic arcade experience in a compact form factor.",
-    price: "$500",
-    features: ["2 Player Joystick Setup", "36\" Tabletop Cabinet", "22\" Monitor", "3 Color Choices: Red, Blue, Green"],
+    name: "Network Guardian",
+    icon: Shield,
+    hero: "A firewall for people who don't want to become network engineers.",
+    description: "Plug it in. Protect everything. The Network Guardian filters malicious traffic, blocks trackers, and shields smart devices without complicated setup. No apps spying on you. No subscriptions required.",
+    price: "$199–$299",
+    features: [
+      "Plug-and-play network security",
+      "Blocks malware, trackers, and unsafe domains",
+      "Visual activity dashboard",
+      "No recurring fees",
+      "Works with existing routers",
+    ],
   },
   {
-    name: "OmniCade Stand-Up",
-    description: "2 player joystick 72\" stand-up arcade cabinet with 22\" monitor. The ultimate home arcade experience.",
-    price: "$650",
-    features: ["2 Player Joystick Setup", "72\" Stand-Up Cabinet", "22\" Monitor", "3 Color Choices: Red, Blue, Green"],
+    name: "Environment Sentinel",
+    icon: Thermometer,
+    hero: "Know why a room feels wrong — before it affects you.",
+    description: "Temperature is only part of the story. This compact module tracks temperature, humidity, air quality, and CO₂ — then gives actionable insights instead of useless graphs. Use it standalone or integrate it into automated climate control systems.",
+    price: "$99–$149",
+    features: [
+      "Temp, humidity, CO₂, and air quality monitoring",
+      "Intelligent suggestions, not raw data dumps",
+      "Desktop or wall-mount design",
+      "Local dashboard access",
+      "Optional automation triggers",
+    ],
+  },
+  {
+    name: "Noise-Aware Room Monitor",
+    icon: Volume2,
+    hero: "Understands sound. Never records it.",
+    description: "This device listens without listening. It detects sound patterns — not conversations. Glass breaking. Baby crying. Aggressive noise. Sudden impact. Privacy-first design with no audio recordings or microphones streaming data.",
+    price: "$149–$199",
+    features: [
+      "Pattern-based audio detection",
+      "Zero audio storage or playback",
+      "Privacy-first design",
+      "Instant alerts",
+      "Works offline or local-only",
+    ],
   },
 ];
 
@@ -40,39 +78,43 @@ const IndoorGadgets = () => {
           </Link>
           
           <div className="text-center mb-16">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 p-5 mx-auto mb-6 shadow-glow-sm">
-              <Gamepad2 className="w-full h-full text-foreground" />
-            </div>
+            <p className="text-primary font-display text-sm tracking-[0.3em] mb-4 uppercase">
+              Indoor Gadgets
+            </p>
             <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">Indoor Gadgets</span>
+              <span className="text-gradient">Smart devices that respect your privacy.</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Transform your space with our custom-built arcade machines and gaming setups. From portable solutions to full-size cabinets.
+              Indoor tech designed for control, not dependence. No forced subscriptions, no data harvesting — just visible protection and intelligent awareness.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {products.map((product) => (
               <div
                 key={product.name}
-                className="glass rounded-2xl p-8 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 flex flex-col"
+                className="glass rounded-2xl p-8 hover:border-primary/50 transition-all duration-500 flex flex-col"
               >
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 p-3 mb-6">
-                  <Monitor className="w-full h-full text-foreground" />
+                  <product.icon className="w-full h-full text-foreground" />
                 </div>
                 
-                <h3 className="font-display text-2xl font-bold text-foreground mb-3">
+                <h3 className="font-display text-2xl font-bold text-foreground mb-2">
                   {product.name}
                 </h3>
                 
-                <p className="text-muted-foreground mb-6 leading-relaxed flex-grow">
+                <p className="text-primary font-semibold text-sm mb-3">
+                  {product.hero}
+                </p>
+                
+                <p className="text-muted-foreground mb-6 leading-relaxed">
                   {product.description}
                 </p>
                 
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2 mb-6 flex-grow">
                   {product.features.map((feature) => (
-                    <li key={feature} className="text-sm text-muted-foreground flex items-center">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mr-2" />
+                    <li key={feature} className="text-sm text-muted-foreground flex items-start">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mr-2 mt-1.5 shrink-0" />
                       {feature}
                     </li>
                   ))}

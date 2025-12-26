@@ -1,46 +1,79 @@
 import { Menu, X, LogOut, User } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Products", href: "#products" },
-  { name: "Services", href: "#services" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "Products", href: "/#products" },
+  { name: "Services", href: "/#services" },
+  { name: "Clan", href: "/clan" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, signOut, loading } = useAuth();
+  const location = useLocation();
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false);
+    
+    // If it's a hash link and we're on the home page, scroll to section
+    if (href.startsWith("/#") && location.pathname === "/") {
+      const sectionId = href.replace("/#", "");
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const renderNavLink = (link: { name: string; href: string }) => {
+    const isExternal = link.href.startsWith("/#");
+    const isClan = link.href === "/clan";
+    
+    if (isExternal && location.pathname === "/") {
+      return (
+        <a
+          key={link.name}
+          href={link.href.replace("/", "")}
+          className={`text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm tracking-wide ${
+            isClan ? "text-primary" : ""
+          }`}
+          onClick={() => setIsOpen(false)}
+        >
+          {link.name}
+        </a>
+      );
+    }
+    
+    return (
+      <Link
+        key={link.name}
+        to={link.href}
+        className={`transition-colors duration-300 font-medium text-sm tracking-wide ${
+          isClan ? "text-primary hover:text-primary/80" : "text-muted-foreground hover:text-primary"
+        }`}
+        onClick={() => handleNavClick(link.href)}
+      >
+        {link.name}
+      </Link>
+    );
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-strong">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <a href="#home" className="font-display text-xl font-bold text-gradient tracking-wider">
+          <Link to="/" className="font-display text-xl font-bold text-gradient tracking-wider">
             SHOTGUN NINJAS
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm tracking-wide"
-              >
-                {link.name}
-              </a>
-            ))}
-            <Link
-              to="/workshop"
-              className="text-primary hover:text-primary/80 transition-colors duration-300 font-medium text-sm tracking-wide"
-            >
-              Workshop
-            </Link>
+            {navLinks.map(renderNavLink)}
             {!loading && (
               user ? (
                 <div className="flex items-center gap-4">
@@ -82,23 +115,38 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden py-6 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <Link
-                to="/workshop"
-                className="text-primary hover:text-primary/80 transition-colors duration-300 font-medium py-2"
-                onClick={() => setIsOpen(false)}
-              >
-                Workshop
-              </Link>
+              {navLinks.map((link) => {
+                const isExternal = link.href.startsWith("/#");
+                const isClan = link.href === "/clan";
+                
+                if (isExternal && location.pathname === "/") {
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href.replace("/", "")}
+                      className={`transition-colors duration-300 font-medium py-2 ${
+                        isClan ? "text-primary hover:text-primary/80" : "text-muted-foreground hover:text-primary"
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  );
+                }
+                
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={`transition-colors duration-300 font-medium py-2 ${
+                      isClan ? "text-primary hover:text-primary/80" : "text-muted-foreground hover:text-primary"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
               {!loading && (
                 user ? (
                   <div className="flex flex-col gap-2 pt-4 border-t border-border">

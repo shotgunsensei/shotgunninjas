@@ -6,10 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
-import Workshop from "./pages/Workshop";
+import Clan from "./pages/Clan";
 import IndoorGadgets from "./pages/IndoorGadgets";
 import OutdoorGadgets from "./pages/OutdoorGadgets";
-import BusinessAutomation from "./pages/BusinessAutomation";
+import ElectricVehicles from "./pages/ElectricVehicles";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,10 +24,11 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/workshop" element={<Workshop />} />
+            <Route path="/clan" element={<Clan />} />
+            <Route path="/workshop" element={<Clan />} />
             <Route path="/indoor-gadgets" element={<IndoorGadgets />} />
             <Route path="/outdoor-gadgets" element={<OutdoorGadgets />} />
-            <Route path="/business-automation" element={<BusinessAutomation />} />
+            <Route path="/electric-vehicles" element={<ElectricVehicles />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
