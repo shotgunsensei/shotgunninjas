@@ -59,11 +59,9 @@ const Auth = () => {
       if (isLogin) {
         const { error } = await signIn(email, password);
         if (error) {
-          if (error.message.includes('Invalid login credentials')) {
-            toast.error('Invalid email or password');
-          } else {
-            toast.error(error.message);
-          }
+          // Log error for debugging but show generic message to users
+          console.error('Login error:', error);
+          toast.error('Unable to sign in. Please check your credentials and try again.');
           return;
         }
         toast.success('Welcome back!');
@@ -71,17 +69,16 @@ const Auth = () => {
       } else {
         const { error } = await signUp(email, password, fullName);
         if (error) {
-          if (error.message.includes('already registered')) {
-            toast.error('This email is already registered. Please sign in instead.');
-          } else {
-            toast.error(error.message);
-          }
+          // Log error for debugging but show generic message to users
+          console.error('Signup error:', error);
+          toast.error('Unable to create account. Please try again or contact support.');
           return;
         }
         toast.success('Account created successfully!');
         navigate('/');
       }
     } catch (error) {
+      console.error('Auth error:', error);
       toast.error('An unexpected error occurred');
     } finally {
       setIsSubmitting(false);
