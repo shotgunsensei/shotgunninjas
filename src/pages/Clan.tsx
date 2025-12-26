@@ -4,8 +4,8 @@ import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { Wrench, Video, Code, Brain, Crown, Settings, ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Wrench, Video, Code, Brain, Crown, Settings, ChevronDown, ChevronUp } from 'lucide-react';
+import Navbar from '@/components/Navbar';
 
 interface WorkshopContent {
   id: string;
@@ -162,14 +162,10 @@ const Clan = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
       <div className="absolute inset-0 bg-glow opacity-20" />
       
-      <div className="relative container mx-auto px-4 py-8">
-        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
-          <ArrowLeft className="h-4 w-4" />
-          Back to Home
-        </Link>
-
+      <div className="relative container mx-auto px-4 py-8 pt-28">
         <div className="text-center mb-12">
           <p className="text-primary font-display text-sm tracking-[0.3em] mb-4 uppercase">
             Members Only
