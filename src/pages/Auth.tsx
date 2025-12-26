@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
-import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, ArrowLeft } from 'lucide-react';
 import { z } from 'zod';
 
 const loginSchema = z.object({
@@ -96,6 +96,14 @@ const Auth = () => {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-glow opacity-30" />
+      
+      <Link 
+        to="/" 
+        className="absolute top-6 left-6 inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors z-10"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Back to Home
+      </Link>
       
       <div className="relative w-full max-w-md">
         <div className="glass-strong rounded-2xl p-8 shadow-elevated">
