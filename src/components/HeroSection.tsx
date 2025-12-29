@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroBg from "@/assets/hero-bg.jpg";
+import ninjaMascot from "@/assets/ninja-mascot.png";
 
 const HeroSection = () => {
   return (
@@ -9,15 +9,15 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background with ninja mascot */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        style={{ backgroundImage: `url(${ninjaMascot})` }}
       />
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-dark opacity-80" />
-      <div className="absolute inset-0 bg-glow opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+      <div className="absolute inset-0 bg-glow opacity-30" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
