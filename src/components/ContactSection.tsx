@@ -43,13 +43,13 @@ const ContactSection = () => {
               
               <div className="space-y-4">
                 <a
-                  href="mailto:contact@shotgunninjas.com"
+                  href="mailto:john@shotgunninjas.com"
                   className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
-                  <span>contact@shotgunninjas.com</span>
+                  <span>john@shotgunninjas.com</span>
                 </a>
                 
                 <div className="flex items-center gap-4 text-muted-foreground">
