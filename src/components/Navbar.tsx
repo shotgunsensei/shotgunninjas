@@ -1,8 +1,9 @@
 import { Menu, X, LogOut, User } from "lucide-react";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
+import snpLogo from "@/assets/SNPlogo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -16,6 +17,18 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, signOut, loading } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsOpen(false);
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
+    }
+  };
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
@@ -33,6 +46,21 @@ const Navbar = () => {
   const renderNavLink = (link: { name: string; href: string }) => {
     const isExternal = link.href.startsWith("/#");
     const isClan = link.href === "/clan";
+    const isHome = link.href === "/";
+    
+    // Special handling for Home link
+    if (isHome) {
+      return (
+        <a
+          key={link.name}
+          href="/"
+          className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm tracking-wide"
+          onClick={handleHomeClick}
+        >
+          {link.name}
+        </a>
+      );
+    }
     
     if (isExternal && location.pathname === "/") {
       return (
@@ -67,9 +95,14 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass-strong">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="font-display text-xl font-bold text-gradient tracking-wider">
+          <a 
+            href="/" 
+            onClick={handleHomeClick}
+            className="flex items-center gap-3 font-display text-xl font-bold text-gradient tracking-wider"
+          >
+            <img src={snpLogo} alt="Shotgun Ninjas Logo" className="h-10 w-auto" />
             SHOTGUN NINJAS
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -118,6 +151,21 @@ const Navbar = () => {
               {navLinks.map((link) => {
                 const isExternal = link.href.startsWith("/#");
                 const isClan = link.href === "/clan";
+                const isHome = link.href === "/";
+                
+                // Special handling for Home link
+                if (isHome) {
+                  return (
+                    <a
+                      key={link.name}
+                      href="/"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
+                      onClick={handleHomeClick}
+                    >
+                      {link.name}
+                    </a>
+                  );
+                }
                 
                 if (isExternal && location.pathname === "/") {
                   return (
