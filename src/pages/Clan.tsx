@@ -77,9 +77,12 @@ const Clan = () => {
     }
   }, [searchParams]);
 
+  // Admins get full access even without a subscription
+  const hasAccess = subscription.subscribed || isAdmin;
+
   useEffect(() => {
     const fetchContent = async () => {
-      if (!subscription.subscribed) {
+      if (!hasAccess) {
         setContentLoading(false);
         return;
       }
@@ -100,10 +103,10 @@ const Clan = () => {
       }
     };
 
-    if (!subscription.loading) {
+    if (!subscription.loading && !adminLoading) {
       fetchContent();
     }
-  }, [subscription.subscribed, subscription.loading]);
+  }, [hasAccess, subscription.loading, adminLoading]);
 
   const handleCheckout = async () => {
     if (!session) return;
@@ -183,7 +186,7 @@ const Clan = () => {
           </p>
         </div>
 
-        {!subscription.subscribed ? (
+        {!hasAccess ? (
           <div className="max-w-4xl mx-auto">
             {/* Pricing Card */}
             <div className="glass-strong rounded-2xl p-8 text-center mb-12">
