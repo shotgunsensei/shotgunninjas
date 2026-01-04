@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { useAdminStatus } from '@/hooks/useAdminStatus';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { Wrench, Video, Code, Brain, Crown, Settings, ChevronDown, ChevronUp } from 'lucide-react';
+import { Wrench, Video, Code, Brain, Crown, Settings, ChevronDown, ChevronUp, Shield } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-
+import AdminPanel from '@/components/clan/AdminPanel';
+import Forum from '@/components/clan/Forum';
+import DocumentsSection from '@/components/clan/DocumentsSection';
 interface WorkshopContent {
   id: string;
   title: string;
@@ -49,12 +52,14 @@ const faqs = [
 
 const Clan = () => {
   const { user, session, subscription, loading, checkSubscription } = useAuth();
+  const { isAdmin, loading: adminLoading } = useAdminStatus();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [content, setContent] = useState<WorkshopContent[]>([]);
   const [contentLoading, setContentLoading] = useState(true);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [portalLoading, setPortalLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState<'content' | 'forum'>('content');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
@@ -144,7 +149,7 @@ const Clan = () => {
     }
   };
 
-  if (loading || subscription.loading) {
+  if (loading || subscription.loading || adminLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
@@ -292,6 +297,12 @@ const Clan = () => {
               <div className="flex items-center gap-3">
                 <Crown className="h-6 w-6 text-primary" />
                 <span className="text-foreground font-medium">Clan Member</span>
+                {isAdmin && (
+                  <span className="flex items-center gap-1 text-primary text-sm font-medium">
+                    <Shield className="h-4 w-4" />
+                    Admin
+                  </span>
+                )}
                 {subscription.subscriptionEnd && (
                   <span className="text-muted-foreground text-sm">
                     · Renews {new Date(subscription.subscriptionEnd).toLocaleDateString()}
@@ -309,51 +320,87 @@ const Clan = () => {
               </Button>
             </div>
 
-            {contentLoading ? (
-              <div className="flex justify-center py-12">
-                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-              </div>
-            ) : content.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">No content available yet. Check back soon!</p>
-              </div>
-            ) : (
-              Object.entries(groupedContent).map(([category, items]) => (
-                <div key={category}>
-                  <h2 className="text-2xl font-bold text-foreground mb-4 capitalize">{category}</h2>
-                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {items.map((item) => (
-                      <div
-                        key={item.id}
-                        className="glass rounded-xl overflow-hidden group hover:shadow-glow-sm transition-all duration-300"
-                      >
-                        <div className="aspect-video bg-card relative">
-                          {item.thumbnail_url ? (
-                            <img
-                              src={item.thumbnail_url}
-                              alt={item.title}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center">
-                              <Video className="h-12 w-12 text-muted-foreground" />
-                            </div>
-                          )}
-                          <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <Video className="h-16 w-16 text-primary" />
-                          </div>
-                        </div>
-                        <div className="p-4">
-                          <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-                          {item.description && (
-                            <p className="text-muted-foreground text-sm line-clamp-2">{item.description}</p>
-                          )}
-                        </div>
-                      </div>
-                    ))}
+            {/* Admin Panel - only visible to admins */}
+            {isAdmin && <AdminPanel />}
+
+            {/* Tab Navigation */}
+            <div className="flex gap-2 border-b border-border">
+              <button
+                onClick={() => setActiveTab('content')}
+                className={`px-4 py-2 font-medium transition-colors ${
+                  activeTab === 'content'
+                    ? 'text-primary border-b-2 border-primary'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                Content Library
+              </button>
+              <button
+                onClick={() => setActiveTab('forum')}
+                className={`px-4 py-2 font-medium transition-colors ${
+                  activeTab === 'forum'
+                    ? 'text-primary border-b-2 border-primary'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                Discussion Forum
+              </button>
+            </div>
+
+            {activeTab === 'content' ? (
+              <>
+                {/* Documents Section */}
+                <DocumentsSection />
+
+                {contentLoading ? (
+                  <div className="flex justify-center py-12">
+                    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
                   </div>
-                </div>
-              ))
+                ) : content.length === 0 ? (
+                  <div className="text-center py-12">
+                    <p className="text-muted-foreground">No content available yet. Check back soon!</p>
+                  </div>
+                ) : (
+                  Object.entries(groupedContent).map(([category, items]) => (
+                    <div key={category}>
+                      <h2 className="text-2xl font-bold text-foreground mb-4 capitalize">{category}</h2>
+                      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        {items.map((item) => (
+                          <div
+                            key={item.id}
+                            className="glass rounded-xl overflow-hidden group hover:shadow-glow-sm transition-all duration-300"
+                          >
+                            <div className="aspect-video bg-card relative">
+                              {item.thumbnail_url ? (
+                                <img
+                                  src={item.thumbnail_url}
+                                  alt={item.title}
+                                  className="w-full h-full object-cover"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center">
+                                  <Video className="h-12 w-12 text-muted-foreground" />
+                                </div>
+                              )}
+                              <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <Video className="h-16 w-16 text-primary" />
+                              </div>
+                            </div>
+                            <div className="p-4">
+                              <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                              {item.description && (
+                                <p className="text-muted-foreground text-sm line-clamp-2">{item.description}</p>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))
+                )}
+              </>
+            ) : (
+              <Forum />
             )}
           </div>
         )}
