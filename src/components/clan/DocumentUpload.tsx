@@ -66,16 +66,14 @@ const DocumentUpload = () => {
 
       if (uploadError) throw uploadError;
 
-      const { data: { publicUrl } } = supabase.storage
-        .from('clan-files')
-        .getPublicUrl(filePath);
+      // Store the file path (not a public URL) - signed URLs will be generated on access
 
       const { error: dbError } = await supabase
         .from('clan_documents')
         .insert({
           title: title.trim(),
           description: description.trim() || null,
-          file_url: publicUrl,
+          file_url: filePath,
           file_type: file.type,
           file_size: file.size,
           category,
