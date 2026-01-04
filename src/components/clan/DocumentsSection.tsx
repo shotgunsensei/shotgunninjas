@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { FileText, Video, Download, ExternalLink } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { FileText, Video, Download, ExternalLink, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -17,6 +17,7 @@ const DocumentsSection = () => {
   const [documents, setDocuments] = useState<ClanDocument[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [loadingUrls, setLoadingUrls] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const fetchDocuments = async () => {
@@ -38,6 +39,39 @@ const DocumentsSection = () => {
 
     fetchDocuments();
   }, []);
+
+  const getSignedUrl = useCallback(async (filePath: string): Promise<string | null> => {
+    try {
+      // Handle legacy public URLs - extract path from full URL
+      let path = filePath;
+      if (filePath.includes('/clan-files/')) {
+        const parts = filePath.split('/clan-files/');
+        path = parts[1] || filePath;
+      }
+      
+      const { data, error } = await supabase.storage
+        .from('clan-files')
+        .createSignedUrl(path, 3600); // 1 hour expiry
+
+      if (error) throw error;
+      return data.signedUrl;
+    } catch (error) {
+      console.error('Error generating signed URL:', error);
+      return null;
+    }
+  }, []);
+
+  const handleDocumentClick = async (doc: ClanDocument) => {
+    setLoadingUrls(prev => ({ ...prev, [doc.id]: true }));
+    
+    const signedUrl = await getSignedUrl(doc.file_url);
+    
+    setLoadingUrls(prev => ({ ...prev, [doc.id]: false }));
+    
+    if (signedUrl) {
+      window.open(signedUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   const categories = ['all', ...new Set(documents.map(d => d.category))];
   const filteredDocs = selectedCategory === 'all' 
@@ -100,13 +134,14 @@ const DocumentsSection = () => {
                   <span className="text-xs text-muted-foreground capitalize px-2 py-1 bg-muted rounded">
                     {doc.category}
                   </span>
-                  <a
-                    href={doc.file_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 text-sm flex items-center gap-1"
+                  <button
+                    onClick={() => handleDocumentClick(doc)}
+                    disabled={loadingUrls[doc.id]}
+                    className="text-primary hover:text-primary/80 text-sm flex items-center gap-1 disabled:opacity-50"
                   >
-                    {doc.file_type.startsWith('video/') ? (
+                    {loadingUrls[doc.id] ? (
+                      <Loader2 className="h-3 w-3 animate-spin" />
+                    ) : doc.file_type.startsWith('video/') ? (
                       <>
                         <ExternalLink className="h-3 w-3" />
                         Watch
@@ -117,7 +152,7 @@ const DocumentsSection = () => {
                         Download
                       </>
                     )}
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
