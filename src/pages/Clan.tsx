@@ -120,7 +120,7 @@ const Clan = () => {
       if (error) throw error;
 
       if (data?.url) {
-        window.open(data.url, '_blank');
+        window.open(data.url, '_blank', 'noopener,noreferrer');
       }
     } catch (error) {
       console.error('Checkout error:', error);
@@ -142,7 +142,7 @@ const Clan = () => {
       if (error) throw error;
 
       if (data?.url) {
-        window.open(data.url, '_blank');
+        window.open(data.url, '_blank', 'noopener,noreferrer');
       }
     } catch (error) {
       console.error('Portal error:', error);
