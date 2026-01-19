@@ -10,6 +10,7 @@ import Clan from "./pages/Clan";
 import IndoorGadgets from "./pages/IndoorGadgets";
 import OutdoorGadgets from "./pages/OutdoorGadgets";
 import ElectricVehicles from "./pages/ElectricVehicles";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/indoor-gadgets" element={<IndoorGadgets />} />
             <Route path="/outdoor-gadgets" element={<OutdoorGadgets />} />
             <Route path="/electric-vehicles" element={<ElectricVehicles />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
