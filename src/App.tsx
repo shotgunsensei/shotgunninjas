@@ -11,6 +11,7 @@ import IndoorGadgets from "./pages/IndoorGadgets";
 import OutdoorGadgets from "./pages/OutdoorGadgets";
 import ElectricVehicles from "./pages/ElectricVehicles";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TorqueShed from "./pages/TorqueShed";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/outdoor-gadgets" element={<OutdoorGadgets />} />
             <Route path="/electric-vehicles" element={<ElectricVehicles />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/torqueshed" element={<TorqueShed />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
