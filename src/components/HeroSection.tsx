@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import ninjaMascot from "@/assets/ninja-mascot.png";
+import heroNinja from "@/assets/hero-ninja.png";
 
 const HeroSection = () => {
   return (
@@ -12,7 +12,7 @@ const HeroSection = () => {
       {/* Background with ninja mascot */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${ninjaMascot})` }}
+        style={{ backgroundImage: `url(${heroNinja})` }}
       />
       
       {/* Overlay */}
