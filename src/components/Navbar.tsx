@@ -7,9 +7,9 @@ import snpLogo from "@/assets/SNPlogo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Products", href: "/#products" },
-  { name: "Services", href: "/#services" },
-  { name: "Clan", href: "/clan" },
+  { name: "Services", href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "About", href: "/about" },
   { name: "Contact", href: "/#contact" },
 ];
 
@@ -44,9 +44,9 @@ const Navbar = () => {
   };
 
   const renderNavLink = (link: { name: string; href: string }) => {
-    const isExternal = link.href.startsWith("/#");
-    const isClan = link.href === "/clan";
+    const isHashLink = link.href.startsWith("/#");
     const isHome = link.href === "/";
+    const isActive = location.pathname === link.href;
     
     // Special handling for Home link
     if (isHome) {
@@ -54,7 +54,9 @@ const Navbar = () => {
         <a
           key={link.name}
           href="/"
-          className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm tracking-wide"
+          className={`transition-colors duration-300 font-medium text-sm tracking-wide ${
+            location.pathname === "/" ? "text-primary" : "text-muted-foreground hover:text-primary"
+          }`}
           onClick={handleHomeClick}
         >
           {link.name}
@@ -62,29 +64,41 @@ const Navbar = () => {
       );
     }
     
-    if (isExternal && location.pathname === "/") {
+    // Hash links (like /#contact)
+    if (isHashLink) {
+      if (location.pathname === "/") {
+        return (
+          <a
+            key={link.name}
+            href={link.href.replace("/", "")}
+            className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm tracking-wide"
+            onClick={() => setIsOpen(false)}
+          >
+            {link.name}
+          </a>
+        );
+      }
       return (
-        <a
+        <Link
           key={link.name}
-          href={link.href.replace("/", "")}
-          className={`text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm tracking-wide ${
-            isClan ? "text-primary" : ""
-          }`}
-          onClick={() => setIsOpen(false)}
+          to={link.href}
+          className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm tracking-wide"
+          onClick={() => handleNavClick(link.href)}
         >
           {link.name}
-        </a>
+        </Link>
       );
     }
     
+    // Regular page links
     return (
       <Link
         key={link.name}
         to={link.href}
         className={`transition-colors duration-300 font-medium text-sm tracking-wide ${
-          isClan ? "text-primary hover:text-primary/80" : "text-muted-foreground hover:text-primary"
+          isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
         }`}
-        onClick={() => handleNavClick(link.href)}
+        onClick={() => setIsOpen(false)}
       >
         {link.name}
       </Link>
@@ -149,9 +163,9 @@ const Navbar = () => {
           <div className="md:hidden py-6 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => {
-                const isExternal = link.href.startsWith("/#");
-                const isClan = link.href === "/clan";
+                const isHashLink = link.href.startsWith("/#");
                 const isHome = link.href === "/";
+                const isActive = location.pathname === link.href;
                 
                 // Special handling for Home link
                 if (isHome) {
@@ -159,7 +173,9 @@ const Navbar = () => {
                     <a
                       key={link.name}
                       href="/"
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
+                      className={`transition-colors duration-300 font-medium py-2 ${
+                        location.pathname === "/" ? "text-primary" : "text-muted-foreground hover:text-primary"
+                      }`}
                       onClick={handleHomeClick}
                     >
                       {link.name}
@@ -167,14 +183,12 @@ const Navbar = () => {
                   );
                 }
                 
-                if (isExternal && location.pathname === "/") {
+                if (isHashLink && location.pathname === "/") {
                   return (
                     <a
                       key={link.name}
                       href={link.href.replace("/", "")}
-                      className={`transition-colors duration-300 font-medium py-2 ${
-                        isClan ? "text-primary hover:text-primary/80" : "text-muted-foreground hover:text-primary"
-                      }`}
+                      className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
                       onClick={() => setIsOpen(false)}
                     >
                       {link.name}
@@ -187,7 +201,7 @@ const Navbar = () => {
                     key={link.name}
                     to={link.href}
                     className={`transition-colors duration-300 font-medium py-2 ${
-                      isClan ? "text-primary hover:text-primary/80" : "text-muted-foreground hover:text-primary"
+                      isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
                     }`}
                     onClick={() => setIsOpen(false)}
                   >

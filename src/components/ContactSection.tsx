@@ -1,4 +1,4 @@
-import { Mail, MapPin, Send, Youtube, Facebook, Linkedin } from "lucide-react";
+import { Mail, MapPin, Send, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,13 +9,14 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Message sent! We'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
@@ -23,13 +24,16 @@ const ContactSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <p className="text-primary font-display text-sm tracking-[0.3em] mb-4 uppercase">
-            Get In Touch
+            Hire the Studio
           </p>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-            <span className="text-gradient">Let's Create Together</span>
+            <span className="text-gradient">Let's Talk</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a project in mind? We'd love to hear from you.
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-4">
+            Have a project that needs creative + technical horsepower? Let's discuss.
+          </p>
+          <p className="text-foreground/80 font-medium text-sm max-w-xl mx-auto">
+            If you need cheap, this isn't it. If you need it done right, let's talk.
           </p>
         </div>
 
@@ -38,10 +42,10 @@ const ContactSection = () => {
           <div className="space-y-8">
             <div className="glass rounded-2xl p-8">
               <h3 className="font-display text-xl font-bold text-foreground mb-6">
-                Contact Information
+                Get in Touch
               </h3>
               
-              <div className="space-y-4">
+              <div className="space-y-4 mb-8">
                 <a
                   href="mailto:john@shotgunninjas.com"
                   className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors"
@@ -60,36 +64,24 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-border">
+              <div className="pt-6 border-t border-border">
                 <h4 className="font-display text-sm font-semibold text-foreground mb-4">
-                  Follow Us
+                  What to Expect
                 </h4>
-                <div className="flex gap-3">
-                  <a
-                    href="https://youtube.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
-                  >
-                    <Youtube className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
-                  >
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                </div>
+                <ul className="text-muted-foreground text-sm space-y-2">
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span>Response within 24-48 hours</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span>Clear scope and timeline discussion</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span>Honest assessment of fit</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -97,15 +89,44 @@ const ContactSection = () => {
           {/* Contact Form */}
           <div className="glass rounded-2xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-2 block">
+                    Name
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="bg-secondary/50 border-border focus:border-primary"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-2 block">
+                    Email
+                  </label>
+                  <Input
+                    type="email"
+                    placeholder="you@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                    className="bg-secondary/50 border-border focus:border-primary"
+                  />
+                </div>
+              </div>
+              
               <div>
                 <label className="text-sm font-medium text-foreground mb-2 block">
-                  Your Name
+                  Subject
                 </label>
                 <Input
                   type="text"
-                  placeholder="John Doe"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Audio / Video / Automation / Other"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   required
                   className="bg-secondary/50 border-border focus:border-primary"
                 />
@@ -113,24 +134,10 @@ const ContactSection = () => {
               
               <div>
                 <label className="text-sm font-medium text-foreground mb-2 block">
-                  Email Address
-                </label>
-                <Input
-                  type="email"
-                  placeholder="john@example.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                  className="bg-secondary/50 border-border focus:border-primary"
-                />
-              </div>
-              
-              <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Message
+                  Tell us about your project
                 </label>
                 <Textarea
-                  placeholder="Tell us about your project..."
+                  placeholder="What are you building? What problem are you solving? What's your timeline?"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required

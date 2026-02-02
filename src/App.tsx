@@ -7,6 +7,9 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Clan from "./pages/Clan";
+import Services from "./pages/Services";
+import Portfolio from "./pages/Portfolio";
+import About from "./pages/About";
 import IndoorGadgets from "./pages/IndoorGadgets";
 import OutdoorGadgets from "./pages/OutdoorGadgets";
 import ElectricVehicles from "./pages/ElectricVehicles";
@@ -28,6 +31,9 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/clan" element={<Clan />} />
             <Route path="/workshop" element={<Clan />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/about" element={<About />} />
             <Route path="/indoor-gadgets" element={<IndoorGadgets />} />
             <Route path="/outdoor-gadgets" element={<OutdoorGadgets />} />
             <Route path="/electric-vehicles" element={<ElectricVehicles />} />
