@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Headphones, Video, Cog } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroNinja from "@/assets/hero-ninja.png";
@@ -16,63 +16,71 @@ const HeroSection = () => {
       />
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-      <div className="absolute inset-0 bg-glow opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/60" />
+      <div className="absolute inset-0 bg-glow opacity-20" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
           <p className="text-primary font-display text-sm md:text-base tracking-[0.3em] mb-6 animate-fade-in uppercase">
-            Build Smarter. Create Harder.
+            Creative + Technical Studio
           </p>
           
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-foreground">CONTROL YOUR</span>
+            <span className="text-foreground">Shotgun Ninjas is a creative</span>
             <br />
-            <span className="text-gradient">SYSTEMS</span>
+            <span className="text-gradient">and automation studio.</span>
           </h1>
           
-          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Shotgun Ninjas designs intelligent gadgets, creative productions, and 
-            automation systems for people who want real control — not locked-down 
-            tech or shallow tutorials.
+          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+            We build sound, visuals, and systems that actually work.
+          </p>
+          
+          <p className="text-foreground/80 text-base md:text-lg font-medium mb-10">
+            Audio production. Video production. Business automation.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#products">
+            <a href="#contact">
               <Button variant="hero" size="lg">
-                Explore Products
+                Hire the Studio
                 <ArrowRight className="ml-2" />
               </Button>
             </a>
-            <Link to="/clan">
+            <Link to="/services">
               <Button variant="glass" size="lg">
-                Join the Clan
+                View Services
               </Button>
             </Link>
           </div>
 
-          {/* Three Pillars */}
+          {/* Three Service Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 text-left">
-            <div className="glass rounded-xl p-6">
-              <div className="text-2xl mb-2">🧠</div>
-              <h3 className="font-display font-bold text-foreground mb-2">Intelligent Gadgets</h3>
+            <div className="glass rounded-xl p-6 group hover:border-primary/50 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <Headphones className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-display font-bold text-foreground mb-2">Audio Production</h3>
               <p className="text-muted-foreground text-sm">
-                Indoor, outdoor, and electric-vehicle tech designed to be practical, repairable, and upgradeable.
+                Studio-grade music, podcast editing, voiceover cleanup, and sound design.
               </p>
             </div>
-            <div className="glass rounded-xl p-6">
-              <div className="text-2xl mb-2">🎵</div>
-              <h3 className="font-display font-bold text-foreground mb-2">Creative Production</h3>
+            <div className="glass rounded-xl p-6 group hover:border-primary/50 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <Video className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-display font-bold text-foreground mb-2">Video Production</h3>
               <p className="text-muted-foreground text-sm">
-                Music and video production that supports storytelling, branding, and impact — not filler content.
+                Short-form content, YouTube editing, AI-enhanced cleanup, and technical explainers.
               </p>
             </div>
-            <div className="glass rounded-xl p-6">
-              <div className="text-2xl mb-2">⚙️</div>
-              <h3 className="font-display font-bold text-foreground mb-2">Automation & Knowledge</h3>
+            <div className="glass rounded-xl p-6 group hover:border-primary/50 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <Cog className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-display font-bold text-foreground mb-2">Automation & Code</h3>
               <p className="text-muted-foreground text-sm">
-                Scripts, systems, and instruction for homes, businesses, and builders who want leverage.
+                Business process automation, custom bots, API integrations, and AI workflows.
               </p>
             </div>
           </div>
