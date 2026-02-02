@@ -2,18 +2,12 @@ import { ArrowRight, Headphones, Video, Cog } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroNinja from "@/assets/hero-ninja.png";
-
 const HeroSection = () => {
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
+  return <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with ninja mascot */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroNinja})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroNinja})`
+    }} />
       
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/60" />
@@ -27,9 +21,9 @@ const HeroSection = () => {
           </p>
           
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-foreground">Shotgun Ninjas is a creative</span>
+            <span className="text-foreground">Shotgun Ninjas</span>
             <br />
-            <span className="text-gradient">and automation studio.</span>
+            <span className="text-gradient text-4xl text-primary">A "Creativity Meets Technology" Studio.</span>
           </h1>
           
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
@@ -93,8 +87,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
