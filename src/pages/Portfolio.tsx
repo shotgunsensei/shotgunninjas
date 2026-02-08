@@ -1,4 +1,4 @@
-import { Headphones, Video, Cog, ArrowRight, ExternalLink } from "lucide-react";
+import { Headphones, Video, Cog, ArrowRight, ExternalLink, Shield, Car } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -84,6 +84,84 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* Featured Projects */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <p className="text-primary font-display text-sm tracking-[0.3em] mb-8 uppercase text-center">
+            Featured Platforms
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Shotgun Ninja Vault */}
+            <div className="glass rounded-xl p-8 md:p-10 flex flex-col hover:border-primary/50 transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <Shield className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
+                    Shotgun Ninja Vault
+                  </h3>
+                  <p className="text-primary text-sm font-medium">
+                    Compliance, evidence, and operational truth — centralized.
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-4 text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
+                <p>
+                  Shotgun Ninja Vault is a modular, security-focused vault platform built to collect, organize, and prove operational truth. It centralizes evidence, audit logs, compliance artifacts, system status, and API access into a single tenant-isolated system designed for real-world accountability.
+                </p>
+                <p>
+                  The platform includes a cryptographically hashed evidence locker, compliance report generation, public status pages, webhook automation, client portals, and an API-only mode for headless integrations. Every action is auditable, exportable, and defensible by design.
+                </p>
+                <p>
+                  Shotgun Ninja Vault reflects a systems-first approach to security and compliance — built to hold up under scrutiny, not just look good in screenshots.
+                </p>
+              </div>
+              <a href="https://www.snpvault.pro" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="gap-2 w-full sm:w-auto">
+                  View Platform
+                  <ExternalLink className="w-4 h-4" />
+                </Button>
+              </a>
+            </div>
+
+            {/* TorqueShed */}
+            <div className="glass rounded-xl p-8 md:p-10 flex flex-col hover:border-primary/50 transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <Car className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
+                    TorqueShed
+                  </h3>
+                  <p className="text-primary text-sm font-medium">
+                    Automotive diagnostics, data, and community — unified.
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-4 text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
+                <p>
+                  TorqueShed is a platform built around modern automotive diagnostics, data analysis, and enthusiast collaboration. It focuses on turning raw vehicle data — logs, sensor readings, fault codes, and performance metrics — into meaningful insights for builders, tuners, and technicians.
+                </p>
+                <p>
+                  Beyond diagnostics, TorqueShed blends community discussion, knowledge sharing, and project tracking into a single ecosystem. The goal is to bridge the gap between technical data and real-world wrenching, enabling smarter builds and faster problem-solving.
+                </p>
+                <p>
+                  TorqueShed represents Shotgun Ninjas' ability to merge software, hardware, and domain expertise into practical, enthusiast-driven platforms.
+                </p>
+              </div>
+              <a href="https://www.torqueshed.pro" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="gap-2 w-full sm:w-auto">
+                  View Project
+                  <ExternalLink className="w-4 h-4" />
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Audio Projects */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -164,30 +242,6 @@ const Portfolio = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Platform We Build */}
-      <section className="py-16 bg-secondary/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-primary font-display text-sm tracking-[0.3em] mb-4 uppercase">
-              Platform We Build
-            </p>
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-4 text-foreground">
-              TorqueShed
-            </h2>
-            <p className="text-muted-foreground mb-6">
-              A community platform we designed and built for automotive enthusiasts—
-              focused on real knowledge sharing without the noise.
-            </p>
-            <a href="https://torqueshed.pro" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="gap-2">
-                Visit TorqueShed
-                <ExternalLink className="w-4 h-4" />
-              </Button>
-            </a>
           </div>
         </div>
       </section>
