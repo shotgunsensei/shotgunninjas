@@ -249,7 +249,7 @@ const Forum = () => {
                     {topic.content}
                   </p>
                   <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                    <span>{topic.user_name || topic.user_email.split('@')[0]}</span>
+                    <span>{topic.user_name || 'Member'}</span>
                     <span>{new Date(topic.created_at).toLocaleDateString()}</span>
                     <span className="flex items-center gap-1">
                       <MessageSquare className="h-3 w-3" />
