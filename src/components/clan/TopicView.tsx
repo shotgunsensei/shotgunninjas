@@ -134,7 +134,7 @@ const TopicView = ({ topic, onBack, isAdmin }: TopicViewProps) => {
           <h1 className="text-2xl font-bold text-foreground">{topic.title}</h1>
         </div>
         <div className="text-sm text-muted-foreground mb-4">
-          By {topic.user_name || topic.user_email.split('@')[0]} · {new Date(topic.created_at).toLocaleDateString()}
+          By {topic.user_name || 'Member'} · {new Date(topic.created_at).toLocaleDateString()}
         </div>
         <div className="glass rounded-xl p-4">
           <p className="text-foreground whitespace-pre-wrap">{topic.content}</p>
@@ -160,7 +160,7 @@ const TopicView = ({ topic, onBack, isAdmin }: TopicViewProps) => {
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="font-medium text-foreground">
-                        {reply.user_name || reply.user_email.split('@')[0]}
+                        {reply.user_name || 'Member'}
                       </span>
                       <span className="text-xs text-muted-foreground">
                         {new Date(reply.created_at).toLocaleDateString()} at {new Date(reply.created_at).toLocaleTimeString()}
