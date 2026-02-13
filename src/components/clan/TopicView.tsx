@@ -11,7 +11,6 @@ interface ForumTopic {
   title: string;
   content: string;
   user_id: string;
-  user_email: string;
   user_name: string | null;
   is_pinned: boolean;
   is_locked: boolean;
@@ -23,7 +22,6 @@ interface ForumReply {
   topic_id: string;
   content: string;
   user_id: string;
-  user_email: string;
   user_name: string | null;
   created_at: string;
 }
@@ -67,6 +65,10 @@ const TopicView = ({ topic, onBack, isAdmin }: TopicViewProps) => {
       toast.error('Please enter a reply');
       return;
     }
+    if (replyContent.trim().length > 10000) {
+      toast.error('Reply must be 10,000 characters or less');
+      return;
+    }
 
     setPosting(true);
     try {
@@ -76,7 +78,6 @@ const TopicView = ({ topic, onBack, isAdmin }: TopicViewProps) => {
           topic_id: topic.id,
           content: replyContent.trim(),
           user_id: user?.id,
-          user_email: user?.email || '',
           user_name: user?.user_metadata?.full_name || null,
         });
 

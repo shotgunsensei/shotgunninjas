@@ -14,7 +14,6 @@ interface ForumTopic {
   title: string;
   content: string;
   user_id: string;
-  user_email: string;
   user_name: string | null;
   is_pinned: boolean;
   is_locked: boolean;
@@ -80,6 +79,14 @@ const Forum = () => {
       toast.error('Please fill in all fields');
       return;
     }
+    if (title.trim().length > 200) {
+      toast.error('Title must be 200 characters or less');
+      return;
+    }
+    if (content.trim().length > 10000) {
+      toast.error('Content must be 10,000 characters or less');
+      return;
+    }
 
     setCreating(true);
     try {
@@ -89,7 +96,6 @@ const Forum = () => {
           title: title.trim(),
           content: content.trim(),
           user_id: user?.id,
-          user_email: user?.email || '',
           user_name: user?.user_metadata?.full_name || null,
         });
 
