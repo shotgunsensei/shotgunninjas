@@ -90,7 +90,6 @@ export type Database = {
           id: string
           topic_id: string
           updated_at: string
-          user_email: string
           user_id: string
           user_name: string | null
         }
@@ -100,7 +99,6 @@ export type Database = {
           id?: string
           topic_id: string
           updated_at?: string
-          user_email: string
           user_id: string
           user_name?: string | null
         }
@@ -110,7 +108,6 @@ export type Database = {
           id?: string
           topic_id?: string
           updated_at?: string
-          user_email?: string
           user_id?: string
           user_name?: string | null
         }
@@ -133,7 +130,6 @@ export type Database = {
           is_pinned: boolean | null
           title: string
           updated_at: string
-          user_email: string
           user_id: string
           user_name: string | null
         }
@@ -145,7 +141,6 @@ export type Database = {
           is_pinned?: boolean | null
           title: string
           updated_at?: string
-          user_email: string
           user_id: string
           user_name?: string | null
         }
@@ -157,7 +152,6 @@ export type Database = {
           is_pinned?: boolean | null
           title?: string
           updated_at?: string
-          user_email?: string
           user_id?: string
           user_name?: string | null
         }
