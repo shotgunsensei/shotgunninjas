@@ -1,92 +1,66 @@
-import { ArrowRight, Headphones, Video, Cog } from "lucide-react";
+import { ArrowRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroNinja from "@/assets/hero-ninja.png";
-const HeroSection = () => {
-  return <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with ninja mascot */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: `url(${heroNinja})`
-    }} />
-      
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/60" />
-      <div className="absolute inset-0 bg-glow opacity-20" />
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+const HeroSection = () => {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background grid pattern */}
+      <div className="absolute inset-0" style={{
+        backgroundImage: `
+          linear-gradient(hsl(0 0% 15% / 0.3) 1px, transparent 1px),
+          linear-gradient(90deg, hsl(0 0% 15% / 0.3) 1px, transparent 1px)
+        `,
+        backgroundSize: '60px 60px'
+      }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+      <div className="absolute inset-0 bg-glow opacity-30" />
+
+      {/* Red accent line */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-primary" />
+
+      <div className="relative z-10 container mx-auto px-4 text-center pt-20">
         <div className="max-w-4xl mx-auto">
-          <p className="text-primary font-display text-sm md:text-base tracking-[0.3em] mb-6 animate-fade-in uppercase">
-            Creative + Technical Studio
-          </p>
-          
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-foreground">Shotgun Ninjas</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-secondary/50 text-muted-foreground text-xs tracking-[0.2em] uppercase mb-8 animate-fade-in">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            Shotgun Ninjas Productions
+          </div>
+
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-up">
+            <span className="text-foreground">Control the System.</span>
             <br />
-            <span className="text-gradient text-4xl text-primary">A "Creativity Meets Technology" Studio.</span>
+            <span className="text-gradient">Own the Stack.</span>
           </h1>
-          
-          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
-            We build sound, visuals, and systems that actually work.
+
+          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in">
+            Systems, automation, and software built for real operators.
           </p>
-          
-          <p className="text-foreground/80 text-base md:text-lg font-medium mb-10">
-            Audio production. Video production. Business automation.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#contact">
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in">
+            <a href="#platforms">
               <Button variant="hero" size="lg">
-                Hire the Studio
+                Explore the Stack
                 <ArrowRight className="ml-2" />
               </Button>
             </a>
-            <Link to="/services">
+            <Link to="/contact">
               <Button variant="glass" size="lg">
-                View Services
+                <PhoneCall className="mr-2 w-4 h-4" />
+                Book a Strategy Call
               </Button>
             </Link>
-          </div>
-
-          {/* Three Service Pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 text-left">
-            <div className="glass rounded-xl p-6 group hover:border-primary/50 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <Headphones className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-display font-bold text-foreground mb-2">Audio Production</h3>
-              <p className="text-muted-foreground text-sm">
-                Studio-grade music, podcast editing, voiceover cleanup, and sound design.
-              </p>
-            </div>
-            <div className="glass rounded-xl p-6 group hover:border-primary/50 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <Video className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-display font-bold text-foreground mb-2">Video Production</h3>
-              <p className="text-muted-foreground text-sm">
-                Short-form content, YouTube editing, AI-enhanced cleanup, and technical explainers.
-              </p>
-            </div>
-            <div className="glass rounded-xl p-6 group hover:border-primary/50 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <Cog className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-display font-bold text-foreground mb-2">Automation & Code</h3>
-              <p className="text-muted-foreground text-sm">
-                Business process automation, custom bots, API integrations, and AI workflows.
-              </p>
-            </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float">
-          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex items-start justify-center p-2">
-            <div className="w-1.5 h-3 bg-primary rounded-full animate-pulse" />
+          <div className="w-5 h-9 border-2 border-primary/40 rounded-full flex items-start justify-center p-1.5">
+            <div className="w-1 h-2.5 bg-primary rounded-full animate-pulse" />
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;

@@ -1,75 +1,55 @@
-import { Wrench, Brain, Target, ArrowRight } from "lucide-react";
+import { ArrowRight, Wrench, Brain, Target, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const values = [
-  {
-    icon: Wrench,
-    title: "Builder Mindset",
-    description: "We don't just talk about ideas—we build them. Every project is an opportunity to create something that works, not something that looks good in a pitch deck.",
-  },
-  {
-    icon: Brain,
-    title: "Cross-Disciplinary Skills",
-    description: "Audio, video, code, automation—we connect the dots between creative and technical. The best solutions often come from unexpected combinations.",
-  },
-  {
-    icon: Target,
-    title: "Results Over Marketing",
-    description: "We'd rather show you what we've built than tell you what we could build. No buzzwords, no fluff, no promises we can't deliver.",
-  },
+  { icon: Wrench, title: "Builder Mindset", description: "We don't pitch decks. We build systems. Every project ships something real." },
+  { icon: Brain, title: "Systems Thinking", description: "We connect the dots between tools, workflows, and outcomes. The whole stack matters." },
+  { icon: Target, title: "Operator Focus", description: "Built for people who run things—not people who talk about running things." },
+  { icon: Layers, title: "Leverage Over Labor", description: "Automation, structure, and repeatable processes. Work smarter, not harder." },
 ];
 
 const About = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
-      
+
       {/* Hero */}
       <section className="pt-32 pb-16 relative">
         <div className="absolute inset-0 bg-glow opacity-20" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-primary font-display text-sm tracking-[0.3em] mb-4 uppercase">
-              Who We Are
-            </p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="text-gradient">About</span>
+          <div className="max-w-3xl">
+            <p className="text-primary font-display text-xs tracking-[0.3em] mb-4 uppercase">About</p>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
+              The Studio Behind the Stack
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
-              Shotgun Ninjas is a boutique studio that blends creative production 
-              with technical engineering. We build things that work.
+              Shotgun Ninjas Productions is a systems studio. We build platforms, automation, and software for operators who want control—not complexity.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Story */}
+      {/* Founder Story */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <div className="glass rounded-2xl p-8 md:p-12">
-              <h2 className="font-display text-2xl md:text-3xl font-bold mb-6 text-foreground">
-                The Short Version
-              </h2>
+            <div className="glass rounded-xl p-8 md:p-12">
+              <h2 className="font-display text-2xl md:text-3xl font-bold mb-6 text-foreground">The Origin</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Shotgun Ninjas exists because most agencies are either all creative 
-                  or all technical—and clients end up needing both. We bridge that gap.
+                  Shotgun Ninjas started from a simple observation: most businesses are buried under tools they don't control and processes they can't see.
                 </p>
                 <p>
-                  We've spent years in audio production, video editing, software development, 
-                  and business automation. Instead of specializing in one thing, we got good 
-                  at connecting them.
+                  Founded by an IT engineer with years in MSP operations, field service, and software development, SNP exists to build the systems that operators actually need—not the ones vendors want to sell them.
                 </p>
                 <p>
-                  The result? A studio that can take a project from concept to completion 
-                  without handing it off to five different vendors. Sound, visuals, systems—all 
-                  built with the same attention to detail.
+                  We think in systems. We build for leverage. And we believe the best technology disappears into the workflow—making things faster, cleaner, and more reliable without adding complexity.
                 </p>
                 <p className="text-foreground font-medium">
-                  We're not the cheapest option. We're the option for people who want it done right.
+                  If you're an operator, a builder, or someone who just wants their stack to work—we built this for you.
                 </p>
               </div>
             </div>
@@ -78,80 +58,39 @@ const About = () => {
       </section>
 
       {/* Values */}
-      <section className="py-16 bg-secondary/20">
+      <section className="py-16 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-              How We Work
-            </h2>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">How We Think</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {values.map((value) => (
-              <div key={value.title} className="glass rounded-xl p-6 text-center">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-7 h-7 text-primary" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {values.map((v) => (
+              <div key={v.title} className="glass rounded-xl p-6 text-center">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <v.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-display font-bold text-foreground mb-3">{value.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+                <h3 className="font-display font-bold text-foreground mb-2">{v.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{v.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* What We Don't Do */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-6 text-foreground">
-              What We Don't Do
-            </h2>
-            <div className="glass rounded-2xl p-8">
-              <ul className="text-muted-foreground space-y-3 text-left max-w-xl mx-auto">
-                <li className="flex items-start gap-3">
-                  <span className="text-primary">×</span>
-                  <span>We don't oversell or overpromise</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary">×</span>
-                  <span>We don't outsource core work to anonymous contractors</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary">×</span>
-                  <span>We don't pad timelines or inflate budgets</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary">×</span>
-                  <span>We don't disappear after delivery</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary">×</span>
-                  <span>We don't chase trends over fundamentals</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
-              Let's build something.
-            </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              If you've got a project that needs creative + technical horsepower, 
-              we should talk.
-            </p>
-            <a href="/#contact">
-              <Button variant="hero" size="lg">
-                Get in Touch
-                <ArrowRight className="ml-2" />
-              </Button>
-            </a>
-          </div>
+      <section className="py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            Let's build something that matters.
+          </h2>
+          <p className="text-muted-foreground text-lg mb-8">
+            If you've got a system that needs building or a stack that needs fixing, we should talk.
+          </p>
+          <Link to="/contact">
+            <Button variant="hero" size="lg">
+              Partner With Us <ArrowRight className="ml-2" />
+            </Button>
+          </Link>
         </div>
       </section>
 
