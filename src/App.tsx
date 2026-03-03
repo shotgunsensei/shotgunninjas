@@ -7,14 +7,13 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Clan from "./pages/Clan";
-import Services from "./pages/Services";
-import Portfolio from "./pages/Portfolio";
-import About from "./pages/About";
-import IndoorGadgets from "./pages/IndoorGadgets";
-import OutdoorGadgets from "./pages/OutdoorGadgets";
-import ElectricVehicles from "./pages/ElectricVehicles";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
+import OperatorOS from "./pages/OperatorOS";
+import TechDeck from "./pages/TechDeck";
+import TradeFlow from "./pages/TradeFlow";
 import TorqueShed from "./pages/TorqueShed";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,14 +30,13 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/clan" element={<Clan />} />
             <Route path="/workshop" element={<Clan />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/indoor-gadgets" element={<IndoorGadgets />} />
-            <Route path="/outdoor-gadgets" element={<OutdoorGadgets />} />
-            <Route path="/electric-vehicles" element={<ElectricVehicles />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/operatoros" element={<OperatorOS />} />
+            <Route path="/techdeck" element={<TechDeck />} />
+            <Route path="/tradeflow" element={<TradeFlow />} />
             <Route path="/torqueshed" element={<TorqueShed />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
