@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import techdeckLogo from "@/assets/techdeck-logo.png";
+import techdeckHero from "@/assets/techdeck-hero.png";
 
 const sections = [
   { icon: BarChart, title: "Stack Optimization Audits", description: "We audit your entire MSP stack—RMM, PSA, security, backup—and identify redundancy, waste, and risk. You get a clear roadmap to a leaner operation." },
@@ -18,24 +20,30 @@ const TechDeck = () => {
       <Navbar />
 
       <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-glow opacity-20" />
+        <img src={techdeckHero} alt="" className="absolute inset-0 w-full h-full object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
         <div className="container mx-auto px-4 relative z-10">
           <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 text-sm">
             <ArrowRight className="w-4 h-4 rotate-180" /> Back
           </Link>
-          <div className="max-w-3xl">
-            <p className="text-primary font-display text-xs tracking-[0.3em] mb-4 uppercase">Tech Deck</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-              Own the Stack.
-            </h1>
-            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
-              MSP enablement system built to reduce tool sprawl, automate operations, and restore margin.
-            </p>
-            <Link to="/contact">
-              <Button variant="hero" size="lg">
-                Book Stack Audit <ArrowRight className="ml-2" />
-              </Button>
-            </Link>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="flex-shrink-0">
+              <img src={techdeckLogo} alt="Tech Deck" className="w-44 h-44 lg:w-56 lg:h-56 object-contain drop-shadow-[0_0_30px_rgba(0,150,255,0.4)]" />
+            </div>
+            <div>
+              <p className="text-primary font-display text-xs tracking-[0.3em] mb-4 uppercase">Tech Deck</p>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
+                Own the Stack.
+              </h1>
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
+                MSP enablement system built to reduce tool sprawl, automate operations, and restore margin.
+              </p>
+              <Link to="/contact">
+                <Button variant="hero" size="lg">
+                  Book Stack Audit <ArrowRight className="ml-2" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -43,7 +51,7 @@ const TechDeck = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="space-y-6 max-w-4xl mx-auto">
-            {sections.map((s, i) => (
+            {sections.map((s) => (
               <div key={s.title} className="glass rounded-xl p-8 flex flex-col md:flex-row gap-6 items-start hover:border-primary/30 transition-all duration-300">
                 <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <s.icon className="w-7 h-7 text-primary" />
