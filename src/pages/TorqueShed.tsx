@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import torqueShedLogo from "@/assets/torqueshed-logo.png";
+import torqueShedLogo from "@/assets/torqueshed-logo-new.png";
+import torqueShedHero from "@/assets/torqueshed-hero.png";
 
 const sections = [
   { icon: BookOpen, title: "Performance Build Guides", description: "Step-by-step guides for engine builds, forced induction, suspension, and drivetrain upgrades. Written by builders, not bloggers." },
@@ -19,14 +20,15 @@ const TorqueShed = () => {
       <Navbar />
 
       <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-glow opacity-20" />
+        <img src={torqueShedHero} alt="" className="absolute inset-0 w-full h-full object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
         <div className="container mx-auto px-4 relative z-10">
           <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 text-sm">
             <ArrowRight className="w-4 h-4 rotate-180" /> Back
           </Link>
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="flex-shrink-0">
-              <img src={torqueShedLogo} alt="Torque Shed" className="w-40 h-40 lg:w-56 lg:h-56 object-contain" />
+              <img src={torqueShedLogo} alt="Torque Shed" className="w-40 h-40 lg:w-56 lg:h-56 object-contain drop-shadow-[0_0_30px_rgba(255,100,0,0.4)]" />
             </div>
             <div>
               <p className="text-primary font-display text-xs tracking-[0.3em] mb-4 uppercase">Torque Shed</p>

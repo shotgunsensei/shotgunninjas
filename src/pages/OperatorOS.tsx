@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import operatorosLogo from "@/assets/operatoros-logo.png";
+import operatorosHero from "@/assets/operatoros-hero.png";
 
 const features = [
   { icon: Cpu, title: "AI Workspace Control", description: "Structured AI agents that follow your architecture decisions, not random suggestions. Build with intent." },
@@ -18,25 +20,31 @@ const OperatorOS = () => {
     <main className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero */}
+      {/* Hero with background image */}
       <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-glow opacity-20" />
+        <img src={operatorosHero} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         <div className="container mx-auto px-4 relative z-10">
           <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 text-sm">
             <ArrowRight className="w-4 h-4 rotate-180" /> Back
           </Link>
-          <div className="max-w-3xl">
-            <p className="text-primary font-display text-xs tracking-[0.3em] mb-4 uppercase">OperatorOS</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-              Own the Build.
-            </h1>
-            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
-              AI-native cloud development environment designed for builders. Move from idea to deployed application with precision and speed.
-            </p>
-            <Button variant="hero" size="lg">
-              Join Early Access
-              <ArrowRight className="ml-2" />
-            </Button>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="flex-shrink-0">
+              <img src={operatorosLogo} alt="OperatorOS" className="w-36 h-36 lg:w-48 lg:h-48 object-contain drop-shadow-[0_0_30px_rgba(225,6,0,0.4)]" />
+            </div>
+            <div>
+              <p className="text-primary font-display text-xs tracking-[0.3em] mb-4 uppercase">OperatorOS</p>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
+                Own the Build.
+              </h1>
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
+                AI-native cloud development environment designed for builders. Move from idea to deployed application with precision and speed.
+              </p>
+              <Button variant="hero" size="lg">
+                Join Early Access
+                <ArrowRight className="ml-2" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
