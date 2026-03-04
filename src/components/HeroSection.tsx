@@ -1,29 +1,33 @@
 import { ArrowRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import heroBg from "@/assets/hero-bg.jpg";
+import snpLogo from "@/assets/SNPlogo.png";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background grid pattern */}
-      <div className="absolute inset-0" style={{
-        backgroundImage: `
-          linear-gradient(hsl(0 0% 15% / 0.3) 1px, transparent 1px),
-          linear-gradient(90deg, hsl(0 0% 15% / 0.3) 1px, transparent 1px)
-        `,
-        backgroundSize: '60px 60px'
-      }} />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
-      <div className="absolute inset-0 bg-glow opacity-30" />
+      {/* Full background image */}
+      <img
+        src={heroBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-background/40" />
 
       {/* Red accent line */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-primary" />
 
       <div className="relative z-10 container mx-auto px-4 text-center pt-20">
         <div className="max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-secondary/50 text-muted-foreground text-xs tracking-[0.2em] uppercase mb-8 animate-fade-in">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            Shotgun Ninjas Productions
+          {/* Logo badge */}
+          <div className="mb-10 animate-fade-in">
+            <img
+              src={snpLogo}
+              alt="Shotgun Ninjas Productions"
+              className="h-16 sm:h-20 mx-auto drop-shadow-[0_0_20px_rgba(225,6,0,0.4)]"
+            />
           </div>
 
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-up">
