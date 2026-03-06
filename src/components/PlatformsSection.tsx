@@ -1,4 +1,4 @@
-import { ArrowRight, Cloud, Server, Wrench, Car } from "lucide-react";
+import { ArrowRight, Cloud, Server, Wrench, Car, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -33,6 +33,14 @@ const platforms = [
     tagline: "Own the Machine.",
     description: "Performance-driven automotive systems, diagnostics, and community.",
     link: "/torqueshed",
+    accent: "from-primary to-primary/60",
+  },
+  {
+    icon: Gamepad2,
+    title: "Neon Racer",
+    tagline: "Own the Grid.",
+    description: "Retro-futuristic evasive racing game. Dodge, survive, and dominate the leaderboard.",
+    link: "/neonracer",
     accent: "from-primary to-primary/60",
   },
 ];

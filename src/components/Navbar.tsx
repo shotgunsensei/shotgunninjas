@@ -11,6 +11,7 @@ const navLinks = [
   { name: "Tech Deck", href: "/techdeck" },
   { name: "TradeFlow Kit", href: "/tradeflow" },
   { name: "Torque Shed", href: "/torqueshed" },
+  { name: "Neon Racer", href: "/neonracer" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
