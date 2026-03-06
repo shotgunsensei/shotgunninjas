@@ -11,6 +11,7 @@ import OperatorOS from "./pages/OperatorOS";
 import TechDeck from "./pages/TechDeck";
 import TradeFlow from "./pages/TradeFlow";
 import TorqueShed from "./pages/TorqueShed";
+import NeonRacer from "./pages/NeonRacer";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/techdeck" element={<TechDeck />} />
             <Route path="/tradeflow" element={<TradeFlow />} />
             <Route path="/torqueshed" element={<TorqueShed />} />
+            <Route path="/neonracer" element={<NeonRacer />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
