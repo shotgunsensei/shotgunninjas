@@ -38,11 +38,11 @@ const TradeFlow = () => {
               <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
                 Eliminate chaos through structured digital workflows built for small blue-collar businesses.
               </p>
-              <Link to="/contact">
+              <a href="https://tradeflowkit.com" target="_blank" rel="noopener noreferrer">
                 <Button variant="hero" size="lg">
-                  Get Workflow Assessment <ArrowRight className="ml-2" />
+                  Try It Out <ArrowRight className="ml-2" />
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -72,11 +72,11 @@ const TradeFlow = () => {
           <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
             Let's make sure they actually work.
           </p>
-          <Link to="/contact">
+          <a href="https://tradeflowkit.com" target="_blank" rel="noopener noreferrer">
             <Button variant="hero" size="lg">
-              Get Workflow Assessment <ArrowRight className="ml-2" />
+              Try It Out <ArrowRight className="ml-2" />
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
 

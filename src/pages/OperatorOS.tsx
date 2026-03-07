@@ -40,10 +40,11 @@ const OperatorOS = () => {
               <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
                 AI-native cloud development environment designed for builders. Move from idea to deployed application with precision and speed.
               </p>
-              <Button variant="hero" size="lg">
-                Join Early Access
-                <ArrowRight className="ml-2" />
-              </Button>
+              <a href="https://operatoros.net" target="_blank" rel="noopener noreferrer">
+                <Button variant="hero" size="lg">
+                  Join Early Access <ArrowRight className="ml-2" />
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -88,9 +89,11 @@ const OperatorOS = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Ready to build?</h2>
           <p className="text-muted-foreground text-lg mb-8">Get early access to OperatorOS and start shipping.</p>
-          <Button variant="hero" size="lg">
-            Join Early Access <ArrowRight className="ml-2" />
-          </Button>
+          <a href="https://operatoros.net" target="_blank" rel="noopener noreferrer">
+            <Button variant="hero" size="lg">
+              Join Early Access <ArrowRight className="ml-2" />
+            </Button>
+          </a>
         </div>
       </section>
 
