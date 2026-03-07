@@ -38,11 +38,11 @@ const TechDeck = () => {
               <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
                 MSP enablement system built to reduce tool sprawl, automate operations, and restore margin.
               </p>
-              <Link to="/contact">
+              <a href="https://techdeck.app" target="_blank" rel="noopener noreferrer">
                 <Button variant="hero" size="lg">
-                  Book Stack Audit <ArrowRight className="ml-2" />
+                  Try It Out <ArrowRight className="ml-2" />
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -72,11 +72,11 @@ const TechDeck = () => {
           <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
             Get a clear picture of your stack, your spend, and your opportunities.
           </p>
-          <Link to="/contact">
+          <a href="https://techdeck.app" target="_blank" rel="noopener noreferrer">
             <Button variant="hero" size="lg">
-              Book Stack Audit <ArrowRight className="ml-2" />
+              Try It Out <ArrowRight className="ml-2" />
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
 
