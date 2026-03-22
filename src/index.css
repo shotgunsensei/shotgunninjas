@@ -154,6 +154,17 @@
   .ninja-glow:hover::before {
     opacity: 0.5;
   }
+
+  .arsenal-scanlines {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(0 0% 100% / 0.03) 2px,
+      hsl(0 0% 100% / 0.03) 4px
+    );
+    pointer-events: none;
+  }
 }
 
 @keyframes float {

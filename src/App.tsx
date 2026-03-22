@@ -12,6 +12,8 @@ import TechDeck from "./pages/TechDeck";
 import TradeFlow from "./pages/TradeFlow";
 import TorqueShed from "./pages/TorqueShed";
 import NeonRacer from "./pages/NeonRacer";
+import Ninjamation from "./pages/Ninjamation";
+import LabyrinthRonin from "./pages/LabyrinthRonin";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -36,6 +38,8 @@ const App = () => (
             <Route path="/tradeflow" element={<TradeFlow />} />
             <Route path="/torqueshed" element={<TorqueShed />} />
             <Route path="/neonracer" element={<NeonRacer />} />
+            <Route path="/ninjamation" element={<Ninjamation />} />
+            <Route path="/labyrinthronin" element={<LabyrinthRonin />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

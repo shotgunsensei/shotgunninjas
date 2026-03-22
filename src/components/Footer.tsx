@@ -10,6 +10,9 @@ const productLinks = [
   { name: "Tech Deck", href: "/techdeck" },
   { name: "TradeFlow Kit", href: "/tradeflow" },
   { name: "Torque Shed", href: "/torqueshed" },
+  { name: "Ninjamation", href: "/ninjamation" },
+  { name: "Labyrinth Ronin", href: "/labyrinthronin" },
+  { name: "Neon Racer", href: "/neonracer" },
 ];
 
 const companyLinks = [
