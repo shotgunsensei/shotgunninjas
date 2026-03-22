@@ -38,6 +38,8 @@ const App = () => (
             <Route path="/tradeflow" element={<TradeFlow />} />
             <Route path="/torqueshed" element={<TorqueShed />} />
             <Route path="/neonracer" element={<NeonRacer />} />
+            <Route path="/ninjamation" element={<Ninjamation />} />
+            <Route path="/labyrinthronin" element={<LabyrinthRonin />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
