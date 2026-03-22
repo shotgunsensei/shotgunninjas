@@ -12,6 +12,8 @@ import TechDeck from "./pages/TechDeck";
 import TradeFlow from "./pages/TradeFlow";
 import TorqueShed from "./pages/TorqueShed";
 import NeonRacer from "./pages/NeonRacer";
+import Ninjamation from "./pages/Ninjamation";
+import LabyrinthRonin from "./pages/LabyrinthRonin";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
