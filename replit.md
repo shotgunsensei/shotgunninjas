@@ -57,6 +57,45 @@ artifacts-monorepo/
 - `message` (text, not null)
 - `created_at` (timestamp, default now)
 
+### `users` table
+- `id` (serial, PK)
+- `email` (text, unique, not null)
+- `password_hash` (text, not null) — bcryptjs hashed
+- `display_name` (text, not null)
+- `is_admin` (boolean, default false)
+- `created_at` (timestamp, default now)
+
+### `sessions` table
+- `id` (serial, PK)
+- `user_id` (int, FK → users.id, not null)
+- `token` (text, unique, not null) — random 32-byte hex
+- `expires_at` (timestamp, not null) — 7-day expiry
+- `created_at` (timestamp, default now)
+
+### `clan_forum_topics` table
+- `id` (serial, PK)
+- `title` (text, not null)
+- `content` (text, not null)
+- `author_id` (int, FK → users.id, not null)
+- `is_pinned` / `is_locked` (boolean, default false)
+- `created_at` / `updated_at` (timestamp, default now)
+
+### `clan_forum_replies` table
+- `id` (serial, PK)
+- `topic_id` (int, FK → topics.id, cascade delete)
+- `content` (text, not null)
+- `author_id` (int, FK → users.id)
+- `created_at` (timestamp, default now)
+
+### `clan_documents` table
+- `id` (serial, PK)
+- `title` (text, not null)
+- `description` (text, nullable)
+- `category` (text, not null)
+- `file_url` (text, not null)
+- `uploaded_by_id` (int, FK → users.id)
+- `created_at` (timestamp, default now)
+
 ## API Routes (mounted at `/api`)
 
 - `GET /healthz` — health check
@@ -69,11 +108,33 @@ artifacts-monorepo/
 - `POST /storage/uploads/request-url` — request presigned upload URL (admin auth via x-admin-password header)
 - `GET /storage/objects/*` — serve stored objects
 - `GET /storage/public-objects/*` — serve public objects
+- `POST /auth/signup` — create account (returns user + token)
+- `POST /auth/signin` — sign in (returns user + token)
+- `POST /auth/signout` — invalidate session token
+- `GET /auth/me` — get current user from Bearer token
+- `GET /clan/forum/topics` — list forum topics (auth required)
+- `POST /clan/forum/topics` — create topic (auth required)
+- `DELETE /clan/forum/topics/:id` — delete topic (admin only)
+- `GET /clan/forum/topics/:id/replies` — list replies (auth required)
+- `POST /clan/forum/topics/:id/replies` — create reply (auth required)
+- `GET /clan/documents` — list documents (auth required)
+- `POST /clan/documents` — create document (admin only)
+- `DELETE /clan/documents/:id` — delete document (admin only)
+
+## Authentication
+
+- Session-based auth using `users` + `sessions` tables
+- Passwords hashed with bcryptjs (10 rounds)
+- Session tokens: 32 random bytes, hex-encoded, 7-day expiry
+- Token sent as `Authorization: Bearer <token>` header
+- Frontend stores token in localStorage
+- AuthContext provider in App.tsx checks `/auth/me` on mount
 
 ## Frontend Pages
 
 - `/` — Homepage (hero, platforms grid, philosophy, case studies, CTA)
 - `/about` — About page
+- `/auth` — Sign in / Sign up page (toggle between modes)
 - `/contact` — Contact form (POSTs to API)
 - `/operatoros` — OperatorOS product page
 - `/techdeck` — TechDeck product page
@@ -82,7 +143,7 @@ artifacts-monorepo/
 - `/ninjamation` — Ninjamation product page (BETA badge)
 - `/labyrinthronin` — Labyrinth Ronin product page (EXPERIMENTAL badge)
 - `/neonracer` — Neon Racer product page
-- `/clan` — Clan membership page (community, pricing, benefits, FAQ)
+- `/clan` — Clan page (landing for non-members, dashboard with forum + documents for members)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
 - `*` — 404 page
