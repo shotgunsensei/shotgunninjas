@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Migrated from Lovable/Supabase to Replit. Contact email: john@shotgunninjas.com.
+Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform built on Replit, showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Contact email: john@shotgunninjas.com.
 
 ## Stack
 
@@ -161,13 +161,16 @@ Note: Clan page (/clan) and Auth page (/auth) have been removed from the fronten
 
 ## Sound Studio
 
-- Public: browse, search, play, download MP3s
+- Cinematic hero section with ninja artwork background, right-aligned text content, and integrated search/filter panel
+- Public: browse, search by name/tags, filter by genre, play, download MP3s
 - Admin: password-protected upload, edit, delete via `SOUND_STUDIO_ADMIN_PASSWORD` env secret
 - Files stored in Replit Object Storage
-- Admin login via lock icon → modal password entry
+- Admin login via lock icon → modal password entry (Escape key to dismiss)
+- Featured Track banner highlights the latest upload
 - Bottom-fixed audio player with play/pause, skip, seek, volume
+- Premium empty vault state when no tracks are uploaded
 
-## Arsenal Product Images
+## Asset Images
 
 Featured products on the homepage use attached asset images:
 - OperatorOS: `@assets/OperatorOShero_1774285672020.png`
@@ -175,6 +178,11 @@ Featured products on the homepage use attached asset images:
 - TradeFlow: `@assets/tradeflowfeature_1774285697732.png`
 - Torque Shed: `@assets/torqueshedfeature1024500_1774285672020.png`
 - Neon Racer: `@assets/neonracerhero_1774285672019.png`
+- Ninjamation: `@assets/ninjamationfeatured_1774292377935.png`
+- Labyrinth Ronin: `@assets/labyrinthroninfeatured_1774292377934.png`
+
+Sound Studio hero background:
+- `@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.png`
 
 ## Navbar
 
