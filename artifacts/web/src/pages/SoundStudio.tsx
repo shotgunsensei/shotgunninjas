@@ -198,8 +198,8 @@ export default function SoundStudio() {
 
       toast.success(`"${songName}" uploaded!`);
       fetchSongs();
-    } catch (err: any) {
-      toast.error(err.message || "Upload failed");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Upload failed");
     } finally {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";

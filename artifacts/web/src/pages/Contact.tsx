@@ -33,8 +33,8 @@ export default function Contact() {
       const result = await submitContact(formData);
       toast.success(result.message);
       setFormData({ name: "", email: "", type: "General Inquiry", message: "" });
-    } catch (err: any) {
-      toast.error(err.message || "Failed to send message.");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to send message.");
     } finally {
       setSending(false);
     }
