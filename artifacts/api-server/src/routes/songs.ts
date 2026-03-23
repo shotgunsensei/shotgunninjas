@@ -18,6 +18,21 @@ import { ObjectStorageService } from "../lib/objectStorage";
 const router: IRouter = Router();
 const objectStorageService = new ObjectStorageService();
 
+const loginAttempts = new Map<string, { count: number; resetAt: number }>();
+const MAX_ATTEMPTS = 5;
+const WINDOW_MS = 15 * 60 * 1000;
+
+function checkAdminRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = loginAttempts.get(ip);
+  if (!entry || now > entry.resetAt) {
+    loginAttempts.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+    return true;
+  }
+  entry.count++;
+  return entry.count <= MAX_ATTEMPTS;
+}
+
 router.get("/songs", async (req, res) => {
   try {
     const songs = await db
@@ -43,6 +58,12 @@ router.get("/songs", async (req, res) => {
 
 router.post("/songs/admin/verify", async (req, res) => {
   try {
+    const clientIp = req.ip || "unknown";
+    if (!checkAdminRateLimit(clientIp)) {
+      res.status(429).json({ message: "Too many attempts. Try again later." });
+      return;
+    }
+
     const body = VerifySongAdminBody.parse(req.body);
     const adminPassword = process.env.SOUND_STUDIO_ADMIN_PASSWORD;
 
