@@ -5,6 +5,8 @@ import techDeckImg from "@assets/techdeckfeature_1774285697731.png";
 import tradeFlowImg from "@assets/tradeflowfeature_1774285697732.png";
 import torqueShedImg from "@assets/torqueshedfeature1024500_1774285672020.png";
 import neonRacerImg from "@assets/neonracerhero_1774285672019.png";
+import ninjamationImg from "@assets/ninjamationfeatured_1774292377935.png";
+import labyrinthRoninImg from "@assets/labyrinthroninfeatured_1774292377934.png";
 
 type AppStatus = "ACTIVE" | "BETA" | "EXPERIMENTAL";
 
@@ -58,15 +60,13 @@ const featured: AppEntry[] = [
     status: "ACTIVE",
     image: neonRacerImg,
   },
-];
-
-const additional: AppEntry[] = [
   {
     title: "Ninjamation",
     tagline: "Own the Automation.",
     description: "Automate like a ninja. Build, deploy, and control intelligent workflows.",
     link: "/ninjamation",
     status: "BETA",
+    image: ninjamationImg,
   },
   {
     title: "Labyrinth Ronin",
@@ -74,6 +74,7 @@ const additional: AppEntry[] = [
     description: "Endless survival inside a living maze. Adapt and dominate.",
     link: "/labyrinthronin",
     status: "EXPERIMENTAL",
+    image: labyrinthRoninImg,
   },
 ];
 
@@ -90,10 +91,9 @@ const statusDot: Record<AppStatus, string> = {
 };
 
 export default function PlatformsSection() {
-  const allPlatforms = [...featured, ...additional];
-  const activeCount = allPlatforms.filter((p) => p.status === "ACTIVE").length;
-  const betaCount = allPlatforms.filter((p) => p.status === "BETA").length;
-  const experimentalCount = allPlatforms.filter((p) => p.status === "EXPERIMENTAL").length;
+  const activeCount = featured.filter((p) => p.status === "ACTIVE").length;
+  const betaCount = featured.filter((p) => p.status === "BETA").length;
+  const experimentalCount = featured.filter((p) => p.status === "EXPERIMENTAL").length;
 
   return (
     <section id="platforms" className="py-24 bg-background">
@@ -115,7 +115,7 @@ export default function PlatformsSection() {
           <span className="text-emerald-400">{activeCount} ONLINE</span>
           <span className="text-amber-400">{betaCount} BETA</span>
           <span className="text-purple-400">{experimentalCount} EXPERIMENTAL</span>
-          <span>MODULES: {allPlatforms.length}</span>
+          <span>MODULES: {featured.length}</span>
         </div>
 
         <div className="space-y-6 mb-8">
@@ -165,36 +165,6 @@ export default function PlatformsSection() {
           ))}
         </div>
 
-        {additional.length > 0 && (
-          <div>
-            <p className="text-xs font-[var(--font-display)] tracking-widest text-muted-foreground mb-4 text-center">
-              More Systems
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {additional.map((platform) => (
-                <Link
-                  key={platform.title}
-                  to={platform.link}
-                  className="group bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 flex flex-col"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider ${statusStyles[platform.status]}`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${statusDot[platform.status]}`} />
-                      {platform.status}
-                    </span>
-                  </div>
-                  <p className="text-xs text-primary font-medium mb-1">{platform.tagline}</p>
-                  <h3 className="text-lg font-bold mb-2 font-[var(--font-display)]">{platform.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 flex-1">{platform.description}</p>
-                  <div className="flex items-center gap-1 text-sm text-primary font-medium group-hover:gap-2 transition-all">
-                    Launch
-                    <ArrowRight className="h-4 w-4" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
