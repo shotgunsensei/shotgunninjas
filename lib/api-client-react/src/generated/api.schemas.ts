@@ -8,3 +8,54 @@
 export interface HealthStatus {
   status: string;
 }
+
+export interface ContactFormInput {
+  name: string;
+  email: string;
+  type: string;
+  message: string;
+}
+
+export interface SuccessMessage {
+  message: string;
+}
+
+export interface Song {
+  id: number;
+  name: string;
+  tags?: string;
+  fileUrl: string;
+  createdAt: string;
+}
+
+export interface AdminPasswordInput {
+  password: string;
+}
+
+export interface AdminVerifyResponse {
+  verified: boolean;
+}
+
+export interface CreateSongInput {
+  name: string;
+  tags?: string;
+  fileUrl: string;
+  adminPassword: string;
+}
+
+export interface UpdateSongInput {
+  name?: string;
+  tags?: string;
+  adminPassword: string;
+}
+
+export interface RequestUploadUrlBody {
+  name: string;
+  size: number;
+  contentType: string;
+}
+
+export interface RequestUploadUrlResponse {
+  uploadURL: string;
+  objectPath: string;
+}

@@ -10,6 +10,13 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: contact
+    description: Contact form
+  - name: songs
+    description: Sound Studio songs
+  - name: storage
+    description: Object storage
+
 paths:
   /healthz:
     get:
@@ -24,6 +31,140 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /contact:
+    post:
+      operationId: submitContact
+      tags: [contact]
+      summary: Submit contact form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactFormInput"
+      responses:
+        "200":
+          description: Message received
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessMessage"
+
+  /songs:
+    get:
+      operationId: listSongs
+      tags: [songs]
+      summary: List all songs
+      responses:
+        "200":
+          description: List of songs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Song"
+
+  /songs/admin/verify:
+    post:
+      operationId: verifySongAdmin
+      tags: [songs]
+      summary: Verify admin password for song management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminPasswordInput"
+      responses:
+        "200":
+          description: Password verified
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminVerifyResponse"
+
+  /songs/admin:
+    post:
+      operationId: createSong
+      tags: [songs]
+      summary: Create a new song entry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSongInput"
+      responses:
+        "201":
+          description: Song created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Song"
+
+  /songs/admin/{id}:
+    patch:
+      operationId: updateSong
+      tags: [songs]
+      summary: Update a song
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateSongInput"
+      responses:
+        "200":
+          description: Song updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Song"
+    delete:
+      operationId: deleteSong
+      tags: [songs]
+      summary: Delete a song
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Song deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessMessage"
+
+  /storage/uploads/request-url:
+    post:
+      operationId: requestUploadUrl
+      tags: [storage]
+      summary: Request a presigned upload URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RequestUploadUrlBody"
+      responses:
+        "200":
+          description: Upload URL generated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RequestUploadUrlResponse"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +175,117 @@ components:
       required:
         - status
 
+    ContactFormInput:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        type:
+          type: string
+        message:
+          type: string
+      required:
+        - name
+        - email
+        - type
+        - message
+
+    SuccessMessage:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+        - message
+
+    Song:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        tags:
+          type: string
+        fileUrl:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - fileUrl
+        - createdAt
+
+    AdminPasswordInput:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+        - password
+
+    AdminVerifyResponse:
+      type: object
+      properties:
+        verified:
+          type: boolean
+      required:
+        - verified
+
+    CreateSongInput:
+      type: object
+      properties:
+        name:
+          type: string
+        tags:
+          type: string
+        fileUrl:
+          type: string
+        adminPassword:
+          type: string
+      required:
+        - name
+        - fileUrl
+        - adminPassword
+
+    UpdateSongInput:
+      type: object
+      properties:
+        name:
+          type: string
+        tags:
+          type: string
+        adminPassword:
+          type: string
+      required:
+        - adminPassword
+
+    RequestUploadUrlBody:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: number
+        contentType:
+          type: string
+      required:
+        - name
+        - size
+        - contentType
+
+    RequestUploadUrlResponse:
+      type: object
+      properties:
+        uploadURL:
+          type: string
+        objectPath:
+          type: string
+      required:
+        - uploadURL
+        - objectPath

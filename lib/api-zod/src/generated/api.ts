@@ -14,3 +14,96 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * @summary Submit contact form
+ */
+export const SubmitContactBody = zod.object({
+  name: zod.string(),
+  email: zod.string().email(),
+  type: zod.string(),
+  message: zod.string(),
+});
+
+export const SubmitContactResponse = zod.object({
+  message: zod.string(),
+});
+
+/**
+ * @summary List all songs
+ */
+export const ListSongsResponseItem = zod.object({
+  id: zod.number(),
+  name: zod.string(),
+  tags: zod.string().optional(),
+  fileUrl: zod.string(),
+  createdAt: zod.date(),
+});
+export const ListSongsResponse = zod.array(ListSongsResponseItem);
+
+/**
+ * @summary Verify admin password for song management
+ */
+export const VerifySongAdminBody = zod.object({
+  password: zod.string(),
+});
+
+export const VerifySongAdminResponse = zod.object({
+  verified: zod.boolean(),
+});
+
+/**
+ * @summary Create a new song entry
+ */
+export const CreateSongBody = zod.object({
+  name: zod.string(),
+  tags: zod.string().optional(),
+  fileUrl: zod.string(),
+  adminPassword: zod.string(),
+});
+
+/**
+ * @summary Update a song
+ */
+export const UpdateSongParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const UpdateSongBody = zod.object({
+  name: zod.string().optional(),
+  tags: zod.string().optional(),
+  adminPassword: zod.string(),
+});
+
+export const UpdateSongResponse = zod.object({
+  id: zod.number(),
+  name: zod.string(),
+  tags: zod.string().optional(),
+  fileUrl: zod.string(),
+  createdAt: zod.date(),
+});
+
+/**
+ * @summary Delete a song
+ */
+export const DeleteSongParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const DeleteSongResponse = zod.object({
+  message: zod.string(),
+});
+
+/**
+ * @summary Request a presigned upload URL
+ */
+export const RequestUploadUrlBody = zod.object({
+  name: zod.string(),
+  size: zod.number(),
+  contentType: zod.string(),
+});
+
+export const RequestUploadUrlResponse = zod.object({
+  uploadURL: zod.string(),
+  objectPath: zod.string(),
+});
