@@ -13,8 +13,10 @@ import {
   DeleteSongParams,
   DeleteSongResponse,
 } from "@workspace/api-zod";
+import { ObjectStorageService } from "../lib/objectStorage";
 
 const router: IRouter = Router();
+const objectStorageService = new ObjectStorageService();
 
 router.get("/songs", async (req, res) => {
   try {
@@ -150,6 +152,14 @@ router.delete("/songs/admin/:id", async (req, res) => {
     if (!deleted) {
       res.status(404).json({ message: "Song not found" });
       return;
+    }
+
+    if (deleted.fileUrl) {
+      try {
+        await objectStorageService.deleteObjectEntity(deleted.fileUrl);
+      } catch (storageErr) {
+        req.log.warn({ err: storageErr, fileUrl: deleted.fileUrl }, "Failed to delete song file from storage");
+      }
     }
 
     const result = DeleteSongResponse.parse({ message: "Song deleted" });
