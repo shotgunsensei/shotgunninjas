@@ -18,6 +18,13 @@ const objectStorageService = new ObjectStorageService();
  * Then uploads the file directly to the returned presigned URL.
  */
 router.post("/storage/uploads/request-url", async (req: Request, res: Response) => {
+  const adminPassword = req.headers["x-admin-password"] as string;
+  const serverPassword = process.env.SOUND_STUDIO_ADMIN_PASSWORD;
+  if (!serverPassword || adminPassword !== serverPassword) {
+    res.status(403).json({ error: "Unauthorized" });
+    return;
+  }
+
   const parsed = RequestUploadUrlBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: "Missing or invalid required fields" });

@@ -37,7 +37,7 @@ export const ListSongsResponseItem = zod.object({
   name: zod.string(),
   tags: zod.string().optional(),
   fileUrl: zod.string(),
-  createdAt: zod.date(),
+  createdAt: zod.string(),
 });
 export const ListSongsResponse = zod.array(ListSongsResponseItem);
 
@@ -80,7 +80,7 @@ export const UpdateSongResponse = zod.object({
   name: zod.string(),
   tags: zod.string().optional(),
   fileUrl: zod.string(),
-  createdAt: zod.date(),
+  createdAt: zod.string(),
 });
 
 /**
