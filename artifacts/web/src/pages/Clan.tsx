@@ -34,6 +34,14 @@ import {
   type ForumReply,
   type ClanDocument,
 } from "@/lib/clan-api";
+import {
+  listUsers,
+  listBans,
+  banUser,
+  unbanUser,
+  type AdminUser,
+  type Ban,
+} from "@/lib/admin-api";
 
 const benefits = [
   { icon: Wrench, title: "Build Vault", description: "Step-by-step gadget builds, schematics, and parts lists." },
@@ -124,7 +132,7 @@ function ClanLanding() {
 
 function ClanMemberArea() {
   const { user, setUser } = useAuth();
-  const [tab, setTab] = useState<"forum" | "documents">("forum");
+  const [tab, setTab] = useState<"forum" | "documents" | "admin">("forum");
   const [topics, setTopics] = useState<ForumTopic[]>([]);
   const [selectedTopic, setSelectedTopic] = useState<ForumTopic | null>(null);
   const [replies, setReplies] = useState<ForumReply[]>([]);
@@ -134,6 +142,8 @@ function ClanMemberArea() {
   const [newTopicContent, setNewTopicContent] = useState("");
   const [newReply, setNewReply] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [adminUsers, setAdminUsers] = useState<AdminUser[]>([]);
+  const [bans, setBans] = useState<Ban[]>([]);
 
   const fetchTopics = useCallback(async () => {
     try {
@@ -148,6 +158,16 @@ function ClanMemberArea() {
       setDocuments(await listDocuments());
     } catch {
       toast.error("Failed to load documents");
+    }
+  }, []);
+
+  const loadAdminData = useCallback(async () => {
+    try {
+      const [usersData, bansData] = await Promise.all([listUsers(), listBans()]);
+      setAdminUsers(usersData);
+      setBans(bansData);
+    } catch {
+      toast.error("Failed to load admin data");
     }
   }, []);
 
@@ -246,6 +266,11 @@ function ClanMemberArea() {
         <button onClick={() => setTab("documents")} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === "documents" ? "bg-primary text-primary-foreground" : "bg-card border border-border text-muted-foreground hover:text-foreground"}`}>
           <FileText className="h-4 w-4" /> Documents
         </button>
+        {user?.isAdmin && (
+          <button onClick={() => { setTab("admin"); loadAdminData(); }} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === "admin" ? "bg-primary text-primary-foreground" : "bg-card border border-border text-muted-foreground hover:text-foreground"}`}>
+            <Shield className="h-4 w-4" /> Admin
+          </button>
+        )}
       </div>
 
       {tab === "forum" && !selectedTopic && (
@@ -379,6 +404,65 @@ function ClanMemberArea() {
               ))}
             </div>
           )}
+        </div>
+      )}
+
+      {tab === "admin" && user?.isAdmin && (
+        <div>
+          <h2 className="text-xl font-bold font-[var(--font-display)] mb-6">Admin Panel</h2>
+
+          <div className="mb-8">
+            <h3 className="text-sm font-bold text-muted-foreground mb-4 uppercase tracking-wider">Banned Users</h3>
+            {bans.length === 0 ? (
+              <p className="text-sm text-muted-foreground">No banned users.</p>
+            ) : (
+              <div className="space-y-2 mb-4">
+                {bans.map((ban) => (
+                  <div key={ban.id} className="bg-card border border-border rounded-lg p-4 flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium">{ban.userName || ban.userEmail || `User #${ban.userId}`}</p>
+                      {ban.reason && <p className="text-xs text-muted-foreground mt-1">Reason: {ban.reason}</p>}
+                      <p className="text-xs text-muted-foreground">Banned {formatDate(ban.bannedAt)}</p>
+                    </div>
+                    <button onClick={async () => { try { await unbanUser(ban.id); loadAdminData(); toast.success("User unbanned"); } catch { toast.error("Failed to unban"); } }} className="px-3 py-1.5 text-xs border border-border rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50">
+                      Unban
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div>
+            <h3 className="text-sm font-bold text-muted-foreground mb-4 uppercase tracking-wider">All Members ({adminUsers.length})</h3>
+            <div className="space-y-2">
+              {adminUsers.map((u) => {
+                const isBanned = bans.some((b) => b.userId === u.id);
+                return (
+                  <div key={u.id} className="bg-card border border-border rounded-lg p-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary">
+                        {u.displayName.charAt(0).toUpperCase()}
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm font-medium">{u.displayName}</p>
+                          {u.isAdmin && <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 font-bold">Admin</span>}
+                          {isBanned && <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/10 text-red-400 font-bold">Banned</span>}
+                        </div>
+                        <p className="text-xs text-muted-foreground">{u.email}</p>
+                      </div>
+                    </div>
+                    {!u.isAdmin && u.id !== user.id && !isBanned && (
+                      <button onClick={async () => { const reason = prompt("Reason for ban (optional):"); if (reason !== null) { try { await banUser(u.id, reason || undefined); loadAdminData(); toast.success(`${u.displayName} has been banned`); } catch { toast.error("Failed to ban user"); } } }} className="px-3 py-1.5 text-xs border border-destructive/30 rounded-lg text-destructive hover:bg-destructive/10">
+                        Ban
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       )}
     </>

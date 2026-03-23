@@ -5,6 +5,7 @@ import songsRouter from "./songs";
 import contactRouter from "./contact";
 import authRouter from "./auth";
 import clanRouter from "./clan";
+import adminRouter from "./admin";
 
 const router: IRouter = Router();
 
@@ -14,5 +15,6 @@ router.use(songsRouter);
 router.use(contactRouter);
 router.use(authRouter);
 router.use(clanRouter);
+router.use(adminRouter);
 
 export default router;

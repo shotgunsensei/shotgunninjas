@@ -30,3 +30,28 @@ export const sessionsTable = pgTable("sessions", {
 });
 
 export type Session = typeof sessionsTable.$inferSelect;
+
+export const userRolesTable = pgTable("user_roles", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id")
+    .references(() => usersTable.id, { onDelete: "cascade" })
+    .notNull(),
+  role: text("role").notNull(),
+  grantedAt: timestamp("granted_at").defaultNow().notNull(),
+});
+
+export type UserRole = typeof userRolesTable.$inferSelect;
+
+export const bannedUsersTable = pgTable("banned_users", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id")
+    .references(() => usersTable.id, { onDelete: "cascade" })
+    .notNull()
+    .unique(),
+  reason: text("reason"),
+  bannedAt: timestamp("banned_at").defaultNow().notNull(),
+  bannedById: integer("banned_by_id")
+    .references(() => usersTable.id),
+});
+
+export type BannedUser = typeof bannedUsersTable.$inferSelect;

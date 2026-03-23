@@ -96,6 +96,19 @@ artifacts-monorepo/
 - `uploaded_by_id` (int, FK → users.id)
 - `created_at` (timestamp, default now)
 
+### `user_roles` table
+- `id` (serial, PK)
+- `user_id` (int, FK → users.id, cascade delete)
+- `role` (text, not null)
+- `granted_at` (timestamp, default now)
+
+### `banned_users` table
+- `id` (serial, PK)
+- `user_id` (int, FK → users.id, cascade delete, unique)
+- `reason` (text, nullable)
+- `banned_at` (timestamp, default now)
+- `banned_by_id` (int, FK → users.id, nullable)
+
 ## API Routes (mounted at `/api`)
 
 - `GET /healthz` — health check
@@ -120,6 +133,13 @@ artifacts-monorepo/
 - `GET /clan/documents` — list documents (auth required)
 - `POST /clan/documents` — create document (admin only)
 - `DELETE /clan/documents/:id` — delete document (admin only)
+- `GET /admin/users` — list all users (admin only)
+- `GET /admin/users/:id/roles` — list user roles (admin only)
+- `POST /admin/users/:id/roles` — assign role (admin only)
+- `DELETE /admin/users/:userId/roles/:roleId` — remove role (admin only)
+- `GET /admin/bans` — list banned users (admin only)
+- `POST /admin/bans` — ban user (admin only, invalidates sessions)
+- `DELETE /admin/bans/:id` — unban user (admin only)
 
 ## Authentication
 
@@ -143,7 +163,7 @@ artifacts-monorepo/
 - `/ninjamation` — Ninjamation product page (BETA badge)
 - `/labyrinthronin` — Labyrinth Ronin product page (EXPERIMENTAL badge)
 - `/neonracer` — Neon Racer product page
-- `/clan` — Clan page (landing for non-members, dashboard with forum + documents for members)
+- `/clan` — Clan page (landing for non-members, dashboard with forum + documents + admin panel for members)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
 - `*` — 404 page

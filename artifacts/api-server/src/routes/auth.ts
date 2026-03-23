@@ -1,6 +1,6 @@
 import { Router, type IRouter } from "express";
 import { db } from "@workspace/db";
-import { usersTable, sessionsTable } from "@workspace/db/schema";
+import { usersTable, sessionsTable, bannedUsersTable } from "@workspace/db/schema";
 import { eq } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 import { randomBytes } from "crypto";
@@ -86,6 +86,17 @@ router.post("/auth/signin", async (req, res) => {
     const valid = await bcrypt.compare(password, user.passwordHash);
     if (!valid) {
       res.status(401).json({ message: "Invalid email or password" });
+      return;
+    }
+
+    const [ban] = await db
+      .select()
+      .from(bannedUsersTable)
+      .where(eq(bannedUsersTable.userId, user.id))
+      .limit(1);
+
+    if (ban) {
+      res.status(403).json({ message: "Your account has been suspended" });
       return;
     }
 
