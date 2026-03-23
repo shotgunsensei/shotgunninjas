@@ -18,6 +18,7 @@ export default function OperatorOS() {
       subtitle="AI-native cloud development control plane for builders who ship."
       description="OperatorOS is the command center for modern development teams. Manage infrastructure, automate deployments, and leverage AI-powered tools—all from a single, unified platform designed for operators who build."
       features={features}
+      websiteUrl="https://operatoros.net"
     />
   );
 }

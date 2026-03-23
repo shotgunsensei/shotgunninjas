@@ -18,6 +18,7 @@ export default function Ninjamation() {
       subtitle="Automate like a ninja. Build, deploy, and control intelligent workflows."
       description="Ninjamation is automation for people who hate repetitive work. Build complex multi-step workflows visually, power them with AI, and let them run while you focus on what matters."
       features={features}
+      websiteUrl="https://ninjamation.com"
       statusBadge="BETA"
     />
   );

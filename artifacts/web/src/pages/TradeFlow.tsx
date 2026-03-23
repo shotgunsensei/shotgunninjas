@@ -18,6 +18,7 @@ export default function TradeFlow() {
       subtitle="Workflow automation for blue-collar businesses that eliminate chaos."
       description="TradeFlow Kit replaces the patchwork of spreadsheets, paper forms, and disconnected apps that plague field service businesses. From dispatch to invoice in under 60 seconds."
       features={features}
+      websiteUrl="https://tradeflowkit.com"
     />
   );
 }

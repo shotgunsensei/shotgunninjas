@@ -18,6 +18,7 @@ export default function NeonRacer() {
       subtitle="Retro-futuristic evasive racing game. Dodge, survive, dominate."
       description="Neon Racer drops you into a synthwave-soaked grid where reflexes are everything. Dodge obstacles, collect power-ups, and chase the top of the leaderboard in this adrenaline-fueled arcade experience."
       features={features}
+      websiteUrl="https://neonracer.net"
     />
   );
 }

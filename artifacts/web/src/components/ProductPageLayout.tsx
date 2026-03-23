@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -17,7 +17,12 @@ interface ProductPageLayoutProps {
   features: Feature[];
   ctaText?: string;
   ctaLink?: string;
+  websiteUrl?: string;
   statusBadge?: string;
+}
+
+function isExternal(url: string) {
+  return url.startsWith("http://") || url.startsWith("https://");
 }
 
 export default function ProductPageLayout({
@@ -26,10 +31,14 @@ export default function ProductPageLayout({
   subtitle,
   description,
   features,
-  ctaText = "Get Started",
-  ctaLink = "/contact",
+  ctaText = "Visit Website",
+  ctaLink,
+  websiteUrl,
   statusBadge,
 }: ProductPageLayoutProps) {
+  const primaryLink = websiteUrl || ctaLink || "/contact";
+  const external = isExternal(primaryLink);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -48,13 +57,25 @@ export default function ProductPageLayout({
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4">{subtitle}</p>
           <p className="text-muted-foreground max-w-3xl mx-auto mb-10">{description}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to={ctaLink}
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              {ctaText}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            {external ? (
+              <a
+                href={primaryLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                {ctaText}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            ) : (
+              <Link
+                to={primaryLink}
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                {ctaText}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            )}
             <Link
               to="/"
               className="inline-flex items-center justify-center px-8 py-3 border border-border text-foreground font-medium rounded-lg hover:bg-secondary/50 transition-colors"
@@ -91,13 +112,25 @@ export default function ProductPageLayout({
           <p className="text-muted-foreground mb-8">
             Let's build something that gives you control, not dependence.
           </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
-          >
-            Book a Strategy Call
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          {external ? (
+            <a
+              href={primaryLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Visit {title}
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          ) : (
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Book a Strategy Call
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          )}
         </div>
       </section>
 

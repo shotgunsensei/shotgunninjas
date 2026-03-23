@@ -18,6 +18,7 @@ export default function TorqueShed() {
       subtitle="Performance-driven automotive systems, diagnostics, and community."
       description="Torque Shed is where gearheads meet data. Track your build, diagnose issues with real data, and connect with a community that speaks your language."
       features={features}
+      websiteUrl="https://torqueshed.pro"
     />
   );
 }

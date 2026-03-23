@@ -18,6 +18,7 @@ export default function TechDeck() {
       subtitle="MSP enablement platform to reduce tool sprawl and restore margin."
       description="Tech Deck eliminates the chaos of managing dozens of disconnected tools. Unify your MSP operations, automate L1 triage, and get real visibility into what's making—or losing—money."
       features={features}
+      websiteUrl="https://techdeck.app"
     />
   );
 }

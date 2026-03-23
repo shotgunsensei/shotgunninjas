@@ -18,6 +18,7 @@ export default function LabyrinthRonin() {
       subtitle="Endless survival inside a living maze. Adapt and dominate."
       description="Labyrinth Ronin is a roguelike survival experience set in an ever-shifting maze. Every run is different. Every death teaches you something. Only the most adaptable operators survive."
       features={features}
+      websiteUrl="https://labyrinthronin.com"
       statusBadge="EXPERIMENTAL"
     />
   );
