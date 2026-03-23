@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Migrated from Lovable/Supabase to Replit.
+Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Migrated from Lovable/Supabase to Replit. Contact email: john@shotgunninjas.com.
 
 ## Stack
 
@@ -57,7 +57,7 @@ artifacts-monorepo/
 - `message` (text, not null)
 - `created_at` (timestamp, default now)
 
-### `users` table
+### `users` table (backend only, not used by frontend currently)
 - `id` (serial, PK)
 - `email` (text, unique, not null)
 - `password_hash` (text, not null) — bcryptjs hashed
@@ -65,14 +65,14 @@ artifacts-monorepo/
 - `is_admin` (boolean, default false)
 - `created_at` (timestamp, default now)
 
-### `sessions` table
+### `sessions` table (backend only)
 - `id` (serial, PK)
 - `user_id` (int, FK → users.id, not null)
 - `token` (text, unique, not null) — random 32-byte hex
 - `expires_at` (timestamp, not null) — 7-day expiry
 - `created_at` (timestamp, default now)
 
-### `clan_forum_topics` table
+### `clan_forum_topics` table (backend only, Clan feature removed from frontend)
 - `id` (serial, PK)
 - `title` (text, not null)
 - `content` (text, not null)
@@ -80,14 +80,14 @@ artifacts-monorepo/
 - `is_pinned` / `is_locked` (boolean, default false)
 - `created_at` / `updated_at` (timestamp, default now)
 
-### `clan_forum_replies` table
+### `clan_forum_replies` table (backend only)
 - `id` (serial, PK)
 - `topic_id` (int, FK → topics.id, cascade delete)
 - `content` (text, not null)
 - `author_id` (int, FK → users.id)
 - `created_at` (timestamp, default now)
 
-### `clan_documents` table
+### `clan_documents` table (backend only)
 - `id` (serial, PK)
 - `title` (text, not null)
 - `description` (text, nullable)
@@ -96,13 +96,13 @@ artifacts-monorepo/
 - `uploaded_by_id` (int, FK → users.id)
 - `created_at` (timestamp, default now)
 
-### `user_roles` table
+### `user_roles` table (backend only)
 - `id` (serial, PK)
 - `user_id` (int, FK → users.id, cascade delete)
 - `role` (text, not null)
 - `granted_at` (timestamp, default now)
 
-### `banned_users` table
+### `banned_users` table (backend only)
 - `id` (serial, PK)
 - `user_id` (int, FK → users.id, cascade delete, unique)
 - `reason` (text, nullable)
@@ -114,7 +114,7 @@ artifacts-monorepo/
 - `GET /healthz` — health check
 - `POST /contact` — submit contact form (stores in DB)
 - `GET /songs` — list all songs
-- `POST /songs/admin/verify` — verify admin password
+- `POST /songs/admin/verify` — verify admin password (rate limited: 5 attempts per 15 min)
 - `POST /songs/admin` — create song (admin auth required)
 - `PATCH /songs/admin/:id` — update song (admin auth required)
 - `DELETE /songs/admin/:id` — delete song (admin auth via x-admin-password header)
@@ -141,21 +141,11 @@ artifacts-monorepo/
 - `POST /admin/bans` — ban user (admin only, invalidates sessions)
 - `DELETE /admin/bans/:id` — unban user (admin only)
 
-## Authentication
-
-- Session-based auth using `users` + `sessions` tables
-- Passwords hashed with bcryptjs (10 rounds)
-- Session tokens: 32 random bytes, hex-encoded, 7-day expiry
-- Token sent as `Authorization: Bearer <token>` header
-- Frontend stores token in localStorage
-- AuthContext provider in App.tsx checks `/auth/me` on mount
-
 ## Frontend Pages
 
-- `/` — Homepage (hero, platforms grid, philosophy, case studies, CTA)
+- `/` — Homepage (hero, Arsenal product showcase with images, philosophy, case studies, CTA)
 - `/about` — About page
-- `/auth` — Sign in / Sign up page (toggle between modes)
-- `/contact` — Contact form (POSTs to API)
+- `/contact` — Contact form (POSTs to API, email: john@shotgunninjas.com)
 - `/operatoros` — OperatorOS product page
 - `/techdeck` — TechDeck product page
 - `/tradeflow` — TradeFlow product page
@@ -163,10 +153,11 @@ artifacts-monorepo/
 - `/ninjamation` — Ninjamation product page (BETA badge)
 - `/labyrinthronin` — Labyrinth Ronin product page (EXPERIMENTAL badge)
 - `/neonracer` — Neon Racer product page
-- `/clan` — Clan page (landing for non-members, dashboard with forum + documents + admin panel for members)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
 - `*` — 404 page
+
+Note: Clan page (/clan) and Auth page (/auth) have been removed from the frontend. Backend API routes for auth/clan remain available but are not used by the current frontend.
 
 ## Sound Studio
 
@@ -175,6 +166,15 @@ artifacts-monorepo/
 - Files stored in Replit Object Storage
 - Admin login via lock icon → modal password entry
 - Bottom-fixed audio player with play/pause, skip, seek, volume
+
+## Arsenal Product Images
+
+Featured products on the homepage use attached asset images:
+- OperatorOS: `@assets/OperatorOShero_1774285672020.png`
+- Tech Deck: `@assets/techdeckfeature_1774285697731.png`
+- TradeFlow: `@assets/tradeflowfeature_1774285697732.png`
+- Torque Shed: `@assets/torqueshedfeature1024500_1774285672020.png`
+- Neon Racer: `@assets/neonracerhero_1774285672019.png`
 
 ## Navbar
 
@@ -201,7 +201,7 @@ artifacts-monorepo/
 React+Vite frontend. Uses react-router-dom for routing, Tailwind v4, shadcn/ui components, sonner for toasts.
 
 ### `artifacts/api-server` (`@workspace/api-server`)
-Express 5 API server with songs CRUD, contact form, and object storage routes.
+Express 5 API server with songs CRUD, contact form, auth, clan, and object storage routes.
 
 ### `lib/db` (`@workspace/db`)
 Drizzle ORM schema and PostgreSQL connection. Schema in `src/schema/`.

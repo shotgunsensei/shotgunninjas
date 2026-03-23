@@ -138,7 +138,7 @@ export default function Contact() {
 
             <div className="space-y-6">
               {[
-                { icon: Mail, label: "Email", value: "hello@shotgunninjas.com" },
+                { icon: Mail, label: "Email", value: "john@shotgunninjas.com" },
                 { icon: MapPin, label: "Location", value: "Remote-first, USA" },
                 { icon: Clock, label: "Response Time", value: "24-48 hours" },
               ].map((info) => (

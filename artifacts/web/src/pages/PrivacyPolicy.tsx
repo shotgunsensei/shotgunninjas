@@ -63,7 +63,7 @@ export default function PrivacyPolicy() {
             </h2>
             <p>
               If you have questions about this Privacy Policy, please contact us through
-              our contact page or email us at hello@shotgunninjas.com.
+              our contact page or email us at john@shotgunninjas.com.
             </p>
           </div>
         </div>
