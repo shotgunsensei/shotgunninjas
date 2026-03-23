@@ -31,84 +31,169 @@ import {
   getSongStreamUrl,
   type Song,
 } from "@/lib/api";
+import studioHeroBg from "@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.png";
 
 const genreFilters = ["All", "Rap", "Rock", "Instrumental", "Cinematic", "Aggressive", "Experimental"];
 
-const WAVEFORM_BARS = 60;
-
-function StudioHero() {
-  const bars = useMemo(
-    () =>
-      Array.from({ length: WAVEFORM_BARS }, (_, i) => ({
-        height: 6 + Math.sin(i * 0.4) * 18 + Math.sin(i * 0.7) * 10,
-        delay: (i * 0.06).toFixed(2),
-        duration: (1.8 + Math.sin(i * 0.3) * 0.8).toFixed(2),
-        opacity: 0.15 + Math.sin(i * 0.25) * 0.12,
-      })),
-    [],
-  );
-
+function StudioHero({
+  search,
+  onSearchChange,
+  activeFilter,
+  onFilterChange,
+  isAdmin,
+  uploading,
+  onAdminClick,
+  onUploadClick,
+  onLogout,
+  latestSong,
+  currentSong,
+  isPlaying,
+  onPlay,
+}: {
+  search: string;
+  onSearchChange: (v: string) => void;
+  activeFilter: string;
+  onFilterChange: (v: string) => void;
+  isAdmin: boolean;
+  uploading: boolean;
+  onAdminClick: () => void;
+  onUploadClick: () => void;
+  onLogout: () => void;
+  latestSong: Song | null;
+  currentSong: Song | null;
+  isPlaying: boolean;
+  onPlay: (song: Song) => void;
+}) {
   return (
-    <section className="relative overflow-hidden pt-20 pb-28 sm:pt-24 sm:pb-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-background" />
-
+    <section className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/8 blur-[160px]" />
-        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-red-900/10 blur-[120px] animate-pulse [animation-duration:4s]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-red-800/8 blur-[100px] animate-pulse [animation-duration:6s] [animation-delay:2s]" />
-        <div className="absolute top-1/3 right-1/3 w-[250px] h-[250px] rounded-full bg-primary/6 blur-[80px] animate-pulse [animation-duration:5s] [animation-delay:1s]" />
+        <img
+          src={studioHeroBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-[25%_center] sm:object-[left_center]"
+        />
       </div>
 
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.12)_0%,transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(220,38,38,0.08)_0%,transparent_60%)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/60 to-black/85" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(0,0,0,0.5)_0%,transparent_70%)]" />
 
-      <div className="absolute bottom-0 left-0 right-0">
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-primary/5 to-transparent" />
+      <div className="relative z-10 min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col">
+        <div className="flex-1 flex items-center pt-24 pb-8 sm:pt-28 sm:pb-12">
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+              <div className="lg:w-1/2 xl:w-5/12 text-center lg:text-left">
+                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/25 bg-black/40 backdrop-blur-sm mb-6">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                  </span>
+                  <span className="text-[10px] font-[var(--font-display)] tracking-[0.3em] text-primary/90 uppercase">
+                    Original Music // Shotgun Ninjas
+                  </span>
+                </div>
 
-        <div className="flex items-end justify-center gap-[3px] h-16 px-4">
-          {bars.map((bar, i) => (
-            <div
-              key={i}
-              className="bg-primary/20 rounded-t-sm"
-              style={{
-                width: "2.5px",
-                height: `${bar.height}px`,
-                opacity: bar.opacity,
-                animation: `pulse ${bar.duration}s ease-in-out infinite alternate`,
-                animationDelay: `${bar.delay}s`,
-              }}
-            />
-          ))}
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 font-[var(--font-display)] leading-[0.9]">
+                  <span className="text-gradient drop-shadow-[0_0_60px_rgba(220,38,38,0.4)]">Sound</span>
+                  <br />
+                  <span className="text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">Studio</span>
+                </h1>
+
+                <p className="text-base sm:text-lg text-gray-300 max-w-md mx-auto lg:mx-0 mb-6 leading-relaxed">
+                  Original sound from the shadows.{" "}
+                  <br className="hidden sm:block" />
+                  Built to hit hard.
+                </p>
+
+                {latestSong && (
+                  <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                    <button
+                      onClick={() => onPlay(latestSong)}
+                      className="inline-flex items-center gap-2.5 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold text-sm shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:bg-primary/90 transition-all duration-200"
+                    >
+                      {currentSong?.id === latestSong.id && isPlaying ? (
+                        <Pause className="h-4 w-4" />
+                      ) : (
+                        <Play className="h-4 w-4" />
+                      )}
+                      Play Latest
+                    </button>
+                    <a
+                      href="#tracks"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 text-gray-200 rounded-xl font-semibold text-sm backdrop-blur-sm hover:bg-white/10 hover:border-white/20 transition-all duration-200"
+                    >
+                      Browse Tracks
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-10">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-          </span>
-          <span className="text-[11px] font-[var(--font-display)] tracking-[0.25em] text-primary/90 uppercase">
-            Sound Studio
-          </span>
+        <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
+          <div className="bg-black/50 backdrop-blur-xl border border-white/8 rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/50">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-3">
+              <div className="relative flex-1">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                <input
+                  type="search"
+                  placeholder="Search tracks, tags, genres..."
+                  value={search}
+                  onChange={(e) => onSearchChange(e.target.value)}
+                  className="w-full pl-11 pr-4 py-3.5 bg-white/5 border border-white/8 rounded-xl text-foreground placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 focus:bg-white/8 transition-all"
+                />
+              </div>
+
+              {!isAdmin ? (
+                <button
+                  onClick={onAdminClick}
+                  className="p-3.5 bg-white/5 border border-white/8 rounded-xl text-gray-500 hover:text-foreground hover:border-primary/20 hover:bg-white/8 transition-all"
+                  title="Admin Login"
+                  aria-label="Admin login"
+                >
+                  <Lock className="h-5 w-5" />
+                </button>
+              ) : (
+                <div className="flex gap-2">
+                  <button
+                    onClick={onUploadClick}
+                    disabled={uploading}
+                    className="inline-flex items-center gap-2 px-5 py-3.5 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all disabled:opacity-50 text-sm font-semibold shadow-lg shadow-primary/20"
+                  >
+                    <Upload className="h-4 w-4" />
+                    {uploading ? "Uploading..." : "Upload"}
+                  </button>
+                  <button
+                    onClick={onLogout}
+                    className="p-3.5 bg-white/5 border border-white/8 rounded-xl text-gray-400 hover:text-foreground hover:border-primary/20 transition-all"
+                    title="Logout"
+                    aria-label="Admin logout"
+                  >
+                    <LogOut className="h-5 w-5" />
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none">
+              {genreFilters.map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => onFilterChange(filter)}
+                  className={`px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.1em] whitespace-nowrap transition-all duration-200 uppercase ${
+                    activeFilter === filter
+                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                      : "bg-white/5 border border-white/8 text-gray-400 hover:text-foreground hover:border-primary/15 hover:bg-white/8"
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
-
-        <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold mb-8 font-[var(--font-display)] leading-[0.9]">
-          <span className="text-gradient drop-shadow-[0_0_40px_rgba(220,38,38,0.3)]">Sound</span>
-          <br className="sm:hidden" />
-          <span className="text-foreground"> Studio</span>
-        </h1>
-
-        <p className="text-lg sm:text-xl text-muted-foreground/80 max-w-xl mx-auto mb-4 leading-relaxed">
-          Original productions from Shotgun Ninjas.
-          <br className="hidden sm:block" />
-          Press play and enter the atmosphere.
-        </p>
-
-        <p className="text-xs sm:text-sm text-primary/70 font-[var(--font-display)] tracking-[0.2em] uppercase">
-          Music forged in the dark &mdash; Built for impact
-        </p>
       </div>
     </section>
   );
@@ -771,9 +856,34 @@ export default function SoundStudio() {
       <Navbar />
       <audio ref={audioRef} preload="none" />
 
-      <StudioHero />
+      <StudioHero
+        search={search}
+        onSearchChange={setSearch}
+        activeFilter={activeFilter}
+        onFilterChange={setActiveFilter}
+        isAdmin={isAdmin}
+        uploading={uploading}
+        onAdminClick={() => setShowAdminLogin(true)}
+        onUploadClick={() => fileInputRef.current?.click()}
+        onLogout={() => {
+          setIsAdmin(false);
+          setAdminPassword("");
+          toast.info("Logged out of admin");
+        }}
+        latestSong={latestSong}
+        currentSong={currentSong}
+        isPlaying={isPlaying}
+        onPlay={playSong}
+      />
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept=".mp3,audio/mpeg"
+        onChange={handleUpload}
+        className="hidden"
+      />
 
-      <main className="flex-1 pb-32 -mt-8">
+      <main id="tracks" className="flex-1 pb-32 pt-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {!loading && latestSong && (
             <FeaturedTrack
@@ -783,78 +893,6 @@ export default function SoundStudio() {
               onPlay={playSong}
             />
           )}
-
-          <div className="mb-10">
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-5">
-              <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground/40" />
-                <input
-                  type="search"
-                  placeholder="Search tracks, tags, genres..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="w-full pl-11 pr-4 py-4 bg-card/80 border border-border/60 rounded-xl text-foreground placeholder-muted-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/20 focus:bg-card transition-all"
-                />
-              </div>
-
-              {!isAdmin ? (
-                <button
-                  onClick={() => setShowAdminLogin(true)}
-                  className="p-4 bg-card/80 border border-border/60 rounded-xl text-muted-foreground/40 hover:text-foreground hover:border-primary/20 hover:bg-card transition-all"
-                  title="Admin Login"
-                  aria-label="Admin login"
-                >
-                  <Lock className="h-5 w-5" />
-                </button>
-              ) : (
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => fileInputRef.current?.click()}
-                    disabled={uploading}
-                    className="inline-flex items-center gap-2 px-6 py-4 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all disabled:opacity-50 text-sm font-semibold shadow-lg shadow-primary/20 hover:shadow-primary/30"
-                  >
-                    <Upload className="h-4 w-4" />
-                    {uploading ? "Uploading..." : "Upload"}
-                  </button>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept=".mp3,audio/mpeg"
-                    onChange={handleUpload}
-                    className="hidden"
-                  />
-                  <button
-                    onClick={() => {
-                      setIsAdmin(false);
-                      setAdminPassword("");
-                      toast.info("Logged out of admin");
-                    }}
-                    className="p-4 bg-card/80 border border-border/60 rounded-xl text-muted-foreground hover:text-foreground hover:border-primary/20 transition-all"
-                    title="Logout"
-                    aria-label="Admin logout"
-                  >
-                    <LogOut className="h-5 w-5" />
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-              {genreFilters.map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.1em] whitespace-nowrap transition-all duration-200 uppercase ${
-                    activeFilter === filter
-                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
-                      : "bg-card/60 border border-border/50 text-muted-foreground/60 hover:text-foreground hover:border-primary/15 hover:bg-card/80"
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-          </div>
 
           {showAdminLogin && (
             <div

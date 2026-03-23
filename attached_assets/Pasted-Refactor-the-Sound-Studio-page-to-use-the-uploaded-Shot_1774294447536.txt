@@ -1,0 +1,109 @@
+Refactor the Sound Studio page to use the uploaded Shotgun Ninjas hero artwork as a production-quality textless hero background.
+
+GOAL:
+Create a premium, cinematic hero section for the Sound Studio page using the uploaded red ninja artwork as the atmospheric background. The final layout should feel like a high-end branded music destination inside the Shotgun Ninjas universe.
+
+IMAGE USAGE RULES:
+- Use the uploaded hero image as a background/hero art layer only
+- Do not place the image as a normal inline img tag unless needed for fallback
+- Do not add text inside the image
+- Overlay all hero text, buttons, and UI as live HTML so the design remains responsive and easy to maintain
+
+ART DIRECTION:
+- Dark, premium, cinematic, aggressive, polished
+- Use black, charcoal, crimson red, and subtle off-white text
+- Preserve the red ninja on the left side as the dominant visual identity
+- Preserve the open darker space on the right side for text and calls to action
+- Preserve the waveform near the bottom as part of the audio/music atmosphere
+- Blend the hero naturally into the rest of the page with a bottom fade
+
+HERO LAYOUT:
+Build a full-width hero section at the top of the Sound Studio page with:
+1. background artwork layer
+2. overlay gradients for readability
+3. text/content block on the right or center-right
+4. optional CTA buttons under the subtitle
+5. search/filter panel integrated near the lower edge of the hero
+
+TEXT CONTENT:
+Use the following live HTML text in the hero:
+- Eyebrow: Original Music // Shotgun Ninjas
+- Heading: Sound Studio
+- Supporting text: Original sound from the shadows. Built to hit hard.
+
+Optional CTA buttons:
+- Play Latest
+- Browse Tracks
+
+COMPOSITION REQUIREMENTS:
+- On desktop, keep the ninja clearly visible on the left
+- Position the text block in the open safe area on the right
+- Do not cover the ninja with large text panels
+- Do not let the waveform interfere with the text
+- Use generous spacing and premium typography
+
+OVERLAY REQUIREMENTS:
+Add layered overlay gradients above the background image:
+- darker top overlay for header/nav readability
+- darker right-side or center-right overlay for text contrast
+- darker bottom fade into the rest of the page
+- keep the red glow and smoky atmosphere visible underneath
+
+SEARCH/FILTER SECTION:
+- Integrate the search bar and genre chips into a premium panel near the bottom of the hero
+- Let this panel slightly overlap the lower edge of the hero if it improves the design
+- Use a semi-transparent dark glass or dark card style
+- Add subtle border, backdrop blur, red glow, and strong spacing
+- Make it feel like part of the hero, not a separate disconnected block
+
+RESPONSIVE BEHAVIOR:
+Desktop:
+- wide cinematic hero
+- ninja left, content right
+- clear hierarchy and strong visual impact
+
+Tablet:
+- preserve hero impact
+- rebalance background positioning if necessary
+- maintain readable content spacing
+
+Mobile:
+- crop the image intelligently so the ninja remains visible
+- stack hero text cleanly
+- reduce excessive height
+- keep buttons and search panel usable and attractive
+- ensure no awkward text overlap with the image
+
+STYLING DETAILS:
+- premium bold heading typography
+- clean supporting text
+- subtle red glow on important accents
+- elegant hover states for buttons
+- no cheap or generic template styling
+- maintain consistency with the rest of the Shotgun Ninjas site
+
+TECHNICAL PREFERENCE:
+If the project is React + Tailwind:
+- create a reusable SoundStudioHero component
+- use absolute background layers and relative content containers
+- use utility classes for gradients, spacing, and responsiveness
+- keep the hero implementation clean and production-ready
+
+RECOMMENDED STRUCTURE:
+- outer section with relative positioning and overflow hidden
+- absolute background image layer
+- absolute overlay gradient layers
+- inner max-width container
+- right-side content block
+- lower search/filter overlap panel
+- seamless transition to the next section
+
+ANIMATION:
+Optional but subtle only:
+- slight glow pulse
+- faint drifting particles
+- minimal parallax effect
+- no distracting motion
+
+FINAL EXPECTATION:
+The Sound Studio page should feel like a custom-branded launch-ready music platform, not a basic content page. The hero should look visually expensive, immersive, and unmistakably Shotgun Ninjas.
