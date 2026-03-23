@@ -82,6 +82,7 @@ artifacts-monorepo/
 - `/ninjamation` — Ninjamation product page (BETA badge)
 - `/labyrinthronin` — Labyrinth Ronin product page (EXPERIMENTAL badge)
 - `/neonracer` — Neon Racer product page
+- `/clan` — Clan membership page (community, pricing, benefits, FAQ)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
 - `*` — 404 page

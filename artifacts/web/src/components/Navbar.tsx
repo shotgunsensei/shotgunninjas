@@ -15,6 +15,7 @@ const productLinks = [
 
 const mainLinks = [
   { name: "Home", href: "/" },
+  { name: "Clan", href: "/clan" },
   { name: "Sound Studio", href: "/soundstudio" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
