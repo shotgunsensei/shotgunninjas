@@ -34,6 +34,7 @@ import {
 import studioHeroBg from "@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.png";
 
 const genreFilters = ["All", "Rap", "Rock", "Instrumental", "Cinematic", "Aggressive", "Experimental"];
+const genreCategories = genreFilters.filter((f) => f !== "All");
 
 function StudioHero({
   search,
@@ -408,32 +409,55 @@ function TrackCard({
 
       <div className="flex-1 min-w-0 relative z-10">
         {isEditing ? (
-          <div className="flex flex-col sm:flex-row gap-2">
-            <input
-              value={editName}
-              onChange={(e) => onEditNameChange(e.target.value)}
-              className="flex-1 px-3 py-2 bg-background border border-border rounded-lg text-sm text-foreground focus:ring-2 focus:ring-primary/50 focus:outline-none"
-              placeholder="Song name"
-            />
-            <input
-              value={editTags}
-              onChange={(e) => onEditTagsChange(e.target.value)}
-              className="flex-1 px-3 py-2 bg-background border border-border rounded-lg text-sm text-foreground focus:ring-2 focus:ring-primary/50 focus:outline-none"
-              placeholder="Tags (comma-separated)"
-            />
-            <div className="flex gap-1">
-              <button
-                onClick={onSaveEdit}
-                className="p-2 text-emerald-400 hover:bg-emerald-500/10 rounded-lg transition-colors"
-              >
-                <Check className="h-4 w-4" />
-              </button>
-              <button
-                onClick={onCancelEdit}
-                className="p-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors"
-              >
-                <X className="h-4 w-4" />
-              </button>
+          <div className="space-y-2">
+            <div className="flex gap-2 items-center">
+              <input
+                value={editName}
+                onChange={(e) => onEditNameChange(e.target.value)}
+                className="flex-1 px-3 py-2 bg-background border border-border rounded-lg text-sm text-foreground focus:ring-2 focus:ring-primary/50 focus:outline-none"
+                placeholder="Song name"
+              />
+              <div className="flex gap-1 flex-shrink-0">
+                <button
+                  onClick={onSaveEdit}
+                  className="p-2 text-emerald-400 hover:bg-emerald-500/10 rounded-lg transition-colors"
+                >
+                  <Check className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={onCancelEdit}
+                  className="p-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {genreCategories.map((cat) => {
+                const activeTags = editTags.split(",").map((t) => t.trim()).filter(Boolean);
+                const isActive = activeTags.some((t) => t.toLowerCase() === cat.toLowerCase());
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => {
+                      const tags = editTags.split(",").map((t) => t.trim()).filter(Boolean);
+                      if (isActive) {
+                        onEditTagsChange(tags.filter((t) => t.toLowerCase() !== cat.toLowerCase()).join(", "));
+                      } else {
+                        onEditTagsChange([...tags, cat].join(", "));
+                      }
+                    }}
+                    className={`px-3 py-1 rounded-full text-[9px] font-semibold tracking-[0.1em] uppercase transition-all duration-200 ${
+                      isActive
+                        ? "bg-primary text-primary-foreground shadow-sm shadow-primary/25"
+                        : "bg-white/5 border border-white/8 text-gray-500 hover:text-foreground hover:border-primary/15"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
             </div>
           </div>
         ) : (
@@ -625,6 +649,10 @@ export default function SoundStudio() {
   const [passwordInput, setPasswordInput] = useState("");
 
   const [uploading, setUploading] = useState(false);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [uploadName, setUploadName] = useState("");
+  const [uploadCategories, setUploadCategories] = useState<string[]>([]);
   const [editingSong, setEditingSong] = useState<number | null>(null);
   const [editName, setEditName] = useState("");
   const [editTags, setEditTags] = useState("");
@@ -632,16 +660,24 @@ export default function SoundStudio() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (!showAdminLogin) return;
+    if (!showAdminLogin && !showUploadModal) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setShowAdminLogin(false);
-        setPasswordInput("");
+        if (showAdminLogin) {
+          setShowAdminLogin(false);
+          setPasswordInput("");
+        }
+        if (showUploadModal && !uploading) {
+          setShowUploadModal(false);
+          setUploadFile(null);
+          setUploadName("");
+          setUploadCategories([]);
+        }
       }
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [showAdminLogin]);
+  }, [showAdminLogin, showUploadModal, uploading]);
 
   const fetchSongs = useCallback(async () => {
     try {
@@ -751,25 +787,35 @@ export default function SoundStudio() {
     }
   };
 
-  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (!file.name.toLowerCase().endsWith(".mp3")) {
       toast.error("Only MP3 files are supported");
+      if (fileInputRef.current) fileInputRef.current.value = "";
       return;
     }
+    setUploadFile(file);
+    setUploadName(file.name.replace(/\.mp3$/i, "").replace(/[-_]/g, " "));
+    setUploadCategories([]);
+    setShowUploadModal(true);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const handleUploadSubmit = async () => {
+    if (!uploadFile || !uploadName.trim()) return;
 
     setUploading(true);
     try {
       const { uploadURL, objectPath } = await requestUploadUrl({
-        fileName: file.name,
+        fileName: uploadFile.name,
         contentType: "audio/mpeg",
         adminPassword,
       });
 
       const uploadRes = await fetch(uploadURL, {
         method: "PUT",
-        body: file,
+        body: uploadFile,
         headers: { "Content-Type": "audio/mpeg" },
       });
 
@@ -777,22 +823,30 @@ export default function SoundStudio() {
         throw new Error("Failed to upload file to storage");
       }
 
-      const songName = file.name.replace(/\.mp3$/i, "").replace(/[-_]/g, " ");
       await createSong({
-        name: songName,
-        tags: "",
+        name: uploadName.trim(),
+        tags: uploadCategories.join(", "),
         fileUrl: objectPath,
         adminPassword,
       });
 
-      toast.success(`"${songName}" uploaded!`);
+      toast.success(`"${uploadName.trim()}" uploaded!`);
+      setShowUploadModal(false);
+      setUploadFile(null);
+      setUploadName("");
+      setUploadCategories([]);
       fetchSongs();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Upload failed");
     } finally {
       setUploading(false);
-      if (fileInputRef.current) fileInputRef.current.value = "";
     }
+  };
+
+  const toggleUploadCategory = (cat: string) => {
+    setUploadCategories((prev) =>
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    );
   };
 
   const handleDeleteSong = async (song: Song) => {
@@ -879,7 +933,7 @@ export default function SoundStudio() {
         ref={fileInputRef}
         type="file"
         accept=".mp3,audio/mpeg"
-        onChange={handleUpload}
+        onChange={handleFileSelect}
         className="hidden"
       />
 
@@ -935,6 +989,97 @@ export default function SoundStudio() {
                       setPasswordInput("");
                     }}
                     className="flex-1 px-4 py-3.5 bg-secondary text-secondary-foreground rounded-xl hover:bg-secondary/80 font-semibold text-sm transition-all"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {showUploadModal && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Upload track"
+            >
+              <div className="bg-card border border-border/60 rounded-2xl p-8 sm:p-10 w-full max-w-md mx-4 shadow-2xl shadow-primary/5">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/15 flex items-center justify-center">
+                    <Upload className="h-5 w-5 text-primary/70" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold font-[var(--font-display)]">Upload Track</h3>
+                    <p className="text-[10px] text-muted-foreground/50 tracking-wider uppercase">
+                      {uploadFile?.name || "Select a file"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-5">
+                  <div>
+                    <label className="block text-xs font-semibold text-muted-foreground/70 uppercase tracking-wider mb-2">
+                      Track Name
+                    </label>
+                    <input
+                      type="text"
+                      value={uploadName}
+                      onChange={(e) => setUploadName(e.target.value)}
+                      className="w-full px-4 py-3.5 bg-background border border-border/60 rounded-xl text-foreground placeholder-muted-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      placeholder="Enter track name"
+                      autoFocus
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-muted-foreground/70 uppercase tracking-wider mb-3">
+                      Categories
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      {genreCategories.map((cat) => (
+                        <button
+                          key={cat}
+                          type="button"
+                          onClick={() => toggleUploadCategory(cat)}
+                          className={`px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.1em] uppercase transition-all duration-200 ${
+                            uploadCategories.includes(cat)
+                              ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                              : "bg-white/5 border border-white/8 text-gray-400 hover:text-foreground hover:border-primary/15 hover:bg-white/8"
+                          }`}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                    {uploadCategories.length === 0 && (
+                      <p className="text-[10px] text-muted-foreground/40 mt-2">
+                        Select at least one category
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex gap-3 mt-8">
+                  <button
+                    onClick={handleUploadSubmit}
+                    disabled={uploading || !uploadName.trim() || uploadCategories.length === 0}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 font-semibold text-sm shadow-lg shadow-primary/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <Upload className="h-4 w-4" />
+                    {uploading ? "Uploading..." : "Upload Track"}
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (!uploading) {
+                        setShowUploadModal(false);
+                        setUploadFile(null);
+                        setUploadName("");
+                        setUploadCategories([]);
+                      }
+                    }}
+                    disabled={uploading}
+                    className="flex-1 px-4 py-3.5 bg-secondary text-secondary-foreground rounded-xl hover:bg-secondary/80 font-semibold text-sm transition-all disabled:opacity-50"
                   >
                     Cancel
                   </button>
