@@ -7,8 +7,9 @@ import torqueShedImg from "@assets/torqueshedfeature1024500_1774285672020.png";
 import neonRacerImg from "@assets/neonracerhero_1774285672019.png";
 import ninjamationImg from "@assets/ninjamationfeatured_1774292377935.png";
 import labyrinthRoninImg from "@assets/labyrinthroninfeatured_1774292377934.png";
+import playpackPilotImg from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png";
 
-type AppStatus = "ACTIVE" | "BETA" | "EXPERIMENTAL";
+type AppStatus = "ACTIVE" | "BETA" | "EXPERIMENTAL" | "NEW";
 
 interface AppEntry {
   title: string;
@@ -53,6 +54,14 @@ const featured: AppEntry[] = [
     image: torqueShedImg,
   },
   {
+    title: "PlayPack Pilot",
+    tagline: "Own the Package.",
+    description: "Analyze your website or upload your repo, then generate a Play Store packaging kit in minutes.",
+    link: "/playpackpilot",
+    status: "NEW",
+    image: playpackPilotImg,
+  },
+  {
     title: "Neon Racer",
     tagline: "Own the Grid.",
     description: "Retro-futuristic evasive racing game. Dodge, survive, dominate.",
@@ -82,16 +91,19 @@ const statusStyles: Record<AppStatus, string> = {
   ACTIVE: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30",
   BETA: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
   EXPERIMENTAL: "bg-purple-500/20 text-purple-400 border border-purple-500/30",
+  NEW: "bg-sky-500/20 text-sky-400 border border-sky-500/30",
 };
 
 const statusDot: Record<AppStatus, string> = {
   ACTIVE: "bg-emerald-400",
   BETA: "bg-amber-400",
   EXPERIMENTAL: "bg-purple-400",
+  NEW: "bg-sky-400",
 };
 
 export default function PlatformsSection() {
   const activeCount = featured.filter((p) => p.status === "ACTIVE").length;
+  const newCount = featured.filter((p) => p.status === "NEW").length;
   const betaCount = featured.filter((p) => p.status === "BETA").length;
   const experimentalCount = featured.filter((p) => p.status === "EXPERIMENTAL").length;
 
@@ -113,6 +125,7 @@ export default function PlatformsSection() {
             SYS::STATUS
           </span>
           <span className="text-emerald-400">{activeCount} ONLINE</span>
+          <span className="text-sky-400">{newCount} NEW</span>
           <span className="text-amber-400">{betaCount} BETA</span>
           <span className="text-purple-400">{experimentalCount} EXPERIMENTAL</span>
           <span>MODULES: {featured.length}</span>

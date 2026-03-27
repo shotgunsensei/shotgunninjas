@@ -11,6 +11,7 @@ import TorqueShed from "./pages/TorqueShed";
 import NeonRacer from "./pages/NeonRacer";
 import Ninjamation from "./pages/Ninjamation";
 import LabyrinthRonin from "./pages/LabyrinthRonin";
+import PlayPackPilot from "./pages/PlayPackPilot";
 import SoundStudio from "./pages/SoundStudio";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
@@ -32,6 +33,7 @@ function App() {
           <Route path="/neonracer" element={<NeonRacer />} />
           <Route path="/ninjamation" element={<Ninjamation />} />
           <Route path="/labyrinthronin" element={<LabyrinthRonin />} />
+          <Route path="/playpackpilot" element={<PlayPackPilot />} />
           <Route path="/soundstudio" element={<SoundStudio />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />

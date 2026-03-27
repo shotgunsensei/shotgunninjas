@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform built on Replit, showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Contact email: john@shotgunninjas.com.
+Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform built on Replit, showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, PlayPack Pilot, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Contact email: john@shotgunninjas.com.
 
 ## Stack
 
@@ -153,6 +153,7 @@ artifacts-monorepo/
 - `/ninjamation` — Ninjamation product page (BETA badge)
 - `/labyrinthronin` — Labyrinth Ronin product page (EXPERIMENTAL badge)
 - `/neonracer` — Neon Racer product page
+- `/playpackpilot` — PlayPack Pilot product page (NEW badge, custom landing page with hero image, feature grid, workflow, use cases)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
 - `*` — 404 page
@@ -180,6 +181,8 @@ Featured products on the homepage use attached asset images:
 - Neon Racer: `@assets/neonracerhero_1774285672019.png`
 - Ninjamation: `@assets/ninjamationfeatured_1774292377935.png`
 - Labyrinth Ronin: `@assets/labyrinthroninfeatured_1774292377934.png`
+- PlayPack Pilot hero: `@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png`
+- PlayPack Pilot logo: `@assets/playpack_pilot_1774642220483.png`
 
 Sound Studio hero background:
 - `@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.png`
