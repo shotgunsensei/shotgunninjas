@@ -54,6 +54,13 @@ const featured: AppEntry[] = [
     image: torqueShedImg,
   },
   {
+    title: "BrandForge OS",
+    tagline: "Own the Campaign.",
+    description: "Go from brand setup to campaign launch with guided AI workflows for strategy, content, design, landing pages, and advertising.",
+    link: "/brandforgeos",
+    status: "NEW",
+  },
+  {
     title: "PlayPack Pilot",
     tagline: "Own the Package.",
     description: "Analyze your website or upload your repo, then generate a Play Store packaging kit in minutes.",

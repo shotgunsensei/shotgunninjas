@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform built on Replit, showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, PlayPack Pilot, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Contact email: john@shotgunninjas.com.
+Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform built on Replit, showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, BrandForge OS, PlayPack Pilot, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Contact email: john@shotgunninjas.com.
 
 ## Stack
 
@@ -154,6 +154,7 @@ artifacts-monorepo/
 - `/labyrinthronin` — Labyrinth Ronin product page (EXPERIMENTAL badge)
 - `/neonracer` — Neon Racer product page
 - `/playpackpilot` — PlayPack Pilot product page (NEW badge, custom landing page with hero image, feature grid, workflow, use cases)
+- `/brandforgeos` — BrandForge OS product page (NEW badge, marketing OS spotlight page, all CTAs → bf-os.com)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
 - `*` — 404 page

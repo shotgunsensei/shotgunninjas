@@ -1,0 +1,205 @@
+Add a new featured product called “BrandForge OS” to ShotgunNinjas.com and integrate it cleanly into the existing Shotgun Ninjas product family.
+
+IMPORTANT GOAL
+BrandForge OS should appear as a premium core product within the Shotgun Ninjas ecosystem, but all primary CTA traffic for the product should route to:
+https://bf-os.com
+
+Do not make BrandForge OS feel bolted on.
+Make it feel like a natural, polished part of the Shotgun Ninjas platform and brand architecture.
+
+==================================================
+BRAND / POSITIONING CONTEXT
+==================================================
+
+Shotgun Ninjas Productions is the umbrella studio/brand.
+BrandForge OS is one of its software products.
+
+BrandForge OS positioning:
+An AI-powered marketing and advertising operating system that helps businesses go from zero to hero by guiding them through:
+- brand setup
+- messaging
+- campaign planning
+- ad and content creation
+- landing pages
+- creative asset generation
+- marketing workflows
+- performance improvement
+
+Tone:
+- premium
+- operator-focused
+- clear
+- modern
+- not hypey
+- not fluffy
+- should fit the Shotgun Ninjas “systems / control / execution” style
+
+==================================================
+IMPLEMENTATION OBJECTIVES
+==================================================
+
+1. ADD TO MAIN NAVIGATION
+Add BrandForge OS to the top-level navigation or products dropdown/menu.
+Use label:
+BrandForge OS
+
+Behavior:
+- clicking it should either open a polished internal spotlight page OR go directly to https://bf-os.com
+- preferred approach: create an internal spotlight page first, then use CTAs to send users to https://bf-os.com
+
+2. ADD TO HOMEPAGE PRODUCT / PLATFORM SECTION
+Find the section where current Shotgun Ninjas products/platforms are featured.
+Add a new product card for BrandForge OS.
+
+Card content should include:
+- Product name: BrandForge OS
+- Short description:
+  Go from brand setup to campaign launch with guided AI workflows for strategy, content, design, landing pages, and advertising.
+- CTA button text:
+  Explore BrandForge OS
+- CTA destination:
+  https://bf-os.com
+
+Design requirements:
+- match the visual style of the existing product cards
+- make it feel premium and important
+- use subtle visual emphasis so it feels like a flagship or major platform, but not louder than the whole brand
+- ensure responsiveness is excellent
+
+3. CREATE A DEDICATED INTERNAL PAGE OR SECTION FOR BRANDFORGE OS
+Create a polished BrandForge OS page or long-form section inside ShotgunNinjas.com.
+
+Suggested route:
+- /brandforge-os
+
+This page should act as a brand bridge between Shotgun Ninjas and bf-os.com.
+
+Page goals:
+- explain what BrandForge OS is
+- explain who it is for
+- show how it fits into the Shotgun Ninjas ecosystem
+- drive traffic to https://bf-os.com
+
+Suggested page structure:
+
+A. HERO SECTION
+Headline:
+BrandForge OS
+
+Subheadline:
+The marketing operating system for businesses that want to plan, create, launch, and improve campaigns from one guided workspace.
+
+Body copy:
+BrandForge OS helps founders, agencies, and growing businesses move from scattered tools and guesswork to a more structured marketing system with AI-assisted strategy, content, creative production, landing pages, and campaign workflows.
+
+Primary CTA:
+Visit BrandForge OS
+-> https://bf-os.com
+
+Secondary CTA:
+See How It Fits the Shotgun Ninjas Stack
+-> anchor lower on page
+
+B. WHAT IT DOES SECTION
+Use 4 to 6 feature blocks:
+- Brand setup and messaging
+- Campaign planning
+- Copy and content generation
+- Creative asset production
+- Landing page workflows
+- Analytics and optimization guidance
+
+C. WHO IT’S FOR SECTION
+Cards or columns for:
+- founders
+- small businesses
+- agencies
+- multi-brand operators
+
+D. WHY IT MATTERS SECTION
+Copy direction:
+BrandForge OS reduces fragmentation across marketing work by bringing planning, creative production, and execution into one guided system.
+
+E. SHOTGUN NINJAS ECOSYSTEM SECTION
+Show how BrandForge OS sits alongside other products in the family.
+This should reinforce Shotgun Ninjas as the studio behind the stack.
+
+F. FINAL CTA SECTION
+Headline:
+Ready to build smarter marketing systems?
+
+Buttons:
+- Launch BrandForge OS
+- Go to bf-os.com
+
+All final CTAs should point to:
+https://bf-os.com
+
+4. ADD BRANDFORGE OS TO FOOTER / PRODUCT LINKS
+In the footer or product links section, add:
+BrandForge OS
+Link destination:
+https://bf-os.com
+
+5. OPTIONAL ECOSYSTEM VISUAL
+If the site already has or could benefit from an ecosystem section, add BrandForge OS into it.
+
+Suggested simple ecosystem arrangement:
+- TechDeck
+- TradeFlowKit
+- TorqueShed
+- OperatorOS
+- BrandForge OS
+
+Make BrandForge OS visually read as:
+“marketing / campaigns / creative operations”
+
+6. SEO / META / SOCIAL PREP
+For the internal BrandForge OS page, set:
+- title tag
+- meta description
+- Open Graph title/description/image placeholders
+- canonical awareness if needed
+
+Suggested title:
+BrandForge OS | Marketing Operating System by Shotgun Ninjas
+
+Suggested meta description:
+BrandForge OS is the AI-powered marketing operating system from Shotgun Ninjas, built to help businesses plan, create, launch, and improve campaigns in one guided workspace.
+
+7. CTA RULES
+Important:
+All primary commercial traffic should go to:
+https://bf-os.com
+
+Do not point commercial BrandForge OS buttons to the Replit app URL.
+Treat bf-os.com as the official destination domain.
+
+8. VISUAL / UX REQUIREMENTS
+- keep the existing Shotgun Ninjas design language
+- make the addition feel intentional and polished
+- maintain premium SaaS / systems-studio quality
+- no clutter
+- no awkward duplicate messaging
+- no broken link paths
+- responsive across desktop and mobile
+- preserve site performance
+
+9. COPY STYLE
+Write tight, premium product marketing copy.
+Avoid generic startup fluff.
+Use language that feels:
+- system-driven
+- execution-focused
+- useful
+- credible
+- modern
+
+10. FINAL CHECK
+After implementing:
+- ensure BrandForge OS appears in the correct product hierarchy
+- ensure all links go to https://bf-os.com
+- ensure the internal page/section is polished
+- ensure homepage product presentation looks native to the site
+- ensure footer links are updated
+- ensure no part feels unfinished or placeholder-like

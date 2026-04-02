@@ -12,6 +12,7 @@ const productLinks = [
   { name: "Labyrinth Ronin", href: "/labyrinthronin" },
   { name: "Neon Racer", href: "/neonracer" },
   { name: "PlayPack Pilot", href: "/playpackpilot" },
+  { name: "BrandForge OS", href: "/brandforgeos" },
 ];
 
 const mainLinks = [

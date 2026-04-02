@@ -10,6 +10,7 @@ const productLinks = [
   { name: "Labyrinth Ronin", href: "/labyrinthronin" },
   { name: "Neon Racer", href: "/neonracer" },
   { name: "PlayPack Pilot", href: "/playpackpilot" },
+  { name: "BrandForge OS", href: "https://bf-os.com" },
 ];
 
 const companyLinks = [
@@ -45,12 +46,23 @@ export default function Footer() {
             <ul className="space-y-2">
               {productLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.href.startsWith("http") ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
