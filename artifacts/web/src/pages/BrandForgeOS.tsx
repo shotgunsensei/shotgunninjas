@@ -10,33 +10,33 @@ import {
   ExternalLink,
   CheckCircle,
   Layers,
-  Sparkles,
-  Megaphone,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import brandforgeHero from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.png";
+import brandforgeLogo from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_28_AM_1775110912706.png";
 
 const capabilities = [
-  { icon: Palette, title: "Brand Setup & Messaging", description: "Define your brand identity, voice, positioning, and core messaging framework with guided AI workflows." },
-  { icon: Target, title: "Campaign Planning", description: "Map out campaign strategies, audience segments, channel plans, and content calendars from a single workspace." },
-  { icon: PenTool, title: "Copy & Content Generation", description: "Generate ad copy, social posts, email sequences, blog drafts, and marketing assets with AI assistance." },
-  { icon: Image, title: "Creative Asset Production", description: "Produce branded visuals, ad creatives, social graphics, and marketing collateral without a design team." },
-  { icon: Layout, title: "Landing Page Workflows", description: "Build conversion-focused landing pages with guided templates, copy suggestions, and optimization guidance." },
-  { icon: BarChart3, title: "Analytics & Optimization", description: "Track campaign performance, identify what works, and get actionable recommendations to improve results." },
+  { icon: Palette, title: "Brand Setup & Messaging", description: "Define identity, voice, positioning, and core messaging with guided AI workflows." },
+  { icon: Target, title: "Campaign Planning", description: "Map strategies, audiences, channels, and content calendars from one workspace." },
+  { icon: PenTool, title: "Copy & Content Generation", description: "Generate ad copy, social posts, emails, blog drafts, and marketing assets." },
+  { icon: Image, title: "Creative Asset Production", description: "Produce branded visuals, ad creatives, and collateral — no design team needed." },
+  { icon: Layout, title: "Landing Page Workflows", description: "Build conversion-focused pages with guided templates and optimization." },
+  { icon: BarChart3, title: "Analytics & Optimization", description: "Track performance, find what works, and get actionable improvement recs." },
 ];
 
 const audiences = [
-  { title: "Founders", description: "Launch your brand and first campaigns without hiring a marketing team or learning ten different tools." },
-  { title: "Small Businesses", description: "Run professional marketing operations on a lean budget with AI-guided strategy and content production." },
-  { title: "Agencies", description: "Standardize client onboarding, campaign workflows, and creative production across your entire portfolio." },
-  { title: "Multi-Brand Operators", description: "Manage messaging, campaigns, and creative assets across multiple brands from one unified system." },
+  { title: "Founders", description: "Launch your brand and first campaigns without hiring a marketing team." },
+  { title: "Small Businesses", description: "Run professional marketing on a lean budget with AI-guided strategy." },
+  { title: "Agencies", description: "Standardize onboarding, campaign workflows, and creative production at scale." },
+  { title: "Multi-Brand Operators", description: "Manage messaging and campaigns across multiple brands from one system." },
 ];
 
 const ecosystemProducts = [
   { name: "OperatorOS", tagline: "Cloud development control plane", link: "/operatoros" },
   { name: "Tech Deck", tagline: "MSP enablement platform", link: "/techdeck" },
-  { name: "TradeFlow Kit", tagline: "Workflow automation for field service", link: "/tradeflow" },
+  { name: "TradeFlow Kit", tagline: "Field service automation", link: "/tradeflow" },
   { name: "Torque Shed", tagline: "Automotive systems & community", link: "/torqueshed" },
   { name: "BrandForge OS", tagline: "Marketing operating system", link: "/brandforgeos", active: true },
   { name: "PlayPack Pilot", tagline: "PWA-to-Play Store packaging", link: "/playpackpilot" },
@@ -45,11 +45,11 @@ const ecosystemProducts = [
 export default function BrandForgeOS() {
   useEffect(() => {
     const prevTitle = document.title;
-    document.title = "BrandForge OS | Marketing Operating System by Shotgun Ninjas";
+    document.title = "BrandForge OS — Marketing Operating System | Shotgun Ninjas";
     const meta = document.querySelector('meta[name="description"]');
     const prevDesc = meta?.getAttribute("content") || "";
     if (meta) {
-      meta.setAttribute("content", "BrandForge OS is the AI-powered marketing operating system from Shotgun Ninjas, built to help businesses plan, create, launch, and improve campaigns in one guided workspace.");
+      meta.setAttribute("content", "BrandForge OS is the AI-powered marketing operating system from Shotgun Ninjas — plan, create, launch, and improve campaigns from one guided workspace.");
     }
     return () => {
       document.title = prevTitle;
@@ -61,67 +61,82 @@ export default function BrandForgeOS() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-transparent" />
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/4 rounded-full blur-[160px]" />
+      <section className="relative pt-24 pb-16 sm:pt-28 sm:pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/3 via-transparent to-transparent" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/3 rounded-full blur-[200px] -translate-y-1/2 translate-x-1/4" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/25 bg-primary/5 mb-6">
-            <Sparkles className="h-3.5 w-3.5 text-primary" />
-            <span className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-primary/90 uppercase">
-              Shotgun Ninjas Product
-            </span>
-          </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/25 bg-primary/5 mb-6">
+                <img src={brandforgeLogo} alt="" className="h-5 w-5 rounded object-contain" />
+                <span className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-primary/90 uppercase">
+                  New in the Arsenal
+                </span>
+              </div>
 
-          <p className="text-xs font-[var(--font-display)] tracking-widest text-primary mb-3">
-            Own the Campaign.
-          </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 font-[var(--font-display)]">
-            BrandForge OS
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4">
-            The marketing operating system for businesses that want to plan, create, launch, and improve campaigns from one guided workspace.
-          </p>
-          <p className="text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
-            BrandForge OS helps founders, agencies, and growing businesses move from scattered tools and guesswork to a structured marketing system — with AI-assisted strategy, content, creative production, landing pages, and campaign workflows.
-          </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 font-[var(--font-display)] leading-[1.05]">
+                Your marketing.{" "}
+                <span className="text-gradient">One system.</span>
+              </h1>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://bf-os.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40"
-            >
-              Visit BrandForge OS
-              <ExternalLink className="h-4 w-4" />
-            </a>
-            <a
-              href="#what-it-does"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border text-foreground font-semibold rounded-xl hover:bg-secondary/50 transition-all"
-            >
-              See How It Works
-              <ArrowRight className="h-4 w-4" />
-            </a>
+              <p className="text-xs font-[var(--font-display)] tracking-widest text-primary/80 mb-5 uppercase">
+                Own the Campaign.
+              </p>
+
+              <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
+                BrandForge OS brings brand strategy, content, creative production, landing pages, and campaign workflows into one guided workspace — powered by AI.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://bf-os.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40"
+                >
+                  Try BrandForge OS
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+                <a
+                  href="#capabilities"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border text-foreground font-semibold rounded-xl hover:bg-secondary/50 transition-all"
+                >
+                  See What's Inside
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-[-20px] bg-gradient-to-br from-primary/10 via-transparent to-primary/5 rounded-3xl blur-xl" />
+              <div className="relative rounded-2xl overflow-hidden border border-border/60 shadow-2xl shadow-primary/10">
+                <img
+                  src={brandforgeHero}
+                  alt="BrandForge OS — Marketing operating system for strategy, content, and campaign workflows"
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="what-it-does" className="py-20 bg-card border-t border-b border-border">
+      <section id="capabilities" className="py-20 bg-card border-t border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <p className="text-xs font-[var(--font-display)] tracking-widest text-primary mb-3">
-              Core Capabilities
+              What's Inside
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-[var(--font-display)]">
-              One system. Full marketing stack.
+              Six modules. One marketing stack.
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Six integrated modules that cover the entire journey from brand definition to campaign optimization.
+            <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+              Everything from brand definition to campaign optimization — integrated, not duct-taped.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {capabilities.map((cap) => (
               <div
                 key={cap.title}
@@ -130,7 +145,7 @@ export default function BrandForgeOS() {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors">
                   <cap.icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold mb-2 font-[var(--font-display)]">{cap.title}</h3>
+                <h3 className="text-base font-bold mb-2 font-[var(--font-display)]">{cap.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{cap.description}</p>
               </div>
             ))}
@@ -140,16 +155,16 @@ export default function BrandForgeOS() {
 
       <section className="py-20 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <p className="text-xs font-[var(--font-display)] tracking-widest text-primary mb-3">
               Built For
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-[var(--font-display)]">
-              Who uses BrandForge OS
+              Who it's for
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {audiences.map((aud) => (
               <div
                 key={aud.title}
@@ -159,7 +174,7 @@ export default function BrandForgeOS() {
                   <CheckCircle className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2 font-[var(--font-display)]">{aud.title}</h3>
+                  <h3 className="text-base font-bold mb-1.5 font-[var(--font-display)]">{aud.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{aud.description}</p>
                 </div>
               </div>
@@ -169,28 +184,16 @@ export default function BrandForgeOS() {
       </section>
 
       <section className="py-20 bg-card border-t border-b border-border">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Megaphone className="h-8 w-8 text-primary mx-auto mb-6" />
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-[var(--font-display)]">
-            Why it matters
-          </h2>
-          <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Most businesses piece together marketing from a dozen disconnected tools — one for copy, one for design, one for analytics, one for landing pages. BrandForge OS reduces that fragmentation by bringing planning, creative production, and execution into one guided system. Less context-switching. More output. Better results.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-20 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <p className="text-xs font-[var(--font-display)] tracking-widest text-primary mb-3">
               Ecosystem
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-[var(--font-display)]">
               Part of the Shotgun Ninjas stack
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              BrandForge OS sits alongside the rest of the Shotgun Ninjas product family — systems built for operators who value control, execution, and results.
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Systems built for operators who value control, execution, and results.
             </p>
           </div>
 
@@ -202,13 +205,17 @@ export default function BrandForgeOS() {
                 className={`flex items-center gap-4 rounded-xl p-5 border transition-all duration-300 ${
                   prod.active
                     ? "bg-primary/5 border-primary/30 shadow-lg shadow-primary/5"
-                    : "bg-card border-border hover:border-primary/20 hover:bg-card/80"
+                    : "bg-background border-border hover:border-primary/20 hover:bg-card/80"
                 }`}
               >
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
                   prod.active ? "bg-primary/15" : "bg-primary/8"
                 }`}>
-                  <Layers className={`h-5 w-5 ${prod.active ? "text-primary" : "text-primary/60"}`} />
+                  {prod.active ? (
+                    <img src={brandforgeLogo} alt="" className="h-5 w-5 rounded object-contain" />
+                  ) : (
+                    <Layers className={`h-5 w-5 ${prod.active ? "text-primary" : "text-primary/60"}`} />
+                  )}
                 </div>
                 <div>
                   <p className={`font-bold font-[var(--font-display)] text-sm ${prod.active ? "text-primary" : "text-foreground"}`}>
@@ -222,34 +229,24 @@ export default function BrandForgeOS() {
         </div>
       </section>
 
-      <section className="py-20 bg-card border-t border-border">
+      <section className="py-20 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <img src={brandforgeLogo} alt="" className="h-10 w-auto mx-auto mb-6 opacity-80" />
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-[var(--font-display)]">
-            Ready to build smarter marketing systems?
+            Stop duct-taping your marketing.
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
-            Stop assembling your marketing stack from scattered tools. Start operating from one guided system.
+            One workspace. Brand to campaign. Strategy to results.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://bf-os.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40"
-            >
-              Launch BrandForge OS
-              <ExternalLink className="h-4 w-4" />
-            </a>
-            <a
-              href="https://bf-os.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border text-foreground font-semibold rounded-xl hover:bg-secondary/50 transition-all"
-            >
-              Go to bf-os.com
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
+          <a
+            href="https://bf-os.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 text-lg"
+          >
+            Get Started at bf-os.com
+            <ExternalLink className="h-5 w-5" />
+          </a>
         </div>
       </section>
 

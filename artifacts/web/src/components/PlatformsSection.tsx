@@ -8,6 +8,7 @@ import neonRacerImg from "@assets/neonracerhero_1774285672019.png";
 import ninjamationImg from "@assets/ninjamationfeatured_1774292377935.png";
 import labyrinthRoninImg from "@assets/labyrinthroninfeatured_1774292377934.png";
 import playpackPilotImg from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png";
+import brandforgeOsImg from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.png";
 
 type AppStatus = "ACTIVE" | "BETA" | "EXPERIMENTAL" | "NEW";
 
@@ -56,9 +57,10 @@ const featured: AppEntry[] = [
   {
     title: "BrandForge OS",
     tagline: "Own the Campaign.",
-    description: "Go from brand setup to campaign launch with guided AI workflows for strategy, content, design, landing pages, and advertising.",
+    description: "Plan, create, launch, and optimize marketing campaigns from one AI-guided workspace — brand to results.",
     link: "/brandforgeos",
     status: "NEW",
+    image: brandforgeOsImg,
   },
   {
     title: "PlayPack Pilot",
