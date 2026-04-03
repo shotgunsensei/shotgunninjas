@@ -1,0 +1,196 @@
+Add a new polished product section and/or dedicated page for **SnapProof OS** into the ShotgunNinjas.com website.
+
+## CONTEXT
+ShotgunNinjas.com is the parent brand site. SnapProof OS is a premium SaaS product under the Shotgun Ninjas umbrella. It needs to feel like a natural part of the ecosystem alongside products like TechDeck, TradeFlow, and TorqueShed.
+
+I already have a text-free hero image asset for SnapProof OS. You will integrate that image into the site in a way that looks high-end, intentional, and conversion-focused.
+
+## OBJECTIVE
+Create a new SnapProof OS feature section on the homepage and a dedicated SnapProof OS page/route linked from the main site navigation.
+
+The result should:
+- feel premium and production-ready
+- visually match the Shotgun Ninjas brand
+- clearly present SnapProof OS as a serious product
+- use the hero image as a centerpiece
+- drive clicks toward the dedicated SnapProof OS page
+- look excellent on desktop and mobile
+
+## BRAND / VISUAL DIRECTION
+Use the existing Shotgun Ninjas site design language, but enhance it where needed for premium SaaS presentation.
+
+Style goals:
+- dark tactical UI
+- black / graphite background tones
+- crimson / red highlights
+- strong contrast
+- clean typography
+- cinematic but professional
+- spacious layout
+- smooth hover effects and motion
+- not cluttered
+- not gimmicky
+
+## REQUIRED CHANGES
+
+### 1. Add SnapProof OS to the main navigation
+- Insert “SnapProof OS” into the main nav in a position that feels balanced with the other products
+- Add a subtle premium indicator if appropriate, such as a small red shield/crosshair style icon or accent
+- Ensure nav link routes to `/snapproof-os` or equivalent clean slug
+- On mobile, include it in the mobile nav menu cleanly
+
+### 2. Add a homepage feature section for SnapProof OS
+Create a premium homepage section that introduces SnapProof OS.
+
+This section should include:
+- strong headline
+- supporting subheadline
+- 2 CTA buttons
+- product bullets or highlights
+- the provided text-free hero image asset displayed prominently
+- a layout that feels like a flagship product reveal
+
+Suggested content direction:
+Headline ideas:
+- Turn field chaos into client-ready proof.
+- Capture it once. Prove it. Bill faster.
+- From job photos to polished reports in minutes.
+
+Supporting copy direction:
+SnapProof OS helps field technicians, MSP engineers, contractors, and service operators turn photos, notes, and findings into polished reports, proof-of-work summaries, and client-ready documentation.
+
+CTA ideas:
+- Explore SnapProof OS
+- See How It Works
+- View Product
+- Request Early Access
+
+Highlight bullets:
+- AI-assisted report generation
+- photo + voice + findings capture
+- branded PDF exports
+- proof-of-work documentation
+- field-ready workflow
+- fast client handoff
+
+### 3. Build a dedicated SnapProof OS page
+Create a fully polished dedicated page at `/snapproof-os`.
+
+This page should include:
+1. Hero section using the provided image
+2. Clear value proposition
+3. Who it’s for section
+4. Key features section
+5. Workflow section
+6. Report/proof-of-work angle
+7. CTA section
+8. Optional FAQ section
+9. Strong footer CTA
+
+### 4. Dedicated page structure
+Build the page with sections like:
+
+#### Hero
+- left side: headline, subheadline, CTA buttons
+- right side or background-enhanced layout: use the text-free hero image
+- elegant entrance animation
+- layered glow/background treatment to make image feel integrated
+
+#### Who it’s for
+Cards or pill blocks for:
+- MSPs
+- IT field technicians
+- mechanics
+- contractors
+- service teams
+
+#### Features
+Polished icon cards for:
+- photo capture
+- voice notes
+- findings tracking
+- AI summaries
+- branded exports
+- shareable reports
+
+#### Workflow
+Visual 4-step or 5-step sequence:
+- Capture
+- Organize
+- Generate
+- Review
+- Deliver
+
+#### Why it matters
+Messaging around:
+- faster client communication
+- better proof of work
+- more professional handoff
+- stronger billing justification
+- reduced admin drag
+
+#### CTA
+A premium final section with buttons such as:
+- Get SnapProof OS
+- Request Demo
+- Join the Waitlist
+- Explore the Platform
+
+### 5. Use the provided text-free hero image properly
+You must integrate the provided SnapProof OS image asset into both:
+- the homepage feature section
+- the dedicated product page hero
+
+Implementation requirements:
+- optimize for responsive display
+- use object-fit / proper containment
+- avoid awkward cropping
+- preserve the premium composition
+- layer with subtle background glow, gradient, or panel styling so it feels embedded into the site
+- image should not look slapped in
+- support retina/high-res rendering where possible
+
+### 6. Motion and polish
+Add tasteful motion:
+- fade/slide-in on section load
+- hover polish on CTA buttons
+- image reveal or parallax-lite effect if appropriate
+- no distracting or gimmicky animation
+
+### 7. Conversion-focused copy
+Write polished copy directly into the site. Do not use lorem ipsum.
+The copy should make SnapProof OS feel monetizable and desirable.
+Tone should be sharp, premium, practical, and no-nonsense.
+
+### 8. Responsive quality
+Make the entire SnapProof OS section and dedicated page look excellent on:
+- desktop
+- tablet
+- mobile
+
+On mobile:
+- stack sections properly
+- keep CTAs clear
+- keep image prominent
+- avoid text crowding
+- maintain premium visual hierarchy
+
+### 9. Technical implementation
+- Use the existing framework and component patterns already used by the ShotgunNinjas site
+- Reuse layout/container systems where possible
+- Keep code modular
+- Create reusable product-section components if beneficial
+- Ensure routes are wired cleanly
+- Ensure navigation active states work correctly
+- Ensure no broken layout shifts
+- Optimize image loading
+
+### 10. Deliverable expectation
+Produce a polished implementation that makes SnapProof OS feel like a flagship product on ShotgunNinjas.com, not just another menu item.
+
+It should look like a real launch-ready addition to the site and increase interest in the product immediately.
+
+## IMPORTANT
+Do not just insert an image and a heading.
+Design this like a premium product reveal page and brand ecosystem expansion.
+Upgrade weak spacing, weak hierarchy, or weak styling where needed to make the section/page feel truly launch quality.

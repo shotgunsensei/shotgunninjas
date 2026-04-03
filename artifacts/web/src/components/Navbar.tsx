@@ -13,6 +13,7 @@ const productLinks = [
   { name: "Neon Racer", href: "/neonracer" },
   { name: "PlayPack Pilot", href: "/playpackpilot" },
   { name: "BrandForge OS", href: "/brandforgeos" },
+  { name: "SnapProof OS", href: "/snapproof-os" },
 ];
 
 const mainLinks = [

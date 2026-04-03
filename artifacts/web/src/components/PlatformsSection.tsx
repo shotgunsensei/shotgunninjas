@@ -9,6 +9,7 @@ import ninjamationImg from "@assets/ninjamationfeatured_1774292377935.png";
 import labyrinthRoninImg from "@assets/labyrinthroninfeatured_1774292377934.png";
 import playpackPilotImg from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png";
 import brandforgeOsImg from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.png";
+import snapproofOsImg from "@assets/snapproof-hero_1775232639391.png";
 
 type AppStatus = "ACTIVE" | "BETA" | "EXPERIMENTAL" | "NEW";
 
@@ -61,6 +62,14 @@ const featured: AppEntry[] = [
     link: "/brandforgeos",
     status: "NEW",
     image: brandforgeOsImg,
+  },
+  {
+    title: "SnapProof OS",
+    tagline: "Own the Proof.",
+    description: "Turn job-site photos, voice notes, and findings into polished, client-ready reports and proof-of-work documentation.",
+    link: "/snapproof-os",
+    status: "NEW",
+    image: snapproofOsImg,
   },
   {
     title: "PlayPack Pilot",
