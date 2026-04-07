@@ -19,6 +19,7 @@ const productLinks = [
 const mainLinks = [
   { name: "Home", href: "/" },
   { name: "Sound Studio", href: "/soundstudio" },
+  { name: "The Village", href: "https://shotgunninjavillage.com" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -80,6 +81,16 @@ export default function Navbar() {
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
+                >
+                  {link.name}
+                </a>
+              ) : link.href.startsWith("http") ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
                 >
                   {link.name}
                 </a>
@@ -154,6 +165,16 @@ export default function Navbar() {
                       ? "text-primary bg-primary/10"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
+                >
+                  {link.name}
+                </a>
+              ) : link.href.startsWith("http") ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground"
                 >
                   {link.name}
                 </a>

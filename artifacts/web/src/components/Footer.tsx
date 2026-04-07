@@ -18,6 +18,7 @@ const companyLinks = [
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
   { name: "Sound Studio", href: "/soundstudio" },
+  { name: "The Village", href: "https://shotgunninjavillage.com" },
   { name: "Privacy Policy", href: "/privacy-policy" },
 ];
 
@@ -76,12 +77,23 @@ export default function Footer() {
             <ul className="space-y-2">
               {companyLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.href.startsWith("http") ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
