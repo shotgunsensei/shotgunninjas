@@ -19,7 +19,7 @@ const productLinks = [
 const mainLinks = [
   { name: "Home", href: "/" },
   { name: "Sound Studio", href: "/soundstudio" },
-  { name: "The Village", href: "https://shotgunninjavillage.com" },
+  { name: "Ninja Village", href: "https://shotgunninjavillage.com" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];

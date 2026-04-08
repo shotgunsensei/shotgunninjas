@@ -1,0 +1,60 @@
+Update this project so shotgunninjas.com clearly promotes and links to shotgunninjavillage.com as part of the broader Shotgun Ninjas ecosystem.
+
+Goal:
+Create strong, polished, brand-consistent cross-linking from ShotgunNinjas.com to ShotgunNinjaVillage.com so visitors understand the village is an important destination in the brand universe.
+
+What I want added:
+1. Header / Navigation
+- Add a visible nav item linking to https://shotgunninjavillage.com
+- Suggested labels:
+  - Ninja Village
+  - Village
+  - Enter the Village
+- Choose the option that best fits the current design and branding tone
+
+2. Footer
+- Add a footer section that highlights Shotgun Ninja Village
+- Suggested framing:
+  - Visit Shotgun Ninja Village
+  - Enter the Village
+  - Discover the Village Experience
+- Include a short descriptive blurb and a strong CTA link/button to https://shotgunninjavillage.com
+
+3. Homepage feature section
+- Add a dedicated section on the homepage that introduces Shotgun Ninja Village as an immersive or community-driven extension of the Shotgun Ninjas brand
+- Include:
+  - headline
+  - short paragraph
+  - CTA button linking to https://shotgunninjavillage.com
+- The tone should feel premium, ninja-tech, cinematic, and exciting
+
+4. CTA card / ecosystem section
+- If the homepage already has sections for products, projects, episodes, or brand experiences, add a featured card or tile for Shotgun Ninja Village
+- It should feel like a natural part of the current ecosystem, not an advertisement bolted on at the last second
+
+5. SEO / metadata
+- Improve internal linking and descriptive metadata where appropriate
+- Preserve shotgunninjas.com as its own canonical identity
+- Do not redirect away from this site
+
+6. Design standards
+- Match all existing styles, spacing, shadows, buttons, typography, and brand colors
+- Keep the site visually cohesive
+- No placeholder styling
+- Production-ready only
+
+7. Mobile responsiveness
+- Ensure the new nav item, CTA blocks, and footer section work cleanly on desktop and mobile
+
+8. Output requirements
+After implementing, provide:
+- exact files changed
+- summary of additions
+- reusable components created
+- the exact text used for CTA buttons and supporting blurbs
+- suggestions for future deeper integration between the two sites
+
+Important:
+- Do not turn this into a redirect
+- Do not reduce the authority of ShotgunNinjas.com as the main brand site
+- This is ecosystem linking, discoverability, and user flow enhancement only
