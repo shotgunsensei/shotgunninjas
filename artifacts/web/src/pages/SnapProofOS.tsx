@@ -7,6 +7,7 @@ import {
   FileText,
   Share2,
   ArrowRight,
+  ExternalLink,
   Shield,
   Search,
   FolderOpen,
@@ -14,7 +15,6 @@ import {
   Eye,
   Send,
   Zap,
-  Clock,
   BadgeCheck,
   Receipt,
   UserMinus,
@@ -97,7 +97,7 @@ export default function SnapProofOS() {
               <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/25 bg-primary/5 mb-6">
                 <img src={snapproofLogo} alt="" className="h-5 w-auto rounded object-contain" />
                 <span className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-primary/90 uppercase">
-                  New in the Arsenal
+                  Shotgun Ninjas Product
                 </span>
               </div>
 
@@ -116,19 +116,21 @@ export default function SnapProofOS() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#features"
+                  href="https://snapproofos.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40"
                 >
-                  Explore SnapProof OS
-                  <ArrowRight className="h-4 w-4" />
+                  Try SnapProof OS
+                  <ExternalLink className="h-4 w-4" />
                 </a>
-                <Link
-                  to="/contact"
+                <a
+                  href="#features"
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border text-foreground font-semibold rounded-xl hover:bg-secondary/50 transition-all"
                 >
-                  Request Early Access
+                  See What's Inside
                   <ArrowRight className="h-4 w-4" />
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -332,15 +334,15 @@ export default function SnapProofOS() {
           <p className="text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
             From photos to polished reports in minutes. SnapProof OS is field documentation, done right.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 text-lg"
-            >
-              Request Early Access
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </div>
+          <a
+            href="https://snapproofos.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 text-lg"
+          >
+            Get Started at snapproofos.com
+            <ExternalLink className="h-5 w-5" />
+          </a>
         </div>
       </section>
 

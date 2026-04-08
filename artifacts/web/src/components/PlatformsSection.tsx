@@ -68,7 +68,7 @@ const featured: AppEntry[] = [
     tagline: "Own the Proof.",
     description: "Turn job-site photos, voice notes, and findings into polished, client-ready reports and proof-of-work documentation.",
     link: "/snapproof-os",
-    status: "NEW",
+    status: "ACTIVE",
     image: snapproofOsImg,
   },
   {
