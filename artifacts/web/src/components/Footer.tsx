@@ -7,12 +7,13 @@ const productLinks = [
   { name: "Tech Deck", href: "/techdeck" },
   { name: "TradeFlow Kit", href: "/tradeflow" },
   { name: "Torque Shed", href: "/torqueshed" },
-  { name: "Ninjamation", href: "/ninjamation" },
-  { name: "Labyrinth Ronin", href: "/labyrinthronin" },
-  { name: "Neon Racer", href: "/neonracer" },
-  { name: "PlayPack Pilot", href: "/playpackpilot" },
   { name: "BrandForge OS", href: "https://bf-os.com" },
   { name: "SnapProof OS", href: "https://snapproofos.com" },
+  { name: "PulseDesk", href: "https://pulsedesk.support" },
+  { name: "PlayPack Pilot", href: "/playpackpilot" },
+  { name: "Ninjamation", href: "/ninjamation" },
+  { name: "Neon Racer", href: "/neonracer" },
+  { name: "Labyrinth Ronin", href: "/labyrinthronin" },
 ];
 
 const companyLinks = [

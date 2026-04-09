@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import PlatformsSection from "@/components/PlatformsSection";
+import PulseDeskSection from "@/components/PulseDeskSection";
 import PhilosophySection from "@/components/PhilosophySection";
 import VillageSection from "@/components/VillageSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
@@ -13,6 +14,7 @@ export default function Index() {
       <Navbar />
       <HeroSection />
       <PlatformsSection />
+      <PulseDeskSection />
       <PhilosophySection />
       <VillageSection />
       <CaseStudiesSection />

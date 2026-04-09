@@ -10,6 +10,7 @@ import labyrinthRoninImg from "@assets/labyrinthroninfeatured_1774292377934.png"
 import playpackPilotImg from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png";
 import brandforgeOsImg from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.png";
 import snapproofOsImg from "@assets/snapproof-hero_1775232639391.png";
+import pulsedeskImg from "@assets/Modern_healthcare_tech_in_action_1775761546446.png";
 
 type AppStatus = "ACTIVE" | "BETA" | "EXPERIMENTAL" | "NEW";
 
@@ -72,6 +73,14 @@ const featured: AppEntry[] = [
     image: snapproofOsImg,
   },
   {
+    title: "PulseDesk",
+    tagline: "Own the Queue.",
+    description: "Centralize support requests, automate workflows, and keep service delivery on track — from one command center.",
+    link: "/pulsedesk",
+    status: "NEW",
+    image: pulsedeskImg,
+  },
+  {
     title: "PlayPack Pilot",
     tagline: "Own the Package.",
     description: "Analyze your website or upload your repo, then generate a Play Store packaging kit in minutes.",
@@ -80,20 +89,20 @@ const featured: AppEntry[] = [
     image: playpackPilotImg,
   },
   {
-    title: "Neon Racer",
-    tagline: "Own the Grid.",
-    description: "Retro-futuristic evasive racing game. Dodge, survive, dominate.",
-    link: "/neonracer",
-    status: "ACTIVE",
-    image: neonRacerImg,
-  },
-  {
     title: "Ninjamation",
     tagline: "Own the Automation.",
     description: "Automate like a ninja. Build, deploy, and control intelligent workflows.",
     link: "/ninjamation",
     status: "BETA",
     image: ninjamationImg,
+  },
+  {
+    title: "Neon Racer",
+    tagline: "Own the Grid.",
+    description: "Retro-futuristic evasive racing game. Dodge, survive, dominate.",
+    link: "/neonracer",
+    status: "ACTIVE",
+    image: neonRacerImg,
   },
   {
     title: "Labyrinth Ronin",
@@ -134,7 +143,7 @@ export default function PlatformsSection() {
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">The Operator Ecosystem</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-            Every system in the arsenal. Built to give you control—not dependence.
+            A family of purpose-built digital tools under one umbrella — each one designed to give you control, not dependence.
           </p>
         </div>
 

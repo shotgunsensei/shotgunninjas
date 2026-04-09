@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform built on Replit, showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, BrandForge OS, SnapProof OS, PlayPack Pilot, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Contact email: john@shotgunninjas.com.
+Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform built on Replit, showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, BrandForge OS, SnapProof OS, PulseDesk, PlayPack Pilot, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Contact email: john@shotgunninjas.com.
 
 ## Stack
 
@@ -155,7 +155,8 @@ artifacts-monorepo/
 - `/neonracer` — Neon Racer product page
 - `/playpackpilot` — PlayPack Pilot product page (NEW badge, custom landing page with hero image, feature grid, workflow, use cases)
 - `/brandforgeos` — BrandForge OS product page (NEW badge, marketing OS spotlight page, all CTAs → bf-os.com)
-- `/snapproof-os` — SnapProof OS product page (NEW badge, field documentation & proof-of-work, hero image + logo)
+- `/snapproof-os` — SnapProof OS product page (ACTIVE, field documentation & proof-of-work, CTAs → snapproofos.com)
+- `/pulsedesk` — PulseDesk product page (NEW badge, support operations platform, CTAs → pulsedesk.support)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
 - `*` — 404 page
@@ -185,13 +186,20 @@ Featured products on the homepage use attached asset images:
 - Labyrinth Ronin: `@assets/labyrinthroninfeatured_1774292377934.png`
 - PlayPack Pilot hero: `@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png`
 - PlayPack Pilot logo: `@assets/playpack_pilot_1774642220483.png`
+- BrandForge OS hero: `@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.png`
+- BrandForge OS logo: `@assets/ChatGPT_Image_Apr_2,_2026,_02_21_28_AM_1775110912706.png`
+- SnapProof OS hero: `@assets/snapproof-hero_1775232639391.png`
+- SnapProof OS logo: `@assets/snapproof_1775232639389.png`
+- PulseDesk hero: `@assets/Modern_healthcare_tech_in_action_1775761546446.png`
+- PulseDesk logo: `@assets/pulsedesklogo_1775761546445.png`
+- PulseDesk title+logo: `@assets/pulsedecktitleandlogo_1775761546446.png`
 
 Sound Studio hero background:
 - `@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.png`
 
 ## Navbar
 
-- Consolidated navigation: Home, Sound Studio, About, Contact + "Arsenal" dropdown for all product pages
+- Consolidated navigation: Home, Sound Studio, Ninja Village, About, Contact + "Arsenal" dropdown for all product pages
 - Fixed top, backdrop blur, responsive mobile menu
 
 ## Environment Secrets
