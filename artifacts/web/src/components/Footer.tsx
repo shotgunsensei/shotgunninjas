@@ -3,15 +3,15 @@ import { ExternalLink } from "lucide-react";
 import snpLogo from "@/assets/SNPlogo.png";
 
 const productLinks = [
-  { name: "OperatorOS", href: "/operatoros" },
-  { name: "Tech Deck", href: "/techdeck" },
   { name: "TradeFlow Kit", href: "/tradeflow" },
-  { name: "Torque Shed", href: "/torqueshed" },
-  { name: "BrandForge OS", href: "https://bf-os.com" },
-  { name: "SnapProof OS", href: "https://snapproofos.com" },
+  { name: "Tech Deck", href: "/techdeck" },
   { name: "PulseDesk", href: "https://pulsedesk.support" },
-  { name: "PlayPack Pilot", href: "/playpackpilot" },
+  { name: "SnapProof OS", href: "https://snapproofos.com" },
   { name: "Ninjamation", href: "/ninjamation" },
+  { name: "Torque Shed", href: "/torqueshed" },
+  { name: "OperatorOS", href: "/operatoros" },
+  { name: "PlayPack Pilot", href: "/playpackpilot" },
+  { name: "BrandForge OS", href: "https://bf-os.com" },
   { name: "Neon Racer", href: "/neonracer" },
   { name: "Labyrinth Ronin", href: "/labyrinthronin" },
 ];

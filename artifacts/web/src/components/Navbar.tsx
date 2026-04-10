@@ -4,15 +4,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import snpLogo from "@/assets/SNPlogo.png";
 
 const productLinks = [
-  { name: "OperatorOS", href: "/operatoros" },
-  { name: "Tech Deck", href: "/techdeck" },
   { name: "TradeFlow Kit", href: "/tradeflow" },
-  { name: "Torque Shed", href: "/torqueshed" },
-  { name: "BrandForge OS", href: "/brandforgeos" },
-  { name: "SnapProof OS", href: "/snapproof-os" },
+  { name: "Tech Deck", href: "/techdeck" },
   { name: "PulseDesk", href: "/pulsedesk" },
-  { name: "PlayPack Pilot", href: "/playpackpilot" },
+  { name: "SnapProof OS", href: "/snapproof-os" },
   { name: "Ninjamation", href: "/ninjamation" },
+  { name: "Torque Shed", href: "/torqueshed" },
+  { name: "OperatorOS", href: "/operatoros" },
+  { name: "PlayPack Pilot", href: "/playpackpilot" },
+  { name: "BrandForge OS", href: "/brandforgeos" },
   { name: "Neon Racer", href: "/neonracer" },
   { name: "Labyrinth Ronin", href: "/labyrinthronin" },
 ];
