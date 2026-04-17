@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import {
   Activity,
-  Search,
   Wrench,
   FileSearch,
   Target,
@@ -9,7 +8,6 @@ import {
   Package,
   Smartphone,
   ArrowRight,
-  Shield,
   Cpu,
   Network,
   Car,
@@ -23,14 +21,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const features = [
-  { icon: AlertTriangle, title: "Handcrafted Incident Cases", description: "Investigate real-feeling failure scenarios written by operators — layered, ambiguous, and full of red herrings." },
-  { icon: Wrench, title: "Investigation Tools", description: "Run diagnostics, pull logs, query telemetry, and follow leads with a working set of in-sim technical instruments." },
-  { icon: FileSearch, title: "Evidence Locker", description: "Collect, tag, and cross-reference findings as you build a case file toward the actual root cause." },
+  { icon: AlertTriangle, title: "Handcrafted Incident Cases", description: "Real-feeling failure scenarios authored by operators — layered, ambiguous, full of red herrings." },
+  { icon: Wrench, title: "Investigation Tools", description: "Run diagnostics, pull logs, query telemetry, and follow leads with in-sim technical instruments." },
+  { icon: FileSearch, title: "Evidence Locker", description: "Collect, tag, and cross-reference findings as you build a case file toward the root cause." },
   { icon: Target, title: "Diagnosis & Scoring", description: "Submit your verdict. Get scored on accuracy, reasoning chain, and how cleanly you isolated the fault." },
-  { icon: Calendar, title: "Daily Challenge", description: "A new incident every day — fresh systems, fresh failure modes, replayable practice for sharp minds." },
-  { icon: Package, title: "Premium Packs", description: "Expand into specialized domains: networking deep-dives, automotive electrical, embedded systems, and more." },
+  { icon: Calendar, title: "Daily Challenge", description: "A new incident every day. Fresh systems, fresh failure modes, replayable practice for sharp minds." },
+  { icon: Package, title: "Premium Packs", description: "Expand into specialized domains: networking deep-dives, automotive electrical, embedded systems." },
   { icon: Smartphone, title: "Mobile-Ready", description: "Investigate from anywhere. The diagnostic console scales cleanly from desktop to phone." },
-  { icon: Cpu, title: "Case Authoring", description: "Built to grow. New incidents, domains, and tools drop without breaking the investigation flow." },
+  { icon: Cpu, title: "Built to Grow", description: "New incidents, domains, and tools drop continuously without breaking the investigation flow." },
 ];
 
 const domains = [
@@ -42,18 +40,18 @@ const domains = [
 ];
 
 const differentiators = [
-  { title: "Tool-like, not toy-like", description: "Faultline Lab feels like field equipment, not a quiz app. Every interaction respects your time and intelligence." },
-  { title: "Real troubleshooting logic", description: "Faults follow plausible chains. Symptoms have causes. Evidence either supports or eliminates a hypothesis — like the real thing." },
-  { title: "Layered clues, real red herrings", description: "Not every signal matters. Discipline, pattern recognition, and elimination are how you solve cases — not button-mashing." },
-  { title: "Built for technical minds", description: "Engineers, sysadmins, mechanics, technicians, hobbyists. If you've ever chased a fault, this is your arena." },
+  { title: "Tool-like, not toy-like", description: "Field equipment, not a quiz app. Every interaction respects your time and intelligence." },
+  { title: "Real troubleshooting logic", description: "Faults follow plausible chains. Symptoms have causes. Evidence supports or eliminates a hypothesis." },
+  { title: "Layered clues, real red herrings", description: "Not every signal matters. Discipline, pattern recognition, and elimination win cases — not button-mashing." },
+  { title: "Built for technical minds", description: "Engineers, sysadmins, mechanics, technicians, hobbyists. If you've chased a fault, this is your arena." },
 ];
 
 const ecosystemProducts = [
   { name: "OperatorOS", tagline: "Cloud development control plane", link: "/operatoros" },
   { name: "Tech Deck", tagline: "MSP enablement platform", link: "/techdeck" },
-  { name: "TradeFlow Kit", tagline: "Field service automation", link: "/tradeflow" },
-  { name: "PulseDesk", tagline: "Support operations platform", link: "/pulsedesk" },
-  { name: "SnapProof OS", tagline: "Field documentation system", link: "/snapproof-os" },
+  { name: "TradeFlow Kit", tagline: "Workflow automation for trades", link: "/tradeflow" },
+  { name: "PulseDesk", tagline: "Support operations command", link: "/pulsedesk" },
+  { name: "SnapProof OS", tagline: "Field documentation & proof-of-work", link: "/snapproof-os" },
   { name: "Torque Shed", tagline: "Automotive systems & diagnostics", link: "/torqueshed" },
 ];
 
@@ -76,7 +74,8 @@ export default function FaultlineLab() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="relative pt-24 pb-20 sm:pt-28 sm:pb-24 overflow-hidden">
+      {/* HERO */}
+      <section className="relative pt-20 pb-16 sm:pt-28 sm:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-[#05080d]" />
         <div className="absolute inset-0 opacity-[0.07]" style={{
           backgroundImage: "linear-gradient(rgba(56,189,248,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.4) 1px, transparent 1px)",
@@ -87,54 +86,57 @@ export default function FaultlineLab() {
         <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-6">
+              <Link
+                to="/#platforms"
+                className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-5 sm:mb-6 hover:bg-cyan-500/10 hover:border-cyan-400/50 transition-colors"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                <span className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-cyan-300/90 uppercase">
-                  New Flagship // Shotgun Ninjas Arsenal
+                <span className="text-[10px] font-[var(--font-display)] tracking-[0.2em] text-cyan-300/90 uppercase">
+                  Flagship · Shotgun Ninjas Arsenal
                 </span>
-              </div>
+              </Link>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 font-[var(--font-display)] leading-[1.04]">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 font-[var(--font-display)] leading-[1.05]">
                 <span className="text-foreground">Investigate the break.</span>{" "}
                 <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-orange-400 bg-clip-text text-transparent">
                   Find the truth.
                 </span>
               </h1>
 
-              <p className="text-xs font-[var(--font-display)] tracking-widest text-cyan-300/80 mb-5 uppercase">
-                Faultline Lab // Diagnostic Simulator
+              <p className="text-[10px] sm:text-xs font-[var(--font-display)] tracking-[0.25em] text-cyan-300/80 mb-4 sm:mb-5 uppercase">
+                Faultline Lab · Diagnostic Simulator
               </p>
 
-              <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-7 sm:mb-8 leading-relaxed max-w-xl">
                 A cinematic troubleshooting simulator for technical minds. Diagnose failures across infrastructure, networking, systems, automotive, and electronics through real investigation flow, evidence gathering, and disciplined analysis.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#features"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-cyan-500 transition-all shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
-                >
-                  Enter the Lab
-                  <ArrowRight className="h-4 w-4" />
-                </a>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-orange-500/40 bg-orange-500/5 text-orange-200 font-semibold rounded-xl hover:bg-orange-500/10 hover:border-orange-400/60 transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-cyan-500 transition-all shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
                 >
                   Join Early Access
-                  <Activity className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
+                <a
+                  href="#features"
+                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 border border-orange-500/40 bg-orange-500/5 text-orange-200 font-semibold rounded-xl hover:bg-orange-500/10 hover:border-orange-400/60 transition-all"
+                >
+                  See Inside the Lab
+                  <Activity className="h-4 w-4" />
+                </a>
               </div>
 
-              <div className="mt-10 flex flex-wrap gap-2.5">
+              <div className="mt-7 sm:mt-10 flex flex-wrap gap-2">
                 {domains.map((d) => (
                   <div
                     key={d.label}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#0a1118] border border-cyan-500/15 text-xs font-mono text-cyan-200/80"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-[#0a1118] border border-cyan-500/15 text-[11px] sm:text-xs font-mono text-cyan-200/80"
                   >
-                    <d.icon className="h-3.5 w-3.5 text-cyan-400/80" />
+                    <d.icon className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-cyan-400/80" />
                     {d.label}
                   </div>
                 ))}
@@ -145,18 +147,18 @@ export default function FaultlineLab() {
               <div className="relative">
                 <div className="absolute inset-[-20px] bg-gradient-to-br from-cyan-500/20 via-transparent to-orange-500/15 rounded-3xl blur-2xl" />
                 <div className="relative rounded-2xl overflow-hidden border border-cyan-500/20 bg-[#070b12] shadow-2xl shadow-cyan-500/10">
-                  <div className="flex items-center gap-2 px-4 py-3 border-b border-cyan-500/15 bg-[#0a1118]">
-                    <div className="flex gap-1.5">
+                  <div className="flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-3 border-b border-cyan-500/15 bg-[#0a1118]">
+                    <div className="flex gap-1.5 flex-shrink-0">
                       <span className="w-2.5 h-2.5 rounded-full bg-orange-500/70" />
                       <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
                       <span className="w-2.5 h-2.5 rounded-full bg-cyan-500/70" />
                     </div>
-                    <span className="ml-2 text-[10px] font-mono tracking-widest text-cyan-300/70 uppercase">
-                      faultline://case-2718.investigate
+                    <span className="ml-1.5 sm:ml-2 text-[10px] font-mono tracking-widest text-cyan-300/70 uppercase truncate">
+                      faultline://case-2718
                     </span>
                   </div>
 
-                  <div className="p-5 space-y-4 font-mono text-xs">
+                  <div className="p-4 sm:p-5 space-y-4 font-mono text-xs">
                     <div>
                       <div className="text-[10px] tracking-widest text-cyan-400/60 uppercase mb-1.5">Incident</div>
                       <div className="text-sm text-foreground font-bold">Edge router intermittent packet loss</div>
@@ -191,13 +193,13 @@ export default function FaultlineLab() {
 
                     <div className="h-px bg-cyan-500/15" />
 
-                    <div className="flex items-center justify-between">
-                      <div>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="min-w-0">
                         <div className="text-[10px] tracking-widest text-cyan-400/60 uppercase">Hypothesis</div>
-                        <div className="text-cyan-100 text-[11px] mt-0.5">BGP session instability</div>
+                        <div className="text-cyan-100 text-[11px] mt-0.5 truncate">BGP session instability</div>
                       </div>
-                      <button className="px-3 py-1.5 text-[10px] font-bold tracking-wider rounded-md bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 uppercase">
-                        Submit Diagnosis
+                      <button className="px-3 py-1.5 text-[10px] font-bold tracking-wider rounded-md bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 uppercase flex-shrink-0">
+                        Submit
                       </button>
                     </div>
                   </div>
@@ -208,58 +210,31 @@ export default function FaultlineLab() {
         </div>
       </section>
 
-      <section className="py-20 bg-card border-t border-b border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <p className="text-xs font-[var(--font-display)] tracking-widest text-cyan-400 mb-3">
-              What It Is
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-5 font-[var(--font-display)]">
-              Not a quiz. A simulator with teeth.
-            </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-lg">
-              Faultline Lab is a premium troubleshooting simulator where you investigate layered failures through logs, telemetry, clues, and interactive diagnostic tools. It blends the feel of a field workbench, a cyber operations console, and a systems puzzle into one immersive product experience.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12">
-            {[
-              { value: "5+", label: "Technical domains" },
-              { value: "∞", label: "Replayable cases" },
-              { value: "1", label: "Real fault per case" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center p-6 rounded-xl bg-background border border-border">
-                <div className="text-4xl font-bold font-[var(--font-display)] bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-xs font-mono tracking-widest text-muted-foreground uppercase">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="features" className="py-20 bg-background">
+      {/* FEATURES */}
+      <section id="features" className="py-16 sm:py-20 bg-card border-t border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-xs font-[var(--font-display)] tracking-widest text-cyan-400 mb-3">
-              Inside the Lab
+          <div className="max-w-2xl mb-10 sm:mb-14">
+            <p className="text-[10px] sm:text-xs font-[var(--font-display)] tracking-[0.25em] text-cyan-400 mb-3 uppercase">
+              Inside the Lab · 01
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-[var(--font-display)]">
-              Eight modules. One investigation.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-[var(--font-display)] leading-tight">
+              Eight modules.{" "}
+              <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
+                One investigation.
+              </span>
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-              Every component built so you can chase the fault, not the interface.
+            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+              Not a quiz app. A simulator with teeth. Every component built so you can chase the fault, not the interface.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {features.map((feat) => (
               <div
                 key={feat.title}
-                className="bg-card border border-border rounded-xl p-6 hover:border-cyan-500/40 transition-all duration-300 group relative overflow-hidden"
+                className="bg-background border border-border rounded-xl p-5 sm:p-6 hover:border-cyan-500/40 transition-all duration-300 group relative overflow-hidden"
               >
-                <div className="absolute -top-px left-4 right-4 h-px bg-gradient-to-r from-transparent via-cyan-500/0 to-transparent group-hover:via-cyan-400/60 transition-colors" />
+                <div className="absolute -top-px left-4 right-4 h-px bg-gradient-to-r from-transparent via-cyan-400/0 to-transparent group-hover:via-cyan-400/60 transition-colors" />
                 <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4 group-hover:bg-cyan-500/15 group-hover:border-cyan-400/40 transition-colors">
                   <feat.icon className="h-5 w-5 text-cyan-400" />
                 </div>
@@ -271,145 +246,121 @@ export default function FaultlineLab() {
         </div>
       </section>
 
-      <section className="py-20 bg-card border-t border-b border-border">
+      {/* DIFFERENTIATORS */}
+      <section className="py-16 sm:py-20 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-xs font-[var(--font-display)] tracking-widest text-orange-400 mb-3">
-              Why It Stands Out
+          <div className="max-w-2xl mb-10 sm:mb-14">
+            <p className="text-[10px] sm:text-xs font-[var(--font-display)] tracking-[0.25em] text-orange-400 mb-3 uppercase">
+              Why It Stands Out · 02
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-[var(--font-display)]">
-              Built for people who actually fix things.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-[var(--font-display)] leading-tight">
+              Built for people who{" "}
+              <span className="bg-gradient-to-r from-orange-400 to-cyan-300 bg-clip-text text-transparent">
+                actually fix things.
+              </span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {differentiators.map((item) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            {differentiators.map((item, idx) => (
               <div
                 key={item.title}
-                className="flex gap-4 bg-background border border-border rounded-xl p-6 hover:border-orange-500/30 transition-colors"
+                className="relative bg-card border border-border rounded-xl p-6 hover:border-orange-500/30 transition-colors"
               >
-                <div className="flex-shrink-0 mt-0.5">
-                  <Shield className="h-5 w-5 text-orange-400" />
+                <div className="text-[10px] font-mono tracking-widest text-orange-400/60 mb-3 uppercase">
+                  {String(idx + 1).padStart(2, "0")} //
                 </div>
-                <div>
-                  <h3 className="text-base font-bold mb-1.5 font-[var(--font-display)]">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                </div>
+                <h3 className="text-lg font-bold mb-2 font-[var(--font-display)]">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-xs font-[var(--font-display)] tracking-widest text-cyan-400 mb-3">
-              Visual Console
+      {/* ARSENAL CROSS-LINK */}
+      <section className="py-16 sm:py-20 bg-card border-t border-b border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-10 sm:mb-12">
+            <p className="text-[10px] sm:text-xs font-[var(--font-display)] tracking-[0.25em] text-cyan-400 mb-3 uppercase">
+              The Arsenal · 03
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-[var(--font-display)]">
-              The diagnostic surface.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-[var(--font-display)] leading-tight">
+              One weapon.{" "}
+              <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
+                Full arsenal.
+              </span>
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-              A taste of the panels, telemetry, and evidence flow inside the lab.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              { title: "Telemetry Stream", lines: ["cpu.spike", "io.wait", "net.flap"], accent: "cyan" },
-              { title: "Evidence Tag", lines: ["syslog:link.flap", "snmp:optic.ok", "trace:bgp.hold"], accent: "orange" },
-              { title: "Hypothesis Log", lines: ["root:bgp.session", "confidence: 78%", "submit -> verdict"], accent: "cyan" },
-            ].map((panel) => (
-              <div key={panel.title} className="rounded-xl border border-border bg-[#070b12] overflow-hidden">
-                <div className={`px-4 py-2.5 border-b border-border bg-[#0a1118] flex items-center justify-between`}>
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-cyan-300/80">{panel.title}</span>
-                  <span className={`w-2 h-2 rounded-full ${panel.accent === "orange" ? "bg-orange-400" : "bg-cyan-400"} animate-pulse`} />
-                </div>
-                <div className="p-5 space-y-2 font-mono text-xs">
-                  {panel.lines.map((line, i) => (
-                    <div key={i} className="flex items-center gap-2 text-cyan-100/80">
-                      <span className="text-cyan-500/40">{String(i + 1).padStart(2, "0")}</span>
-                      <span>{line}</span>
-                    </div>
-                  ))}
-                  <div className="pt-2 mt-2 border-t border-cyan-500/10">
-                    <span className={`inline-block w-2 h-3 ${panel.accent === "orange" ? "bg-orange-400" : "bg-cyan-400"} animate-pulse`} />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-card border-t border-b border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-xs font-[var(--font-display)] tracking-widest text-cyan-400 mb-3">
-              Arsenal
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-[var(--font-display)]">
-              One weapon. Full arsenal.
-            </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
+            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
               Faultline Lab joins a family of operator-grade tools under the Shotgun Ninjas umbrella.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {ecosystemProducts.map((prod) => (
               <Link
                 key={prod.name}
                 to={prod.link}
-                className="flex items-center gap-4 rounded-xl p-5 border bg-background border-border hover:border-cyan-500/30 hover:bg-card/80 transition-all duration-300 group"
+                className="flex items-center gap-4 rounded-xl p-4 sm:p-5 border bg-background border-border hover:border-cyan-500/40 hover:bg-card/80 transition-all duration-300 group"
               >
-                <div className="w-10 h-10 rounded-lg bg-cyan-500/8 border border-cyan-500/15 flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/12 transition-colors">
+                <div className="w-11 h-11 rounded-lg bg-cyan-500/8 border border-cyan-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/15 group-hover:border-cyan-400/40 transition-colors">
                   <Layers className="h-5 w-5 text-cyan-400/80" />
                 </div>
-                <div>
-                  <p className="font-bold font-[var(--font-display)] text-sm text-foreground">
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold font-[var(--font-display)] text-sm text-foreground truncate">
                     {prod.name}
                   </p>
-                  <p className="text-xs text-muted-foreground">{prod.tagline}</p>
+                  <p className="text-xs text-muted-foreground truncate">{prod.tagline}</p>
                 </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
               </Link>
             ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              to="/#platforms"
+              className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 font-medium font-[var(--font-display)] tracking-wider uppercase"
+            >
+              Browse the full arsenal
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-background relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/3 via-transparent to-orange-500/3" />
+      {/* FINAL CTA */}
+      <section className="py-20 sm:py-24 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-orange-500/5" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/8 rounded-full blur-[180px]" />
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-6">
-            <Search className="h-3.5 w-3.5 text-cyan-400" />
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-5 sm:mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
             <span className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-cyan-300/90 uppercase">
-              The lab is open
+              Early Access · Open
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 font-[var(--font-display)] leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5 font-[var(--font-display)] leading-tight">
             Stop guessing.{" "}
             <span className="bg-gradient-to-r from-cyan-300 to-orange-400 bg-clip-text text-transparent">
               Start investigating.
             </span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed text-lg">
+          <p className="text-muted-foreground max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed text-base sm:text-lg">
             Faultline Lab is built for technical minds who'd rather chase evidence than click answers. Get on the early access list.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-cyan-500 transition-all shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 text-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-cyan-500 transition-all shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 text-base sm:text-lg"
             >
               Join Early Access
               <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               to="/#platforms"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 border border-border text-foreground font-semibold rounded-xl hover:bg-card hover:border-cyan-500/30 transition-all text-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 border border-border text-foreground font-semibold rounded-xl hover:bg-card hover:border-cyan-500/30 transition-all text-base sm:text-lg"
             >
               Browse the Arsenal
             </Link>
