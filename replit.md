@@ -157,6 +157,7 @@ artifacts-monorepo/
 - `/brandforgeos` — BrandForge OS product page (NEW badge, marketing OS spotlight page, all CTAs → bf-os.com)
 - `/snapproof-os` — SnapProof OS product page (ACTIVE, field documentation & proof-of-work, CTAs → snapproofos.com)
 - `/pulsedesk` — PulseDesk product page (NEW badge, support operations platform, CTAs → pulsedesk.support)
+- `/faultline-lab` — Faultline Lab product page (NEW flagship, cinematic troubleshooting simulator, blue/orange cyber-diagnostic identity, internal CTAs to /contact for early access)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
 - `*` — 404 page

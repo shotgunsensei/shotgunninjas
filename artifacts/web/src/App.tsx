@@ -16,6 +16,7 @@ import PlayPackPilot from "./pages/PlayPackPilot";
 import BrandForgeOS from "./pages/BrandForgeOS";
 import SnapProofOS from "./pages/SnapProofOS";
 import PulseDesk from "./pages/PulseDesk";
+import FaultlineLab from "./pages/FaultlineLab";
 import SoundStudio from "./pages/SoundStudio";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
@@ -50,6 +51,7 @@ function App() {
           <Route path="/brandforgeos" element={<BrandForgeOS />} />
           <Route path="/snapproof-os" element={<SnapProofOS />} />
           <Route path="/pulsedesk" element={<PulseDesk />} />
+          <Route path="/faultline-lab" element={<FaultlineLab />} />
           <Route path="/soundstudio" element={<SoundStudio />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />

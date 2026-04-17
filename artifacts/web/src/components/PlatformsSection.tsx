@@ -25,6 +25,13 @@ interface AppEntry {
 
 const featured: AppEntry[] = [
   {
+    title: "Faultline Lab",
+    tagline: "Investigate the Break.",
+    description: "A cinematic troubleshooting simulator for technical minds. Investigate failures, gather evidence, and diagnose the real fault across systems, networks, automotive, and electronics.",
+    link: "/faultline-lab",
+    status: "NEW",
+  },
+  {
     title: "TradeFlow Kit",
     tagline: "Own the Workflow.",
     description: "Workflow automation for blue-collar businesses that eliminate chaos.",
@@ -169,12 +176,35 @@ export default function PlatformsSection() {
             >
               <div className={`flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                 <div className="md:w-1/2 relative overflow-hidden">
-                  {platform.image && (
+                  {platform.image ? (
                     <img
                       src={platform.image}
                       alt={platform.title}
                       className="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
+                  ) : (
+                    <div className="w-full h-48 md:h-64 relative bg-[#05080d] overflow-hidden">
+                      <div className="absolute inset-0 opacity-[0.08]" style={{
+                        backgroundImage: "linear-gradient(rgba(56,189,248,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.5) 1px, transparent 1px)",
+                        backgroundSize: "32px 32px",
+                      }} />
+                      <div className="absolute top-0 left-1/3 w-[300px] h-[300px] bg-cyan-500/15 rounded-full blur-[100px] -translate-y-1/2" />
+                      <div className="absolute bottom-0 right-1/4 w-[260px] h-[260px] bg-orange-500/12 rounded-full blur-[100px] translate-y-1/3" />
+                      <div className="absolute inset-0 flex items-center justify-center p-6">
+                        <div className="text-center">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-3">
+                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                            <span className="text-[9px] font-mono tracking-widest text-cyan-300/80 uppercase">faultline://active</span>
+                          </div>
+                          <div className="font-[var(--font-display)] text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-300 via-cyan-400 to-orange-400 bg-clip-text text-transparent tracking-tight">
+                            FAULTLINE LAB
+                          </div>
+                          <div className="mt-2 text-[10px] font-mono tracking-widest text-cyan-300/50 uppercase">
+                            Diagnostic Simulator
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-card/40" />
                 </div>

@@ -1,0 +1,290 @@
+Use the existing shotgunninjas.com codebase as the source of truth. Do NOT restart the site. Do NOT replace the current Shotgun Ninjas branding, navigation, or existing products. Integrate Faultline Lab into the site as a new flagship product inside the Shotgun Ninjas arsenal.
+
+MISSION
+Add Faultline Lab to shotgunninjas.com in a way that feels native to the Shotgun Ninjas ecosystem, visually premium, conversion-friendly, and ready to grow into a full product funnel.
+
+Faultline Lab is a cinematic troubleshooting simulator for technical minds. It belongs in the arsenal alongside the other Shotgun Ninjas products, but it should keep its own identity:
+- darker cyber-diagnostic-lab aesthetic
+- blue/orange faultline color energy
+- premium technical tone
+- serious, immersive, tool-like feel
+
+The integration must make Faultline Lab feel like:
+1. a real product in the Shotgun Ninjas arsenal
+2. a premium featured app
+3. something users can click into, understand quickly, and act on
+
+DO NOT:
+- rebuild the entire site from scratch
+- break existing routes, styles, or product sections
+- create a disconnected mini-site that ignores Shotgun Ninjas branding
+- hardcode Faultline Lab content in random components
+- make Faultline Lab look like a generic template card
+- use placeholder lorem ipsum
+- leave dead buttons or fake CTAs
+- remove or damage existing arsenal items
+
+DO:
+- preserve existing structure where possible
+- add Faultline Lab as a first-class arsenal product
+- create a dedicated product page for Faultline Lab
+- add clear internal linking from the main site to the product page
+- keep the implementation modular and easy to extend
+- make the design responsive and polished
+- use existing uploaded or available Faultline Lab logo and hero assets if already present in the project
+- if those assets are not wired yet, create clean placeholders/hooks so they can be swapped in easily
+
+SITE INTEGRATION GOALS
+
+1. Add Faultline Lab to the main arsenal experience
+- Add Faultline Lab to the products / arsenal section on the homepage and/or arsenal page
+- It should appear as a premium product card, not buried in a list
+- Include:
+  - product name
+  - short pitch
+  - visual identity
+  - primary CTA
+  - secondary CTA if appropriate
+
+2. Create a dedicated Faultline Lab landing page
+Create a dedicated page such as one of these, based on the site’s current route structure:
+- /arsenal/faultline-lab
+- /products/faultline-lab
+- /faultline-lab
+
+Use the route structure that best matches the existing site architecture. Do not create route inconsistency.
+
+3. Add cross-linking
+Add clean internal links so users can navigate:
+- homepage / arsenal section → Faultline Lab page
+- Faultline Lab page → broader arsenal page
+- Faultline Lab page → other related products where appropriate
+- site nav / footer / product directory → Faultline Lab entry
+
+4. Keep Shotgun Ninjas brand cohesion
+Faultline Lab should still feel part of Shotgun Ninjas Productions.
+Use brand cohesion through:
+- shared layout language
+- shared navigation
+- shared footer
+- shared arsenal structure
+- shared conversion patterns
+
+But allow Faultline Lab to have its own sub-identity through:
+- blue/orange color accents
+- darker technical surfaces
+- diagnostic-console visual language
+- sharper industrial/cyber styling
+
+FAULTLINE LAB PAGE REQUIREMENTS
+
+Build a polished product landing page with the following sections:
+
+A. Hero section
+Include:
+- Faultline Lab logo
+- product headline
+- strong subheadline
+- primary CTA
+- secondary CTA
+- hero visual using the Faultline Lab hero image if available
+
+Recommended headline:
+Faultline Lab
+Investigate the break. Find the truth.
+
+Recommended subheadline:
+A cinematic troubleshooting simulator for technical minds. Diagnose failures across infrastructure, networking, systems, automotive, and electronics through real investigation flow, evidence gathering, and disciplined analysis.
+
+Primary CTA suggestions:
+- Enter the Lab
+- Explore Faultline Lab
+- View Product
+
+Secondary CTA suggestions:
+- See Features
+- View in Arsenal
+- Join Early Access
+Use the CTA pattern that best matches the current state of the product and site.
+
+B. Product positioning / value section
+Explain what Faultline Lab is in a clean, visually strong section.
+
+Key points to communicate:
+- interactive troubleshooting simulator
+- not a quiz app
+- evidence-driven investigation
+- multiple technical domains
+- premium cyber-diagnostic experience
+- part of the Shotgun Ninjas arsenal
+
+C. Feature grid
+Include feature cards for things like:
+- Handcrafted incident cases
+- Investigation tools
+- Evidence locker
+- Diagnosis and scoring
+- Daily challenge / replayability
+- Premium packs and upgrades
+- Mobile-friendly experience
+- Case authoring / expansion potential
+
+D. Why it stands out
+Create a section that explains why Faultline Lab is different from generic learning tools or static sims.
+
+Suggested themes:
+- tool-like feel instead of toy-like feel
+- real troubleshooting logic
+- layered clues and red herrings
+- built for technical minds
+- disciplined investigation over guesswork
+
+E. Arsenal integration strip
+Add a section showing that Faultline Lab is one weapon in the Shotgun Ninjas arsenal.
+This can include cards or links to other products already on the site.
+Do not invent fake products. Pull from existing arsenal entries already present in the site.
+
+F. Visual showcase section
+Add a screenshot / image gallery / visual panel area that can display:
+- logo
+- hero image
+- UI mockup or preview cards
+- future screenshots
+Use existing assets if present. If not, create a clean reusable media component with placeholder slots.
+
+G. CTA footer section
+Close with a strong conversion section that pushes the user to:
+- explore the product
+- join early access
+- launch the app
+- or browse the arsenal
+
+Use whatever CTA best matches the current project maturity and site structure.
+
+CONTENT / COPY DIRECTION
+
+Use premium, technically literate copy. Avoid cheesy hype.
+Tone:
+- sharp
+- confident
+- immersive
+- technical
+- product-focused
+
+Suggested short product card copy:
+Faultline Lab
+A cinematic troubleshooting simulator built for technical minds. Investigate failures, gather evidence, and diagnose the real fault across systems, networks, automotive, and electronics.
+
+Suggested medium description:
+Faultline Lab is a premium troubleshooting simulator where users investigate layered failures through logs, telemetry, clues, and interactive diagnostic tools. It blends the feel of a field workbench, a cyber operations console, and a systems puzzle into one immersive product experience.
+
+Suggested arsenal badge ideas:
+- Featured
+- New
+- Premium
+- Flagship
+Only use badges that fit the current site’s design language.
+
+VISUAL REQUIREMENTS
+
+Make Faultline Lab visually distinct but still native to Shotgun Ninjas.
+
+Design cues:
+- dark premium surfaces
+- blue/orange accent lighting
+- subtle glow
+- diagnostic-console panels
+- crisp typography
+- strong card hierarchy
+- responsive layouts
+- polished hover and CTA states
+
+Do not overuse effects.
+Do not make it cluttered.
+Do not let the visual style fight the rest of the site.
+
+RESPONSIVE REQUIREMENTS
+
+Ensure Faultline Lab integration works on:
+- desktop
+- tablet
+- mobile
+
+Mobile requirements:
+- product card remains readable
+- hero section scales cleanly
+- CTA buttons remain obvious
+- images do not break layout
+- feature grid stacks cleanly
+- no overflow or crushed text
+- cross-links and arsenal cards remain tappable
+
+SEO / META / SHARING
+
+Add or update:
+- page title
+- meta description
+- Open Graph title
+- Open Graph description
+- social preview image hook if available
+
+Suggested meta description:
+Faultline Lab is a cinematic troubleshooting simulator from Shotgun Ninjas Productions, built for technical minds who want to investigate real failures through evidence, tools, and disciplined analysis.
+
+TECHNICAL REQUIREMENTS
+
+- Follow the site’s existing architecture and component patterns
+- Create reusable components where sensible
+- Keep Faultline Lab content modular
+- Do not hardcode everything into one page file
+- Use the site’s current styling system
+- Keep image handling clean and swappable
+- Do not break existing navigation
+- Do not regress performance unnecessarily
+
+IF THE SITE ALREADY HAS:
+- a product card component
+- a product page template
+- an arsenal grid
+- a hero section system
+- a CMS-like data file
+Then reuse and extend those systems instead of building one-off duplicates.
+
+PREFERRED IMPLEMENTATION APPROACH
+
+1. Audit the current site structure
+2. Find the existing arsenal/product section
+3. Add Faultline Lab as a new structured product entry
+4. Create or extend a product detail page/template
+5. Build the dedicated Faultline Lab landing page
+6. Wire homepage/arsenal/nav/footer links
+7. Add responsive polish
+8. Verify no existing product pages broke
+
+ACCEPTANCE CRITERIA
+
+This task is complete only if:
+- Faultline Lab appears in the Shotgun Ninjas arsenal
+- Faultline Lab has a dedicated landing page
+- homepage and/or arsenal links navigate correctly
+- the page feels visually premium and brand-aligned
+- the integration is responsive
+- no dead buttons remain in the main Faultline Lab path
+- existing site sections still work
+- Faultline Lab feels like a real featured product, not a placeholder add-on
+
+SELF-AUDIT DIRECTIVE
+
+Before finalizing, audit and fix:
+- broken routes
+- broken images
+- dead CTAs
+- inconsistent branding
+- layout issues on mobile
+- weak copy hierarchy
+- duplicated product logic
+- Faultline Lab sections not wired into the arsenal properly
+
+FINAL INSTRUCTION
+
+Add Faultline Lab to shotgunninjas.com like it belongs there. Make it feel like a flagship weapon in the Shotgun Ninjas arsenal: premium, sharp, immersive, and ready to click into.

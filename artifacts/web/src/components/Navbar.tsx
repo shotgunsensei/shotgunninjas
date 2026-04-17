@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import snpLogo from "@/assets/SNPlogo.png";
 
 const productLinks = [
+  { name: "Faultline Lab", href: "/faultline-lab" },
   { name: "TradeFlow Kit", href: "/tradeflow" },
   { name: "Tech Deck", href: "/techdeck" },
   { name: "PulseDesk", href: "/pulsedesk" },

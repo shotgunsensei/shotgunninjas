@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 import snpLogo from "@/assets/SNPlogo.png";
 
 const productLinks = [
+  { name: "Faultline Lab", href: "/faultline-lab" },
   { name: "TradeFlow Kit", href: "/tradeflow" },
   { name: "Tech Deck", href: "/techdeck" },
   { name: "PulseDesk", href: "https://pulsedesk.support" },
