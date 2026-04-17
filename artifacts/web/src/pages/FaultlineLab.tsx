@@ -15,10 +15,13 @@ import {
   Server,
   AlertTriangle,
   Layers,
+  ExternalLink,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+const FAULTLINE_URL = "https://faultlinelab.com";
 
 const features = [
   { icon: AlertTriangle, title: "Handcrafted Incident Cases", description: "Real-feeling failure scenarios authored by operators — layered, ambiguous, full of red herrings." },
@@ -114,13 +117,15 @@ export default function FaultlineLab() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Link
-                  to="/contact"
+                <a
+                  href={FAULTLINE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-cyan-500 transition-all shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
                 >
-                  Join Early Access
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                  Enter the Lab
+                  <ExternalLink className="h-4 w-4" />
+                </a>
                 <a
                   href="#features"
                   className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 border border-orange-500/40 bg-orange-500/5 text-orange-200 font-semibold rounded-xl hover:bg-orange-500/10 hover:border-orange-400/60 transition-all"
@@ -129,6 +134,9 @@ export default function FaultlineLab() {
                   <Activity className="h-4 w-4" />
                 </a>
               </div>
+              <p className="mt-4 text-[10px] font-mono tracking-widest text-cyan-400/60 uppercase">
+                faultlinelab.com
+              </p>
 
               <div className="mt-7 sm:mt-10 flex flex-wrap gap-2">
                 {domains.map((d) => (
@@ -338,7 +346,7 @@ export default function FaultlineLab() {
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-5 sm:mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
             <span className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-cyan-300/90 uppercase">
-              Early Access · Open
+              The Lab Is Open
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5 font-[var(--font-display)] leading-tight">
@@ -348,23 +356,29 @@ export default function FaultlineLab() {
             </span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed text-base sm:text-lg">
-            Faultline Lab is built for technical minds who'd rather chase evidence than click answers. Get on the early access list.
+            Faultline Lab is live at faultlinelab.com — built for technical minds who'd rather chase evidence than click answers.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Link
-              to="/contact"
+            <a
+              href={FAULTLINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-cyan-500 transition-all shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 text-base sm:text-lg"
             >
-              Join Early Access
-              <ArrowRight className="h-5 w-5" />
-            </Link>
+              Enter the Lab
+              <ExternalLink className="h-5 w-5" />
+            </a>
             <Link
               to="/#platforms"
               className="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 border border-border text-foreground font-semibold rounded-xl hover:bg-card hover:border-cyan-500/30 transition-all text-base sm:text-lg"
             >
               Browse the Arsenal
+              <ArrowRight className="h-5 w-5" />
             </Link>
           </div>
+          <p className="mt-5 text-[10px] font-mono tracking-widest text-cyan-400/60 uppercase">
+            faultlinelab.com
+          </p>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import operatorOsImg from "@assets/OperatorOShero_1774285672020.png";
 import techDeckImg from "@assets/techdeckfeature_1774285697731.png";
@@ -27,7 +27,7 @@ const flagship: AppEntry = {
   title: "Faultline Lab",
   tagline: "Investigate the Break. Find the Truth.",
   description: "A cinematic troubleshooting simulator for technical minds. Investigate layered failures, gather evidence, and diagnose the real fault across infrastructure, networking, systems, automotive, and electronics.",
-  link: "/faultline-lab",
+  link: "https://faultlinelab.com",
   status: "FLAGSHIP",
 };
 
@@ -169,8 +169,10 @@ export default function PlatformsSection() {
           <span>MODULES: {featured.length + 1}</span>
         </div>
 
-        <Link
-          to={flagship.link}
+        <a
+          href={flagship.link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="group block mb-10 rounded-2xl overflow-hidden relative"
         >
           <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-cyan-500/40 via-cyan-400/30 to-orange-500/40 opacity-60 group-hover:opacity-100 transition-opacity" />
@@ -233,12 +235,15 @@ export default function PlatformsSection() {
                 </p>
                 <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold text-sm w-fit group-hover:from-cyan-400 group-hover:to-cyan-500 transition-all shadow-lg shadow-cyan-500/20">
                   Enter the Lab
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                  <ExternalLink className="h-4 w-4" />
                 </div>
+                <p className="mt-3 text-[10px] font-mono tracking-widest text-cyan-400/60 uppercase">
+                  faultlinelab.com
+                </p>
               </div>
             </div>
           </div>
-        </Link>
+        </a>
 
         <div className="space-y-6 mb-8">
           {featured.map((platform, idx) => (
