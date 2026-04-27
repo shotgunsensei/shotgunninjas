@@ -7,6 +7,7 @@ import torqueShedImg from "@assets/torqueshedfeature1024500_1774285672020.png";
 import neonRacerImg from "@assets/neonracerhero_1774285672019.png";
 import ninjamationImg from "@assets/ninjamationfeatured_1774292377935.png";
 import labyrinthRoninImg from "@assets/labyrinthroninfeatured_1774292377934.png";
+import poolHallImg from "@assets/ChatGPT_Image_Apr_27,_2026,_12_56_54_PM_1777309034433.png";
 import playpackPilotImg from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png";
 import brandforgeOsImg from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.png";
 import snapproofOsImg from "@assets/snapproof-hero_1775232639391.png";
@@ -119,6 +120,14 @@ const featured: AppEntry[] = [
     link: "/labyrinthronin",
     status: "EXPERIMENTAL",
     image: labyrinthRoninImg,
+  },
+  {
+    title: "Shotgun Ninjas Pool Hall",
+    tagline: "Own the Table.",
+    description: "Fast-paced 2D pool with skill, style, and strategy. Multiple modes, ranked play, and a custom ninja loadout.",
+    link: "/snpoolhall",
+    status: "NEW",
+    image: poolHallImg,
   },
 ];
 

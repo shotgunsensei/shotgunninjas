@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform built on Replit, showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, BrandForge OS, SnapProof OS, PulseDesk, PlayPack Pilot, Ninjamation, LabyrinthRonin, NeonRacer) and a Sound Studio music page. Contact email: john@shotgunninjas.com.
+Shotgun Ninjas Productions website — a dark-themed React+Vite+TypeScript+Tailwind platform built on Replit, showcasing multiple products (OperatorOS, TechDeck, TradeFlow, TorqueShed, BrandForge OS, SnapProof OS, PulseDesk, PlayPack Pilot, Ninjamation, Faultline Lab, LabyrinthRonin, NeonRacer, Shotgun Ninjas Pool Hall) and a Sound Studio music page. Contact email: john@shotgunninjas.com.
 
 ## Stack
 
@@ -157,7 +157,8 @@ artifacts-monorepo/
 - `/brandforgeos` — BrandForge OS product page (NEW badge, marketing OS spotlight page, all CTAs → bf-os.com)
 - `/snapproof-os` — SnapProof OS product page (ACTIVE, field documentation & proof-of-work, CTAs → snapproofos.com)
 - `/pulsedesk` — PulseDesk product page (NEW badge, support operations platform, CTAs → pulsedesk.support)
-- `/faultline-lab` — Faultline Lab product page (NEW flagship, cinematic troubleshooting simulator, blue/orange cyber-diagnostic identity, internal CTAs to /contact for early access)
+- `/faultline-lab` — Faultline Lab product page (FLAGSHIP, cinematic troubleshooting simulator, cyan/orange identity, all CTAs → faultlinelab.com)
+- `/snpoolhall` — Shotgun Ninjas Pool Hall product page (NEW, fast-paced 2D ninja pool game, hero+banner artwork, CTAs → snpoolhall.com)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
 - `*` — 404 page
@@ -194,6 +195,9 @@ Featured products on the homepage use attached asset images:
 - PulseDesk hero: `@assets/Modern_healthcare_tech_in_action_1775761546446.png`
 - PulseDesk logo: `@assets/pulsedesklogo_1775761546445.png`
 - PulseDesk title+logo: `@assets/pulsedecktitleandlogo_1775761546446.png`
+- Pool Hall logo: `@assets/ChatGPT_Image_Apr_27,_2026,_12_55_57_PM_1777309034433.png`
+- Pool Hall hero (arsenal card + page hero): `@assets/ChatGPT_Image_Apr_27,_2026,_12_56_54_PM_1777309034433.png`
+- Pool Hall info banner: `@assets/ChatGPT_Image_Apr_27,_2026,_12_56_38_PM_1777309034433.png`
 
 Sound Studio hero background:
 - `@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.png`

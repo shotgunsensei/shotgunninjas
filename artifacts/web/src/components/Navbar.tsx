@@ -16,6 +16,7 @@ const productLinks = [
   { name: "BrandForge OS", href: "/brandforgeos" },
   { name: "Neon Racer", href: "/neonracer" },
   { name: "Labyrinth Ronin", href: "/labyrinthronin" },
+  { name: "Pool Hall", href: "/snpoolhall" },
 ];
 
 const mainLinks = [

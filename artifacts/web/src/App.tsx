@@ -12,6 +12,7 @@ import TorqueShed from "./pages/TorqueShed";
 import NeonRacer from "./pages/NeonRacer";
 import Ninjamation from "./pages/Ninjamation";
 import LabyrinthRonin from "./pages/LabyrinthRonin";
+import SnpoolHall from "./pages/SnpoolHall";
 import PlayPackPilot from "./pages/PlayPackPilot";
 import BrandForgeOS from "./pages/BrandForgeOS";
 import SnapProofOS from "./pages/SnapProofOS";
@@ -47,6 +48,7 @@ function App() {
           <Route path="/neonracer" element={<NeonRacer />} />
           <Route path="/ninjamation" element={<Ninjamation />} />
           <Route path="/labyrinthronin" element={<LabyrinthRonin />} />
+          <Route path="/snpoolhall" element={<SnpoolHall />} />
           <Route path="/playpackpilot" element={<PlayPackPilot />} />
           <Route path="/brandforgeos" element={<BrandForgeOS />} />
           <Route path="/snapproof-os" element={<SnapProofOS />} />
