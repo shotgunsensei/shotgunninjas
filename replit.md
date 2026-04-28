@@ -202,6 +202,9 @@ Featured products on the homepage use attached asset images:
 Sound Studio hero background:
 - `@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.png`
 
+Sound Studio Virtual Studio (DAW) banner artwork — used in `VirtualStudioBanner` on `/soundstudio` linking to https://shotgunninjas.studio:
+- `@assets/ChatGPT_Image_Apr_28,_2026,_04_58_44_PM_1777409942491.png`
+
 ## Navbar
 
 - Consolidated navigation: Home, Sound Studio, Ninja Village, About, Contact + "Arsenal" dropdown for all product pages
