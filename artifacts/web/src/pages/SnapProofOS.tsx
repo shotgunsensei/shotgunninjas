@@ -22,7 +22,7 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import snapproofHero from "@assets/snapproof-hero_1775232639391.png";
+import snapproofHero from "@assets/snapproof-hero_1775232639391.webp";
 import snapproofLogo from "@assets/snapproof_1775232639389.png";
 
 const features = [

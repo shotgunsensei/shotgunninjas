@@ -19,8 +19,8 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import playpackHero from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png";
-import playpackLogo from "@assets/playpack_pilot_1774642220483.png";
+import playpackHero from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.webp";
+import playpackLogo from "@assets/playpack_pilot_1774642220483.webp";
 
 const features = [
   { icon: Globe, title: "Website Scan", description: "Analyze any live URL for PWA readiness, manifest quality, service worker status, and mobile compatibility." },

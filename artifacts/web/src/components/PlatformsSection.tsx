@@ -1,17 +1,18 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackOutbound } from "@/lib/trackOutbound";
 import operatorOsImg from "@assets/OperatorOShero_1774285672020.png";
-import techDeckImg from "@assets/techdeckfeature_1774285697731.png";
-import tradeFlowImg from "@assets/tradeflowfeature_1774285697732.png";
-import torqueShedImg from "@assets/torqueshedfeature1024500_1774285672020.png";
-import neonRacerImg from "@assets/neonracerhero_1774285672019.png";
-import ninjamationImg from "@assets/ninjamationfeatured_1774292377935.png";
-import labyrinthRoninImg from "@assets/labyrinthroninfeatured_1774292377934.png";
-import poolHallImg from "@assets/ChatGPT_Image_Apr_27,_2026,_12_56_54_PM_1777309034433.png";
-import playpackPilotImg from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png";
-import brandforgeOsImg from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.png";
-import snapproofOsImg from "@assets/snapproof-hero_1775232639391.png";
-import pulsedeskImg from "@assets/Modern_healthcare_tech_in_action_1775761546446.png";
+import techDeckImg from "@assets/techdeckfeature_1774285697731.webp";
+import tradeFlowImg from "@assets/tradeflowfeature_1774285697732.webp";
+import torqueShedImg from "@assets/torqueshedfeature1024500_1774285672020.webp";
+import neonRacerImg from "@assets/neonracerhero_1774285672019.webp";
+import ninjamationImg from "@assets/ninjamationfeatured_1774292377935.webp";
+import labyrinthRoninImg from "@assets/labyrinthroninfeatured_1774292377934.webp";
+import poolHallImg from "@assets/ChatGPT_Image_Apr_27,_2026,_12_56_54_PM_1777309034433.webp";
+import playpackPilotImg from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.webp";
+import brandforgeOsImg from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.webp";
+import snapproofOsImg from "@assets/snapproof-hero_1775232639391.webp";
+import pulsedeskImg from "@assets/Modern_healthcare_tech_in_action_1775761546446.webp";
 
 type AppStatus = "ACTIVE" | "BETA" | "EXPERIMENTAL" | "NEW" | "FLAGSHIP";
 
@@ -182,6 +183,7 @@ export default function PlatformsSection() {
           href={flagship.link}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackOutbound(flagship.link, "platforms:flagship")}
           className="group block mb-10 rounded-2xl overflow-hidden relative"
         >
           <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-cyan-500/40 via-cyan-400/30 to-orange-500/40 opacity-60 group-hover:opacity-100 transition-opacity" />

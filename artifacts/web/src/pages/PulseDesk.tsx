@@ -16,8 +16,8 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import pulsedeskHero from "@assets/Modern_healthcare_tech_in_action_1775761546446.png";
-import pulsedeskLogo from "@assets/pulsedesklogo_1775761546445.png";
+import pulsedeskHero from "@assets/Modern_healthcare_tech_in_action_1775761546446.webp";
+import pulsedeskLogo from "@assets/pulsedesklogo_1775761546445.webp";
 
 const features = [
   { icon: Ticket, title: "Ticket Command Center", description: "Intake, triage, and resolve support requests from one organized dashboard — no scattered inboxes." },

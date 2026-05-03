@@ -8,8 +8,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import pulsedeskLogo from "@assets/pulsedesklogo_1775761546445.png";
-import pulsedeskHero from "@assets/Modern_healthcare_tech_in_action_1775761546446.png";
+import pulsedeskLogo from "@assets/pulsedesklogo_1775761546445.webp";
+import pulsedeskHero from "@assets/Modern_healthcare_tech_in_action_1775761546446.webp";
 
 const highlights = [
   { icon: Ticket, title: "Ticket Command Center", desc: "Intake, triage, and resolve support requests from one organized dashboard." },

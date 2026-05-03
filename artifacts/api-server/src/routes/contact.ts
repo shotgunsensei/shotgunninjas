@@ -2,10 +2,17 @@ import { Router, type IRouter } from "express";
 import { db } from "@workspace/db";
 import { contactMessagesTable } from "@workspace/db/schema";
 import { SubmitContactBody, SubmitContactResponse } from "@workspace/api-zod";
+import { rateLimit } from "../middlewares/rateLimit";
 
 const router: IRouter = Router();
 
-router.post("/contact", async (req, res) => {
+const contactLimiter = rateLimit({
+  scope: "contact:submit",
+  windowMs: 60 * 1000,
+  max: 3,
+});
+
+router.post("/contact", contactLimiter, async (req, res) => {
   try {
     const body = SubmitContactBody.parse(req.body);
 

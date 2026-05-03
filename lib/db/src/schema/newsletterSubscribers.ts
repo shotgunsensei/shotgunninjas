@@ -8,10 +8,15 @@ export const newsletterSubscribersTable = pgTable(
     id: serial("id").primaryKey(),
     email: text("email").notNull(),
     source: text("source"),
+    unsubscribeToken: text("unsubscribe_token"),
+    unsubscribedAt: timestamp("unsubscribed_at"),
     createdAt: timestamp("created_at").defaultNow().notNull(),
   },
   (t) => ({
     emailUnique: uniqueIndex("newsletter_subscribers_email_unique").on(t.email),
+    tokenUnique: uniqueIndex("newsletter_subscribers_token_unique").on(
+      t.unsubscribeToken,
+    ),
   }),
 );
 

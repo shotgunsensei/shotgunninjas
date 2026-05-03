@@ -7,6 +7,7 @@ import newsletterRouter from "./newsletter";
 import authRouter from "./auth";
 import clanRouter from "./clan";
 import adminRouter from "./admin";
+import trackRouter from "./track";
 
 const router: IRouter = Router();
 
@@ -18,5 +19,6 @@ router.use(newsletterRouter);
 router.use(authRouter);
 router.use(clanRouter);
 router.use(adminRouter);
+router.use(trackRouter);
 
 export default router;

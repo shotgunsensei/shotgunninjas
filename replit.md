@@ -231,6 +231,20 @@ Sound Studio Virtual Studio (DAW) banner artwork — used in `VirtualStudioBanne
 - `pnpm run build` — typecheck + build all packages
 - `pnpm run typecheck` — `tsc --build --emitDeclarationOnly`
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API schemas/hooks
+- `pnpm run audit:links` — scan `App.tsx` routes vs every `<Link to>` / `href="/..."` in `artifacts/web/src` and warn on broken internal links
+- `pnpm run optimize:images` — convert any `attached_assets/*.{png,jpg,jpeg}` over 400KB to a WebP sibling (q78); update imports manually
+- `pnpm --filter @workspace/api-server test` — vitest+supertest smoke suite (healthz, newsletter, contact, track, unsubscribe)
+
+## Site improvements (May 2026)
+
+- **Image optimization**: 18 large attached assets + `hero-bg`/`hero-ninja` converted to WebP; ~92% average size reduction. All web imports swapped to `.webp`.
+- **Outbound click tracking**: `outbound_clicks` table + `POST /api/track/outbound` (rate-limited 60/min). Helper `lib/trackOutbound.ts` uses `navigator.sendBeacon` with `fetch keepalive` fallback. Wired into Navbar external links, ProductPageLayout external CTAs, and PlatformsSection flagship card.
+- **Newsletter unsubscribe**: `unsubscribe_token` (24-byte hex, ~192 bits entropy) + `unsubscribed_at` columns on `newsletter_subscribers`. `GET /api/newsletter/unsubscribe?token=…` is idempotent. `/unsubscribe` page on the web app + Footer link.
+- **Rate limiting**: in-memory IP+scope bucket middleware (`middlewares/rateLimit.ts`) — newsletter 5/min, contact 3/min, track 60/min. Express `trust proxy` enabled so `req.ip` honors `X-Forwarded-For`.
+- **A11y**: Navbar Arsenal dropdown has full keyboard support (Escape closes + restores focus, ARIA haspopup/expanded/controls, role=menu/menuitem, focus rings on every interactive element).
+- **Per-page SEO**: `hooks/useSEO.ts` sets title + description + OG/Twitter tags + canonical URL on mount and resets to site defaults on unmount (no meta leakage between routes). Wired into ProductPageLayout, Index, and Unsubscribe.
+- **PWA**: `site.webmanifest` updated with theme color `#0a0506` and maskable icons.
+- **Smoke tests**: vitest + supertest (`artifacts/api-server/src/__tests__/smoke.test.ts`), 9 tests covering health, newsletter subscribe (valid/invalid + token issuance), contact, outbound tracking, and unsubscribe edge cases.
 
 ## Packages
 

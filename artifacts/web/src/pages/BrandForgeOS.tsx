@@ -14,8 +14,8 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import brandforgeHero from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.png";
-import brandforgeLogo from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_28_AM_1775110912706.png";
+import brandforgeHero from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.webp";
+import brandforgeLogo from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_28_AM_1775110912706.webp";
 
 const capabilities = [
   { icon: Palette, title: "Brand Setup & Messaging", description: "Define identity, voice, positioning, and core messaging with guided AI workflows." },

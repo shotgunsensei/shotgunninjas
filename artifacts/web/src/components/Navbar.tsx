@@ -2,6 +2,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import snpLogo from "@/assets/SNPlogo.png";
+import { trackOutbound } from "@/lib/trackOutbound";
 
 const productLinks = [
   { name: "Faultline Lab", href: "/faultline-lab" },
@@ -32,6 +33,8 @@ export default function Navbar() {
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -46,9 +49,28 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape" && productsOpen) {
+        setProductsOpen(false);
+        triggerRef.current?.focus();
+      }
+    }
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [productsOpen]);
+
+  useEffect(() => {
     setIsOpen(false);
     setMobileProductsOpen(false);
+    setProductsOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (productsOpen) {
+      const first = menuRef.current?.querySelector<HTMLAnchorElement>("a[role='menuitem']");
+      first?.focus();
+    }
+  }, [productsOpen]);
 
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -61,12 +83,20 @@ export default function Navbar() {
     }
   };
 
+  const focusRing =
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <a href="/" onClick={handleHomeClick} className="flex items-center gap-3">
-            <img src={snpLogo} alt="SNP" className="h-8 w-8" />
+          <a
+            href="/"
+            onClick={handleHomeClick}
+            className={`flex items-center gap-3 rounded-md ${focusRing}`}
+            aria-label="Shotgun Ninjas — Home"
+          >
+            <img src={snpLogo} alt="" className="h-8 w-8" />
             <span className="font-[var(--font-display)] text-sm font-bold tracking-wider text-foreground hidden sm:block">
               SHOTGUN NINJAS
             </span>
@@ -79,7 +109,7 @@ export default function Navbar() {
                   key={link.name}
                   href="/"
                   onClick={handleHomeClick}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${focusRing} ${
                     location.pathname === "/"
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -93,7 +123,8 @@ export default function Navbar() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
+                  onClick={() => trackOutbound(link.href, `navbar:${link.name}`)}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors text-muted-foreground hover:text-foreground ${focusRing}`}
                 >
                   {link.name}
                 </a>
@@ -101,7 +132,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${focusRing} ${
                     location.pathname === link.href
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -109,32 +140,42 @@ export default function Navbar() {
                 >
                   {link.name}
                 </Link>
-              )
+              ),
             )}
 
-            <div ref={dropdownRef} className="relative">
+            <div className="relative" ref={dropdownRef}>
               <button
-                onClick={() => setProductsOpen(!productsOpen)}
-                className={`flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  productLinks.some((p) => location.pathname === p.href)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                ref={triggerRef}
+                type="button"
+                onClick={() => setProductsOpen((v) => !v)}
+                aria-haspopup="menu"
+                aria-expanded={productsOpen}
+                aria-controls="arsenal-menu"
+                className={`flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors text-primary ${focusRing}`}
               >
                 Arsenal
-                <ChevronDown className={`h-4 w-4 transition-transform ${productsOpen ? "rotate-180" : ""}`} />
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${productsOpen ? "rotate-180" : ""}`}
+                  aria-hidden="true"
+                />
               </button>
               {productsOpen && (
-                <div className="absolute top-full right-0 mt-2 w-56 bg-card border border-border rounded-lg shadow-xl py-2 z-50">
+                <div
+                  ref={menuRef}
+                  id="arsenal-menu"
+                  role="menu"
+                  aria-label="Arsenal — products"
+                  className="absolute right-0 mt-2 w-64 bg-card border border-border rounded-lg shadow-xl shadow-black/40 overflow-hidden py-1.5"
+                >
                   {productLinks.map((link) => (
                     <Link
                       key={link.name}
                       to={link.href}
-                      onClick={() => setProductsOpen(false)}
-                      className={`block px-4 py-2.5 text-sm transition-colors ${
+                      role="menuitem"
+                      className={`block px-4 py-2 text-sm transition-colors ${focusRing} ${
                         location.pathname === link.href
                           ? "text-primary bg-primary/10"
-                          : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
                       }`}
                     >
                       {link.name}
@@ -146,8 +187,12 @@ export default function Navbar() {
           </div>
 
           <button
-            className="lg:hidden p-2 text-muted-foreground hover:text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
+            type="button"
+            className={`lg:hidden p-2 rounded-md text-muted-foreground hover:text-foreground ${focusRing}`}
+            onClick={() => setIsOpen((v) => !v)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -155,7 +200,10 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="lg:hidden bg-card border-t border-border max-h-[80vh] overflow-y-auto">
+        <div
+          id="mobile-menu"
+          className="lg:hidden bg-background border-t border-border"
+        >
           <div className="px-4 py-3 space-y-1">
             {mainLinks.map((link) =>
               link.href === "/" ? (
@@ -163,7 +211,7 @@ export default function Navbar() {
                   key={link.name}
                   href="/"
                   onClick={handleHomeClick}
-                  className={`block px-3 py-2.5 rounded-md text-sm font-medium ${
+                  className={`block px-3 py-2.5 rounded-md text-sm font-medium ${focusRing} ${
                     location.pathname === "/"
                       ? "text-primary bg-primary/10"
                       : "text-muted-foreground hover:text-foreground"
@@ -177,7 +225,8 @@ export default function Navbar() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground"
+                  onClick={() => trackOutbound(link.href, `navbar:${link.name}`)}
+                  className={`block px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground ${focusRing}`}
                 >
                   {link.name}
                 </a>
@@ -185,7 +234,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`block px-3 py-2.5 rounded-md text-sm font-medium ${
+                  className={`block px-3 py-2.5 rounded-md text-sm font-medium ${focusRing} ${
                     location.pathname === link.href
                       ? "text-primary bg-primary/10"
                       : "text-muted-foreground hover:text-foreground"
@@ -193,23 +242,29 @@ export default function Navbar() {
                 >
                   {link.name}
                 </Link>
-              )
+              ),
             )}
 
             <button
-              onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
-              className="flex items-center justify-between w-full px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground"
+              type="button"
+              onClick={() => setMobileProductsOpen((v) => !v)}
+              aria-expanded={mobileProductsOpen}
+              aria-controls="mobile-arsenal"
+              className={`flex items-center justify-between w-full px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground ${focusRing}`}
             >
               Arsenal
-              <ChevronDown className={`h-4 w-4 transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`} />
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              />
             </button>
             {mobileProductsOpen && (
-              <div className="pl-4 space-y-1">
+              <div id="mobile-arsenal" className="pl-4 space-y-1">
                 {productLinks.map((link) => (
                   <Link
                     key={link.name}
                     to={link.href}
-                    className={`block px-3 py-2 rounded-md text-sm ${
+                    className={`block px-3 py-2 rounded-md text-sm ${focusRing} ${
                       location.pathname === link.href
                         ? "text-primary bg-primary/10"
                         : "text-muted-foreground hover:text-foreground"

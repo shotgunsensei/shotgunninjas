@@ -37,8 +37,8 @@ import {
   getSongStreamUrl,
   type Song,
 } from "@/lib/api";
-import studioHeroBg from "@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.png";
-import virtualStudioBg from "@assets/ChatGPT_Image_Apr_28,_2026,_04_58_44_PM_1777409942491.png";
+import studioHeroBg from "@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.webp";
+import virtualStudioBg from "@assets/ChatGPT_Image_Apr_28,_2026,_04_58_44_PM_1777409942491.webp";
 
 const SN_DAW_URL = "https://shotgunninjas.studio";
 

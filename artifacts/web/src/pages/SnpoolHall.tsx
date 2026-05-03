@@ -2,9 +2,9 @@ import { ArrowRight, ExternalLink, Crosshair, Swords, Star, Trophy, Zap, Layers 
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import poolHallLogo from "@assets/ChatGPT_Image_Apr_27,_2026,_12_55_57_PM_1777309034433.png";
-import poolHallHero from "@assets/ChatGPT_Image_Apr_27,_2026,_12_56_54_PM_1777309034433.png";
-import poolHallBanner from "@assets/ChatGPT_Image_Apr_27,_2026,_12_56_38_PM_1777309034433.png";
+import poolHallLogo from "@assets/ChatGPT_Image_Apr_27,_2026,_12_55_57_PM_1777309034433.webp";
+import poolHallHero from "@assets/ChatGPT_Image_Apr_27,_2026,_12_56_54_PM_1777309034433.webp";
+import poolHallBanner from "@assets/ChatGPT_Image_Apr_27,_2026,_12_56_38_PM_1777309034433.webp";
 
 const SNPOOLHALL_URL = "https://snpoolhall.com";
 
