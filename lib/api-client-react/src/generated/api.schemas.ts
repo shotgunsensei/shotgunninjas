@@ -54,6 +54,30 @@ export interface UpdateSongInput {
   adminPassword: string;
 }
 
+export interface BroadcastNewsletterInput {
+  subject: string;
+  html: string;
+  adminPassword: string;
+  testEmail?: string;
+}
+
+export interface BroadcastNewsletterResponse {
+  message: string;
+  recipientCount: number;
+  successCount: number;
+  failureCount: number;
+}
+
+export interface AdminPasswordOnlyInput {
+  adminPassword: string;
+}
+
+export interface NewsletterStatsResponse {
+  total: number;
+  active: number;
+  unsubscribed: number;
+}
+
 export interface RequestUploadUrlBody {
   name: string;
   size: number;

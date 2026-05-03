@@ -98,6 +98,38 @@ export function requestUploadUrl(data: {
   });
 }
 
+export interface BroadcastResult {
+  message: string;
+  recipientCount: number;
+  successCount: number;
+  failureCount: number;
+}
+
+export function broadcastNewsletter(data: {
+  subject: string;
+  html: string;
+  adminPassword: string;
+  testEmail?: string;
+}): Promise<BroadcastResult> {
+  return apiFetch("/admin/newsletter/broadcast", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}
+
+export interface NewsletterStats {
+  total: number;
+  active: number;
+  unsubscribed: number;
+}
+
+export function getNewsletterStats(adminPassword: string): Promise<NewsletterStats> {
+  return apiFetch("/admin/newsletter/stats", {
+    method: "POST",
+    body: JSON.stringify({ adminPassword }),
+  });
+}
+
 export function getSongStreamUrl(objectPath: string): string {
   const cleanPath = objectPath.startsWith("/objects/")
     ? objectPath.slice("/objects/".length)

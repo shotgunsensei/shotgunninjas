@@ -165,6 +165,44 @@ paths:
               schema:
                 $ref: "#/components/schemas/SuccessMessage"
 
+  /admin/newsletter/broadcast:
+    post:
+      operationId: broadcastNewsletter
+      tags: [contact]
+      summary: Send a newsletter broadcast to all active subscribers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BroadcastNewsletterInput"
+      responses:
+        "200":
+          description: Broadcast queued and sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BroadcastNewsletterResponse"
+
+  /admin/newsletter/stats:
+    post:
+      operationId: newsletterStats
+      tags: [contact]
+      summary: Newsletter subscriber stats (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminPasswordOnlyInput"
+      responses:
+        "200":
+          description: Subscriber stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsletterStatsResponse"
+
   /storage/uploads/request-url:
     post:
       operationId: requestUploadUrl
@@ -293,6 +331,62 @@ components:
           type: string
       required:
         - adminPassword
+
+    BroadcastNewsletterInput:
+      type: object
+      properties:
+        subject:
+          type: string
+        html:
+          type: string
+        adminPassword:
+          type: string
+        testEmail:
+          type: string
+          format: email
+      required:
+        - subject
+        - html
+        - adminPassword
+
+    BroadcastNewsletterResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        recipientCount:
+          type: integer
+        successCount:
+          type: integer
+        failureCount:
+          type: integer
+      required:
+        - message
+        - recipientCount
+        - successCount
+        - failureCount
+
+    AdminPasswordOnlyInput:
+      type: object
+      properties:
+        adminPassword:
+          type: string
+      required:
+        - adminPassword
+
+    NewsletterStatsResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+        active:
+          type: integer
+        unsubscribed:
+          type: integer
+      required:
+        - total
+        - active
+        - unsubscribed
 
     RequestUploadUrlBody:
       type: object

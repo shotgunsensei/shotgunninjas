@@ -23,6 +23,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import Unsubscribe from "./pages/Unsubscribe";
 import AdminAnalytics from "./pages/AdminAnalytics";
+import NewsletterAdmin from "./pages/NewsletterAdmin";
 import NotFound from "./pages/NotFound";
 
 function ScrollToTop() {
@@ -62,6 +63,7 @@ function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/unsubscribe" element={<Unsubscribe />} />
           <Route path="/admin/analytics" element={<AdminAnalytics />} />
+          <Route path="/admin/newsletter" element={<NewsletterAdmin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

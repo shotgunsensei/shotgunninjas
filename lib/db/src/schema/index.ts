@@ -3,5 +3,6 @@ export * from "./contactMessages";
 export * from "./users";
 export * from "./clan";
 export * from "./newsletterSubscribers";
+export * from "./newsletterBroadcasts";
 export * from "./outboundClicks";
 export * from "./rateLimitBuckets";

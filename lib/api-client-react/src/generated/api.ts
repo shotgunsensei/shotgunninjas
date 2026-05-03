@@ -18,10 +18,14 @@ import type {
 
 import type {
   AdminPasswordInput,
+  AdminPasswordOnlyInput,
   AdminVerifyResponse,
+  BroadcastNewsletterInput,
+  BroadcastNewsletterResponse,
   ContactFormInput,
   CreateSongInput,
   HealthStatus,
+  NewsletterStatsResponse,
   NewsletterSubscribeInput,
   RequestUploadUrlBody,
   RequestUploadUrlResponse,
@@ -694,6 +698,179 @@ export const useDeleteSong = <
   TContext
 > => {
   return useMutation(getDeleteSongMutationOptions(options));
+};
+
+/**
+ * @summary Send a newsletter broadcast to all active subscribers
+ */
+export const getBroadcastNewsletterUrl = () => {
+  return `/api/admin/newsletter/broadcast`;
+};
+
+export const broadcastNewsletter = async (
+  broadcastNewsletterInput: BroadcastNewsletterInput,
+  options?: RequestInit,
+): Promise<BroadcastNewsletterResponse> => {
+  return customFetch<BroadcastNewsletterResponse>(getBroadcastNewsletterUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(broadcastNewsletterInput),
+  });
+};
+
+export const getBroadcastNewsletterMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof broadcastNewsletter>>,
+    TError,
+    { data: BodyType<BroadcastNewsletterInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof broadcastNewsletter>>,
+  TError,
+  { data: BodyType<BroadcastNewsletterInput> },
+  TContext
+> => {
+  const mutationKey = ["broadcastNewsletter"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof broadcastNewsletter>>,
+    { data: BodyType<BroadcastNewsletterInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return broadcastNewsletter(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type BroadcastNewsletterMutationResult = NonNullable<
+  Awaited<ReturnType<typeof broadcastNewsletter>>
+>;
+export type BroadcastNewsletterMutationBody =
+  BodyType<BroadcastNewsletterInput>;
+export type BroadcastNewsletterMutationError = ErrorType<unknown>;
+
+/**
+ * @summary Send a newsletter broadcast to all active subscribers
+ */
+export const useBroadcastNewsletter = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof broadcastNewsletter>>,
+    TError,
+    { data: BodyType<BroadcastNewsletterInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof broadcastNewsletter>>,
+  TError,
+  { data: BodyType<BroadcastNewsletterInput> },
+  TContext
+> => {
+  return useMutation(getBroadcastNewsletterMutationOptions(options));
+};
+
+/**
+ * @summary Newsletter subscriber stats (admin)
+ */
+export const getNewsletterStatsUrl = () => {
+  return `/api/admin/newsletter/stats`;
+};
+
+export const newsletterStats = async (
+  adminPasswordOnlyInput: AdminPasswordOnlyInput,
+  options?: RequestInit,
+): Promise<NewsletterStatsResponse> => {
+  return customFetch<NewsletterStatsResponse>(getNewsletterStatsUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(adminPasswordOnlyInput),
+  });
+};
+
+export const getNewsletterStatsMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof newsletterStats>>,
+    TError,
+    { data: BodyType<AdminPasswordOnlyInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof newsletterStats>>,
+  TError,
+  { data: BodyType<AdminPasswordOnlyInput> },
+  TContext
+> => {
+  const mutationKey = ["newsletterStats"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof newsletterStats>>,
+    { data: BodyType<AdminPasswordOnlyInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return newsletterStats(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type NewsletterStatsMutationResult = NonNullable<
+  Awaited<ReturnType<typeof newsletterStats>>
+>;
+export type NewsletterStatsMutationBody = BodyType<AdminPasswordOnlyInput>;
+export type NewsletterStatsMutationError = ErrorType<unknown>;
+
+/**
+ * @summary Newsletter subscriber stats (admin)
+ */
+export const useNewsletterStats = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof newsletterStats>>,
+    TError,
+    { data: BodyType<AdminPasswordOnlyInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof newsletterStats>>,
+  TError,
+  { data: BodyType<AdminPasswordOnlyInput> },
+  TContext
+> => {
+  return useMutation(getNewsletterStatsMutationOptions(options));
 };
 
 /**

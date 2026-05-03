@@ -107,6 +107,36 @@ export const DeleteSongResponse = zod.object({
 });
 
 /**
+ * @summary Send a newsletter broadcast to all active subscribers
+ */
+export const BroadcastNewsletterBody = zod.object({
+  subject: zod.string(),
+  html: zod.string(),
+  adminPassword: zod.string(),
+  testEmail: zod.string().email().optional(),
+});
+
+export const BroadcastNewsletterResponse = zod.object({
+  message: zod.string(),
+  recipientCount: zod.number(),
+  successCount: zod.number(),
+  failureCount: zod.number(),
+});
+
+/**
+ * @summary Newsletter subscriber stats (admin)
+ */
+export const NewsletterStatsBody = zod.object({
+  adminPassword: zod.string(),
+});
+
+export const NewsletterStatsResponse = zod.object({
+  total: zod.number(),
+  active: zod.number(),
+  unsubscribed: zod.number(),
+});
+
+/**
  * @summary Request a presigned upload URL
  */
 export const RequestUploadUrlBody = zod.object({

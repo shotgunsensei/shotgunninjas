@@ -7,10 +7,14 @@
  */
 
 export * from "./adminPasswordInput";
+export * from "./adminPasswordOnlyInput";
 export * from "./adminVerifyResponse";
+export * from "./broadcastNewsletterInput";
+export * from "./broadcastNewsletterResponse";
 export * from "./contactFormInput";
 export * from "./createSongInput";
 export * from "./healthStatus";
+export * from "./newsletterStatsResponse";
 export * from "./newsletterSubscribeInput";
 export * from "./requestUploadUrlBody";
 export * from "./requestUploadUrlResponse";
