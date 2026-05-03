@@ -20,6 +20,11 @@ export interface SuccessMessage {
   message: string;
 }
 
+export interface NewsletterSubscribeInput {
+  email: string;
+  source?: string;
+}
+
 export interface Song {
   id: number;
   name: string;

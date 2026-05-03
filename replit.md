@@ -49,6 +49,12 @@ artifacts-monorepo/
 - `file_url` (text, not null) — object storage path
 - `created_at` (timestamp, default now)
 
+### `newsletter_subscribers` table
+- `id` (serial, PK)
+- `email` (text, not null, unique index)
+- `source` (text, nullable) — origin of signup (e.g. `home`, `footer`)
+- `created_at` (timestamp, default now)
+
 ### `contact_messages` table
 - `id` (serial, PK)
 - `name` (text, not null)
@@ -113,6 +119,7 @@ artifacts-monorepo/
 
 - `GET /healthz` — health check
 - `POST /contact` — submit contact form (stores in DB)
+- `POST /newsletter/subscribe` — newsletter email signup (idempotent on email; `source` field tags origin)
 - `GET /songs` — list all songs
 - `POST /songs/admin/verify` — verify admin password (rate limited: 5 attempts per 15 min)
 - `POST /songs/admin` — create song (admin auth required)
@@ -161,7 +168,8 @@ artifacts-monorepo/
 - `/snpoolhall` — Shotgun Ninjas Pool Hall product page (NEW, fast-paced 2D ninja pool game, hero+banner artwork, CTAs → snpoolhall.com)
 - `/soundstudio` — Sound Studio (music browser, player, download, admin panel)
 - `/privacy-policy` — Privacy policy
-- `*` — 404 page
+- `/terms` — Terms of Service (11 sections covering subscriptions, refunds, IP, liability, etc.)
+- `*` — Polished 404 page (eyebrow, glow, CTA back home, quick-link chips to top products)
 
 Note: Clan page (/clan) and Auth page (/auth) have been removed from the frontend. Backend API routes for auth/clan remain available but are not used by the current frontend.
 
@@ -236,4 +244,10 @@ Express 5 API server with songs CRUD, contact form, auth, clan, and object stora
 Drizzle ORM schema and PostgreSQL connection. Schema in `src/schema/`.
 
 ### `lib/api-zod` (`@workspace/api-zod`)
-Generated Zod schemas from OpenAPI spec for request/response validation.
+Generated Zod schemas from OpenAPI spec for request/response validation. `src/index.ts` re-exports only `./generated/api` (zod consts) — re-exporting `./generated/types` causes name collisions with the zod consts, so it is intentionally omitted.
+
+## Marketing Surfaces
+
+- **Newsletter**: dedicated `NewsletterSection` on the home page (above FinalCTA) plus an inline form in the Footer's brand column ("Stay in the loop"). Both POST to `/api/newsletter/subscribe` with a `source` tag (`home` / `footer`). Server stores into `newsletter_subscribers` with `onConflictDoNothing` on email so resubmissions are idempotent.
+- **SEO**: `index.html` has full OG/Twitter card tags pointing to `https://shotgunninjas.com/opengraph.jpg`, canonical URL, theme-color, full favicon set, JSON-LD Organization schema. `public/sitemap.xml` lists all 19 routes; `public/robots.txt` references the sitemap.
+- **Trust signals**: Footer bottom row shows `Est. 2024 · Built by Operators` alongside the copyright.

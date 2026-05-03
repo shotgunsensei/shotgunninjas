@@ -76,6 +76,16 @@ export function submitContact(data: {
   });
 }
 
+export function subscribeNewsletter(data: {
+  email: string;
+  source?: string;
+}): Promise<{ message: string }> {
+  return apiFetch("/newsletter/subscribe", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}
+
 export function requestUploadUrl(data: {
   fileName: string;
   contentType: string;

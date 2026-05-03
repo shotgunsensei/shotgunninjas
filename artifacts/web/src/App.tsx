@@ -20,6 +20,7 @@ import PulseDesk from "./pages/PulseDesk";
 import FaultlineLab from "./pages/FaultlineLab";
 import SoundStudio from "./pages/SoundStudio";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
 function ScrollToTop() {
@@ -56,6 +57,7 @@ function App() {
           <Route path="/faultline-lab" element={<FaultlineLab />} />
           <Route path="/soundstudio" element={<SoundStudio />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 import snpLogo from "@/assets/SNPlogo.png";
+import { subscribeNewsletter } from "@/lib/api";
 
 const productLinks = [
   { name: "Faultline Lab", href: "https://faultlinelab.com" },
@@ -23,7 +26,71 @@ const companyLinks = [
   { name: "Contact", href: "/contact" },
   { name: "Sound Studio", href: "/soundstudio" },
   { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms of Service", href: "/terms" },
 ];
+
+function FooterNewsletter() {
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (submitting || done) return;
+    const trimmed = email.trim();
+    if (!trimmed || !/^\S+@\S+\.\S+$/.test(trimmed)) {
+      toast.error("Please enter a valid email.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await subscribeNewsletter({ email: trimmed, source: "footer" });
+      toast.success(res.message);
+      setDone(true);
+      setEmail("");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Could not subscribe.";
+      toast.error(msg);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 max-w-md">
+      <label htmlFor="footer-newsletter-email" className="sr-only">
+        Email address
+      </label>
+      <input
+        id="footer-newsletter-email"
+        type="email"
+        required
+        autoComplete="email"
+        placeholder="you@domain.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        disabled={submitting || done}
+        className="flex-1 px-3.5 py-2.5 bg-background border border-border rounded-lg text-sm text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 disabled:opacity-60 transition-all"
+      />
+      <button
+        type="submit"
+        disabled={submitting || done}
+        className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-lg hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed transition-all"
+      >
+        {submitting ? (
+          <Loader2 className="h-4 w-4 animate-spin" />
+        ) : done ? (
+          "Subscribed"
+        ) : (
+          <>
+            Subscribe
+            <ArrowRight className="h-3.5 w-3.5" />
+          </>
+        )}
+      </button>
+    </form>
+  );
+}
 
 function FooterLink({ name, href }: { name: string; href: string }) {
   if (href.startsWith("http")) {
@@ -85,9 +152,13 @@ export default function Footer() {
                 SHOTGUN NINJAS
               </span>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-5">
               Systems, automation, and software built for real operators.
             </p>
+            <p className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-muted-foreground/60 uppercase mb-3">
+              Stay in the loop
+            </p>
+            <FooterNewsletter />
           </div>
 
           <div>
@@ -117,9 +188,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border mt-12 pt-8 text-center">
+        <div className="border-t border-border mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <p className="text-xs text-muted-foreground">
             &copy; {currentYear} Shotgun Ninjas Productions, LLC. All rights reserved.
+          </p>
+          <p className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-muted-foreground/50 uppercase">
+            Est. 2024 · Built by Operators
           </p>
         </div>
       </div>

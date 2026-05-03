@@ -51,6 +51,25 @@ paths:
               schema:
                 $ref: "#/components/schemas/SuccessMessage"
 
+  /newsletter/subscribe:
+    post:
+      operationId: subscribeNewsletter
+      tags: [contact]
+      summary: Subscribe to the Shotgun Ninjas newsletter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewsletterSubscribeInput"
+      responses:
+        "200":
+          description: Subscribed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessMessage"
+
   /songs:
     get:
       operationId: listSongs
@@ -200,6 +219,17 @@ components:
           type: string
       required:
         - message
+
+    NewsletterSubscribeInput:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        source:
+          type: string
+      required:
+        - email
 
     Song:
       type: object

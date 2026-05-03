@@ -11,6 +11,7 @@ export * from "./adminVerifyResponse";
 export * from "./contactFormInput";
 export * from "./createSongInput";
 export * from "./healthStatus";
+export * from "./newsletterSubscribeInput";
 export * from "./requestUploadUrlBody";
 export * from "./requestUploadUrlResponse";
 export * from "./song";

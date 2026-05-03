@@ -6,10 +6,7 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export interface Song {
-  id: number;
-  name: string;
-  tags?: string;
-  fileUrl: string;
-  createdAt: string;
+export interface NewsletterSubscribeInput {
+  email: string;
+  source?: string;
 }

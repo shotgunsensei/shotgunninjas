@@ -30,6 +30,18 @@ export const SubmitContactResponse = zod.object({
 });
 
 /**
+ * @summary Subscribe to the Shotgun Ninjas newsletter
+ */
+export const SubscribeNewsletterBody = zod.object({
+  email: zod.string().email(),
+  source: zod.string().optional(),
+});
+
+export const SubscribeNewsletterResponse = zod.object({
+  message: zod.string(),
+});
+
+/**
  * @summary List all songs
  */
 export const ListSongsResponseItem = zod.object({
