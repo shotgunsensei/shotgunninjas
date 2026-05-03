@@ -19,6 +19,11 @@ export default function OperatorOS() {
       description="OperatorOS is the command center for modern development teams. Manage infrastructure, automate deployments, and leverage AI-powered tools—all from a single, unified platform designed for operators who build."
       features={features}
       websiteUrl="https://operatoros.net"
+      relatedProducts={[
+        { name: "Tech Deck", tagline: "MSP enablement & ops control", link: "/techdeck" },
+        { name: "Ninjamation", tagline: "Wire up cross-system workflows", link: "/ninjamation" },
+        { name: "PlayPack Pilot", tagline: "Ship your PWA to the Play Store", link: "/playpackpilot" },
+      ]}
     />
   );
 }

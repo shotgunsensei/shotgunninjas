@@ -19,6 +19,11 @@ export default function TorqueShed() {
       description="Torque Shed is where gearheads meet data. Track your build, diagnose issues with real data, and connect with a community that speaks your language."
       features={features}
       websiteUrl="https://torqueshed.pro"
+      relatedProducts={[
+        { name: "TradeFlow Kit", tagline: "Run the shop side of the operation", link: "/tradeflow" },
+        { name: "Faultline Lab", tagline: "Sharpen diagnostic instincts in the lab", link: "/faultline-lab" },
+        { name: "SnapProof OS", tagline: "Photo-document repairs and customer proof", link: "/snapproof-os" },
+      ]}
     />
   );
 }

@@ -19,6 +19,11 @@ export default function NeonRacer() {
       description="Neon Racer drops you into a synthwave-soaked grid where reflexes are everything. Dodge obstacles, collect power-ups, and chase the top of the leaderboard in this adrenaline-fueled arcade experience."
       features={features}
       websiteUrl="https://neonracer.net"
+      relatedProducts={[
+        { name: "Faultline Lab", tagline: "Flagship diagnostic simulator", link: "/faultline-lab" },
+        { name: "Pool Hall", tagline: "Skill-based 2D pool with style", link: "/snpoolhall" },
+        { name: "Labyrinth Ronin", tagline: "Roguelike survival in a living maze", link: "/labyrinthronin" },
+      ]}
     />
   );
 }

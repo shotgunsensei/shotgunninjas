@@ -152,8 +152,11 @@ export default function Footer() {
                 SHOTGUN NINJAS
               </span>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-3">
               Systems, automation, and software built for real operators.
+            </p>
+            <p className="text-[10px] font-[var(--font-display)] tracking-[0.2em] text-muted-foreground/70 uppercase mb-5">
+              The Shotgun Ninjas Productions Ecosystem
             </p>
             <p className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-muted-foreground/60 uppercase mb-3">
               Stay in the loop

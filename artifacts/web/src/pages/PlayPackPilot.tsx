@@ -9,12 +9,14 @@ import {
   Package,
   ArrowRight,
   ExternalLink,
+  Layers,
   Rocket,
   Search,
   FileCheck,
   Download,
   CheckCircle,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import playpackHero from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.png";
@@ -235,6 +237,44 @@ export default function PlayPackPilot() {
                   <p className="text-sm text-muted-foreground leading-relaxed">{uc.description}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background border-t border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-xs font-[var(--font-display)] tracking-widest text-primary mb-3">
+              Inside the Arsenal
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold font-[var(--font-display)]">
+              Pairs well with
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2">
+              Other operator-grade tools in the Shotgun Ninjas ecosystem.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { name: "OperatorOS", tagline: "Cloud development control plane", link: "/operatoros" },
+              { name: "BrandForge OS", tagline: "Launch the marketing for your app", link: "/brandforgeos" },
+              { name: "Tech Deck", tagline: "Operate the stack after launch", link: "/techdeck" },
+            ].map((prod) => (
+              <Link
+                key={prod.name}
+                to={prod.link}
+                className="flex items-center gap-4 rounded-xl p-5 border border-border bg-card hover:border-primary/30 hover:bg-card/80 transition-all duration-300 group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Layers className="h-5 w-5 text-primary/70" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold font-[var(--font-display)] text-sm text-foreground truncate">{prod.name}</p>
+                  <p className="text-xs text-muted-foreground truncate">{prod.tagline}</p>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+              </Link>
             ))}
           </div>
         </div>

@@ -19,6 +19,11 @@ export default function TradeFlow() {
       description="TradeFlow Kit replaces the patchwork of spreadsheets, paper forms, and disconnected apps that plague field service businesses. From dispatch to invoice in under 60 seconds."
       features={features}
       websiteUrl="https://tradeflowkit.com"
+      relatedProducts={[
+        { name: "Tech Deck", tagline: "IT automation and operations stack", link: "/techdeck" },
+        { name: "SnapProof OS", tagline: "Document jobs and bill faster", link: "/snapproof-os" },
+        { name: "PulseDesk", tagline: "Centralize support and service requests", link: "/pulsedesk" },
+      ]}
     />
   );
 }

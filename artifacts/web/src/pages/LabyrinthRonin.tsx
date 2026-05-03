@@ -20,6 +20,11 @@ export default function LabyrinthRonin() {
       features={features}
       websiteUrl="https://labyrinthronin.com"
       statusBadge="EXPERIMENTAL"
+      relatedProducts={[
+        { name: "Faultline Lab", tagline: "Flagship diagnostic simulator", link: "/faultline-lab" },
+        { name: "Neon Racer", tagline: "Retro-futuristic evasive racing", link: "/neonracer" },
+        { name: "Pool Hall", tagline: "Skill-based 2D pool", link: "/snpoolhall" },
+      ]}
     />
   );
 }

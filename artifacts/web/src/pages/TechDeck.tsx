@@ -19,6 +19,11 @@ export default function TechDeck() {
       description="Tech Deck eliminates the chaos of managing dozens of disconnected tools. Unify your MSP operations, automate L1 triage, and get real visibility into what's making—or losing—money."
       features={features}
       websiteUrl="https://techdeck.app"
+      relatedProducts={[
+        { name: "PulseDesk", tagline: "Run the support side of the operation", link: "/pulsedesk" },
+        { name: "OperatorOS", tagline: "Cloud development control plane", link: "/operatoros" },
+        { name: "Ninjamation", tagline: "Build the automations you keep wishing you had", link: "/ninjamation" },
+      ]}
     />
   );
 }

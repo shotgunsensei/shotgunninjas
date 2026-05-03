@@ -20,6 +20,11 @@ export default function Ninjamation() {
       features={features}
       websiteUrl="https://ninjamation.com"
       statusBadge="BETA"
+      relatedProducts={[
+        { name: "OperatorOS", tagline: "Cloud development control plane", link: "/operatoros" },
+        { name: "Tech Deck", tagline: "MSP enablement to plug your runs into", link: "/techdeck" },
+        { name: "PulseDesk", tagline: "Trigger workflows from real support events", link: "/pulsedesk" },
+      ]}
     />
   );
 }

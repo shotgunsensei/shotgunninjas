@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink, Crosshair, Swords, Star, Trophy, Zap } from "lucide-react";
+import { ArrowRight, ExternalLink, Crosshair, Swords, Star, Trophy, Zap, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -148,6 +148,59 @@ export default function SnpoolHall() {
               alt="Shotgun Ninjas Pool Hall feature overview"
               className="w-full h-auto block"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Inside the Arsenal */}
+      <section className="py-16 sm:py-20 bg-background border-t border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-xs font-[var(--font-display)] tracking-widest text-primary mb-3">
+              Inside the Arsenal
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold font-[var(--font-display)]">
+              More from the dojo
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { name: "Faultline Lab", tagline: "Flagship diagnostic simulator", link: "/faultline-lab" },
+              { name: "Neon Racer", tagline: "Retro-futuristic evasive racing", link: "/neonracer" },
+              { name: "Ninja Village", tagline: "Lore, characters, and community", link: "https://shotgunninjavillage.com", external: true },
+            ].map((prod) => prod.external ? (
+              <a
+                key={prod.name}
+                href={prod.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 rounded-xl p-5 border border-border bg-card hover:border-primary/30 hover:bg-card/80 transition-all duration-300 group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Layers className="h-5 w-5 text-primary/70" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold font-[var(--font-display)] text-sm text-foreground truncate">{prod.name}</p>
+                  <p className="text-xs text-muted-foreground truncate">{prod.tagline}</p>
+                </div>
+                <ExternalLink className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary transition-all flex-shrink-0" />
+              </a>
+            ) : (
+              <Link
+                key={prod.name}
+                to={prod.link}
+                className="flex items-center gap-4 rounded-xl p-5 border border-border bg-card hover:border-primary/30 hover:bg-card/80 transition-all duration-300 group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Layers className="h-5 w-5 text-primary/70" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold font-[var(--font-display)] text-sm text-foreground truncate">{prod.name}</p>
+                  <p className="text-xs text-muted-foreground truncate">{prod.tagline}</p>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>
