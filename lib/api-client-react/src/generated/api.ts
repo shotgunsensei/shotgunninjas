@@ -27,6 +27,7 @@ import type {
   HealthStatus,
   NewsletterStatsResponse,
   NewsletterSubscribeInput,
+  RepositoryDownloadUrlResponse,
   RepositoryFile,
   RepositoryUploadUrlInput,
   RepositoryUploadUrlResponse,
@@ -1213,6 +1214,98 @@ export const useSaveRepositoryFile = <
 > => {
   return useMutation(getSaveRepositoryFileMutationOptions(options));
 };
+
+/**
+ * @summary Get a short-lived presigned download URL for a repository file (admin)
+ */
+export const getGetRepositoryDownloadUrlUrl = (id: number) => {
+  return `/api/repository/files/${id}/download-url`;
+};
+
+export const getRepositoryDownloadUrl = async (
+  id: number,
+  options?: RequestInit,
+): Promise<RepositoryDownloadUrlResponse> => {
+  return customFetch<RepositoryDownloadUrlResponse>(
+    getGetRepositoryDownloadUrlUrl(id),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export const getGetRepositoryDownloadUrlQueryKey = (id: number) => {
+  return [`/api/repository/files/${id}/download-url`] as const;
+};
+
+export const getGetRepositoryDownloadUrlQueryOptions = <
+  TData = Awaited<ReturnType<typeof getRepositoryDownloadUrl>>,
+  TError = ErrorType<unknown>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getRepositoryDownloadUrl>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetRepositoryDownloadUrlQueryKey(id);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getRepositoryDownloadUrl>>
+  > = ({ signal }) =>
+    getRepositoryDownloadUrl(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getRepositoryDownloadUrl>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetRepositoryDownloadUrlQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getRepositoryDownloadUrl>>
+>;
+export type GetRepositoryDownloadUrlQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Get a short-lived presigned download URL for a repository file (admin)
+ */
+
+export function useGetRepositoryDownloadUrl<
+  TData = Awaited<ReturnType<typeof getRepositoryDownloadUrl>>,
+  TError = ErrorType<unknown>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getRepositoryDownloadUrl>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetRepositoryDownloadUrlQueryOptions(id, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
 
 /**
  * @summary Delete a repository file (admin)

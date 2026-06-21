@@ -116,3 +116,7 @@ export interface RepositoryFile {
   fileUrl: string;
   createdAt: string;
 }
+
+export interface RepositoryDownloadUrlResponse {
+  downloadURL: string;
+}

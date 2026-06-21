@@ -16,6 +16,7 @@ export * from "./createSongInput";
 export * from "./healthStatus";
 export * from "./newsletterStatsResponse";
 export * from "./newsletterSubscribeInput";
+export * from "./repositoryDownloadUrlResponse";
 export * from "./repositoryFile";
 export * from "./repositoryUploadUrlInput";
 export * from "./repositoryUploadUrlResponse";

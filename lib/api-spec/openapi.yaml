@@ -275,6 +275,25 @@ paths:
               schema:
                 $ref: "#/components/schemas/RepositoryFile"
 
+  /repository/files/{id}/download-url:
+    get:
+      operationId: getRepositoryDownloadUrl
+      tags: [repository]
+      summary: Get a short-lived presigned download URL for a repository file (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Download URL generated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RepositoryDownloadUrlResponse"
+
   /repository/files/{id}:
     delete:
       operationId: deleteRepositoryFile
@@ -552,3 +571,11 @@ components:
         - contentType
         - fileUrl
         - createdAt
+
+    RepositoryDownloadUrlResponse:
+      type: object
+      properties:
+        downloadURL:
+          type: string
+      required:
+        - downloadURL

@@ -184,10 +184,13 @@ export function saveRepositoryFile(data: {
   });
 }
 
-export function getRepositoryDownloadUrl(id: number, adminPassword: string): string {
-  return `${API_BASE}/repository/files/${id}/download?adminPassword=${encodeURIComponent(
-    adminPassword
-  )}`;
+export function requestRepositoryDownloadUrl(
+  id: number,
+  adminPassword: string
+): Promise<{ downloadURL: string }> {
+  return apiFetch(`/repository/files/${id}/download-url`, {
+    headers: { "x-admin-password": adminPassword },
+  });
 }
 
 export function deleteRepositoryFile(

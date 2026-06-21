@@ -20,7 +20,7 @@ import {
   saveRepositoryFile,
   deleteRepositoryFile,
   uploadFileToStorage,
-  getRepositoryDownloadUrl,
+  requestRepositoryDownloadUrl,
   type RepositoryFile,
 } from "@/lib/api";
 
@@ -152,11 +152,19 @@ function FileRepository() {
     if (file) handleUpload(file);
   };
 
-  const handleDownload = (file: RepositoryFile) => {
-    const a = document.createElement("a");
-    a.href = getRepositoryDownloadUrl(file.id, adminPassword);
-    a.download = file.name;
-    a.click();
+  const handleDownload = async (file: RepositoryFile) => {
+    try {
+      const { downloadURL } = await requestRepositoryDownloadUrl(
+        file.id,
+        adminPassword
+      );
+      const a = document.createElement("a");
+      a.href = downloadURL;
+      a.rel = "noopener";
+      a.click();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to download file");
+    }
   };
 
   const handleDelete = async (file: RepositoryFile) => {

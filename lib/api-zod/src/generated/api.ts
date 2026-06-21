@@ -191,6 +191,17 @@ export const SaveRepositoryFileBody = zod.object({
 });
 
 /**
+ * @summary Get a short-lived presigned download URL for a repository file (admin)
+ */
+export const GetRepositoryDownloadUrlParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetRepositoryDownloadUrlResponse = zod.object({
+  downloadURL: zod.string(),
+});
+
+/**
  * @summary Delete a repository file (admin)
  */
 export const DeleteRepositoryFileParams = zod.object({

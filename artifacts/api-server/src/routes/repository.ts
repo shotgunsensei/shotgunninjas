@@ -1,5 +1,4 @@
 import { Router, type IRouter, type Request, type Response } from "express";
-import { Readable } from "stream";
 import { db } from "@workspace/db";
 import { repositoryFilesTable } from "@workspace/db/schema";
 import { eq, desc } from "drizzle-orm";
@@ -10,6 +9,7 @@ import {
   SaveRepositoryFileBody,
   DeleteRepositoryFileParams,
   DeleteRepositoryFileResponse,
+  GetRepositoryDownloadUrlResponse,
 } from "@workspace/api-zod";
 import { ObjectStorageService, ObjectNotFoundError } from "../lib/objectStorage";
 
@@ -143,64 +143,72 @@ router.post("/repository/files", async (req: Request, res: Response) => {
 });
 
 /**
- * GET /repository/files/:id/download
+ * GET /repository/files/:id/download-url
  *
- * Stream a repository file as an attachment (admin only). The admin password
- * is passed as a query param because the browser initiates this as a plain
- * navigation/anchor download (which cannot set custom headers). The request
- * logger strips query strings, so the password is never written to logs. The
- * response streams directly from object storage, so files of any size (up to
- * the 5GB limit) download without buffering in memory.
+ * Return a short-lived presigned GET URL so the browser can download the file
+ * directly from object storage (admin only, validated via the x-admin-password
+ * header). Streaming large files through the API server does not work on the
+ * Autoscale deployment — the proxy terminates multi-GB responses — so we hand
+ * the browser a direct-to-storage URL instead. The object's Content-Disposition
+ * metadata is set so the download keeps its original filename.
  */
-router.get("/repository/files/:id/download", async (req: Request, res: Response) => {
-  if (!isAdmin(req.query.adminPassword)) {
-    res.status(403).json({ message: "Unauthorized" });
-    return;
-  }
-
-  const id = Number(req.params.id);
-  if (!Number.isInteger(id) || id <= 0) {
-    res.status(400).json({ message: "Invalid file id" });
-    return;
-  }
-
-  try {
-    const [file] = await db
-      .select()
-      .from(repositoryFilesTable)
-      .where(eq(repositoryFilesTable.id, id))
-      .limit(1);
-
-    if (!file) {
-      res.status(404).json({ message: "File not found" });
+router.get(
+  "/repository/files/:id/download-url",
+  async (req: Request, res: Response) => {
+    if (!isAdmin(req.headers["x-admin-password"])) {
+      res.status(403).json({ message: "Unauthorized" });
       return;
     }
 
-    const objectFile = await objectStorageService.getObjectEntityFile(file.fileUrl);
-    const response = await objectStorageService.downloadObject(objectFile);
-
-    res.status(response.status);
-    response.headers.forEach((value, key) => res.setHeader(key, value));
-    res.setHeader(
-      "Content-Disposition",
-      `attachment; filename*=UTF-8''${encodeURIComponent(file.name)}`,
-    );
-
-    if (response.body) {
-      const nodeStream = Readable.fromWeb(response.body as ReadableStream<Uint8Array>);
-      nodeStream.pipe(res);
-    } else {
-      res.end();
-    }
-  } catch (err) {
-    if (err instanceof ObjectNotFoundError) {
-      res.status(404).json({ message: "File not found" });
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id) || id <= 0) {
+      res.status(400).json({ message: "Invalid file id" });
       return;
     }
-    req.log.error({ err }, "Failed to download repository file");
-    res.status(500).json({ message: "Failed to download repository file" });
-  }
-});
+
+    try {
+      const [file] = await db
+        .select()
+        .from(repositoryFilesTable)
+        .where(eq(repositoryFilesTable.id, id))
+        .limit(1);
+
+      if (!file) {
+        res.status(404).json({ message: "File not found" });
+        return;
+      }
+
+      // Best-effort: set Content-Disposition so the direct download keeps the
+      // original filename. If this fails, the download still works (the file
+      // would just download under its storage UUID), so don't block on it.
+      try {
+        await objectStorageService.setObjectEntityDownloadMetadata(
+          file.fileUrl,
+          file.name,
+          file.contentType || undefined,
+        );
+      } catch (metaErr) {
+        req.log.warn(
+          { err: metaErr, fileUrl: file.fileUrl },
+          "Failed to set download filename metadata; continuing",
+        );
+      }
+
+      const downloadURL = await objectStorageService.getObjectEntityDownloadURL(
+        file.fileUrl,
+      );
+
+      res.json(GetRepositoryDownloadUrlResponse.parse({ downloadURL }));
+    } catch (err) {
+      if (err instanceof ObjectNotFoundError) {
+        res.status(404).json({ message: "File not found" });
+        return;
+      }
+      req.log.error({ err }, "Failed to generate repository download URL");
+      res.status(500).json({ message: "Failed to generate download URL" });
+    }
+  },
+);
 
 /**
  * DELETE /repository/files/:id

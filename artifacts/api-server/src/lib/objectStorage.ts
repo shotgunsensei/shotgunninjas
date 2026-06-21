@@ -154,6 +154,42 @@ export class ObjectStorageService {
     return objectFile;
   }
 
+  /**
+   * Mint a short-lived presigned GET URL so the browser can download an object
+   * directly from object storage, bypassing the API server. This is required
+   * for large files: streaming multi-GB responses through the app on an
+   * Autoscale deployment is terminated by the proxy.
+   */
+  async getObjectEntityDownloadURL(
+    objectPath: string,
+    ttlSec: number = 300,
+  ): Promise<string> {
+    const objectFile = await this.getObjectEntityFile(objectPath);
+    return signObjectURL({
+      bucketName: objectFile.bucket.name,
+      objectName: objectFile.name,
+      method: "GET",
+      ttlSec,
+    });
+  }
+
+  /**
+   * Set the object's Content-Disposition (and optionally Content-Type) metadata
+   * so that a direct GET (e.g. via a presigned URL) downloads with the original
+   * filename rather than the storage UUID.
+   */
+  async setObjectEntityDownloadMetadata(
+    objectPath: string,
+    fileName: string,
+    contentType?: string,
+  ): Promise<void> {
+    const objectFile = await this.getObjectEntityFile(objectPath);
+    await objectFile.setMetadata({
+      contentDisposition: `attachment; filename*=UTF-8''${encodeURIComponent(fileName)}`,
+      ...(contentType ? { contentType } : {}),
+    });
+  }
+
   async deleteObjectEntity(objectPath: string): Promise<void> {
     try {
       const objectFile = await this.getObjectEntityFile(objectPath);
