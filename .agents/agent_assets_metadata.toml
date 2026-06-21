@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "QWvn08O17S9j23NwBNIOB"
+uri = "file://attached_assets/controversyarchive_featured.png"
+type = "image"
+title = "controversy archive featured"

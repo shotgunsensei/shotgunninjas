@@ -13,6 +13,7 @@ import playpackPilotImg from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_17
 import brandforgeOsImg from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.webp";
 import snapproofOsImg from "@assets/snapproof-hero_1775232639391.webp";
 import pulsedeskImg from "@assets/Modern_healthcare_tech_in_action_1775761546446.webp";
+import controversyArchiveImg from "@assets/controversyarchive_featured.webp";
 
 type AppStatus = "ACTIVE" | "BETA" | "EXPERIMENTAL" | "NEW" | "FLAGSHIP";
 
@@ -34,6 +35,14 @@ const flagship: AppEntry = {
 };
 
 const featured: AppEntry[] = [
+  {
+    title: "Controversy Archive",
+    tagline: "Source Truth. Destination Mystery.",
+    description: "A searchable dossier of the internet's most hotly-debated anomalies, lost histories, and enduring conspiracies — with AI deep dives across 7 categories.",
+    link: "/controversy-archive",
+    status: "NEW",
+    image: controversyArchiveImg,
+  },
   {
     title: "TradeFlow Kit",
     tagline: "Own the Workflow.",

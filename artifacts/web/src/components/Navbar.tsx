@@ -6,6 +6,7 @@ import { trackOutbound } from "@/lib/trackOutbound";
 
 const productLinks = [
   { name: "Faultline Lab", href: "/faultline-lab" },
+  { name: "Controversy Archive", href: "/controversy-archive" },
   { name: "TradeFlow Kit", href: "/tradeflow" },
   { name: "Tech Deck", href: "/techdeck" },
   { name: "PulseDesk", href: "/pulsedesk" },
