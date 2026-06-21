@@ -27,8 +27,12 @@ import type {
   HealthStatus,
   NewsletterStatsResponse,
   NewsletterSubscribeInput,
+  RepositoryFile,
+  RepositoryUploadUrlInput,
+  RepositoryUploadUrlResponse,
   RequestUploadUrlBody,
   RequestUploadUrlResponse,
+  SaveRepositoryFileInput,
   Song,
   SuccessMessage,
   UpdateSongInput,
@@ -957,4 +961,339 @@ export const useRequestUploadUrl = <
   TContext
 > => {
   return useMutation(getRequestUploadUrlMutationOptions(options));
+};
+
+/**
+ * @summary Request a long-lived presigned upload URL for the file repository
+ */
+export const getRequestRepositoryUploadUrlUrl = () => {
+  return `/api/repository/uploads/request-url`;
+};
+
+export const requestRepositoryUploadUrl = async (
+  repositoryUploadUrlInput: RepositoryUploadUrlInput,
+  options?: RequestInit,
+): Promise<RepositoryUploadUrlResponse> => {
+  return customFetch<RepositoryUploadUrlResponse>(
+    getRequestRepositoryUploadUrlUrl(),
+    {
+      ...options,
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...options?.headers },
+      body: JSON.stringify(repositoryUploadUrlInput),
+    },
+  );
+};
+
+export const getRequestRepositoryUploadUrlMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof requestRepositoryUploadUrl>>,
+    TError,
+    { data: BodyType<RepositoryUploadUrlInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof requestRepositoryUploadUrl>>,
+  TError,
+  { data: BodyType<RepositoryUploadUrlInput> },
+  TContext
+> => {
+  const mutationKey = ["requestRepositoryUploadUrl"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof requestRepositoryUploadUrl>>,
+    { data: BodyType<RepositoryUploadUrlInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return requestRepositoryUploadUrl(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type RequestRepositoryUploadUrlMutationResult = NonNullable<
+  Awaited<ReturnType<typeof requestRepositoryUploadUrl>>
+>;
+export type RequestRepositoryUploadUrlMutationBody =
+  BodyType<RepositoryUploadUrlInput>;
+export type RequestRepositoryUploadUrlMutationError = ErrorType<unknown>;
+
+/**
+ * @summary Request a long-lived presigned upload URL for the file repository
+ */
+export const useRequestRepositoryUploadUrl = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof requestRepositoryUploadUrl>>,
+    TError,
+    { data: BodyType<RepositoryUploadUrlInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof requestRepositoryUploadUrl>>,
+  TError,
+  { data: BodyType<RepositoryUploadUrlInput> },
+  TContext
+> => {
+  return useMutation(getRequestRepositoryUploadUrlMutationOptions(options));
+};
+
+/**
+ * @summary List all repository files (admin)
+ */
+export const getListRepositoryFilesUrl = () => {
+  return `/api/repository/files`;
+};
+
+export const listRepositoryFiles = async (
+  options?: RequestInit,
+): Promise<RepositoryFile[]> => {
+  return customFetch<RepositoryFile[]>(getListRepositoryFilesUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListRepositoryFilesQueryKey = () => {
+  return [`/api/repository/files`] as const;
+};
+
+export const getListRepositoryFilesQueryOptions = <
+  TData = Awaited<ReturnType<typeof listRepositoryFiles>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof listRepositoryFiles>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListRepositoryFilesQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof listRepositoryFiles>>
+  > = ({ signal }) => listRepositoryFiles({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listRepositoryFiles>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListRepositoryFilesQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listRepositoryFiles>>
+>;
+export type ListRepositoryFilesQueryError = ErrorType<unknown>;
+
+/**
+ * @summary List all repository files (admin)
+ */
+
+export function useListRepositoryFiles<
+  TData = Awaited<ReturnType<typeof listRepositoryFiles>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof listRepositoryFiles>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListRepositoryFilesQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Save metadata for an uploaded repository file (admin)
+ */
+export const getSaveRepositoryFileUrl = () => {
+  return `/api/repository/files`;
+};
+
+export const saveRepositoryFile = async (
+  saveRepositoryFileInput: SaveRepositoryFileInput,
+  options?: RequestInit,
+): Promise<RepositoryFile> => {
+  return customFetch<RepositoryFile>(getSaveRepositoryFileUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(saveRepositoryFileInput),
+  });
+};
+
+export const getSaveRepositoryFileMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof saveRepositoryFile>>,
+    TError,
+    { data: BodyType<SaveRepositoryFileInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof saveRepositoryFile>>,
+  TError,
+  { data: BodyType<SaveRepositoryFileInput> },
+  TContext
+> => {
+  const mutationKey = ["saveRepositoryFile"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof saveRepositoryFile>>,
+    { data: BodyType<SaveRepositoryFileInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return saveRepositoryFile(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SaveRepositoryFileMutationResult = NonNullable<
+  Awaited<ReturnType<typeof saveRepositoryFile>>
+>;
+export type SaveRepositoryFileMutationBody = BodyType<SaveRepositoryFileInput>;
+export type SaveRepositoryFileMutationError = ErrorType<unknown>;
+
+/**
+ * @summary Save metadata for an uploaded repository file (admin)
+ */
+export const useSaveRepositoryFile = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof saveRepositoryFile>>,
+    TError,
+    { data: BodyType<SaveRepositoryFileInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof saveRepositoryFile>>,
+  TError,
+  { data: BodyType<SaveRepositoryFileInput> },
+  TContext
+> => {
+  return useMutation(getSaveRepositoryFileMutationOptions(options));
+};
+
+/**
+ * @summary Delete a repository file (admin)
+ */
+export const getDeleteRepositoryFileUrl = (id: number) => {
+  return `/api/repository/files/${id}`;
+};
+
+export const deleteRepositoryFile = async (
+  id: number,
+  options?: RequestInit,
+): Promise<SuccessMessage> => {
+  return customFetch<SuccessMessage>(getDeleteRepositoryFileUrl(id), {
+    ...options,
+    method: "DELETE",
+  });
+};
+
+export const getDeleteRepositoryFileMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof deleteRepositoryFile>>,
+    TError,
+    { id: number },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof deleteRepositoryFile>>,
+  TError,
+  { id: number },
+  TContext
+> => {
+  const mutationKey = ["deleteRepositoryFile"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof deleteRepositoryFile>>,
+    { id: number }
+  > = (props) => {
+    const { id } = props ?? {};
+
+    return deleteRepositoryFile(id, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type DeleteRepositoryFileMutationResult = NonNullable<
+  Awaited<ReturnType<typeof deleteRepositoryFile>>
+>;
+
+export type DeleteRepositoryFileMutationError = ErrorType<unknown>;
+
+/**
+ * @summary Delete a repository file (admin)
+ */
+export const useDeleteRepositoryFile = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof deleteRepositoryFile>>,
+    TError,
+    { id: number },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof deleteRepositoryFile>>,
+  TError,
+  { id: number },
+  TContext
+> => {
+  return useMutation(getDeleteRepositoryFileMutationOptions(options));
 };

@@ -1,0 +1,1 @@
+- [api-zod barrel collisions](api-zod-barrel-collisions.md) — adding endpoints can break `tsc --build` via duplicate-export ambiguity in the api-zod barrel; resolve in the hand-edited index.

@@ -149,3 +149,54 @@ export const RequestUploadUrlResponse = zod.object({
   uploadURL: zod.string(),
   objectPath: zod.string(),
 });
+
+/**
+ * @summary Request a long-lived presigned upload URL for the file repository
+ */
+export const RequestRepositoryUploadUrlBody = zod.object({
+  name: zod.string(),
+  size: zod.number(),
+  contentType: zod.string(),
+});
+
+export const RequestRepositoryUploadUrlResponse = zod.object({
+  uploadURL: zod.string(),
+  objectPath: zod.string(),
+});
+
+/**
+ * @summary List all repository files (admin)
+ */
+export const ListRepositoryFilesResponseItem = zod.object({
+  id: zod.number(),
+  name: zod.string(),
+  size: zod.number(),
+  contentType: zod.string(),
+  fileUrl: zod.string(),
+  createdAt: zod.string(),
+});
+export const ListRepositoryFilesResponse = zod.array(
+  ListRepositoryFilesResponseItem,
+);
+
+/**
+ * @summary Save metadata for an uploaded repository file (admin)
+ */
+export const SaveRepositoryFileBody = zod.object({
+  name: zod.string(),
+  size: zod.number(),
+  contentType: zod.string(),
+  fileUrl: zod.string(),
+  adminPassword: zod.string(),
+});
+
+/**
+ * @summary Delete a repository file (admin)
+ */
+export const DeleteRepositoryFileParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const DeleteRepositoryFileResponse = zod.object({
+  message: zod.string(),
+});

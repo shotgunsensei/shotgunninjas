@@ -23,7 +23,9 @@ import {
   Sparkles,
   Repeat,
   ExternalLink,
+  HardDrive,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -175,6 +177,14 @@ function StudioHero({
                     <Upload className="h-4 w-4" />
                     {uploading ? "Uploading..." : "Upload"}
                   </button>
+                  <Link
+                    to="/repository"
+                    className="p-3.5 bg-white/5 border border-white/8 rounded-xl text-gray-400 hover:text-foreground hover:border-primary/20 transition-all"
+                    title="File Repository"
+                    aria-label="Open file repository"
+                  >
+                    <HardDrive className="h-5 w-5" />
+                  </Link>
                   <button
                     onClick={onLogout}
                     className="p-3.5 bg-white/5 border border-white/8 rounded-xl text-gray-400 hover:text-foreground hover:border-primary/20 transition-all"

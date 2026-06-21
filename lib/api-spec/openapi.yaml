@@ -16,6 +16,8 @@ tags:
     description: Sound Studio songs
   - name: storage
     description: Object storage
+  - name: repository
+    description: Personal file repository
 
 paths:
   /healthz:
@@ -222,6 +224,76 @@ paths:
               schema:
                 $ref: "#/components/schemas/RequestUploadUrlResponse"
 
+  /repository/uploads/request-url:
+    post:
+      operationId: requestRepositoryUploadUrl
+      tags: [repository]
+      summary: Request a long-lived presigned upload URL for the file repository
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RepositoryUploadUrlInput"
+      responses:
+        "200":
+          description: Upload URL generated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RepositoryUploadUrlResponse"
+
+  /repository/files:
+    get:
+      operationId: listRepositoryFiles
+      tags: [repository]
+      summary: List all repository files (admin)
+      responses:
+        "200":
+          description: List of repository files
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RepositoryFile"
+    post:
+      operationId: saveRepositoryFile
+      tags: [repository]
+      summary: Save metadata for an uploaded repository file (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SaveRepositoryFileInput"
+      responses:
+        "201":
+          description: Repository file saved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RepositoryFile"
+
+  /repository/files/{id}:
+    delete:
+      operationId: deleteRepositoryFile
+      tags: [repository]
+      summary: Delete a repository file (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Repository file deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessMessage"
+
 components:
   schemas:
     HealthStatus:
@@ -412,3 +484,71 @@ components:
       required:
         - uploadURL
         - objectPath
+
+    RepositoryUploadUrlInput:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: number
+        contentType:
+          type: string
+      required:
+        - name
+        - size
+        - contentType
+
+    RepositoryUploadUrlResponse:
+      type: object
+      properties:
+        uploadURL:
+          type: string
+        objectPath:
+          type: string
+      required:
+        - uploadURL
+        - objectPath
+
+    SaveRepositoryFileInput:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: number
+        contentType:
+          type: string
+        fileUrl:
+          type: string
+        adminPassword:
+          type: string
+      required:
+        - name
+        - size
+        - contentType
+        - fileUrl
+        - adminPassword
+
+    RepositoryFile:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        size:
+          type: number
+        contentType:
+          type: string
+        fileUrl:
+          type: string
+        createdAt:
+          type: string
+      required:
+        - id
+        - name
+        - size
+        - contentType
+        - fileUrl
+        - createdAt

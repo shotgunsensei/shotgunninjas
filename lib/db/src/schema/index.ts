@@ -1,4 +1,5 @@
 export * from "./songs";
+export * from "./repositoryFiles";
 export * from "./contactMessages";
 export * from "./users";
 export * from "./clan";

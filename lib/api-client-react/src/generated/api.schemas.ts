@@ -88,3 +88,31 @@ export interface RequestUploadUrlResponse {
   uploadURL: string;
   objectPath: string;
 }
+
+export interface RepositoryUploadUrlInput {
+  name: string;
+  size: number;
+  contentType: string;
+}
+
+export interface RepositoryUploadUrlResponse {
+  uploadURL: string;
+  objectPath: string;
+}
+
+export interface SaveRepositoryFileInput {
+  name: string;
+  size: number;
+  contentType: string;
+  fileUrl: string;
+  adminPassword: string;
+}
+
+export interface RepositoryFile {
+  id: number;
+  name: string;
+  size: number;
+  contentType: string;
+  fileUrl: string;
+  createdAt: string;
+}
