@@ -72,9 +72,9 @@ export default function Terms() {
               All software, designs, music, copy, characters, and brand assets
               published by Shotgun Ninjas Productions remain our property or
               that of our licensors. You may not copy, redistribute, or create
-              derivative works without prior written permission. Any music we
-              make available is provided for personal listening and download;
-              commercial use requires a separate license.
+              derivative works without prior written permission. Music featured
+              in the Sound Studio is provided for personal listening and
+              download; commercial use requires a separate license.
             </p>
 
             <h2 className="text-xl font-bold text-foreground font-[var(--font-display)]">

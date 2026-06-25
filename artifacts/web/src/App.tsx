@@ -16,6 +16,7 @@ import SnapProofOS from "./pages/SnapProofOS";
 import PulseDesk from "./pages/PulseDesk";
 import FaultlineLab from "./pages/FaultlineLab";
 import ControversyArchive from "./pages/ControversyArchive";
+import SoundStudio from "./pages/SoundStudio";
 import FileRepository from "./pages/FileRepository";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
@@ -54,6 +55,7 @@ function App() {
           <Route path="/pulsedesk" element={<PulseDesk />} />
           <Route path="/faultline-lab" element={<FaultlineLab />} />
           <Route path="/controversy-archive" element={<ControversyArchive />} />
+          <Route path="/soundstudio" element={<SoundStudio />} />
           <Route path="/repository" element={<FileRepository />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />

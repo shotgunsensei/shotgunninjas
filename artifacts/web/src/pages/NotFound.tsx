@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const quickLinks = [
+  { name: "Sound Studio", href: "/soundstudio" },
   { name: "Faultline Lab", href: "/faultline-lab" },
   { name: "PulseDesk", href: "/pulsedesk" },
   { name: "About", href: "/about" },

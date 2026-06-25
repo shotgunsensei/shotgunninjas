@@ -21,6 +21,7 @@ const productLinks = [
 const companyLinks = [
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
+  { name: "Sound Studio", href: "/soundstudio" },
   { name: "Privacy Policy", href: "/privacy-policy" },
   { name: "Terms of Service", href: "/terms" },
   { name: "Unsubscribe", href: "/unsubscribe" },

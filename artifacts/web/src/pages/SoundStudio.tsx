@@ -17,12 +17,6 @@ import {
   SkipForward,
   Disc3,
   Headphones,
-  Mic,
-  Layers,
-  Sliders,
-  Sparkles,
-  Repeat,
-  ExternalLink,
   HardDrive,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -40,9 +34,6 @@ import {
   type Song,
 } from "@/lib/api";
 import studioHeroBg from "@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.webp";
-import virtualStudioBg from "@assets/ChatGPT_Image_Apr_28,_2026,_04_58_44_PM_1777409942491.webp";
-
-const SN_DAW_URL = "https://shotgunninjas.studio";
 
 const genreFilters = ["All", "Rap", "Rock", "Instrumental", "Cinematic", "Aggressive", "Experimental"];
 const genreCategories = genreFilters.filter((f) => f !== "All");
@@ -214,96 +205,6 @@ function StudioHero({
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function VirtualStudioBanner() {
-  const features = [
-    { icon: Mic, label: "Record" },
-    { icon: Layers, label: "Layer" },
-    { icon: Sliders, label: "Mix" },
-    { icon: Sparkles, label: "Create" },
-    { icon: Repeat, label: "Repeat" },
-  ];
-
-  return (
-    <section className="relative -mt-px">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-        <a
-          href={SN_DAW_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block relative rounded-3xl overflow-hidden border border-primary/25 shadow-2xl shadow-primary/10 hover:shadow-primary/30 hover:border-primary/50 transition-all duration-500 bg-[#0a0506]"
-          aria-label="Open Shotgun Ninjas Virtual Studio"
-        >
-          <div className="absolute -inset-px rounded-3xl bg-gradient-to-r from-primary/30 via-primary/10 to-primary/30 opacity-40 group-hover:opacity-70 transition-opacity pointer-events-none" />
-
-          <div className="relative grid lg:grid-cols-2 gap-0 bg-[#0a0506] rounded-3xl overflow-hidden">
-            <div className="relative px-7 sm:px-10 lg:px-12 py-10 sm:py-12 lg:py-14 flex flex-col justify-center order-2 lg:order-1">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left_center,rgba(220,38,38,0.08)_0%,transparent_60%)]" />
-              <div className="absolute top-0 left-0 w-48 h-48 bg-primary/8 rounded-full blur-[80px] -translate-y-1/2 -translate-x-1/2" />
-
-              <div className="relative">
-                <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-primary/40 bg-primary/5 mb-5">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-                  </span>
-                  <span className="text-[10px] font-[var(--font-display)] tracking-[0.3em] text-primary uppercase">
-                    New · Virtual Studio
-                  </span>
-                </div>
-
-                <p className="text-xs sm:text-sm font-[var(--font-display)] tracking-[0.35em] text-primary/80 mb-3 uppercase">
-                  Dojo of Sound
-                </p>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-[var(--font-display)] leading-[0.95]">
-                  Make Noise{" "}
-                  <span className="text-primary">Like a Ninja</span>
-                </h2>
-                <p className="text-sm sm:text-base text-gray-300 mb-6 leading-relaxed max-w-md">
-                  Step into the Shotgun Ninjas DAW and start producing your own tracks — record, layer, mix, create, repeat. Right in your browser.
-                </p>
-
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-3 mb-7">
-                  {features.map((f, i) => (
-                    <div key={f.label} className="flex items-center gap-2">
-                      <f.icon className="h-3.5 w-3.5 text-primary" />
-                      <span className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-gray-400 uppercase">
-                        {f.label}
-                      </span>
-                      {i < features.length - 1 && (
-                        <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-primary/40" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
-                  <span className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl shadow-lg shadow-primary/30 group-hover:shadow-primary/50 group-hover:bg-primary/90 transition-all">
-                    Enter the Beat Dojo
-                    <ExternalLink className="h-4 w-4" />
-                  </span>
-                  <span className="text-[10px] font-mono tracking-[0.25em] text-primary/70 uppercase">
-                    shotgunninjas.studio
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative order-1 lg:order-2 min-h-[260px] sm:min-h-[320px] lg:min-h-[480px] overflow-hidden">
-              <img
-                src={virtualStudioBg}
-                alt="Shotgun Ninjas Virtual Studio — DAW with ninja producers"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0a0506] via-[#0a0506]/30 to-transparent lg:from-[#0a0506] lg:via-transparent lg:to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0a0506]/40 via-transparent to-[#0a0506]/40 lg:hidden" />
-            </div>
-          </div>
-        </a>
       </div>
     </section>
   );
@@ -1045,8 +946,6 @@ export default function SoundStudio() {
         onChange={handleFileSelect}
         className="hidden"
       />
-
-      <VirtualStudioBanner />
 
       <main id="tracks" className="flex-1 pb-32 pt-2">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

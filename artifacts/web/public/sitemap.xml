@@ -3,6 +3,7 @@
   <url><loc>https://shotgunninjas.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://shotgunninjas.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://shotgunninjas.com/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shotgunninjas.com/soundstudio</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://shotgunninjas.com/operatoros</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://shotgunninjas.com/techdeck</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://shotgunninjas.com/tradeflow</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

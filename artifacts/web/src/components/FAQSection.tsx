@@ -59,6 +59,18 @@ const faqs: FAQItem[] = [
     ),
   },
   {
+    q: "Where can I hear the music from Sound Studio?",
+    a: (
+      <>
+        Head to{" "}
+        <Link to="/soundstudio" className="text-primary hover:underline">
+          Sound Studio
+        </Link>{" "}
+        — stream, search, and download tracks for free.
+      </>
+    ),
+  },
+  {
     q: "How do I stay in the loop on launches and beta invites?",
     a: (
       <>
