@@ -1,1 +1,2 @@
 - [api-zod barrel collisions](api-zod-barrel-collisions.md) — adding endpoints can break `tsc --build` via duplicate-export ambiguity in the api-zod barrel; resolve in the hand-edited index.
+- [Reversible feature disable](reversible-feature-disable.md) — hide web product pages via `src/_disabled/`; full list of link touchpoints to update (incl. easy-to-miss `public/sitemap.xml`).

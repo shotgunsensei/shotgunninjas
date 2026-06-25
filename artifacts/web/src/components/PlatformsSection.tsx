@@ -5,10 +5,7 @@ import operatorOsImg from "@assets/OperatorOShero_1774285672020.png";
 import techDeckImg from "@assets/techdeckfeature_1774285697731.webp";
 import tradeFlowImg from "@assets/tradeflowfeature_1774285697732.webp";
 import torqueShedImg from "@assets/torqueshedfeature1024500_1774285672020.webp";
-import neonRacerImg from "@assets/neonracerhero_1774285672019.webp";
 import ninjamationImg from "@assets/ninjamationfeatured_1774292377935.webp";
-import labyrinthRoninImg from "@assets/labyrinthroninfeatured_1774292377934.webp";
-import poolHallImg from "@assets/ChatGPT_Image_Apr_27,_2026,_12_56_54_PM_1777309034433.webp";
 import playpackPilotImg from "@assets/ChatGPT_Image_Mar_27,_2026,_04_06_32_PM_1774642220480.webp";
 import brandforgeOsImg from "@assets/ChatGPT_Image_Apr_2,_2026,_02_21_38_AM_1775110912705.webp";
 import snapproofOsImg from "@assets/snapproof-hero_1775232639391.webp";
@@ -114,30 +111,6 @@ const featured: AppEntry[] = [
     link: "/brandforgeos",
     status: "NEW",
     image: brandforgeOsImg,
-  },
-  {
-    title: "Neon Racer",
-    tagline: "Own the Grid.",
-    description: "Retro-futuristic evasive racing game. Dodge, survive, dominate.",
-    link: "/neonracer",
-    status: "ACTIVE",
-    image: neonRacerImg,
-  },
-  {
-    title: "Labyrinth Ronin",
-    tagline: "Own the Maze.",
-    description: "Endless survival inside a living maze. Adapt and dominate.",
-    link: "/labyrinthronin",
-    status: "EXPERIMENTAL",
-    image: labyrinthRoninImg,
-  },
-  {
-    title: "Shotgun Ninjas Pool Hall",
-    tagline: "Own the Table.",
-    description: "Fast-paced 2D pool with skill, style, and strategy. Multiple modes, ranked play, and a custom ninja loadout.",
-    link: "/snpoolhall",
-    status: "NEW",
-    image: poolHallImg,
   },
 ];
 

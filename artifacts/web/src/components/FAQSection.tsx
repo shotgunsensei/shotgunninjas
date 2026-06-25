@@ -16,8 +16,7 @@ const faqs: FAQItem[] = [
         tools, games, and creative platforms for builders, makers, and operators
         — from blue-collar workflow software (TradeFlow, SnapProof OS) to MSP
         enablement (Tech Deck), support ops (PulseDesk), marketing OS
-        (BrandForge OS), and indie games (Faultline Lab, Pool Hall, Neon Racer
-        and more).
+        (BrandForge OS), and indie games (Faultline Lab and more).
       </>
     ),
   },
@@ -56,20 +55,6 @@ const faqs: FAQItem[] = [
         </Link>{" "}
         — pick the inquiry type that matches (Strategy Call, Partnership,
         Media). We typically reply within 24–48 hours.
-      </>
-    ),
-  },
-  {
-    q: "Where can I hear the music from Sound Studio?",
-    a: (
-      <>
-        Head to{" "}
-        <Link to="/soundstudio" className="text-primary hover:underline">
-          Sound Studio
-        </Link>{" "}
-        — stream, search, and download tracks for free. Producers also use the
-        companion DAW environment (linked from the Sound Studio page) for full
-        productions.
       </>
     ),
   },

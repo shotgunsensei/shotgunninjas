@@ -16,15 +16,11 @@ const productLinks = [
   { name: "OperatorOS", href: "/operatoros" },
   { name: "PlayPack Pilot", href: "/playpackpilot" },
   { name: "BrandForge OS", href: "https://bf-os.com" },
-  { name: "Neon Racer", href: "/neonracer" },
-  { name: "Labyrinth Ronin", href: "/labyrinthronin" },
-  { name: "Pool Hall", href: "https://snpoolhall.com" },
 ];
 
 const companyLinks = [
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
-  { name: "Sound Studio", href: "/soundstudio" },
   { name: "Privacy Policy", href: "/privacy-policy" },
   { name: "Terms of Service", href: "/terms" },
   { name: "Unsubscribe", href: "/unsubscribe" },

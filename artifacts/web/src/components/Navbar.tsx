@@ -16,14 +16,10 @@ const productLinks = [
   { name: "OperatorOS", href: "/operatoros" },
   { name: "PlayPack Pilot", href: "/playpackpilot" },
   { name: "BrandForge OS", href: "/brandforgeos" },
-  { name: "Neon Racer", href: "/neonracer" },
-  { name: "Labyrinth Ronin", href: "/labyrinthronin" },
-  { name: "Pool Hall", href: "/snpoolhall" },
 ];
 
 const mainLinks = [
   { name: "Home", href: "/" },
-  { name: "Sound Studio", href: "/soundstudio" },
   { name: "Ninja Village", href: "https://shotgunninjavillage.com" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },

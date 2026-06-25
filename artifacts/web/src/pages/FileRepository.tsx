@@ -197,11 +197,11 @@ function FileRepository() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <Link
-              to="/soundstudio"
+              to="/"
               className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-6"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Sound Studio
+              Back to Home
             </Link>
 
             <div className="flex items-center gap-4">
