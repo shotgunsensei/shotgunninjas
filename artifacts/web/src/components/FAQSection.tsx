@@ -13,35 +13,52 @@ const faqs: FAQItem[] = [
     a: (
       <>
         Shotgun Ninjas Productions is an independent studio shipping a family of
-        tools, games, and creative platforms for builders, makers, and operators
-        — from blue-collar workflow software (TradeFlow, SnapProof OS) to MSP
-        enablement (Tech Deck), support ops (PulseDesk), marketing OS
-        (BrandForge OS), and indie games (Faultline Lab and more).
+        tools, games, and creative platforms for builders, makers, and operators.
+        Every module in the arsenal — from blue-collar workflow software to MSP
+        enablement, support ops, marketing systems, and diagnostic games — now
+        lives under{" "}
+        <Link to="/operatoros" className="text-primary hover:underline">
+          OperatorOS
+        </Link>
+        , the command center for the whole ecosystem.
       </>
     ),
   },
   {
-    q: "Are these products real and live, or just concepts?",
+    q: "What is OperatorOS and how do the modules work?",
     a: (
       <>
-        Each product page tells you exactly where it stands — look for the
-        status badge: <span className="text-emerald-400 font-semibold">ACTIVE</span>,{" "}
-        <span className="text-sky-400 font-semibold">NEW</span>,{" "}
-        <span className="text-amber-400 font-semibold">BETA</span>, or{" "}
-        <span className="text-purple-400 font-semibold">EXPERIMENTAL</span>.
-        Active and New products are shipping; Beta and Experimental are in open
-        development.
+        <a
+          href="https://operatoros.net"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline"
+        >
+          OperatorOS.net
+        </a>{" "}
+        is the parent platform that owns every module in the arsenal — one
+        login, one bill, and tenant-aware access across TradeFlowKit, TechDeck,
+        PulseDesk, TorqueShed, FaultlineLab, and the rest. Sign in once and
+        launch any module through the command layer.
       </>
     ),
   },
   {
-    q: "How do I try a product or get pricing?",
+    q: "How do I try a module or get pricing?",
     a: (
       <>
-        Each product has its own page with a direct link to its home site (where
-        applicable) and any current trial, demo, or signup flow. Pricing is
-        listed on the individual product sites, not here — this is the
-        ecosystem hub.
+        Create a free account at{" "}
+        <a
+          href="https://operatoros.net"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline"
+        >
+          OperatorOS.net
+        </a>{" "}
+        — TorqueShed, FaultlineLab, and Ninja Pool Hall are free with any
+        account, no credit card required. Pricing and module details live on
+        OperatorOS, not here — this is the studio's brand hub.
       </>
     ),
   },

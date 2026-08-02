@@ -6,16 +6,10 @@ import snpLogo from "@/assets/SNPlogo.png";
 import { subscribeNewsletter } from "@/lib/api";
 
 const productLinks = [
-  { name: "Faultline Lab", href: "https://faultlinelab.com" },
-  { name: "TradeFlow Kit", href: "/tradeflow" },
-  { name: "Tech Deck", href: "/techdeck" },
-  { name: "PulseDesk", href: "https://pulsedesk.support" },
-  { name: "SnapProof OS", href: "https://snapproofos.com" },
-  { name: "Ninjamation", href: "/ninjamation" },
-  { name: "Torque Shed", href: "/torqueshed" },
   { name: "OperatorOS", href: "/operatoros" },
-  { name: "PlayPack Pilot", href: "/playpackpilot" },
-  { name: "BrandForge OS", href: "https://bf-os.com" },
+  { name: "OperatorOS.net", href: "https://operatoros.net" },
+  { name: "Explore the Modules", href: "https://operatoros.net/modules" },
+  { name: "Controversy Archive", href: "/controversy-archive" },
 ];
 
 const companyLinks = [
@@ -164,7 +158,7 @@ export default function Footer() {
 
           <div>
             <h3 className="font-[var(--font-display)] text-xs font-semibold tracking-widest text-muted-foreground mb-4">
-              ARSENAL
+              OPERATOROS ECOSYSTEM
             </h3>
             <ul className="space-y-2">
               {productLinks.map((link) => (

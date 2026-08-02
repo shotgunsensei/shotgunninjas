@@ -4,9 +4,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const quickLinks = [
+  { name: "OperatorOS", href: "/operatoros" },
   { name: "Sound Studio", href: "/soundstudio" },
-  { name: "Faultline Lab", href: "/faultline-lab" },
-  { name: "PulseDesk", href: "/pulsedesk" },
+  { name: "Controversy Archive", href: "/controversy-archive" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];

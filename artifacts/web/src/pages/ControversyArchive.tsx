@@ -21,9 +21,8 @@ export default function ControversyArchive() {
       websiteUrl="https://controversyarchive.com"
       statusBadge="NEW"
       relatedProducts={[
-        { name: "Faultline Lab", tagline: "Cinematic troubleshooting simulator", link: "/faultline-lab" },
-        { name: "BrandForge OS", tagline: "Own the campaign", link: "/brandforgeos" },
-        { name: "OperatorOS", tagline: "AI-native dev control plane", link: "/operatoros" },
+        { name: "OperatorOS", tagline: "The command center for every module", link: "/operatoros" },
+        { name: "Sound Studio", tagline: "Stream and download original tracks", link: "/soundstudio" },
       ]}
     />
   );

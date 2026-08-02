@@ -17,10 +17,10 @@ const caseStudies = [
   },
   {
     icon: Cloud,
-    category: "AI App Build",
-    title: "From idea to production in 3 weeks",
-    description: "A solo founder used OperatorOS to architect, build, and deploy a SaaS product with AI-powered workflows—no DevOps team required.",
-    metric: "3-week launch",
+    category: "Unified Operations",
+    title: "Five tools, one login, one bill",
+    description: "A multi-crew operation consolidated its quoting, ticketing, and reporting stack under OperatorOS — one account, tenant-aware access, and every module launching through SSO.",
+    metric: "1 command center",
   },
   {
     icon: Car,

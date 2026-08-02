@@ -8,6 +8,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackOutbound } from "@/lib/trackOutbound";
 import pulsedeskLogo from "@assets/pulsedesklogo_1775761546445.webp";
 import pulsedeskHero from "@assets/Modern_healthcare_tech_in_action_1775761546446.webp";
 
@@ -27,7 +28,7 @@ export default function PulseDeskSection() {
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/25 bg-primary/5 mb-5">
             <img src={pulsedeskLogo} alt="" className="h-5 w-auto rounded object-contain" />
             <span className="text-[10px] font-[var(--font-display)] tracking-[0.25em] text-primary/90 uppercase">
-              New in the Arsenal
+              Core Module · OperatorOS Ecosystem
             </span>
           </div>
         </div>
@@ -49,16 +50,17 @@ export default function PulseDeskSection() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://pulsedesk.support"
+                href="https://operatoros.net"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackOutbound("https://operatoros.net", "pulsedesk-section:open")}
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40"
               >
-                Open PulseDesk
+                Launch via OperatorOS
                 <ExternalLink className="h-4 w-4" />
               </a>
               <Link
-                to="/pulsedesk"
+                to="/operatoros"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-border text-foreground font-semibold rounded-xl hover:bg-secondary/50 transition-all"
               >
                 Learn More

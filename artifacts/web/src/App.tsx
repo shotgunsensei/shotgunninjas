@@ -1,20 +1,11 @@
 import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import OperatorOS from "./pages/OperatorOS";
-import TechDeck from "./pages/TechDeck";
-import TradeFlow from "./pages/TradeFlow";
-import TorqueShed from "./pages/TorqueShed";
-import Ninjamation from "./pages/Ninjamation";
-import PlayPackPilot from "./pages/PlayPackPilot";
-import BrandForgeOS from "./pages/BrandForgeOS";
-import SnapProofOS from "./pages/SnapProofOS";
-import PulseDesk from "./pages/PulseDesk";
-import FaultlineLab from "./pages/FaultlineLab";
 import ControversyArchive from "./pages/ControversyArchive";
 import SoundStudio from "./pages/SoundStudio";
 import FileRepository from "./pages/FileRepository";
@@ -45,15 +36,16 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/operatoros" element={<OperatorOS />} />
-          <Route path="/techdeck" element={<TechDeck />} />
-          <Route path="/tradeflow" element={<TradeFlow />} />
-          <Route path="/torqueshed" element={<TorqueShed />} />
-          <Route path="/ninjamation" element={<Ninjamation />} />
-          <Route path="/playpackpilot" element={<PlayPackPilot />} />
-          <Route path="/brandforgeos" element={<BrandForgeOS />} />
-          <Route path="/snapproof-os" element={<SnapProofOS />} />
-          <Route path="/pulsedesk" element={<PulseDesk />} />
-          <Route path="/faultline-lab" element={<FaultlineLab />} />
+          {/* Legacy module routes — modules are now owned by OperatorOS.net */}
+          <Route path="/techdeck" element={<Navigate to="/operatoros" replace />} />
+          <Route path="/tradeflow" element={<Navigate to="/operatoros" replace />} />
+          <Route path="/torqueshed" element={<Navigate to="/operatoros" replace />} />
+          <Route path="/ninjamation" element={<Navigate to="/operatoros" replace />} />
+          <Route path="/playpackpilot" element={<Navigate to="/operatoros" replace />} />
+          <Route path="/brandforgeos" element={<Navigate to="/operatoros" replace />} />
+          <Route path="/snapproof-os" element={<Navigate to="/operatoros" replace />} />
+          <Route path="/pulsedesk" element={<Navigate to="/operatoros" replace />} />
+          <Route path="/faultline-lab" element={<Navigate to="/operatoros" replace />} />
           <Route path="/controversy-archive" element={<ControversyArchive />} />
           <Route path="/soundstudio" element={<SoundStudio />} />
           <Route path="/repository" element={<FileRepository />} />
