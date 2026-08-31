@@ -9,6 +9,8 @@ const mainLinks = [
   { name: "OperatorOS", href: "/operatoros" },
   { name: "Controversy Archive", href: "/controversy-archive" },
   { name: "Sound Studio", href: "/soundstudio" },
+  { name: "Play Pack Pilot", href: "https://playpackpilot.com" },
+  { name: "Ninja DAW", href: "https://shotgunninjas.studio" },
   { name: "Ninja Village", href: "https://shotgunninjavillage.com" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
@@ -53,7 +55,7 @@ export default function Navbar() {
             </span>
           </a>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             {mainLinks.map((link) =>
               link.href === "/" ? (
                 <a
@@ -97,7 +99,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className={`lg:hidden p-2 rounded-md text-muted-foreground hover:text-foreground ${focusRing}`}
+            className={`xl:hidden p-2 rounded-md text-muted-foreground hover:text-foreground ${focusRing}`}
             onClick={() => setIsOpen((v) => !v)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
@@ -111,7 +113,7 @@ export default function Navbar() {
       {isOpen && (
         <div
           id="mobile-menu"
-          className="lg:hidden bg-background border-t border-border"
+          className="xl:hidden bg-background border-t border-border"
         >
           <div className="px-4 py-3 space-y-1">
             {mainLinks.map((link) =>
