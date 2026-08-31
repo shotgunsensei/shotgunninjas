@@ -5,7 +5,13 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import snpLogo from "@/assets/SNPlogo.png";
 
-const navLinks = [
+type NavLinkItem = {
+  name: string;
+  href: string;
+  external?: boolean;
+};
+
+const navLinks: NavLinkItem[] = [
   { name: "Home", href: "/" },
   { name: "OperatorOS", href: "/operatoros" },
   { name: "Tech Deck", href: "/techdeck" },
@@ -14,6 +20,8 @@ const navLinks = [
   { name: "Ninjamation", href: "/ninjamation" },
   { name: "Labyrinth Ronin", href: "/labyrinthronin" },
   { name: "Neon Racer", href: "/neonracer" },
+  { name: "Play Pack Pilot", href: "https://playpackpilot.com", external: true },
+  { name: "Ninja DAW", href: "https://shotgunninjas.studio", external: true },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -35,9 +43,25 @@ const Navbar = () => {
     }
   };
 
-  const renderNavLink = (link: { name: string; href: string }) => {
+  const renderNavLink = (link: NavLinkItem) => {
     const isHome = link.href === "/";
     const isActive = location.pathname === link.href;
+
+    if (link.external) {
+      return (
+        <a
+          key={link.name}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${link.name} (opens in a new tab)`}
+          className="whitespace-nowrap text-xs font-medium uppercase tracking-widest text-muted-foreground transition-colors duration-300 hover:text-primary"
+          onClick={() => setIsOpen(false)}
+        >
+          {link.name}
+        </a>
+      );
+    }
 
     if (isHome) {
       return (
@@ -81,7 +105,7 @@ const Navbar = () => {
             <span className="hidden sm:inline">SNP</span>
           </a>
 
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden 2xl:flex items-center gap-4">
             {navLinks.map(renderNavLink)}
             {!loading && (
               user ? (
@@ -104,7 +128,7 @@ const Navbar = () => {
           </div>
 
           <button
-            className="lg:hidden text-foreground"
+            className="2xl:hidden text-foreground"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -113,11 +137,27 @@ const Navbar = () => {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden py-6 border-t border-border animate-fade-in">
+          <div className="2xl:hidden py-6 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => {
                 const isHome = link.href === "/";
                 const isActive = location.pathname === link.href;
+
+                if (link.external) {
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${link.name} (opens in a new tab)`}
+                      className="py-2 text-sm font-medium uppercase tracking-widest text-muted-foreground transition-colors duration-300 hover:text-primary"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  );
+                }
 
                 if (isHome) {
                   return (
