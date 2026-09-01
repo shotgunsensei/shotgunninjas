@@ -19,8 +19,7 @@ run = "pnpm --filter @workspace/web run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/web", "run", "build" ]
-publicDir = "artifacts/web/dist/public"
-serve = "static"
+run = [ "pnpm", "--filter", "@workspace/web", "run", "serve" ]
 
 [[services.production.rewrites]]
 from = "/*"
