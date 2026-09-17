@@ -17,6 +17,20 @@ const mainLinks = [
   { name: "Contact", href: "/contact" },
 ];
 
+function ShurikenSeparator() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-3.5 w-3.5 shrink-0 text-primary drop-shadow-[0_0_4px_rgba(239,0,0,0.7)]"
+      fill="currentColor"
+    >
+      <path d="M12 1.5c1.7 3.2 2.2 5.8 1.4 7.7 1.9-.8 4.5-.3 7.7 1.4-3.2 1.7-5.8 2.2-7.7 1.4.8 1.9.3 4.5-1.4 7.7-1.7-3.2-2.2-5.8-1.4-7.7-1.9.8-4.5.3-7.7-1.4 3.2-1.7 5.8-2.2 7.7-1.4C9.8 7.3 10.3 4.7 12 1.5Z" />
+      <circle cx="12" cy="10.6" r="1.65" className="fill-background" />
+    </svg>
+  );
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -42,7 +56,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-5 2xl:px-8">
         <div className="flex justify-between items-center h-16">
           <a
             href="/"
@@ -56,46 +70,46 @@ export default function Navbar() {
             </span>
           </a>
 
-          <div className="hidden xl:flex items-center gap-1">
-            {mainLinks.map((link) =>
-              link.href === "/" ? (
-                <a
-                  key={link.name}
-                  href="/"
-                  onClick={handleHomeClick}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${focusRing} ${
-                    location.pathname === "/"
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.name}
-                </a>
-              ) : link.href.startsWith("http") ? (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackOutbound(link.href, `navbar:${link.name}`)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors text-muted-foreground hover:text-foreground ${focusRing}`}
-                >
-                  {link.name}
-                </a>
-              ) : (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${focusRing} ${
-                    location.pathname === link.href
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ),
-            )}
+          <div className="hidden xl:flex min-w-0 items-center justify-end">
+            {mainLinks.map((link, index) => (
+              <div key={link.name} className="flex shrink-0 items-center">
+                {index > 0 && <ShurikenSeparator />}
+                {link.href === "/" ? (
+                  <a
+                    href="/"
+                    onClick={handleHomeClick}
+                    className={`whitespace-nowrap px-1.5 2xl:px-2.5 py-2 rounded-md text-xs 2xl:text-sm font-medium transition-colors ${focusRing} ${
+                      location.pathname === "/"
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                ) : link.href.startsWith("http") ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackOutbound(link.href, `navbar:${link.name}`)}
+                    className={`whitespace-nowrap px-1.5 2xl:px-2.5 py-2 rounded-md text-xs 2xl:text-sm font-medium transition-colors text-muted-foreground hover:text-foreground ${focusRing}`}
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className={`whitespace-nowrap px-1.5 2xl:px-2.5 py-2 rounded-md text-xs 2xl:text-sm font-medium transition-colors ${focusRing} ${
+                      location.pathname === link.href
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
+            ))}
           </div>
 
           <button
