@@ -9,6 +9,7 @@ const mainLinks = [
   { name: "OperatorOS", href: "/operatoros" },
   { name: "Controversy Archive", href: "/controversy-archive" },
   { name: "Sound Studio", href: "/soundstudio" },
+  { name: "Neon Racer", href: "https://neonracer.net" },
   { name: "Play Pack Pilot", href: "https://playpackpilot.com" },
   { name: "Ninja DAW", href: "https://shotgunninjas.studio" },
   { name: "Ninja Village", href: "https://shotgunninjavillage.com" },
