@@ -7,7 +7,7 @@
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
-    "audit:links": "tsx scripts/audit-links.ts",
+    "audit:links": "pnpm --filter @workspace/scripts exec tsx ./audit-links.ts",
     "optimize:images": "tsx scripts/optimize-images.ts"
   },
   "private": true,
