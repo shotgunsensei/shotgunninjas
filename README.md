@@ -98,6 +98,50 @@ pnpm --filter @workspace/web run build         # production build
 The frontend serves on the artifact's assigned `PORT`. In production the
 API and the static `web` build are served behind one origin.
 
+## Reliability and release checks
+
+GitHub's `Release gates` workflow runs the existing typecheck, full build,
+internal-link audit, and API tests with Node 24 and a disposable PostgreSQL 17
+service. It initializes that service's schema with `@workspace/db push`; it
+never needs production database or mail credentials. A built-server check
+verifies the baked-in SHA, liveness, and a bounded 503 against a local stalled
+database socket using only GET requests (`node scripts/check-api-build.mjs`,
+with `BUILD_SHA` matching the preceding build).
+
+For local API tests, create an empty local database named
+`shotgun_ninjas_test`, then run:
+
+```bash
+export TEST_DATABASE_URL=postgres://LOCAL_USER:LOCAL_PASSWORD@127.0.0.1:5432/shotgun_ninjas_test
+DATABASE_URL="$TEST_DATABASE_URL" pnpm --filter @workspace/db push
+pnpm --filter @workspace/api-server test
+```
+
+The test runner overrides `DATABASE_URL` before importing the app, refuses
+non-loopback hosts and other database names, and mocks the mail module. Tests
+verify contact persistence and validation separately from throttling, newsletter
+duplicate and unsubscribe persistence, and bounded database readiness. Each test
+uses a fresh limiter identity and removes only its own fixtures.
+
+Operations endpoints (all disable caching):
+
+- `GET /api/healthz`: cheap process liveness, `{ "status": "ok" }`.
+- `GET /api/readyz`: database connectivity via read-only `SELECT 1`; returns
+  200 with `status: ok` or 503 with `status: unavailable`. A probe has a 1.5-second
+  deadline and concurrent requests share one short-lived connection per process.
+  It does not expose database addresses, errors, or credentials. It proves
+  connectivity, not schema or write permissions.
+- `GET /api/version`: `{ "sha": "<full Git commit SHA>" }` baked into the API
+  bundle. Build from the intended Git checkout or pass `BUILD_SHA` explicitly;
+  invalid stamps fail the build. Source archives without Git and source-mode dev
+  return `sha: null`, which cannot prove a release identity.
+
+After syncing and publishing the intended commit in Replit, safely compare
+`/api/version` against that commit and check `/api/healthz` and `/api/readyz`.
+The identity covers the API bundle; web artifact verification is separate.
+Do not exercise live contact/newsletter forms as release smoke tests. This slice
+does not change the database schema. Rollback is publishing the previous commit.
+
 ## Contact
 
 - General: **john@shotgunninjas.com**
