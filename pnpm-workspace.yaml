@@ -18,7 +18,7 @@ catalog:
   '@vitejs/plugin-react': ^5.0.4
   class-variance-authority: ^0.7.1
   clsx: ^2.1.1
-  drizzle-orm: ^0.45.1
+  drizzle-orm: ^0.45.3
   framer-motion: ^12.23.24
   lucide-react: ^0.545.0
   react: 19.1.0
@@ -26,7 +26,7 @@ catalog:
   tailwind-merge: ^3.3.1
   tailwindcss: ^4.1.14
   tsx: ^4.21.0
-  vite: ^7.3.0
+  vite: ^7.3.5
   zod: 3.25.76
 
 minimumReleaseAge: 1440
@@ -42,6 +42,7 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 overrides:
+  '@babel/core@<7.29.6': ^7.29.6
   '@esbuild-kit/esm-loader': npm:tsx@^4.21.0
   '@expo/ngrok-bin>@expo/ngrok-bin-darwin-arm64': '-'
   '@expo/ngrok-bin>@expo/ngrok-bin-darwin-x64': '-'
@@ -63,7 +64,12 @@ overrides:
   '@tailwindcss/oxide>@tailwindcss/oxide-linux-x64-musl': '-'
   '@tailwindcss/oxide>@tailwindcss/oxide-win32-arm64-msvc': '-'
   '@tailwindcss/oxide>@tailwindcss/oxide-win32-x64-msvc': '-'
-  esbuild: 0.27.3
+  '@tootallnate/once@<2.0.1': ^2.0.1
+  baseline-browser-mapping@>=2.0.0 <2.11.0: ^2.11.0
+  body-parser@>=2.0.0 <2.3.0: ^2.3.0
+  brace-expansion@>=2.0.0 <2.1.7: ^2.1.7
+  browserslist@<4.28.7: ^4.28.7
+  esbuild: 0.28.2
   esbuild>@esbuild/aix-ppc64: '-'
   esbuild>@esbuild/android-arm: '-'
   esbuild>@esbuild/android-arm64: '-'
@@ -89,6 +95,13 @@ overrides:
   esbuild>@esbuild/win32-arm64: '-'
   esbuild>@esbuild/win32-ia32: '-'
   esbuild>@esbuild/win32-x64: '-'
+  fast-uri@>=3.0.0 <3.1.8: ^3.1.8
+  fast-xml-builder@<1.1.7: ^1.1.7
+  fast-xml-parser@<5.7.0: ^5.7.0
+  form-data@<2.5.6: ^2.5.6
+  form-data@>=4.0.0 <4.0.6: ^4.0.6
+  js-cookie@<3.0.7: ^3.0.7
+  js-yaml@>=4.0.0 <4.3.2: ^4.3.2
   lightningcss>lightningcss-android-arm64: '-'
   lightningcss>lightningcss-darwin-arm64: '-'
   lightningcss>lightningcss-darwin-x64: '-'
@@ -99,6 +112,15 @@ overrides:
   lightningcss>lightningcss-linux-x64-musl: '-'
   lightningcss>lightningcss-win32-arm64-msvc: '-'
   lightningcss>lightningcss-win32-x64-msvc: '-'
+  linkify-it@<5.0.2: ^5.0.2
+  lodash@<4.18.0: ^4.18.0
+  markdown-it@<14.3.1: ^14.3.1
+  nanoid@>=3.0.0 <3.3.18: ^3.3.18
+  path-to-regexp@>=8.0.0 <8.4.0: ^8.4.0
+  picomatch@<2.3.2: ^2.3.2
+  picomatch@>=4.0.0 <4.0.4: ^4.0.4
+  postcss@<8.5.23: ^8.5.23
+  qs@>=2.2.5 <6.16.0: ^6.16.0
   rollup>@rollup/rollup-android-arm-eabi: '-'
   rollup>@rollup/rollup-android-arm64: '-'
   rollup>@rollup/rollup-darwin-arm64: '-'
@@ -123,3 +145,6 @@ overrides:
   rollup>@rollup/rollup-win32-ia32-msvc: '-'
   rollup>@rollup/rollup-win32-x64-gnu: '-'
   rollup>@rollup/rollup-win32-x64-msvc: '-'
+  uuid@<11.1.1: ^11.1.1
+  vite@>=7.0.0 <7.3.5: ^7.3.5
+  yaml@>=2.0.0 <2.8.3: ^2.8.3
