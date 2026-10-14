@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import snpLogo from "@/assets/SNPlogo.png";
 import { trackOutbound } from "@/lib/trackOutbound";
+import { KAGE_STATUS, KAGE_URL } from "@/lib/kage";
 
-const mainLinks = [
+const mainLinks: { name: string; href: string; status?: string }[] = [
   { name: "Home", href: "/" },
   { name: "OperatorOS", href: "/operatoros" },
   { name: "Controversy Archive", href: "/controversy-archive" },
@@ -13,6 +14,7 @@ const mainLinks = [
   { name: "Play Pack Pilot", href: "https://playpackpilot.com" },
   { name: "Ninja DAW", href: "https://shotgunninjas.studio" },
   { name: "Ninja Village", href: "https://shotgunninjavillage.com" },
+  { name: "Kage", href: KAGE_URL, status: KAGE_STATUS },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -55,7 +57,7 @@ export default function Navbar() {
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+    <nav aria-label="Primary navigation" className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="w-full px-4 sm:px-5 2xl:px-8">
         <div className="flex justify-between items-center h-16">
           <a
@@ -70,7 +72,7 @@ export default function Navbar() {
             </span>
           </a>
 
-          <div className="hidden xl:flex min-w-0 items-center justify-end">
+          <div className="hidden min-[1440px]:flex min-w-0 items-center justify-end">
             {mainLinks.map((link, index) => (
               <div key={link.name} className="flex shrink-0 items-center">
                 {index > 0 && <ShurikenSeparator />}
@@ -91,10 +93,13 @@ export default function Navbar() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={link.status ? `${link.name} (${link.status.toLowerCase()}; opens in a new tab)` : undefined}
+                    title={link.status ? `${link.name} is coming soon. The game address may be unavailable until launch.` : undefined}
                     onClick={() => trackOutbound(link.href, `navbar:${link.name}`)}
                     className={`whitespace-nowrap px-1.5 2xl:px-2.5 py-2 rounded-md text-xs 2xl:text-sm font-medium transition-colors text-muted-foreground hover:text-foreground ${focusRing}`}
                   >
                     {link.name}
+                    {link.status && <span aria-hidden="true" className="ml-1.5 rounded border border-border bg-secondary px-1.5 py-0.5 text-[9px] font-semibold text-amber-400">Soon</span>}
                   </a>
                 ) : (
                   <Link
@@ -114,7 +119,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className={`xl:hidden p-2 rounded-md text-muted-foreground hover:text-foreground ${focusRing}`}
+            className={`min-[1440px]:hidden p-2 rounded-md text-muted-foreground hover:text-foreground ${focusRing}`}
             onClick={() => setIsOpen((v) => !v)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
@@ -128,7 +133,7 @@ export default function Navbar() {
       {isOpen && (
         <div
           id="mobile-menu"
-          className="xl:hidden bg-background border-t border-border"
+          className="min-[1440px]:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto bg-background border-t border-border"
         >
           <div className="px-4 py-3 space-y-1">
             {mainLinks.map((link) =>
@@ -151,10 +156,16 @@ export default function Navbar() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackOutbound(link.href, `navbar:${link.name}`)}
+                  aria-label={link.status ? `${link.name} (${link.status.toLowerCase()}; opens in a new tab)` : undefined}
+                  title={link.status ? `${link.name} is coming soon. The game address may be unavailable until launch.` : undefined}
+                  onClick={() => {
+                    setIsOpen(false);
+                    trackOutbound(link.href, `navbar:${link.name}`);
+                  }}
                   className={`block px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground ${focusRing}`}
                 >
                   {link.name}
+                  {link.status && <span aria-hidden="true" className="ml-2 rounded border border-border bg-secondary px-2 py-0.5 text-xs font-semibold text-amber-400">{link.status}</span>}
                 </a>
               ) : (
                 <Link

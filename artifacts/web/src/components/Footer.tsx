@@ -4,6 +4,8 @@ import { ExternalLink, ArrowRight, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import snpLogo from "@/assets/SNPlogo.png";
 import { subscribeNewsletter } from "@/lib/api";
+import { KAGE_STATUS, KAGE_URL } from "@/lib/kage";
+import { trackOutbound } from "@/lib/trackOutbound";
 
 const productLinks = [
   { name: "OperatorOS", href: "/operatoros" },
@@ -125,15 +127,30 @@ export default function Footer() {
               Characters, backstory, episodes, and the lore behind the Shotgun Ninjas brand — all in one place.
             </p>
           </div>
-          <a
-            href="https://shotgunninjavillage.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 flex-shrink-0"
-          >
-            Enter the Village
-            <ExternalLink className="h-4 w-4" />
-          </a>
+          <div className="flex flex-col items-stretch gap-3 sm:shrink-0">
+            <a
+              href="https://shotgunninjavillage.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 flex-shrink-0"
+            >
+              Enter the Village
+              <ExternalLink className="h-4 w-4" />
+            </a>
+            <a
+              href={KAGE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Kage (${KAGE_STATUS.toLowerCase()}; opens in a new tab)`}
+              title="The game address may be unavailable until launch."
+              onClick={() => trackOutbound(KAGE_URL, "footer:kage")}
+              className="inline-flex flex-wrap items-center justify-center gap-2 rounded-xl border border-border px-4 py-3 text-sm font-semibold text-foreground hover:bg-secondary/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              Kage
+              <span className="text-xs text-amber-400">{KAGE_STATUS}</span>
+              <ExternalLink aria-hidden="true" className="h-4 w-4" />
+            </a>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

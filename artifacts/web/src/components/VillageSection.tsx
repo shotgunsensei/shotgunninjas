@@ -1,4 +1,6 @@
 import { ExternalLink, Swords, Flame, Users, Film } from "lucide-react";
+import { KAGE_STATUS, KAGE_URL } from "@/lib/kage";
+import { trackOutbound } from "@/lib/trackOutbound";
 
 const highlights = [
   { icon: Swords, label: "Characters & Lore" },
@@ -51,6 +53,36 @@ export default function VillageSection() {
             <ExternalLink className="h-5 w-5" />
           </a>
         </div>
+
+        <article aria-labelledby="kage-title" className="mt-12 rounded-xl border border-border bg-card p-6 sm:p-8">
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-center gap-3 mb-3">
+                <Swords aria-hidden="true" className="h-5 w-5 text-primary" />
+                <h3 id="kage-title" className="text-2xl font-bold font-[var(--font-display)]">Kage</h3>
+                <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-amber-400">{KAGE_STATUS}</span>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                A 2.5D ninja action game from the Shotgun Ninjas universe, with a campaign in development.
+              </p>
+              <p id="kage-launch-status" className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                Public play is coming soon. The game address may be unavailable until launch.
+              </p>
+            </div>
+            <a
+              href={KAGE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-describedby="kage-launch-status"
+              onClick={() => trackOutbound(KAGE_URL, "home:kage")}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-secondary px-6 py-3 text-sm font-semibold text-foreground hover:border-primary/50 hover:bg-secondary/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card md:shrink-0"
+            >
+              Visit Kage's future home
+              <ExternalLink aria-hidden="true" className="h-4 w-4 shrink-0" />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </div>
+        </article>
       </div>
     </section>
   );
