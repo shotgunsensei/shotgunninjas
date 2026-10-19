@@ -278,6 +278,7 @@ export default function NewsletterAdmin() {
             <h2 className="text-lg font-semibold">Preview</h2>
             <iframe
               title="Email preview"
+              sandbox=""
               srcDoc={previewSrcDoc}
               className="h-[640px] w-full rounded border border-border bg-background"
               data-testid="iframe-preview"

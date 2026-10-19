@@ -9,7 +9,8 @@
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
     "audit:links": "pnpm --filter @workspace/scripts exec tsx ./audit-links.ts",
-    "optimize:images": "tsx scripts/optimize-images.ts"
+    "optimize:images": "tsx scripts/optimize-images.ts",
+    "test:newsletter-preview": "node scripts/tests/newsletter-preview-browser.test.mjs"
   },
   "private": true,
   "devDependencies": {
