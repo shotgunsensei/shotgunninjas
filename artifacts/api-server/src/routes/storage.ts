@@ -5,6 +5,8 @@ import {
   RequestUploadUrlResponse,
 } from "@workspace/api-zod";
 import { ObjectStorageService, ObjectNotFoundError } from "../lib/objectStorage";
+import { objectReadAccess } from "../lib/objectReadAccess";
+import { privateObjectLookups } from "../lib/privateObjectAccess";
 
 const router: IRouter = Router();
 const objectStorageService = new ObjectStorageService();
@@ -87,15 +89,23 @@ router.get("/storage/public-objects/*filePath", async (req: Request, res: Respon
  * GET /storage/objects/*
  *
  * Serve object entities from PRIVATE_OBJECT_DIR.
- * These are served from a separate path from /public-objects and can optionally
- * be protected with authentication or ACL checks based on the use case.
+ * Public songs can be streamed anonymously. Repository objects require the
+ * repository administrator password; clan documents require a current session.
+ * Unregistered uploads are private. Repository records take precedence.
  */
 router.get("/storage/objects/*path", async (req: Request, res: Response) => {
   try {
     const raw = req.params.path;
     const wildcardPath = Array.isArray(raw) ? raw.join("/") : raw;
 
-    if (!wildcardPath.startsWith("uploads/")) {
+    const access = await objectReadAccess({
+      wildcardPath,
+      configuredPassword: process.env.SOUND_STUDIO_ADMIN_PASSWORD,
+      providedPassword: req.headers["x-admin-password"],
+      authorization: req.headers.authorization,
+      lookups: privateObjectLookups,
+    });
+    if (!access) {
       res.status(403).json({ error: "Access denied" });
       return;
     }
@@ -107,6 +117,11 @@ router.get("/storage/objects/*path", async (req: Request, res: Response) => {
 
     res.status(response.status);
     response.headers.forEach((value, key) => res.setHeader(key, value));
+    res.vary("Authorization");
+    res.vary("X-Admin-Password");
+    // Resource visibility can change in the database. Even a published song
+    // must pass this check again rather than retain an old public cache grant.
+    res.setHeader("Cache-Control", "private, no-store");
 
     if (response.body) {
       const nodeStream = Readable.fromWeb(response.body as ReadableStream<Uint8Array>);
