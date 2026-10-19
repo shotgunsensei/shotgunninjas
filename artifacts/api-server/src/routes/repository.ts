@@ -12,6 +12,7 @@ import {
   GetRepositoryDownloadUrlResponse,
 } from "@workspace/api-zod";
 import { ObjectStorageService, ObjectNotFoundError } from "../lib/objectStorage";
+import { configuredAdminPasswordMatches } from "../lib/adminPassword";
 
 const router: IRouter = Router();
 const objectStorageService = new ObjectStorageService();
@@ -24,7 +25,7 @@ const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024 * 1024;
 
 function isAdmin(headerPassword: unknown): boolean {
   const serverPassword = process.env.SOUND_STUDIO_ADMIN_PASSWORD;
-  return typeof serverPassword === "string" && headerPassword === serverPassword;
+  return configuredAdminPasswordMatches(serverPassword, headerPassword);
 }
 
 function isValidSize(size: number): boolean {
