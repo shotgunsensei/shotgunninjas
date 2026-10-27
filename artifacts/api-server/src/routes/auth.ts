@@ -1,23 +1,47 @@
 import { Router, type IRouter } from "express";
 import { db } from "@workspace/db";
-import { usersTable, sessionsTable, bannedUsersTable } from "@workspace/db/schema";
+import {
+  usersTable,
+  sessionsTable,
+  bannedUsersTable,
+} from "@workspace/db/schema";
 import { eq } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 import { randomBytes } from "crypto";
+import { rateLimit } from "../middlewares/rateLimit";
+import { authAttemptKey } from "../lib/authAttemptKey";
 
 const router: IRouter = Router();
+const authLimit = rateLimit({
+  scope: "auth:account",
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  identityKey: authAttemptKey,
+  failClosed: true,
+});
 
-router.post("/auth/signup", async (req, res) => {
+router.post("/auth/signup", authLimit, async (req, res) => {
   try {
     const { email, password, displayName } = req.body;
 
-    if (!email || !password || !displayName) {
-      res.status(400).json({ message: "Email, password, and display name are required" });
+    if (
+      typeof email !== "string" ||
+      !email ||
+      typeof password !== "string" ||
+      !password ||
+      typeof displayName !== "string" ||
+      !displayName
+    ) {
+      res
+        .status(400)
+        .json({ message: "Email, password, and display name are required" });
       return;
     }
 
     if (password.length < 6) {
-      res.status(400).json({ message: "Password must be at least 6 characters" });
+      res
+        .status(400)
+        .json({ message: "Password must be at least 6 characters" });
       return;
     }
 
@@ -28,7 +52,9 @@ router.post("/auth/signup", async (req, res) => {
       .limit(1);
 
     if (existing.length > 0) {
-      res.status(409).json({ message: "An account with that email already exists" });
+      res
+        .status(409)
+        .json({ message: "An account with that email already exists" });
       return;
     }
 
@@ -63,11 +89,16 @@ router.post("/auth/signup", async (req, res) => {
   }
 });
 
-router.post("/auth/signin", async (req, res) => {
+router.post("/auth/signin", authLimit, async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
+    if (
+      typeof email !== "string" ||
+      !email ||
+      typeof password !== "string" ||
+      !password
+    ) {
       res.status(400).json({ message: "Email and password are required" });
       return;
     }

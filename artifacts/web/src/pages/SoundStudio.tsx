@@ -35,7 +35,15 @@ import {
 } from "@/lib/api";
 import studioHeroBg from "@assets/ChatGPT_Image_Mar_23,_2026,_03_33_48_PM_1774294437568.webp";
 
-const genreFilters = ["All", "Rap", "Rock", "Instrumental", "Cinematic", "Aggressive", "Experimental"];
+const genreFilters = [
+  "All",
+  "Rap",
+  "Rock",
+  "Instrumental",
+  "Cinematic",
+  "Aggressive",
+  "Experimental",
+];
 const genreCategories = genreFilters.filter((f) => f !== "All");
 
 function StudioHero({
@@ -98,9 +106,13 @@ function StudioHero({
                 </div>
 
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 font-[var(--font-display)] leading-[0.9]">
-                  <span className="text-gradient drop-shadow-[0_0_60px_rgba(220,38,38,0.4)]">Sound</span>
+                  <span className="text-gradient drop-shadow-[0_0_60px_rgba(220,38,38,0.4)]">
+                    Sound
+                  </span>
                   <br />
-                  <span className="text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">Studio</span>
+                  <span className="text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">
+                    Studio
+                  </span>
                 </h1>
 
                 <p className="text-base sm:text-lg text-gray-300 max-w-md mx-auto lg:mx-0 mb-6 leading-relaxed">
@@ -142,6 +154,7 @@ function StudioHero({
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
                 <input
                   type="search"
+                  aria-label="Search tracks, tags, or genres"
                   placeholder="Search tracks, tags, genres..."
                   value={search}
                   onChange={(e) => onSearchChange(e.target.value)}
@@ -240,7 +253,11 @@ function FeaturedTrack({
         <div className="flex flex-col sm:flex-row items-center gap-8">
           <button
             onClick={() => onPlay(song)}
-            aria-label={isCurrent && isPlaying ? "Pause featured track" : "Play featured track"}
+            aria-label={
+              isCurrent && isPlaying
+                ? "Pause featured track"
+                : "Play featured track"
+            }
             className="relative group w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-primary/15 via-primary/5 to-transparent border border-primary/15 flex items-center justify-center flex-shrink-0 hover:border-primary/30 transition-all duration-500"
           >
             <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -318,7 +335,8 @@ function EmptyVault() {
           Silence before impact.
         </h3>
         <p className="text-muted-foreground/60 text-sm sm:text-base leading-relaxed mb-8 max-w-sm mx-auto">
-          The vault is quiet for now. New productions are being forged in the dark. Check back soon.
+          The vault is quiet for now. New productions are being forged in the
+          dark. Check back soon.
         </p>
 
         <div className="flex justify-center items-end gap-1 h-8 mb-8">
@@ -351,7 +369,9 @@ function NoSearchResults() {
         <Search className="h-6 w-6 text-muted-foreground/40" />
       </div>
       <p className="text-foreground font-semibold mb-2">No tracks found.</p>
-      <p className="text-sm text-muted-foreground/50">Try a different keyword or clear the filter.</p>
+      <p className="text-sm text-muted-foreground/50">
+        Try a different keyword or clear the filter.
+      </p>
     </div>
   );
 }
@@ -403,7 +423,9 @@ function TrackCard({
 
       <button
         onClick={() => onPlay(song)}
-        aria-label={isCurrent && isPlaying ? `Pause ${song.name}` : `Play ${song.name}`}
+        aria-label={
+          isCurrent && isPlaying ? `Pause ${song.name}` : `Play ${song.name}`
+        }
         className={`relative w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
           isCurrent && isPlaying
             ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
@@ -444,16 +466,30 @@ function TrackCard({
             </div>
             <div className="flex flex-wrap gap-1.5">
               {genreCategories.map((cat) => {
-                const activeTags = editTags.split(",").map((t) => t.trim()).filter(Boolean);
-                const isActive = activeTags.some((t) => t.toLowerCase() === cat.toLowerCase());
+                const activeTags = editTags
+                  .split(",")
+                  .map((t) => t.trim())
+                  .filter(Boolean);
+                const isActive = activeTags.some(
+                  (t) => t.toLowerCase() === cat.toLowerCase(),
+                );
                 return (
                   <button
                     key={cat}
                     type="button"
                     onClick={() => {
-                      const tags = editTags.split(",").map((t) => t.trim()).filter(Boolean);
+                      const tags = editTags
+                        .split(",")
+                        .map((t) => t.trim())
+                        .filter(Boolean);
                       if (isActive) {
-                        onEditTagsChange(tags.filter((t) => t.toLowerCase() !== cat.toLowerCase()).join(", "));
+                        onEditTagsChange(
+                          tags
+                            .filter(
+                              (t) => t.toLowerCase() !== cat.toLowerCase(),
+                            )
+                            .join(", "),
+                        );
                       } else {
                         onEditTagsChange([...tags, cat].join(", "));
                       }
@@ -472,7 +508,9 @@ function TrackCard({
           </div>
         ) : (
           <>
-            <p className={`font-semibold truncate ${isCurrent ? "text-primary" : "text-foreground"}`}>
+            <p
+              className={`font-semibold truncate ${isCurrent ? "text-primary" : "text-foreground"}`}
+            >
               {song.name}
             </p>
             {song.tags && (
@@ -572,7 +610,11 @@ function NowPlayingBar({
               aria-label={isPlaying ? "Pause" : "Play"}
               className="w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all duration-200"
             >
-              {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
+              {isPlaying ? (
+                <Pause className="h-4 w-4" />
+              ) : (
+                <Play className="h-4 w-4 ml-0.5" />
+              )}
             </button>
             <button
               onClick={() => onSkip("next")}
@@ -590,7 +632,9 @@ function NowPlayingBar({
               />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-semibold truncate">{currentSong.name}</p>
+              <p className="text-sm font-semibold truncate">
+                {currentSong.name}
+              </p>
               <p className="text-[10px] text-muted-foreground/70 font-[var(--font-display)] tracking-wider uppercase">
                 Shotgun Ninjas
               </p>
@@ -644,6 +688,7 @@ function NowPlayingBar({
 export default function SoundStudio() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, setLoading] = useState(true);
+  const [songsError, setSongsError] = useState(false);
   const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
@@ -690,11 +735,13 @@ export default function SoundStudio() {
   }, [showAdminLogin, showUploadModal, uploading]);
 
   const fetchSongs = useCallback(async () => {
+    setLoading(true);
+    setSongsError(false);
     try {
       const data = await listSongs();
       setSongs(data);
     } catch {
-      toast.error("Failed to load songs");
+      setSongsError(true);
     } finally {
       setLoading(false);
     }
@@ -855,7 +902,7 @@ export default function SoundStudio() {
 
   const toggleUploadCategory = (cat: string) => {
     setUploadCategories((prev) =>
-      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat],
     );
   };
 
@@ -907,9 +954,11 @@ export default function SoundStudio() {
   const filteredSongs = songs.filter((s) => {
     const q = search.toLowerCase();
     const matchesSearch =
-      s.name.toLowerCase().includes(q) || (s.tags || "").toLowerCase().includes(q);
+      s.name.toLowerCase().includes(q) ||
+      (s.tags || "").toLowerCase().includes(q);
     const matchesFilter =
-      activeFilter === "All" || (s.tags || "").toLowerCase().includes(activeFilter.toLowerCase());
+      activeFilter === "All" ||
+      (s.tags || "").toLowerCase().includes(activeFilter.toLowerCase());
     return matchesSearch && matchesFilter;
   });
 
@@ -971,7 +1020,9 @@ export default function SoundStudio() {
                     <Lock className="h-5 w-5 text-primary/70" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold font-[var(--font-display)]">Admin Access</h3>
+                    <h3 className="text-lg font-bold font-[var(--font-display)]">
+                      Admin Access
+                    </h3>
                     <p className="text-[10px] text-muted-foreground/50 tracking-wider uppercase">
                       Sound Studio
                     </p>
@@ -1020,7 +1071,9 @@ export default function SoundStudio() {
                     <Upload className="h-5 w-5 text-primary/70" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold font-[var(--font-display)]">Upload Track</h3>
+                    <h3 className="text-lg font-bold font-[var(--font-display)]">
+                      Upload Track
+                    </h3>
                     <p className="text-[10px] text-muted-foreground/50 tracking-wider uppercase">
                       {uploadFile?.name || "Select a file"}
                     </p>
@@ -1073,7 +1126,11 @@ export default function SoundStudio() {
                 <div className="flex gap-3 mt-8">
                   <button
                     onClick={handleUploadSubmit}
-                    disabled={uploading || !uploadName.trim() || uploadCategories.length === 0}
+                    disabled={
+                      uploading ||
+                      !uploadName.trim() ||
+                      uploadCategories.length === 0
+                    }
                     className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 font-semibold text-sm shadow-lg shadow-primary/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Upload className="h-4 w-4" />
@@ -1108,6 +1165,29 @@ export default function SoundStudio() {
                 Loading tracks
               </p>
             </div>
+          ) : songsError ? (
+            <div
+              role="alert"
+              className="rounded-2xl border border-border bg-card p-8 text-center"
+            >
+              <Headphones
+                className="mx-auto mb-4 h-8 w-8 text-primary"
+                aria-hidden="true"
+              />
+              <h2 className="mb-3 text-xl font-semibold">
+                Music catalogue unavailable
+              </h2>
+              <p className="mb-6 text-sm text-muted-foreground">
+                We could not load the tracks. Please try again in a moment.
+              </p>
+              <button
+                type="button"
+                onClick={() => void fetchSongs()}
+                className="min-h-11 rounded-lg border border-border px-5 py-3 font-medium hover:bg-secondary"
+              >
+                Try again
+              </button>
+            </div>
           ) : songs.length === 0 ? (
             <EmptyVault />
           ) : filteredSongs.length === 0 ? (
@@ -1122,7 +1202,8 @@ export default function SoundStudio() {
                   </h2>
                 </div>
                 <span className="text-[10px] text-muted-foreground/60 tabular-nums font-[var(--font-display)] tracking-wider">
-                  {filteredSongs.length} {filteredSongs.length === 1 ? "TRACK" : "TRACKS"}
+                  {filteredSongs.length}{" "}
+                  {filteredSongs.length === 1 ? "TRACK" : "TRACKS"}
                 </span>
               </div>
               <div className="space-y-2">

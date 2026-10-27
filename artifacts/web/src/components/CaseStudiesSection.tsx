@@ -4,30 +4,34 @@ const caseStudies = [
   {
     icon: Server,
     category: "MSP Automation",
-    title: "Reduced ticket volume by 40% with automated triage",
-    description: "An MSP drowning in L1 tickets deployed Tech Deck's automation layer to classify, route, and resolve common issues without human intervention.",
-    metric: "40% fewer tickets",
+    title: "Keep the context with the ticket",
+    description:
+      "Bring an issue, its assets, and the steps taken into TechDeck so the next person can pick up the work with context.",
+    metric: "Support operations",
   },
   {
     icon: Wrench,
     category: "Field Service Optimization",
-    title: "Dispatch-to-invoice in under 60 seconds",
-    description: "A plumbing company replaced 4 disconnected tools with TradeFlow Kit, cutting admin time by 70% and eliminating lost invoices.",
-    metric: "70% less admin",
+    title: "Follow a job from quote to invoice",
+    description:
+      "Organize the customer, estimate, scheduled work, and invoice in TradeFlowKit instead of reconstructing the job from disconnected notes.",
+    metric: "Field service workflow",
   },
   {
     icon: Cloud,
     category: "Unified Operations",
-    title: "Five tools, one login, one bill",
-    description: "A multi-crew operation consolidated its quoting, ticketing, and reporting stack under OperatorOS — one account, tenant-aware access, and every module launching through SSO.",
-    metric: "1 command center",
+    title: "Find the right workspace for the work",
+    description:
+      "Use OperatorOS to reach connected applications, manage your workspace, and return to the tools your team uses.",
+    metric: "Connected applications",
   },
   {
     icon: Car,
     category: "Performance Diagnostics",
-    title: "Community-driven diagnostic knowledge base",
-    description: "Torque Shed's diagnostic library helped an independent shop reduce misdiagnosis rates and build repeatable troubleshooting procedures.",
-    metric: "2x faster diagnosis",
+    title: "Build a repeatable diagnostic record",
+    description:
+      "Keep the symptoms, tests, findings, and next steps together in TorqueShed so an investigation has a useful history.",
+    metric: "Diagnostic workspace",
   },
 ];
 
@@ -37,11 +41,14 @@ export default function CaseStudiesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-xs font-[var(--font-display)] tracking-widest text-primary mb-3">
-            Case Studies
+            Workflow examples
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Builds That Ship</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Built around everyday work.
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Real systems solving real problems. Here's what operator-grade engineering looks like.
+            Explore the jobs these tools are designed to support, from the first
+            request to a clear record of the work.
           </p>
         </div>
 
@@ -59,8 +66,12 @@ export default function CaseStudiesSection() {
                   {study.category}
                 </span>
               </div>
-              <h3 className="text-lg font-bold mb-3 font-[var(--font-display)]">{study.title}</h3>
-              <p className="text-sm text-muted-foreground mb-4">{study.description}</p>
+              <h3 className="text-lg font-bold mb-3 font-[var(--font-display)]">
+                {study.title}
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                {study.description}
+              </p>
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
                 {study.metric}
               </div>

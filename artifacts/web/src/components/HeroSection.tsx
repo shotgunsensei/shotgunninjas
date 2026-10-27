@@ -1,57 +1,56 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.webp";
-import snpLogo from "@/assets/SNPlogo.png";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-[min(880px,100svh)] items-center overflow-hidden pb-20 pt-36 sm:pb-24 sm:pt-44">
       <img
         src={heroBg}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-[62%_center]"
       />
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-20 bg-gradient-to-b from-transparent to-primary" />
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8">
+        <p className="mb-7 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          Independent software & creative studio
+        </p>
 
-        <div className="mt-24 mb-8">
-          <img
-            src={snpLogo}
-            alt="Shotgun Ninjas Productions"
-            className="w-20 h-20 mx-auto mb-6 drop-shadow-lg"
-          />
-        </div>
-
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-          Control the System.{" "}
+        <h1 className="mb-7 max-w-4xl text-[clamp(2.6rem,6vw,5.5rem)] font-bold leading-[1.05] tracking-tight">
+          Control the System.
+          <br />
           <span className="text-gradient">Own the Stack.</span>
         </h1>
 
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-          Systems, automation, and software built for real operators.
+        <p className="mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          Practical tools for service teams. A free studio for music makers.
+          Original games and worlds for the moments in between.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#platforms"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+        <div className="flex max-w-xl flex-col gap-3 sm:flex-row">
+          <Link
+            to="/operatoros"
+            className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-primary px-7 py-3.5 font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
-            Explore the Stack
+            Explore OperatorOS
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </Link>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center px-8 py-3 border border-border text-foreground font-medium rounded-lg hover:bg-secondary/50 transition-colors"
+            className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/25 bg-background/30 px-7 py-3.5 font-medium text-foreground transition-colors hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
-            Book a Strategy Call
+            Contact the studio
           </Link>
         </div>
 
-        <div className="mt-16 animate-bounce">
-          <div className="w-px h-8 bg-gradient-to-b from-primary to-transparent mx-auto" />
-        </div>
+        <a
+          href="#platforms"
+          className="mt-12 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+        >
+          Discover the ecosystem{" "}
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </a>
       </div>
     </section>
   );
