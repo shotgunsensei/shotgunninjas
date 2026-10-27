@@ -55,11 +55,31 @@ const products: CoreProduct[] = [
     description:
       "TradeFlowKit keeps quotes, jobs, invoices, and payments in a single lane — so service businesses run the whole engagement without juggling tools.",
     highlights: [
-      { icon: FileText, title: "Quotes to Jobs", desc: "Turn approved quotes into scheduled jobs without re-entering a thing." },
-      { icon: ClipboardCheck, title: "Job Tracking", desc: "Every job's status, crew, and history visible at a glance." },
-      { icon: CreditCard, title: "Invoices & Payments", desc: "Bill from the job record and get paid in the same flow." },
-      { icon: Users, title: "Crew Coordination", desc: "Assign work, share updates, and keep the field in sync with the office." },
-      { icon: BarChart3, title: "Pipeline Visibility", desc: "See what's quoted, booked, in progress, and paid — in real time." },
+      {
+        icon: FileText,
+        title: "Quotes to Jobs",
+        desc: "Turn approved quotes into scheduled jobs without re-entering a thing.",
+      },
+      {
+        icon: ClipboardCheck,
+        title: "Job Tracking",
+        desc: "Every job's status, crew, and history visible at a glance.",
+      },
+      {
+        icon: CreditCard,
+        title: "Invoices & Payments",
+        desc: "Bill from the job record and get paid in the same flow.",
+      },
+      {
+        icon: Users,
+        title: "Crew Coordination",
+        desc: "Assign work, share updates, and keep the field in sync with the office.",
+      },
+      {
+        icon: BarChart3,
+        title: "Pipeline Visibility",
+        desc: "See what's quoted, booked, in progress, and paid — in real time.",
+      },
     ],
   },
   {
@@ -77,11 +97,31 @@ const products: CoreProduct[] = [
     description:
       "TechDeck is a dense command surface for MSP teams and field technicians — clients, endpoints, tickets, and runbooks within reach of a single screen.",
     highlights: [
-      { icon: ServerCog, title: "Client Command", desc: "Every client environment, documented and one click away." },
-      { icon: MonitorCheck, title: "Endpoint Visibility", desc: "Know what's healthy, what's flagged, and what needs hands." },
-      { icon: Wrench, title: "Field-Ready Runbooks", desc: "Procedures and fixes technicians can execute on site." },
-      { icon: Network, title: "Stack Mapping", desc: "Networks, credentials, and dependencies mapped per client." },
-      { icon: ShieldCheck, title: "Access Discipline", desc: "Role-aware access keeps sensitive client data on a need-to-know basis." },
+      {
+        icon: ServerCog,
+        title: "Client Command",
+        desc: "Every client environment, documented and one click away.",
+      },
+      {
+        icon: MonitorCheck,
+        title: "Endpoint Visibility",
+        desc: "Know what's healthy, what's flagged, and what needs hands.",
+      },
+      {
+        icon: Wrench,
+        title: "Field-Ready Runbooks",
+        desc: "Procedures and fixes technicians can execute on site.",
+      },
+      {
+        icon: Network,
+        title: "Stack Mapping",
+        desc: "Networks, credentials, and dependencies mapped per client.",
+      },
+      {
+        icon: ShieldCheck,
+        title: "Access Discipline",
+        desc: "Role-aware access keeps sensitive client data on a need-to-know basis.",
+      },
     ],
   },
   {
@@ -99,11 +139,31 @@ const products: CoreProduct[] = [
     description:
       "PulseDesk centralizes support requests, automates workflows, and gives healthcare operations teams full visibility into service delivery — so nothing slips and escalations never get lost.",
     highlights: [
-      { icon: Ticket, title: "Ticket Command Center", desc: "Intake, triage, and resolve support requests from one organized dashboard." },
-      { icon: Workflow, title: "Workflow Engine", desc: "Route tickets, trigger escalations, and automate status updates automatically." },
-      { icon: Stethoscope, title: "Clinical Coordination", desc: "Keep clinical and support workflows moving without losing escalations." },
-      { icon: ShieldCheck, title: "Team Accountability", desc: "Assign ownership, track workload, and ensure nothing falls through the cracks." },
-      { icon: Activity, title: "Operational Insights", desc: "Dashboards that show ticket volume, resolution speed, and team performance." },
+      {
+        icon: Ticket,
+        title: "Ticket Command Center",
+        desc: "Intake, triage, and resolve support requests from one organized dashboard.",
+      },
+      {
+        icon: Workflow,
+        title: "Workflow Engine",
+        desc: "Route tickets, trigger escalations, and automate status updates automatically.",
+      },
+      {
+        icon: Stethoscope,
+        title: "Operations Coordination",
+        desc: "Coordinate facilities, service requests, and non-clinical support without collecting patient records.",
+      },
+      {
+        icon: ShieldCheck,
+        title: "Team Accountability",
+        desc: "Assign ownership, track workload, and ensure nothing falls through the cracks.",
+      },
+      {
+        icon: Activity,
+        title: "Operational Insights",
+        desc: "Dashboards that show ticket volume, resolution speed, and team performance.",
+      },
     ],
   },
 ];
@@ -119,12 +179,13 @@ export default function CoreProductsSection() {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-[var(--font-display)] leading-[1.08]">
-            Three flagships. <span className="text-gradient">One command center.</span>
+            Three flagships.{" "}
+            <span className="text-gradient">One command center.</span>
           </h2>
           <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto leading-relaxed">
             TradeFlowKit, TechDeck, and PulseDesk are the fully unlocked core of
-            the OperatorOS ecosystem — one login, one bill, every module a launch
-            away.
+            the OperatorOS ecosystem — one login, one bill, every module a
+            launch away.
           </p>
         </div>
 
@@ -136,8 +197,14 @@ export default function CoreProductsSection() {
             >
               <div className={i % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-border bg-background/60 mb-5">
-                  <img src={p.logo} alt="" className="h-5 w-auto rounded object-contain" />
-                  <span className="text-xs font-semibold tracking-wide">{p.name}</span>
+                  <img
+                    src={p.logo}
+                    alt=""
+                    className="h-5 w-auto rounded object-contain"
+                  />
+                  <span className="text-xs font-semibold tracking-wide">
+                    {p.name}
+                  </span>
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 font-[var(--font-display)] leading-[1.1]">
@@ -157,7 +224,9 @@ export default function CoreProductsSection() {
                     href={OPERATOROS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => trackOutbound(OPERATOROS_URL, `core-products:${p.id}`)}
+                    onClick={() =>
+                      trackOutbound(OPERATOROS_URL, `core-products:${p.id}`)
+                    }
                     className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40"
                   >
                     Launch via OperatorOS
@@ -182,9 +251,13 @@ export default function CoreProductsSection() {
                         <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors shrink-0">
                           <h.icon className="h-3.5 w-3.5 text-primary" />
                         </div>
-                        <h4 className="text-sm font-bold font-[var(--font-display)]">{h.title}</h4>
+                        <h4 className="text-sm font-bold font-[var(--font-display)]">
+                          {h.title}
+                        </h4>
                       </div>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{h.desc}</p>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {h.desc}
+                      </p>
                     </div>
                   ))}
                 </div>

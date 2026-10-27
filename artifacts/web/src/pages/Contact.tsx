@@ -21,9 +21,12 @@ export default function Contact() {
     message: "",
   });
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (sending) return;
+    setError(null);
     if (!formData.name || !formData.email || !formData.message) {
       toast.error("Please fill in all required fields.");
       return;
@@ -32,9 +35,17 @@ export default function Contact() {
     try {
       const result = await submitContact(formData);
       toast.success(result.message);
-      setFormData({ name: "", email: "", type: "General Inquiry", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        type: "General Inquiry",
+        message: "",
+      });
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to send message.");
+      const message =
+        err instanceof Error ? err.message : "Failed to send message.";
+      setError(message);
+      toast.error(message);
     } finally {
       setSending(false);
     }
@@ -55,7 +66,8 @@ export default function Contact() {
               <span className="text-gradient">Together</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Whether you need a strategy call, have a partnership idea, or just want to talk shop—drop us a line.
+              Whether you need a strategy call, have a partnership idea, or just
+              want to talk shop—drop us a line.
             </p>
           </div>
 
@@ -63,31 +75,48 @@ export default function Contact() {
             <div className="lg:col-span-2">
               <form
                 onSubmit={handleSubmit}
+                aria-busy={sending}
                 className="bg-card border border-border rounded-xl p-8 space-y-6"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="contact-name"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Name *
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
+                      autoComplete="name"
                       type="text"
                       required
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Email *
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
+                      autoComplete="email"
                       type="email"
                       required
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                       placeholder="you@example.com"
                     />
@@ -95,12 +124,19 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="contact-type"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Inquiry Type
                   </label>
                   <select
+                    id="contact-type"
+                    name="type"
                     value={formData.type}
-                    onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, type: e.target.value })
+                    }
                     className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   >
                     {contactTypes.map((t) => (
@@ -112,19 +148,35 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="contact-message"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Message *
                   </label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     required
                     rows={5}
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary resize-none"
                     placeholder="Tell us what you're working on..."
                   />
                 </div>
 
+                {error && (
+                  <p
+                    role="alert"
+                    className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-sm text-foreground"
+                  >
+                    {error} Your message is still here. Please try again when
+                    the service is available.
+                  </p>
+                )}
                 <button
                   type="submit"
                   disabled={sending}
@@ -150,8 +202,12 @@ export default function Contact() {
                     <info.icon className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-foreground">{info.label}</p>
-                    <p className="text-sm text-muted-foreground">{info.value}</p>
+                    <p className="text-sm font-medium text-foreground">
+                      {info.label}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {info.value}
+                    </p>
                   </div>
                 </div>
               ))}

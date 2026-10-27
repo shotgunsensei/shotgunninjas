@@ -34,6 +34,9 @@ export interface RateLimitOptions {
   windowMs: number;
   max: number;
   scope: string;
+  /** Server-owned identity key for routes where a supplied proxy header is not authority. */
+  identityKey?: (req: Request) => string;
+  failClosed?: boolean;
 }
 
 interface BucketRow {
@@ -62,7 +65,7 @@ export function rateLimit(opts: RateLimitOptions): RequestHandler {
     const now = Date.now();
     void sweep(now);
 
-    const key = `${opts.scope}:${clientKey(req)}`;
+    const key = `${opts.scope}:${opts.identityKey ? opts.identityKey(req) : clientKey(req)}`;
     const resetAtMs = now + opts.windowMs;
 
     pool
@@ -70,15 +73,25 @@ export function rateLimit(opts: RateLimitOptions): RequestHandler {
       .then((result) => {
         const row = result.rows[0];
         if (!row) {
+          if (opts.failClosed) {
+            res
+              .status(503)
+              .json({
+                message:
+                  "Authentication is temporarily unavailable. Please try again shortly.",
+              });
+            return;
+          }
           // Should never happen with RETURNING, but fail open.
           next();
           return;
         }
 
         const count = row.count;
-        const resetAt = row.reset_at instanceof Date
-          ? row.reset_at.getTime()
-          : new Date(row.reset_at).getTime();
+        const resetAt =
+          row.reset_at instanceof Date
+            ? row.reset_at.getTime()
+            : new Date(row.reset_at).getTime();
 
         const remaining = Math.max(0, opts.max - count);
         res.setHeader("X-RateLimit-Limit", String(opts.max));
@@ -86,10 +99,14 @@ export function rateLimit(opts: RateLimitOptions): RequestHandler {
         res.setHeader("X-RateLimit-Reset", String(Math.ceil(resetAt / 1000)));
 
         if (count > opts.max) {
-          const retryAfterSec = Math.max(1, Math.ceil((resetAt - Date.now()) / 1000));
+          const retryAfterSec = Math.max(
+            1,
+            Math.ceil((resetAt - Date.now()) / 1000),
+          );
           res.setHeader("Retry-After", String(retryAfterSec));
           res.status(429).json({
-            message: "Too many requests. Please slow down and try again shortly.",
+            message:
+              "Too many requests. Please slow down and try again shortly.",
           });
           return;
         }
@@ -97,8 +114,24 @@ export function rateLimit(opts: RateLimitOptions): RequestHandler {
         next();
       })
       .catch((err) => {
+        if (opts.failClosed) {
+          logger.warn(
+            { err, scope: opts.scope },
+            "rate limit check failed; denying request",
+          );
+          res
+            .status(503)
+            .json({
+              message:
+                "Authentication is temporarily unavailable. Please try again shortly.",
+            });
+          return;
+        }
         // Fail open: don't take down the API if the rate-limit store hiccups.
-        logger.warn({ err, scope: opts.scope }, "rate limit check failed; allowing request");
+        logger.warn(
+          { err, scope: opts.scope },
+          "rate limit check failed; allowing request",
+        );
         next();
       });
   };
