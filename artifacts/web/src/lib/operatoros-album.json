@@ -1,0 +1,187 @@
+{
+  "title": "OperatorOS",
+  "artist": "John Williams",
+  "description": "The awakening of Shotgun Ninjas, Pastah John, and the OperatorOS .net SaaS platform",
+  "release_date": "2026-11-02",
+  "source_url": "https://suno.com/album/bb861d32-05dd-4950-9ec2-3a7df7a256da",
+  "cover_filename": "John_Shotgun_Ninjas_OperatorOS_Wallpaper.png",
+  "tracks": [
+    {
+      "position": 1,
+      "title": "Pastah John",
+      "filename": "Pastah John.mp3",
+      "duration_seconds": 233.59,
+      "suno_song_id": "770d31a8-c121-46f9-8d5e-5dc324dd96e7",
+      "size_bytes": 5835530,
+      "sha256": "f5389d20470560b3772674c66827cf9183e05b32ae00fee138b616beb2c88e90",
+      "file": "01.mp3"
+    },
+    {
+      "position": 2,
+      "title": "Shotgun Ninjas",
+      "filename": "Shotgun Ninjas.mp3",
+      "duration_seconds": 227.64,
+      "suno_song_id": "35baf4ef-8a99-4798-af6d-a712c4f14eb8",
+      "size_bytes": 5641896,
+      "sha256": "ad355e3b2fb026babd06f24991f60cbcf12e8198522e37a4d2f291de26ceb671",
+      "file": "02.mp3"
+    },
+    {
+      "position": 3,
+      "title": "Hayaku Kageru",
+      "filename": "Hayaku Kageru.mp3",
+      "duration_seconds": 333.91,
+      "suno_song_id": "321933a3-1d26-4715-88bd-5742b52e5218",
+      "size_bytes": 8151077,
+      "sha256": "6a6a98c62d594e6698ba4744148cb524aaaf0ed43e9477d9f527d926d911480b",
+      "file": "03.mp3"
+    },
+    {
+      "position": 4,
+      "title": "Shotgun Sensei (Remix)",
+      "filename": "Shotgun Sensei (Remix).mp3",
+      "duration_seconds": 241.22,
+      "suno_song_id": "9e179e01-6d3c-462b-a667-fd28ba2bc340",
+      "size_bytes": 6018415,
+      "sha256": "f56ee28a143df29ef3fe206b7fffaf74f46ff6ff360da3614e60d07c695c4132",
+      "file": "04.mp3"
+    },
+    {
+      "position": 5,
+      "title": "Burning the Atlas",
+      "filename": "Burning the Atlas.mp3",
+      "duration_seconds": 321.98,
+      "suno_song_id": "76536546-1fb8-4ed3-819d-d0768d4a898d",
+      "size_bytes": 7961392,
+      "sha256": "a605c705cb8bfbddba298bbd27823bd6529cb77816f23310f3c5f3dcfa542143",
+      "file": "05.mp3"
+    },
+    {
+      "position": 6,
+      "title": "Redeemer - Pastah John (Remix)",
+      "filename": "Redeemer - Pastah John (Remix).mp3",
+      "duration_seconds": 190.82,
+      "suno_song_id": "8657cbbf-bec1-4932-91dc-f8d475a1ba7a",
+      "size_bytes": 4720013,
+      "sha256": "d4e378ef189c30e3c6ef1f0d04d53598ec2b2d747a523c5868a053c2e81cf478",
+      "file": "06.mp3"
+    },
+    {
+      "position": 7,
+      "title": "Black and Gold",
+      "filename": "Black and Gold.mp3",
+      "duration_seconds": 186.38,
+      "suno_song_id": "637e926f-7d8f-4ea6-88e3-d1218edd0117",
+      "size_bytes": 4694105,
+      "sha256": "8b0b9331d958fb2e7ab02fe83e5c574ae66c660c9c7acbeeb37eef5d19f46458",
+      "file": "07.mp3"
+    },
+    {
+      "position": 8,
+      "title": "Redline Rebellion",
+      "filename": "Redline Rebellion.mp3",
+      "duration_seconds": 252.43,
+      "suno_song_id": "a5289731-bb2c-4933-8dc6-abe46ee5605c",
+      "size_bytes": 6119990,
+      "sha256": "7dc3ad1b5fbfcb55b7b27e7c4864f229c28501aedeb9214882c31705ecc938a8",
+      "file": "08.mp3"
+    },
+    {
+      "position": 9,
+      "title": "Healthcare Hacker",
+      "filename": "Healthcare Hacker.mp3",
+      "duration_seconds": 271.85,
+      "suno_song_id": "a0b89b54-9ce3-4cf2-bd85-2bc8829f82dd",
+      "size_bytes": 6390311,
+      "sha256": "05aeeef3cc41387d6e86480a1b47c2ffcd682bde66473a0fe9f9e78367330918",
+      "file": "09.mp3"
+    },
+    {
+      "position": 10,
+      "title": "Sown is what has Grown",
+      "filename": "Sown is what has Grown.mp3",
+      "duration_seconds": 372.0,
+      "suno_song_id": "2726472d-0752-4006-80ec-d7bde3e01d96",
+      "size_bytes": 8765349,
+      "sha256": "bb440dbdc9113ee10ed0c5a8d40bfea5a2dd8fb0fcc2312f385cc97e6bff2d26",
+      "file": "10.mp3"
+    },
+    {
+      "position": 11,
+      "title": "Demon's Game",
+      "filename": "Demon's Game.mp3",
+      "duration_seconds": 178.82,
+      "suno_song_id": "e1240d2a-dba3-4bcb-adc9-7f869bd8a51d",
+      "size_bytes": 4390280,
+      "sha256": "353d807493a8a1007cde501b795025632ff7d2f429e333bec7064195dec7f2a7",
+      "file": "11.mp3"
+    },
+    {
+      "position": 12,
+      "title": "Idle Hands (Dirty South 808 Trap Mix)",
+      "filename": "Idle Hands (Dirty South 808 Trap Mix).mp3",
+      "duration_seconds": 197.18,
+      "suno_song_id": "05ff26aa-dd8f-4dd4-b19c-ec6d620dea10",
+      "size_bytes": 4772756,
+      "sha256": "b7db783018964c346d2545e04ec4c4719d788cdf5d2a3e2fafc7b67a611e98e7",
+      "file": "12.mp3"
+    },
+    {
+      "position": 13,
+      "title": "The Narrow Path",
+      "filename": "The Narrow Path.mp3",
+      "duration_seconds": 253.39,
+      "suno_song_id": "f8152e1d-0dc0-4781-9805-0ef42ed25a1d",
+      "size_bytes": 5842980,
+      "sha256": "dcbc082f7298a5cf11e6af4a8eeffe354e97223bc149519db94f7d3c5367b32a",
+      "file": "13.mp3"
+    },
+    {
+      "position": 14,
+      "title": "Being Unknown",
+      "filename": "Being Unknown.mp3",
+      "duration_seconds": 177.62,
+      "suno_song_id": "6201cf33-7422-43b7-822c-204fdf3819f1",
+      "size_bytes": 4503982,
+      "sha256": "bcec88d6e31edc78e77581f1e3ce2984375126b0df466a32c9232583151234d6",
+      "file": "14.mp3"
+    },
+    {
+      "position": 15,
+      "title": "Show the World your Darkness (Remix)",
+      "filename": "Show the World your Darkness (Remix).mp3",
+      "duration_seconds": 190.39,
+      "suno_song_id": "7aebc33d-66ff-42d3-b4c2-ea584636ac71",
+      "size_bytes": 4685593,
+      "sha256": "450d5be4130a26ca2424e8d298bc5fefeead5df8d005051f16b4f48662319d41",
+      "file": "15.mp3"
+    },
+    {
+      "position": 16,
+      "title": "Just Want Peace",
+      "filename": "Just Want Peace.mp3",
+      "duration_seconds": 241.46,
+      "suno_song_id": "df434cb9-4f64-49e7-8b6c-da6847c703f5",
+      "size_bytes": 5886595,
+      "sha256": "5aec48a66519ea73325026b7cd5eed396878aea2b76f174c19014dbba468f708",
+      "file": "16.mp3"
+    },
+    {
+      "position": 17,
+      "title": "Slow That Roll",
+      "filename": "Slow That Roll.mp3",
+      "duration_seconds": 148.8,
+      "suno_song_id": "000321cc-8ca0-4bb5-bdff-a8b414fbadfd",
+      "size_bytes": 3776465,
+      "sha256": "bae3a01214a4e42edb2204f4fc4c093c1529eb5aeffde069cb367e716df46747",
+      "file": "17.mp3"
+    }
+  ],
+  "validation": {
+    "mp3_decode": "All 17 files passed ffmpeg full decode with no errors",
+    "total_duration_seconds": 4019.48,
+    "source_verified": "2026-11-12",
+    "cover_dimensions": "1672x941",
+    "track_order": "Original Suno album order"
+  }
+}

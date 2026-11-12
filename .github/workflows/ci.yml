@@ -46,6 +46,7 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm build
       - run: pnpm audit:links
+      - run: node --test scripts/tests/album-catalog.test.mjs
       - run: pnpm --filter @workspace/api-server test
       - name: Verify serving build identity and unavailable-database behavior
         run: node scripts/check-api-build.mjs
