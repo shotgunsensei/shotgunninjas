@@ -20,3 +20,10 @@ test('album page uses only its own catalog, never the existing songs API', () =>
   assert.ok(page.includes('operatoros-album.json'));
   assert.doesNotMatch(page, /listSongs|createSong|updateSong|deleteSong|getSongStreamUrl/);
 });
+
+test('album page keeps listening on site without an external Suno link', () => {
+  const page = readFileSync(new URL('../../artifacts/web/src/pages/Albums.tsx', import.meta.url), 'utf8');
+  assert.doesNotMatch(page, /Listen on Suno|album\.source_url|https?:\/\/(?:www\.)?suno\.com/i);
+  assert.equal(Object.hasOwn(album, 'source_url'), false);
+  assert.ok(page.includes('Play album'));
+});

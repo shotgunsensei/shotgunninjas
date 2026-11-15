@@ -245,15 +245,6 @@ export function OperatorOSAlbum() {
                   <Play className="h-4 w-4" />
                   Play album
                 </button>
-                <a
-                  href={album.source_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${button} border border-white/20 hover:bg-white/5`}
-                >
-                  Listen on Suno
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
               </div>
             </div>
           </div>
