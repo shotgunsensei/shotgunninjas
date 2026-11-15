@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import OperatorOS from "./pages/OperatorOS";
 import ControversyArchive from "./pages/ControversyArchive";
 import SoundStudio from "./pages/SoundStudio";
+import { Albums, OperatorOSAlbum } from "./pages/Albums";
 import FileRepository from "./pages/FileRepository";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
@@ -86,6 +87,8 @@ function App() {
               element={<ControversyArchive />}
             />
             <Route path="/soundstudio" element={<SoundStudio />} />
+            <Route path="/soundstudio/albums" element={<Albums />} />
+            <Route path="/soundstudio/albums/operatoros" element={<OperatorOSAlbum />} />
             <Route path="/repository" element={<FileRepository />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<Terms />} />

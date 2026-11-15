@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { AlbumShelf } from "./Albums";
 import {
   listSongs,
   verifyAdmin,
@@ -996,6 +997,7 @@ export default function SoundStudio() {
         className="hidden"
       />
 
+      <AlbumShelf />
       <main id="tracks" className="flex-1 pb-32 pt-2">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {!loading && latestSong && (
