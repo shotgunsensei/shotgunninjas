@@ -18,6 +18,7 @@ import SoundStudio from "./pages/SoundStudio";
 import { Albums, OperatorOSAlbum } from "./pages/Albums";
 import FileRepository from "./pages/FileRepository";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import KagePrivacyPolicy from "./pages/KagePrivacyPolicy";
 import Terms from "./pages/Terms";
 import Unsubscribe from "./pages/Unsubscribe";
 import AdminAnalytics from "./pages/AdminAnalytics";
@@ -91,6 +92,7 @@ function App() {
             <Route path="/soundstudio/albums/operatoros" element={<OperatorOSAlbum />} />
             <Route path="/repository" element={<FileRepository />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/kage9/privacy-policy" element={<KagePrivacyPolicy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/unsubscribe" element={<Unsubscribe />} />
             <Route path="/admin/analytics" element={<AdminAnalytics />} />
@@ -105,3 +107,4 @@ function App() {
 }
 
 export default App;
+
